@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.wrangler/
+.dev.vars
+.dev.vars.*
+.env
+.env.*
+!.env.example
+*.log
+*.tsbuildinfo
+.DS_Store
+coverage/
+*.pem
+credentials.json
