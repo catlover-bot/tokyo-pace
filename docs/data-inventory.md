@@ -1,16 +1,27 @@
-# オープンデータ候補一覧
+# オープンデータ一覧
 
-2026-07-17 時点の調査メモです。個別データセットの配布 URL・仕様・ライセンスを確認できていないものは、推測せず「未確認」としています。導入前に提供元で再確認してください。
+2026-07-18 時点の実装状況です。データセットの掲載と、設備が現在利用可能であることは同義ではありません。
 
-| データ名 | 提供者 | 公式URL | データ形式 | 緯度経度 | 更新日 | ライセンス | MVPでの用途 | 確認状況 | 注意事項 |
+| データ名 | 提供者 | 公式URL | データ形式・文字コード | 緯度経度 | データ更新日 | ライセンス | MVPでの用途 | 確認状況 | 注意事項 |
 |---|---|---|---|---|---|---|---|---|---|
-| 新宿区公衆トイレ情報 | 新宿区 | 未確認 | 未確認 | 未確認 | 未確認 | 未確認 | トイレ候補 | 未確認 | 公開有無、設備属性、利用時間を要確認 |
-| 新宿区公共施設情報 | 新宿区 | [新宿区オープンデータ](https://www.city.shinjuku.lg.jp/kusei/index02_000016.html) | 未確認 | 未確認 | 未確認 | 未確認 | 屋内休憩候補 | ポータルのみ確認 | 個別データセットと利用条件を要確認 |
-| 東京都車椅子使用者対応トイレ情報 | 東京都 | [東京都オープンデータカタログサイト](https://catalog.data.metro.tokyo.lg.jp/) | 未確認 | 未確認 | 未確認 | 未確認 | アクセシブルなトイレ候補 | カタログのみ確認 | 個別ページ・最新性を要確認 |
-| Tokyowater Drinking Station | 東京都水道局 | 未確認 | 未確認 | 未確認 | 未確認 | 未確認 | 給水・休憩候補 | 未確認 | 正式名称、配布仕様、利用条件を要確認 |
-| OpenStreetMap | OpenStreetMap contributors | [Copyright and License](https://www.openstreetmap.org/copyright) | OSM XML / PBF 等 | あり | 継続更新 | ODbL | 背景地図・道路候補 | 公式ライセンス確認 | タイル利用ポリシーと帰属表示が必要 |
-| 国土地理院標高データ | 国土地理院 | [基盤地図情報](https://www.gsi.go.jp/kiban/) | GML 等 | あり | 未確認 | 国土地理院コンテンツ利用規約（適用範囲要確認） | 坂道評価 | 入口ページ確認 | 精度・測地系・派生物の出典表記を要確認 |
+| 新宿区公衆トイレ一覧 | 新宿区 | [データセット](https://catalog.data.metro.tokyo.lg.jp/dataset/t131041d0000000123) / [CSV](https://www.city.shinjuku.lg.jp/content/000399974.csv) | CSV / UTF-16LE | あり | CSVに更新日列なし | CC BY | 公衆トイレ候補 | 取得・正規化済み | 車椅子情報の空欄は不明。現況未確認 |
+| 公共施設等の車椅子使用者対応トイレ | 東京都福祉局 | [データセット](https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342) / [CSV](https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv) | CSV / Shift_JIS | あり（一部欠損） | レコード別に作成・変更年月 | CC BY | 車椅子使用者対応トイレ候補 | 取得・正規化済み | 公共施設を休憩可能施設とはみなさない。現況未確認 |
+| 鉄道駅の車椅子使用者対応トイレ | 東京都福祉局 | [CSV](https://www.opendata.metro.tokyo.lg.jp/fukushi/R0606/02/4_tonaitetsudoueki_barrier-free-wc.csv) | CSV / Shift_JIS | あり（一部欠損） | レコード別に作成・変更年月 | CC BY | 駅構内の対応トイレ候補 | 取得・正規化済み | 改札・入場条件、現況、到達可能性は未確認 |
+| OpenStreetMap | OpenStreetMap contributors | [Copyright and License](https://www.openstreetmap.org/copyright) | OSM XML / PBF 等 | あり | 継続更新 | ODbL | 背景地図 | 公式ライセンス確認 | タイル利用ポリシーと帰属表示が必要 |
+| 国土地理院標高データ | 国土地理院 | [基盤地図情報](https://www.gsi.go.jp/kiban/) | GML 等 | あり | 未確認 | 国土地理院コンテンツ利用規約（適用範囲要確認） | 将来の坂道評価 | 未導入 | 精度・測地系・出典表記を要確認 |
 
-## 現在の MVP データ
+## 取得と生成
 
-`data/processed/rest_spots.geojson` は上記オープンデータを取り込んだものではありません。UI とデータ交換構造を検証するための推定デモデータです。
+`npm run data:update` が公式CSVを取得し、文字コード、必須ヘッダー、座標を検証します。元CSVは `data/raw/`、全件の正規化JSONは `data/generated/`、デモルートから直線距離350m以内に限定したアプリ同梱JSONは `src/data/generated/` に生成します。生成物には取得日時と出典を記録します。
+
+空欄は `null`、明示的な「有・○」は `true`、「無・×」は `false` とします。座標欠損、不正数値、範囲外座標は理由をログに残して除外します。スキーマ変更で必須ヘッダーがなくなった場合は処理を停止し、既存の生成ファイルを維持します。
+
+## レコード分類と監査
+
+新宿区公衆トイレを `public_toilet`、公共施設内の設備情報を `facility_toilet_information`、鉄道駅内の設備情報を `station_toilet_information` として保持します。後者2種から一般利用、改札外、営業時間内であることは推測しません。監査結果は `data/generated/open-data-audit.json`、全候補地点は `data/generated/official-toilet-places.json` に生成します。
+
+ルート評価では `public_toilet` だけを既定のトイレ希望条件と最長トイレ空白に使用します。施設内・駅内設備情報は存在件数と最寄り公式設備情報距離を別に保持し、公衆トイレと同じ利用確実性があるとは扱いません。
+
+## 現在の制約
+
+ルートからトイレまでの距離は折れ線への最短直線距離です。道路上の迂回距離、通行可能性、安全性、営業時間内であること、故障していないこと、入場制限がないことは保証しません。車椅子使用者対応トイレがあっても、経路全体が車椅子で通行できるとは限りません。

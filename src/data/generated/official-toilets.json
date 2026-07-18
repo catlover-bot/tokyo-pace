@@ -1,0 +1,2565 @@
+{
+  "metadata": {
+    "retrievedAt": "2026-07-18T16:41:33.291Z",
+    "license": "CC BY",
+    "recordCount": 77,
+    "shinjukuRecordCount": 456,
+    "excludedCount": 449,
+    "duplicateCandidateCount": 0,
+    "demoRouteNearbyCount": 77,
+    "officialPlaceCount": 46,
+    "demoRouteNearbyPlaceCount": 46,
+    "sources": [
+      {
+        "key": "shinjuku-public",
+        "provider": "新宿区",
+        "datasetName": "新宿区公衆トイレ一覧",
+        "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t131041d0000000123",
+        "resourceUrl": "https://www.city.shinjuku.lg.jp/content/000399974.csv",
+        "license": "CC BY"
+      },
+      {
+        "key": "tokyo-public-accessible",
+        "provider": "東京都福祉局",
+        "datasetName": "公共施設等の車椅子使用者対応トイレ",
+        "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+        "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+        "license": "CC BY"
+      },
+      {
+        "key": "tokyo-station-accessible",
+        "provider": "東京都福祉局",
+        "datasetName": "鉄道駅の車椅子使用者対応トイレ",
+        "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+        "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/R0606/02/4_tonaitetsudoueki_barrier-free-wc.csv",
+        "license": "CC BY"
+      }
+    ],
+    "scope": "デモルートから推定直線距離350m以内"
+  },
+  "places": [
+    {
+      "clusterId": "place-shinjuku-131041C00109",
+      "sourceRecordCount": 6,
+      "representativeLatitude": 35.690063,
+      "representativeLongitude": 139.689173,
+      "records": [
+        {
+          "id": "shinjuku-131041C00109",
+          "name": "新宿中央公園（事務所脇）",
+          "latitude": 35.690063,
+          "longitude": 139.689173,
+          "address": "東京都新宿区西新宿2-11",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "9:00〜17:00（バリアフリートイレのみ時間制限あり）",
+          "officialToiletKind": "public_toilet",
+          "source": {
+            "provider": "新宿区",
+            "datasetName": "新宿区公衆トイレ一覧",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t131041d0000000123",
+            "resourceUrl": "https://www.city.shinjuku.lg.jp/content/000399974.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": null,
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "shinjuku-131041C00110",
+          "name": "新宿中央公園（スポーツコーナー）",
+          "latitude": 35.690063,
+          "longitude": 139.689173,
+          "address": "東京都新宿区西新宿2-11",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "9:00〜17:00（バリアフリートイレのみ時間制限あり）",
+          "officialToiletKind": "public_toilet",
+          "source": {
+            "provider": "新宿区",
+            "datasetName": "新宿区公衆トイレ一覧",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t131041d0000000123",
+            "resourceUrl": "https://www.city.shinjuku.lg.jp/content/000399974.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": null,
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "shinjuku-131041C00111",
+          "name": "新宿中央公園（芝生広場）",
+          "latitude": 35.690063,
+          "longitude": 139.689173,
+          "address": "東京都新宿区西新宿2-11",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "9:00〜17:00（バリアフリートイレのみ時間制限あり）",
+          "officialToiletKind": "public_toilet",
+          "source": {
+            "provider": "新宿区",
+            "datasetName": "新宿区公衆トイレ一覧",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t131041d0000000123",
+            "resourceUrl": "https://www.city.shinjuku.lg.jp/content/000399974.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": null,
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "shinjuku-131041C00112",
+          "name": "新宿中央公園（水の広場）",
+          "latitude": 35.690063,
+          "longitude": 139.689173,
+          "address": "東京都新宿区西新宿2-11",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "9:00〜17:00（バリアフリートイレのみ時間制限あり）",
+          "officialToiletKind": "public_toilet",
+          "source": {
+            "provider": "新宿区",
+            "datasetName": "新宿区公衆トイレ一覧",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t131041d0000000123",
+            "resourceUrl": "https://www.city.shinjuku.lg.jp/content/000399974.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": null,
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "shinjuku-131041C00114",
+          "name": "新宿中央公園（富士見台）",
+          "latitude": 35.690063,
+          "longitude": 139.689173,
+          "address": "東京都新宿区西新宿2-11",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "9:00〜17:00（バリアフリートイレのみ時間制限あり）",
+          "officialToiletKind": "public_toilet",
+          "source": {
+            "provider": "新宿区",
+            "datasetName": "新宿区公衆トイレ一覧",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t131041d0000000123",
+            "resourceUrl": "https://www.city.shinjuku.lg.jp/content/000399974.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": null,
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "shinjuku-131041C00115",
+          "name": "新宿中央公園（ちびっ子広場）",
+          "latitude": 35.690063,
+          "longitude": 139.689173,
+          "address": "東京都新宿区西新宿2-11",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "9:00〜17:00（バリアフリートイレのみ時間制限あり）",
+          "officialToiletKind": "public_toilet",
+          "source": {
+            "provider": "新宿区",
+            "datasetName": "新宿区公衆トイレ一覧",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t131041d0000000123",
+            "resourceUrl": "https://www.city.shinjuku.lg.jp/content/000399974.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": null,
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "public_toilet"
+      ],
+      "hasPublicToiletRecord": true,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-shinjuku-131041C00205",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.689926,
+      "representativeLongitude": 139.701659,
+      "records": [
+        {
+          "id": "shinjuku-131041C00205",
+          "name": "新宿駅東南口公衆便所",
+          "latitude": 35.689926,
+          "longitude": 139.701659,
+          "address": "東京都新宿区新宿3-37",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": null,
+          "officialToiletKind": "public_toilet",
+          "source": {
+            "provider": "新宿区",
+            "datasetName": "新宿区公衆トイレ一覧",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t131041d0000000123",
+            "resourceUrl": "https://www.city.shinjuku.lg.jp/content/000399974.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": null,
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "public_toilet"
+      ],
+      "hasPublicToiletRecord": true,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-shinjuku-131041C00217",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.693021,
+      "representativeLongitude": 139.699384,
+      "records": [
+        {
+          "id": "shinjuku-131041C00217",
+          "name": "新宿西口地下公衆便所",
+          "latitude": 35.693021,
+          "longitude": 139.699384,
+          "address": "東京都新宿区西新宿1；西口地下街",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "7:00〜24:00（バリアフリートイレのみ時間制限あり）",
+          "officialToiletKind": "public_toilet",
+          "source": {
+            "provider": "新宿区",
+            "datasetName": "新宿区公衆トイレ一覧",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t131041d0000000123",
+            "resourceUrl": "https://www.city.shinjuku.lg.jp/content/000399974.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": null,
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "public_toilet"
+      ],
+      "hasPublicToiletRecord": true,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13000-11-1-5-1",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.691471,
+      "representativeLongitude": 139.69099,
+      "records": [
+        {
+          "id": "tokyo-public-13000-11-1-5-1",
+          "name": "小田急第一生命ビル 公益財団法人東京都福祉保健財団多目的トイレ（19F）",
+          "latitude": 35.691471,
+          "longitude": 139.69099,
+          "address": "東京都新宿区西新宿二丁目7番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0845_1730 / 土日祝の利用については、当財団事業の実施がある場合には使用可能。",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2019-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13000-18-9-63-1",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.687992,
+      "representativeLongitude": 139.699274,
+      "records": [
+        {
+          "id": "tokyo-public-13000-18-9-63-1",
+          "name": "都営大江戸線新宿駅 だれでもトイレ（B4F）",
+          "latitude": 35.687992,
+          "longitude": 139.699274,
+          "address": "東京都新宿区新宿七丁目27番3号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "始発_終車",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2025-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13000-18-9-64-1",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.693315,
+      "representativeLongitude": 139.699147,
+      "records": [
+        {
+          "id": "tokyo-public-13000-18-9-64-1",
+          "name": "都営大江戸線新宿西口駅 だれでもトイレ（B3F）",
+          "latitude": 35.693315,
+          "longitude": 139.699147,
+          "address": "東京都新宿区西新宿一丁目3番17号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "始発_終車",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2019-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13000-18-9-90-1",
+      "sourceRecordCount": 2,
+      "representativeLatitude": 35.690619,
+      "representativeLongitude": 139.693005,
+      "records": [
+        {
+          "id": "tokyo-public-13000-18-9-90-1",
+          "name": "都営大江戸線都庁前駅 女性用だれでもトイレ（B2F）",
+          "latitude": 35.690619,
+          "longitude": 139.693005,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "始発_終車",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2025-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "tokyo-public-13000-18-9-90-2",
+          "name": "都営大江戸線都庁前駅 男性用だれでもトイレ（B2F）",
+          "latitude": 35.690619,
+          "longitude": 139.693005,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "始発_終車",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2025-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13000-18-9-91-1",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.689905,
+      "representativeLongitude": 139.684683,
+      "records": [
+        {
+          "id": "tokyo-public-13000-18-9-91-1",
+          "name": "都営大江戸線西新宿五丁目駅 だれでもトイレ（B1F）",
+          "latitude": 35.689905,
+          "longitude": 139.684683,
+          "address": "東京都新宿区西新宿五丁目25番9号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "始発_終車",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2021-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13000-28-1-10-1",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.686154,
+      "representativeLongitude": 139.689836,
+      "records": [
+        {
+          "id": "tokyo-public-13000-28-1-10-1",
+          "name": "新宿消防署西新宿出張所 多目的トイレ（2F）",
+          "latitude": 35.686154,
+          "longitude": 139.689836,
+          "address": "東京都新宿区西新宿三丁目7番38号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0000_2359",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2019-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13000-5-1-1-1",
+      "sourceRecordCount": 2,
+      "representativeLatitude": 35.689420999999996,
+      "representativeLongitude": 139.691457,
+      "records": [
+        {
+          "id": "tokyo-public-13000-5-1-1-1",
+          "name": "東京都庁第一本庁舎 1階中央車いす使用者対応トイレ（1F）",
+          "latitude": 35.689389,
+          "longitude": 139.691468,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_1845 / 12月29日から1月3日までは利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "tokyo-public-13000-5-1-1-2",
+          "name": "東京都庁第一本庁舎 1階中央車いす使用者対応トイレ（1F）",
+          "latitude": 35.689453,
+          "longitude": 139.691446,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_1845 / 12月29日から1月3日まで利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13000-5-1-1-10",
+      "sourceRecordCount": 8,
+      "representativeLatitude": 35.68962175,
+      "representativeLongitude": 139.69172462499998,
+      "records": [
+        {
+          "id": "tokyo-public-13000-5-1-1-10",
+          "name": "東京都庁第一本庁舎 北45階車いす使用者対応トイレ①（N45F）",
+          "latitude": 35.689626,
+          "longitude": 139.691708,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0930_2300 / 北展望室は当面休室",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2024-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "tokyo-public-13000-5-1-1-11",
+          "name": "東京都庁第一本庁舎 北45階車いす使用者対応トイレ②（N45F）",
+          "latitude": 35.689619,
+          "longitude": 139.691632,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0930_2300 / 北展望室は当面休室",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2024-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "tokyo-public-13000-5-1-1-16",
+          "name": "東京都庁第一本庁舎 25階北側車いす使用者対応トイレ（25F）",
+          "latitude": 35.68965,
+          "longitude": 139.691623,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_1845 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "tokyo-public-13000-5-1-1-4",
+          "name": "東京都庁第一本庁舎 32階中央車いす使用者対応トイレ（32F）",
+          "latitude": 35.689561,
+          "longitude": 139.691851,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_1845 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "tokyo-public-13000-5-1-1-5",
+          "name": "東京都庁第一本庁舎 32階中央車いす使用者対応トイレ（32F）",
+          "latitude": 35.689638,
+          "longitude": 139.691835,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_1845 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "tokyo-public-13000-5-1-1-8",
+          "name": "東京都庁第一本庁舎 B3階中央車いす使用者対応トイレ（B3F）",
+          "latitude": 35.689655,
+          "longitude": 139.691693,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_2200 / 12月29日から1月3日まで利用不可。また都庁舎の点検日も利用不可。",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "tokyo-public-13000-5-1-1-9",
+          "name": "東京都庁第一本庁舎 B2階中央車いす使用者対応トイレ（B2F）",
+          "latitude": 35.689655,
+          "longitude": 139.691693,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_2200 / 12月29日から1月3日まで及び庁舎点検日は利用不可。",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "tokyo-public-13000-5-1-2-4",
+          "name": "東京都庁第二本庁舎 3階中央車いす使用者対応トイレ（3F）",
+          "latitude": 35.68957,
+          "longitude": 139.691762,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_1845 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13000-5-1-1-12",
+      "sourceRecordCount": 4,
+      "representativeLatitude": 35.6893605,
+      "representativeLongitude": 139.69166775,
+      "records": [
+        {
+          "id": "tokyo-public-13000-5-1-1-12",
+          "name": "東京都庁第一本庁舎 南45階車いす使用者対応トイレ①（S45F）",
+          "latitude": 35.689334,
+          "longitude": 139.691689,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0930_2300 / 第一及び第三火曜日（祝日に重なる場合はその翌日）展望室休室",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2024-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "tokyo-public-13000-5-1-1-13",
+          "name": "東京都庁第一本庁舎 南45階車いす使用者対応トイレ②（S45F）",
+          "latitude": 35.68935,
+          "longitude": 139.691774,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0930_2300 / 第一及び第三火曜日（祝日に重なる場合はその翌日）展望室休室",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2024-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "tokyo-public-13000-5-1-1-15",
+          "name": "東京都庁第一本庁舎 16階中央車いす使用者対応トイレ（16F）",
+          "latitude": 35.68942,
+          "longitude": 139.691595,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_1845 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "tokyo-public-13000-5-1-1-3",
+          "name": "東京都庁第一本庁舎 2階中央車いす使用者対応トイレ（2F）",
+          "latitude": 35.689338,
+          "longitude": 139.691613,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_1845 / 12月29日から1月3日は利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13000-5-1-1-14",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.689881,
+      "representativeLongitude": 139.691701,
+      "records": [
+        {
+          "id": "tokyo-public-13000-5-1-1-14",
+          "name": "東京都庁第一本庁舎 5階北側車いす使用者対応トイレ（5F）",
+          "latitude": 35.689881,
+          "longitude": 139.691701,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_1845 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13000-5-1-1-6",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.689943,
+      "representativeLongitude": 139.691531,
+      "records": [
+        {
+          "id": "tokyo-public-13000-5-1-1-6",
+          "name": "東京都庁第一本庁舎 3階南側車いす使用者対応トイレ（3F）",
+          "latitude": 35.689943,
+          "longitude": 139.691531,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_1845 / 12月29日から1月3日まで利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13000-5-1-1-7",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.68903,
+      "representativeLongitude": 139.691748,
+      "records": [
+        {
+          "id": "tokyo-public-13000-5-1-1-7",
+          "name": "東京都庁第一本庁舎 3階北側車いす使用者対応トイレ（3F）",
+          "latitude": 35.68903,
+          "longitude": 139.691748,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_1845 / 12月29日から1月3日まで利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13000-5-1-2-1",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.688377,
+      "representativeLongitude": 139.691912,
+      "records": [
+        {
+          "id": "tokyo-public-13000-5-1-2-1",
+          "name": "東京都庁第二本庁舎 1階南側車いす使用者対応トイレ（1F）",
+          "latitude": 35.688377,
+          "longitude": 139.691912,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_1845 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13000-5-1-2-10",
+      "sourceRecordCount": 7,
+      "representativeLatitude": 35.68799128571428,
+      "representativeLongitude": 139.69201285714286,
+      "records": [
+        {
+          "id": "tokyo-public-13000-5-1-2-10",
+          "name": "東京都庁第二本庁舎 25階中央車いす使用者対応トイレ（25F）",
+          "latitude": 35.687987,
+          "longitude": 139.691955,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_2200 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "tokyo-public-13000-5-1-2-11",
+          "name": "東京都庁第二本庁舎 B1中央車いす使用者対応トイレ（B1F）",
+          "latitude": 35.688,
+          "longitude": 139.691983,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_2200 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "tokyo-public-13000-5-1-2-5",
+          "name": "東京都庁第二本庁舎 4階中央車いす使用者対応トイレ（4F）",
+          "latitude": 35.687991,
+          "longitude": 139.692045,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_1845 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "tokyo-public-13000-5-1-2-6",
+          "name": "東京都庁第二本庁舎 B2階中央車いす使用者対応トイレ（B2）",
+          "latitude": 35.68798,
+          "longitude": 139.692062,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_2200 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "tokyo-public-13000-5-1-2-7",
+          "name": "東京都庁第二本庁舎 B3階中央車いす使用者対応トイレ（B3）",
+          "latitude": 35.688007,
+          "longitude": 139.692135,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_2200 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "tokyo-public-13000-5-1-2-8",
+          "name": "東京都庁第二本庁舎 10階中央車いす使用者対応トイレ（10F）",
+          "latitude": 35.687987,
+          "longitude": 139.691955,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_2200 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "tokyo-public-13000-5-1-2-9",
+          "name": "東京都庁第二本庁舎 17階中央車いす使用者対応トイレ（17F）",
+          "latitude": 35.687987,
+          "longitude": 139.691955,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_2200 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13000-5-1-2-2",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.689787,
+      "representativeLongitude": 139.691495,
+      "records": [
+        {
+          "id": "tokyo-public-13000-5-1-2-2",
+          "name": "東京都庁第二本庁舎 1階北側車いす使用者対応トイレ（1F）",
+          "latitude": 35.689787,
+          "longitude": 139.691495,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_1845 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13000-5-1-2-3",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.688238,
+      "representativeLongitude": 139.691792,
+      "records": [
+        {
+          "id": "tokyo-public-13000-5-1-2-3",
+          "name": "東京都庁第二本庁舎 2階北側車いす使用者対応トイレ（2F）",
+          "latitude": 35.688238,
+          "longitude": 139.691792,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_1845 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2024-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13000-5-1-3-1",
+      "sourceRecordCount": 2,
+      "representativeLatitude": 35.689563,
+      "representativeLongitude": 139.6934005,
+      "records": [
+        {
+          "id": "tokyo-public-13000-5-1-3-1",
+          "name": "東京都議会議事堂 1階南側車いす使用者対応トイレ（1F）",
+          "latitude": 35.689561,
+          "longitude": 139.693385,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_1800 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "tokyo-public-13000-5-1-3-9",
+          "name": "東京都議会議事堂 7階南側車いす使用者対応トイレ（7F）",
+          "latitude": 35.689565,
+          "longitude": 139.693416,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_1800 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13000-5-1-3-10",
+      "sourceRecordCount": 3,
+      "representativeLatitude": 35.68997266666667,
+      "representativeLongitude": 139.693292,
+      "records": [
+        {
+          "id": "tokyo-public-13000-5-1-3-10",
+          "name": "東京都議会議事堂 7階北側車いす使用者対応トイレ（7F）",
+          "latitude": 35.689973,
+          "longitude": 139.693301,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_1800 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "tokyo-public-13000-5-1-3-2",
+          "name": "東京都議会議事堂 1階北側車いす使用者対応トイレ（1F）",
+          "latitude": 35.689908,
+          "longitude": 139.693315,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_1800 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "tokyo-public-13000-5-1-3-7",
+          "name": "東京都議会議事堂 2階北側車いす使用者対応トイレ（2F）",
+          "latitude": 35.690037,
+          "longitude": 139.69326,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_1800 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13000-5-1-3-11",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.689806,
+      "representativeLongitude": 139.692936,
+      "records": [
+        {
+          "id": "tokyo-public-13000-5-1-3-11",
+          "name": "東京都議会議事堂 B1階南側車いす使用者対応トイレ（B1FS）",
+          "latitude": 35.689806,
+          "longitude": 139.692936,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_1800 / 1030_1800 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13000-5-1-3-12",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.689573,
+      "representativeLongitude": 139.692975,
+      "records": [
+        {
+          "id": "tokyo-public-13000-5-1-3-12",
+          "name": "東京都議会議事堂 B1階南側車いす使用者対応トイレ（B1F）",
+          "latitude": 35.689573,
+          "longitude": 139.692975,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_1800 / 1030_1800 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13000-5-1-3-13",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.689714,
+      "representativeLongitude": 139.692127,
+      "records": [
+        {
+          "id": "tokyo-public-13000-5-1-3-13",
+          "name": "東京都議会議事堂 B1階北側車いす使用者対応トイレ（B1F）",
+          "latitude": 35.689714,
+          "longitude": 139.692127,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_1800 / 1030_1800 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13000-5-1-3-5",
+      "sourceRecordCount": 2,
+      "representativeLatitude": 35.6892535,
+      "representativeLongitude": 139.693129,
+      "records": [
+        {
+          "id": "tokyo-public-13000-5-1-3-5",
+          "name": "東京都議会議事堂 2階南側車いす使用者対応トイレ（2F）",
+          "latitude": 35.689258,
+          "longitude": 139.693158,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_1800 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "tokyo-public-13000-5-1-3-8",
+          "name": "東京都議会議事堂 6階南側車いす使用者対応トイレ（6F）",
+          "latitude": 35.689249,
+          "longitude": 139.6931,
+          "address": "東京都新宿区西新宿二丁目8番1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0800_1800 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13104-99-1-12-1",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.686278,
+      "representativeLongitude": 139.689148,
+      "records": [
+        {
+          "id": "tokyo-public-13104-99-1-12-1",
+          "name": "新宿区角筈特別出張所等区民施設 1階エントランスだれでもトイレ（1F）",
+          "latitude": 35.686278,
+          "longitude": 139.689148,
+          "address": "東京都新宿区西新宿四丁目33番7号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0830_2145 / ただし、年末年始、2月、5月、8月、11月の第4日曜日は全館休館日のため終日使用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2019-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13104-99-1-12-2",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.686199,
+      "representativeLongitude": 139.689088,
+      "records": [
+        {
+          "id": "tokyo-public-13104-99-1-12-2",
+          "name": "新宿区角筈特別出張所等区民施設 7階地域センターだれでもトイレ（7F）",
+          "latitude": 35.686199,
+          "longitude": 139.689088,
+          "address": "東京都新宿区西新宿四丁目33番7号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0900_2145 / ただし、年末年始、2月、5月、8月、11月の第4日曜日は全館休館日のため使用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2019-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13104-99-1-13-1",
+      "sourceRecordCount": 2,
+      "representativeLatitude": 35.6935235,
+      "representativeLongitude": 139.69034599999998,
+      "records": [
+        {
+          "id": "tokyo-public-13104-99-1-13-1",
+          "name": "産業会館（BIZ新宿） 1階多目的トイレ（1F）",
+          "latitude": 35.693548,
+          "longitude": 139.690306,
+          "address": "東京都新宿区西新宿六丁目8番2号産業会館（BIZ新宿）",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0900_2200 / 休館日：毎月第2月曜日（祝日の場合は翌日）、年末年始（12/29～1/3）",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2024-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "tokyo-public-13104-99-1-13-2",
+          "name": "産業会館（BIZ新宿） 3階多目的トイレ（3F）",
+          "latitude": 35.693499,
+          "longitude": 139.690386,
+          "address": "東京都新宿区西新宿六丁目8番2号産業会館（BIZ新宿）",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0900_2200 / 休館日：毎月第2月曜日（祝日の場合は翌日）、年末年始（12/29～1/3）",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2024-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13104-99-10-17-1",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.691064,
+      "representativeLongitude": 139.688575,
+      "records": [
+        {
+          "id": "tokyo-public-13104-99-10-17-1",
+          "name": "環境学習情報センター ２階だれでもトイレ（2F）",
+          "latitude": 35.691064,
+          "longitude": 139.688575,
+          "address": "東京都新宿区西新宿二丁目11番4号（新宿公園内）",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "1000_2100 / 毎月第四月曜日は休館のため、利用できない",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2019-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13104-99-5-4-1",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.690996,
+      "representativeLongitude": 139.688699,
+      "records": [
+        {
+          "id": "tokyo-public-13104-99-5-4-1",
+          "name": "区民ギャラリー 区民ギャラリー1F　だれでもトイレ（1F）",
+          "latitude": 35.690996,
+          "longitude": 139.688699,
+          "address": "東京都新宿区西新宿二丁目11番4号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "1000_2100 / 毎月第4月曜日及び年末年始（12月29日～1月3日）は施設休館のため利用不可",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13104-99-7-13-1",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.690907,
+      "representativeLongitude": 139.688158,
+      "records": [
+        {
+          "id": "tokyo-public-13104-99-7-13-1",
+          "name": "新宿区立新宿中央公園 バリアフリートイレ（1F）",
+          "latitude": 35.690907,
+          "longitude": 139.688158,
+          "address": "東京都新宿区西新宿二丁目11番地",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0900_1700",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2025-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13104-99-7-13-2",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.686802,
+      "representativeLongitude": 139.689938,
+      "records": [
+        {
+          "id": "tokyo-public-13104-99-7-13-2",
+          "name": "新宿区立新宿中央公園 バリアフリートイレ（1F）",
+          "latitude": 35.686802,
+          "longitude": 139.689938,
+          "address": "東京都新宿区西新宿二丁目11番地",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0900_1700",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2025-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13104-99-7-13-3",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.689359,
+      "representativeLongitude": 139.688865,
+      "records": [
+        {
+          "id": "tokyo-public-13104-99-7-13-3",
+          "name": "新宿区立新宿中央公園 バリアフリートイレ（1F）",
+          "latitude": 35.689359,
+          "longitude": 139.688865,
+          "address": "東京都新宿区西新宿二丁目11番地",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0900_1700",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2025-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13104-99-7-13-4",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.691541,
+      "representativeLongitude": 139.689562,
+      "records": [
+        {
+          "id": "tokyo-public-13104-99-7-13-4",
+          "name": "新宿区立新宿中央公園 バリアフリートイレ（1F）",
+          "latitude": 35.691541,
+          "longitude": 139.689562,
+          "address": "東京都新宿区西新宿二丁目11番地",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0900_1700",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2025-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13104-99-7-13-5",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.688975,
+      "representativeLongitude": 139.690624,
+      "records": [
+        {
+          "id": "tokyo-public-13104-99-7-13-5",
+          "name": "新宿区立新宿中央公園 バリアフリートイレ（1F）",
+          "latitude": 35.688975,
+          "longitude": 139.690624,
+          "address": "東京都新宿区西新宿二丁目11番地",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0900_1700",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2025-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13104-99-7-13-6",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.690354,
+      "representativeLongitude": 139.689737,
+      "records": [
+        {
+          "id": "tokyo-public-13104-99-7-13-6",
+          "name": "新宿区立新宿中央公園 バリアフリートイレ（1F）",
+          "latitude": 35.690354,
+          "longitude": 139.689737,
+          "address": "東京都新宿区西新宿二丁目11番地",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0900_1700",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2025-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13104-99-8-5-1",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.689634,
+      "representativeLongitude": 139.701485,
+      "records": [
+        {
+          "id": "tokyo-public-13104-99-8-5-1",
+          "name": "新宿区立新宿駅東南口公衆便所 バリアフリートイレ（1F）",
+          "latitude": 35.689634,
+          "longitude": 139.701485,
+          "address": "東京都新宿区新宿三丁目37番地",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0700_2200",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2025-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-public-13104-99-8-9-1",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.692167,
+      "representativeLongitude": 139.698093,
+      "records": [
+        {
+          "id": "tokyo-public-13104-99-8-9-1",
+          "name": "新宿区立新宿西口地下第二公衆便所 バリアフリートイレ（B1F）",
+          "latitude": 35.692167,
+          "longitude": 139.698093,
+          "address": "東京都新宿区西新宿一丁目西口地下街",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "0700_2359",
+          "officialToiletKind": "facility_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "公共施設等の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2025-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "facility_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-station-1-1-1",
+      "sourceRecordCount": 2,
+      "representativeLatitude": 35.69078,
+      "representativeLongitude": 139.699413,
+      "records": [
+        {
+          "id": "tokyo-station-1-1-1",
+          "name": "小田急電鉄 新宿 多目的トイレ（B1F）",
+          "latitude": 35.69078,
+          "longitude": 139.699413,
+          "address": "東京都新宿区西新宿1丁目1番3号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "始発_終車",
+          "officialToiletKind": "station_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "鉄道駅の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/R0606/02/4_tonaitetsudoueki_barrier-free-wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2025-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "tokyo-station-1-1-2",
+          "name": "小田急電鉄 新宿 多目的トイレ（B1F）",
+          "latitude": 35.69078,
+          "longitude": 139.699413,
+          "address": "東京都新宿区西新宿1丁目1番3号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "始発_終車",
+          "officialToiletKind": "station_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "鉄道駅の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/R0606/02/4_tonaitetsudoueki_barrier-free-wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2025-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "station_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-station-1-1-3",
+      "sourceRecordCount": 2,
+      "representativeLatitude": 35.689631,
+      "representativeLongitude": 139.699955,
+      "records": [
+        {
+          "id": "tokyo-station-1-1-3",
+          "name": "小田急電鉄 新宿 多目的トイレ（2F）",
+          "latitude": 35.689631,
+          "longitude": 139.699955,
+          "address": "東京都新宿区西新宿1丁目1番3号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "始発_終車",
+          "officialToiletKind": "station_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "鉄道駅の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/R0606/02/4_tonaitetsudoueki_barrier-free-wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2019-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "tokyo-station-1-1-4",
+          "name": "小田急電鉄 新宿 多目的トイレ（2F）",
+          "latitude": 35.689631,
+          "longitude": 139.699955,
+          "address": "東京都新宿区西新宿1丁目1番3号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "始発_終車",
+          "officialToiletKind": "station_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "鉄道駅の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/R0606/02/4_tonaitetsudoueki_barrier-free-wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2019-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "station_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-station-10-6-1",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.69223,
+      "representativeLongitude": 139.7014,
+      "records": [
+        {
+          "id": "tokyo-station-10-6-1",
+          "name": "東京地下鉄 新宿 バリアフリートイレ（B1F）",
+          "latitude": 35.69223,
+          "longitude": 139.7014,
+          "address": "東京都新宿区西新宿西口地下街1号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "始発_終車",
+          "officialToiletKind": "station_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "鉄道駅の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/R0606/02/4_tonaitetsudoueki_barrier-free-wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2024-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "station_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-station-14-54-1",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.69099,
+      "representativeLongitude": 139.7007,
+      "records": [
+        {
+          "id": "tokyo-station-14-54-1",
+          "name": "東日本旅客鉄道 新宿 多目的トイレ（B1F）",
+          "latitude": 35.69099,
+          "longitude": 139.7007,
+          "address": "東京都新宿区新宿3丁目",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "始発_終車",
+          "officialToiletKind": "station_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "鉄道駅の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/R0606/02/4_tonaitetsudoueki_barrier-free-wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2019-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "station_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-station-14-54-2",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.69031,
+      "representativeLongitude": 139.7008,
+      "records": [
+        {
+          "id": "tokyo-station-14-54-2",
+          "name": "東日本旅客鉄道 新宿 多目的トイレ（B1F）",
+          "latitude": 35.69031,
+          "longitude": 139.7008,
+          "address": "東京都新宿区新宿3丁目",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "始発_終車",
+          "officialToiletKind": "station_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "鉄道駅の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/R0606/02/4_tonaitetsudoueki_barrier-free-wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2019-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "station_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-station-14-54-3",
+      "sourceRecordCount": 2,
+      "representativeLatitude": 35.688694999999996,
+      "representativeLongitude": 139.70055000000002,
+      "records": [
+        {
+          "id": "tokyo-station-14-54-3",
+          "name": "東日本旅客鉄道 新宿 多機能化粧室（2F）",
+          "latitude": 35.68869,
+          "longitude": 139.7005,
+          "address": "東京都新宿区新宿3丁目",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "始発_終車",
+          "officialToiletKind": "station_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "鉄道駅の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/R0606/02/4_tonaitetsudoueki_barrier-free-wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2019-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        },
+        {
+          "id": "tokyo-station-14-54-4",
+          "name": "東日本旅客鉄道 新宿 多機能化粧室（2F）",
+          "latitude": 35.6887,
+          "longitude": 139.7006,
+          "address": "東京都新宿区新宿3丁目",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "始発_終車",
+          "officialToiletKind": "station_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "鉄道駅の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/R0606/02/4_tonaitetsudoueki_barrier-free-wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2019-01",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "station_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-station-2-1-1",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.690711,
+      "representativeLongitude": 139.699034,
+      "records": [
+        {
+          "id": "tokyo-station-2-1-1",
+          "name": "京王電鉄 新宿 多機能トイレ（B2F）",
+          "latitude": 35.690711,
+          "longitude": 139.699034,
+          "address": "東京都新宿区西新宿1丁目1番4号、18号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "始発_終車",
+          "officialToiletKind": "station_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "鉄道駅の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/R0606/02/4_tonaitetsudoueki_barrier-free-wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2021-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "station_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    },
+    {
+      "clusterId": "place-tokyo-station-2-1-2",
+      "sourceRecordCount": 1,
+      "representativeLatitude": 35.688654,
+      "representativeLongitude": 139.699294,
+      "records": [
+        {
+          "id": "tokyo-station-2-1-2",
+          "name": "京王電鉄 新宿 多機能トイレ（B1F）",
+          "latitude": 35.688654,
+          "longitude": 139.699294,
+          "address": "東京都新宿区西新宿1丁目1番4号、18号",
+          "category": "toilet",
+          "seating": null,
+          "indoor": null,
+          "toiletAvailable": true,
+          "wheelchairAccessible": true,
+          "openingHours": "始発_終車",
+          "officialToiletKind": "station_toilet_information",
+          "source": {
+            "provider": "東京都福祉局",
+            "datasetName": "鉄道駅の車椅子使用者対応トイレ",
+            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
+            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/R0606/02/4_tonaitetsudoueki_barrier-free-wc.csv",
+            "license": "CC BY",
+            "datasetUpdatedAt": "2022-11",
+            "retrievedAt": "2026-07-18T16:41:33.291Z",
+            "fieldVerifiedAt": null
+          },
+          "confidence": "official"
+        }
+      ],
+      "kinds": [
+        "station_toilet_information"
+      ],
+      "hasPublicToiletRecord": false,
+      "hasWheelchairAccessibleRecord": true
+    }
+  ]
+}

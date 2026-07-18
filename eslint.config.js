@@ -13,5 +13,9 @@ export default tseslint.config(
     languageOptions: { ecmaVersion: 2022, globals: { ...globals.browser, ...globals.worker } },
     plugins: { "react-hooks": reactHooks, "react-refresh": reactRefresh },
     rules: { ...reactHooks.configs.recommended.rules, "react-refresh/only-export-components": ["warn", { allowConstantExport: true }] }
+  },
+  {
+    files: ["scripts/**/*.mjs", "tests/**/*.mjs"],
+    languageOptions: { ecmaVersion: 2022, globals: { ...globals.node, TextDecoder: "readonly", fetch: "readonly", URL: "readonly", Response: "readonly" } }
   }
 );
