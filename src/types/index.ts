@@ -1,17 +1,24 @@
 export type RestSpotCategory = "park" | "public_facility" | "toilet" | "library" | "other";
 export type Confidence = "official" | "verified" | "estimated";
+export type PlaceCategory = "drinking_station" | "barrier_free_facility" | "public_facility" | "verified_rest_spot" | "estimated_rest_spot";
+export type RestConfidence = "confirmed" | "supported" | "possible" | "estimated";
 export type OfficialToiletKind = "public_toilet" | "facility_toilet_information" | "station_toilet_information";
 
 export type DataSource = {
+  sourceDatasetId?: string;
+  sourceRecordId?: string;
   provider: string;
   datasetName: string;
   datasetUrl: string | null;
   resourceUrl: string | null;
   license: string | null;
   datasetUpdatedAt: string | null;
-  retrievedAt: string | null;
+  retrievedAt?: string | null;
   fieldVerifiedAt: string | null;
 };
+
+export type OpenDataManifestEntry = { datasetId: string; datasetUrl: string; resourceUrl: string; retrievedAt: string; contentSha256: string; byteSize: number; normalizedRecordCount: number; excludedRecordCount: number; sourceUpdatedAt: string | null; encoding: string; license: string };
+export type OpenDataManifest = { schemaVersion: number; datasets: OpenDataManifestEntry[] };
 
 export type RestSpot = {
   id: string; name: string; latitude: number; longitude: number; category: RestSpotCategory;
@@ -21,6 +28,34 @@ export type RestSpot = {
   officialToiletKind: OfficialToiletKind | null;
   source: DataSource;
   confidence: Confidence;
+};
+
+export type RestCandidate = {
+  id: string; name: string; latitude: number; longitude: number; address: string | null;
+  category: PlaceCategory; confidence: RestConfidence;
+  openingHours: string | null; indoor: boolean | null; seating: boolean | null;
+  drinkingWaterAvailable: boolean | null; wheelchairAccessible: boolean | null;
+  source: DataSource;
+};
+
+export type GapSegment = { startProgressMeters: number; endProgressMeters: number; gapMeters: number; coordinates: [number, number][] };
+export type RestInsertionSuggestion = {
+  suggestedRestInsertionProgressMeters: number;
+  suggestedRestInsertionCoordinate: [number, number];
+  currentLongestRestGapMeters: number; improvedLongestRestGapMeters: number;
+  improvementMeters: number; improvementRatio: number;
+};
+export type RestNetworkMetrics = {
+  nearestRestCandidateDistanceMeters: number | null; nearestDrinkingStationDistanceMeters: number | null;
+  longestRestGapMeters: number; longestDrinkingWaterGapMeters: number; longestIndoorCandidateGapMeters: number;
+  restCandidateCount: number; drinkingStationCount: number; indoorCandidateCount: number;
+  confirmedRestSpotCount: number; supportedRestSpotCount: number; possibleRestSpotCount: number;
+  referencePossibleCandidateCount: number;
+  continuityFeasibleBySegment: boolean; continuityFeasibleByRestNetwork: boolean;
+  longestUncoveredWalkingMinutes: number; restNetworkCoverageRatio: number;
+  continuityFailureReason: string | null; restNetworkLevel: RestConfidence | "none";
+  restGapSegments: GapSegment[]; drinkingWaterGapSegments: GapSegment[]; indoorCandidateGapSegments: GapSegment[];
+  restInsertionSuggestion: RestInsertionSuggestion;
 };
 
 export type OfficialToiletPlace = {
@@ -72,7 +107,7 @@ export type PublicToiletGapSegment = {
   coordinates: [number, number][];
 };
 
-export type EvaluatedRoute = DemoRoute & ContinuityMetrics & {
+export type EvaluatedRoute = DemoRoute & ContinuityMetrics & RestNetworkMetrics & {
   continuousWalkingLimitMinutes: number;
   score: number;
   reasons: string[];

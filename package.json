@@ -12,6 +12,7 @@
     "lint": "eslint .",
     "test": "vitest run",
     "data:update": "node scripts/update-open-data.mjs",
+    "data:verify-determinism": "node scripts/verify-data-determinism.mjs",
     "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {

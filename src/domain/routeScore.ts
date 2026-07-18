@@ -1,8 +1,9 @@
-import type { ContinuityMetrics, DemoRoute, EvaluatedRoute, RoutePreferences, WalkingSegment } from "../types";
+import type { ContinuityMetrics, DemoRoute, EvaluatedRoute, RestCandidate, RoutePreferences, WalkingSegment } from "../types";
 import type { OfficialToiletPlace } from "../types";
 import { findOfficialToiletPlacesNearRoute, nearestOfficialToiletPlaceDistanceMeters, polylineLengthMeters, sliceRouteByProgress, sortToiletPlacesByRouteProgress } from "./geo";
 import type { Coordinate } from "./geo";
 import type { PublicToiletGapSegment } from "../types";
+import { evaluateRestNetwork } from "./restNetwork";
 
 export const SCORE_WEIGHTS = { minute: 1, continuousMinuteOver: 12, missingToilet: 120, steepSlope: 35, missingIndoorRest: 45 } as const;
 
@@ -40,7 +41,7 @@ export function derivePublicToiletGapMetrics(route: Coordinate[], publicToiletPl
   return { geometryLengthMeters, routeLengthMeters, longestPublicToiletGapMeters: largestGap.gapMeters, publicToiletGapSegments, largestGapStartProgressMeters: largestGap.startProgressMeters, largestGapEndProgressMeters: largestGap.endProgressMeters, largestGapStartGeometryProgressMeters: largestGap.startGeometryProgressMeters, largestGapEndGeometryProgressMeters: largestGap.endGeometryProgressMeters, longestPublicToiletGeometryGapMeters: largestGap.geometryGapMeters };
 }
 
-export function evaluateRoute(route: DemoRoute, preferences: RoutePreferences, officialToiletPlaces: OfficialToiletPlace[] = []): EvaluatedRoute {
+export function evaluateRoute(route: DemoRoute, preferences: RoutePreferences, officialToiletPlaces: OfficialToiletPlace[] = [], restCandidates: RestCandidate[] = []): EvaluatedRoute {
   const continuity = deriveContinuityMetrics(route.walkingSegments, preferences.maxContinuousWalkingMinutes);
   const nearbyOfficialToiletPlaces = findOfficialToiletPlacesNearRoute(officialToiletPlaces, route.coordinates, PUBLIC_TOILET_QUALIFYING_DISTANCE_METERS, Number.POSITIVE_INFINITY);
   const publicToiletPlaces = nearbyOfficialToiletPlaces.filter((place) => place.kinds.includes("public_toilet"));
@@ -50,6 +51,7 @@ export function evaluateRoute(route: DemoRoute, preferences: RoutePreferences, o
   const nearestAnyOfficialDistance = nearestOfficialToiletPlaceDistanceMeters(officialToiletPlaces, route.coordinates);
   const hasPublicToiletCandidate = publicToiletPlaces.length > 0;
   const gapMetrics = derivePublicToiletGapMetrics(route.coordinates, publicToiletPlaces, route.distanceMeters);
+  const restNetwork = evaluateRestNetwork(route, restCandidates, preferences.maxContinuousWalkingMinutes, continuity.continuityFeasible);
   const violations = {
     continuous: !continuity.continuityFeasible,
     toilet: preferences.requireToilet && !hasPublicToiletCandidate,
@@ -67,7 +69,7 @@ export function evaluateRoute(route: DemoRoute, preferences: RoutePreferences, o
     violations.continuous ? `希望の連続歩行時間を${continuity.continuousWalkingExcessMinutes}分超過` : "希望の連続歩行時間内",
   ];
   return {
-    ...route, ...continuity, continuousWalkingLimitMinutes: preferences.maxContinuousWalkingMinutes, score, reasons,
+    ...route, ...continuity, ...restNetwork, ...(restCandidates.length === 0 ? { longestRestGapMeters: continuity.longestRestGapMeters } : {}), continuousWalkingLimitMinutes: preferences.maxContinuousWalkingMinutes, score, reasons,
     meetsPreferences: !Object.values(violations).some(Boolean),
     officialToiletRecordCount: nearbyOfficialToiletPlaces.reduce((sum, place) => sum + place.sourceRecordCount, 0),
     officialToiletPlaceCount: nearbyOfficialToiletPlaces.length,
@@ -83,5 +85,5 @@ export function evaluateRoute(route: DemoRoute, preferences: RoutePreferences, o
   };
 }
 
-export const selectRecommendedRoute = (routes: DemoRoute[], preferences: RoutePreferences, officialToiletPlaces: OfficialToiletPlace[] = []) =>
-  routes.map((route) => evaluateRoute(route, preferences, officialToiletPlaces)).sort((a, b) => a.score - b.score);
+export const selectRecommendedRoute = (routes: DemoRoute[], preferences: RoutePreferences, officialToiletPlaces: OfficialToiletPlace[] = [], restCandidates: RestCandidate[] = []) =>
+  routes.map((route) => evaluateRoute(route, preferences, officialToiletPlaces, restCandidates)).sort((a, b) => a.score - b.score);

@@ -2,8 +2,10 @@ import { useEffect, useMemo, useState } from "react";
 import { RouteCard } from "./components/RouteCard";
 import { RouteMap } from "./components/RouteMap";
 import { restSpots } from "./data/restSpots";
-import { officialToiletMetadata, officialToiletPlaces } from "./data/officialToilets";
-import { findOfficialToiletPlacesNearRoute } from "./domain/geo";
+import { officialToiletPlaces } from "./data/officialToilets";
+import { allRestCandidates } from "./data/restCandidates";
+import { latestOpenDataRetrievedAt } from "./data/openDataManifest";
+import { distancePointToRouteMeters, findOfficialToiletPlacesNearRoute } from "./domain/geo";
 import { selectRecommendedRoute } from "./domain/routeScore";
 import { DemoRouteProvider } from "./providers/DemoRouteProvider";
 import type { DemoRoute, RoutePreferences } from "./types";
@@ -21,11 +23,12 @@ export default function App() {
       .catch((cause: unknown) => setError(cause instanceof Error ? cause.message : "経路データを読み込めませんでした。"))
       .finally(() => setLoading(false));
   }, []);
-  const evaluated = useMemo(() => selectRecommendedRoute(routes, preferences, officialToiletPlaces), [routes, preferences]);
+  const evaluated = useMemo(() => selectRecommendedRoute(routes, preferences, officialToiletPlaces, allRestCandidates), [routes, preferences]);
   const nearbyOfficialToiletPlaces = useMemo(() => {
     const matches = routes.flatMap((route) => findOfficialToiletPlacesNearRoute(officialToiletPlaces, route.coordinates, 350, 30));
     return [...new Map(matches.map((place) => [place.clusterId, place])).values()].slice(0, 30);
   }, [routes]);
+  const nearbyRestCandidates = useMemo(() => allRestCandidates.filter((candidate) => routes.some((route) => distancePointToRouteMeters([candidate.latitude, candidate.longitude], route.coordinates) <= 350)).slice(0, 30), [routes]);
   const byDisplayOrder = [...evaluated].sort((a, b) => a.id === "standard" ? -1 : b.id === "standard" ? 1 : 0);
   const selected = evaluated[0]; const difference = selected?.id === "comfort" ? 6 : 0;
   return <>
@@ -45,9 +48,9 @@ export default function App() {
       {!loading && !error && selected && <>
         <section className="result-summary" aria-live="polite"><p className="step">条件 2</p><h2>比較結果</h2><p>{selected.id === "comfort" ? `通常ルートより${difference}分長くなりますが、約7分ごとに推定休憩候補があり、ルート周辺に公式掲載のトイレ候補があります。利用可否や実際の徒歩距離は別途確認が必要です。` : "現在の条件では、所要時間の短い通常ルートが選ばれました。条件を厳しくすると結果が変わります。"}</p><span>プロトタイプ計算結果</span></section>
         <div className="cards">{byDisplayOrder.map((route) => <RouteCard key={route.id} route={route} recommended={route.id === selected.id} />)}</div>
-        <RouteMap routes={byDisplayOrder} spots={restSpots} officialToiletPlaces={nearbyOfficialToiletPlaces} highlightedRouteId={selected.id} />
+        <RouteMap routes={byDisplayOrder} spots={restSpots} restCandidates={nearbyRestCandidates} officialToiletPlaces={nearbyOfficialToiletPlaces} highlightedRouteId={selected.id} />
         <section className="spot-list" aria-labelledby="spots-title"><p className="eyebrow">地図を使わない確認</p><h2 id="spots-title">休憩・トイレ候補一覧</h2><div className="spot-grid">{restSpots.map((spot) => <article key={spot.id}><h3>{spot.name}</h3><p>{spot.category === "toilet" ? "トイレ候補" : "休憩候補"}・{spot.indoor === null ? "屋内情報は不明" : spot.indoor ? "屋内" : "屋外"}</p><p>営業時間：{spot.openingHours ?? "不明"}</p><small>{spot.source.datasetName}／確認状況：推定</small></article>)}</div></section>
-        <section className="data-sources" aria-labelledby="sources-title"><p className="eyebrow">データ出典</p><h2 id="sources-title">公式トイレ情報の出典</h2><ul><li><a href="https://catalog.data.metro.tokyo.lg.jp/dataset/t131041d0000000123">新宿区公衆トイレ一覧</a>（新宿区、CC BY）</li><li><a href="https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342">公共施設等・鉄道駅の車椅子使用者対応トイレ</a>（東京都福祉局、CC BY）</li></ul><p>データ取得日：{new Date(officialToiletMetadata.retrievedAt).toLocaleDateString("ja-JP")}。取得後の工事・故障・時間帯・入場制限等により利用できない場合があります。表示距離は道路上の迂回距離ではなく直線距離による推定です。車椅子対応トイレの存在は、経路全体の車椅子通行可能性を示しません。</p></section>
+        <section className="data-sources" aria-labelledby="sources-title"><p className="eyebrow">データ出典</p><h2 id="sources-title">公式施設情報の出典</h2><ul><li><a href="https://catalog.data.metro.tokyo.lg.jp/dataset/t131041d0000000123">新宿区公衆トイレ一覧</a>（新宿区、CC BY）</li><li><a href="https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342">公共施設等・鉄道駅の車椅子使用者対応トイレ</a>（東京都福祉局、CC BY）</li><li><a href="https://catalog.data.metro.tokyo.lg.jp/dataset/t000019d0000000003">Tokyowater Drinking Station</a>（東京都水道局、CC BY）</li><li><a href="https://catalog.data.metro.tokyo.lg.jp/dataset/t000029d0000000003">だれでも東京</a>、<a href="https://catalog.data.metro.tokyo.lg.jp/dataset/t131041d0000000113">新宿区公共施設情報</a>（CC BY）</li></ul><p>取得日：{latestOpenDataRetrievedAt ? new Date(latestOpenDataRetrievedAt).toLocaleDateString("ja-JP") : "不明"}。公共施設が自由に休憩可能とは限らず、営業時間、入館条件、座席の空きは保証しません。給水地点に座席があるとも限りません。距離は推定直線距離またはデモ総距離へ正規化したルート沿い距離で、実際の徒歩経路や安全性を保証しません。追加休憩地点は都市設備検討用の理論上の配置候補です。</p></section>
       </>}
     </main>
     <footer><strong>TOKYO PACE</strong><p>本サービスは経路の安全性や設備の利用可否を保証するものではありません。現地の案内をご確認ください。</p></footer>

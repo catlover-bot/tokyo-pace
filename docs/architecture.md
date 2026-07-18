@@ -1,5 +1,13 @@
 # アーキテクチャ
 
+## 休憩ネットワーク
+
+公式CSV → `scripts/update-open-data.mjs`（取得、UTF-8／Shift_JIS／UTF-16LE変換、ヘッダー検証、null正規化、原子的書込み）→ 生成JSON → ルート近傍抽出・射影・正規化空白分析 → React表示、の一方向構成です。外部CSVをクライアントから取得しません。
+
+`restNetwork.ts`は開始・候補・終了を境界として休憩、給水、屋内候補の空白を独立に計算し、最大空白の中点から追加配置による理論的改善も純粋関数で計算します。
+
+更新処理はraw bytesのSHA-256をmanifestと比較し、同一ならデータセットの`retrievedAt`を維持します。レコードには`sourceDatasetId`と`sourceRecordId`を格納し、取得時刻はmanifestだけに保持します。正規化レコードはデータセットID、原レコードID、正規化名称、座標、IDの順で固定し、UTF-8・2空白インデント・LFで出力します。
+
 ## 構成
 
 React SPA を Vite で構築し、Cloudflare Vite plugin により Worker と静的アセットを一体で開発・配布します。`worker/index.ts` は将来の API 境界で、現在はヘルスチェックのみです。

@@ -1,27 +1,29 @@
 import { useState } from "react";
 import { CircleMarker, MapContainer, Marker, Polyline, Popup, TileLayer } from "react-leaflet";
-import type { EvaluatedRoute, OfficialToiletPlace, RestSpot } from "../types";
+import type { EvaluatedRoute, OfficialToiletPlace, RestCandidate, RestSpot } from "../types";
 
 const points = { origin: [35.69092, 139.69917] as [number, number], destination: [35.68945, 139.69215] as [number, number] };
 const categoryLabel = { park: "公園", public_facility: "公共施設", toilet: "トイレ", library: "図書館", other: "その他" };
 const toiletKindLabel = { public_toilet: "新宿区公衆トイレ", facility_toilet_information: "公共施設内の車椅子使用者対応トイレ情報", station_toilet_information: "鉄道駅内の車椅子使用者対応トイレ情報" };
 const value = (item: boolean | null) => item === null ? "不明" : item ? "あり" : "なし";
 
-export function RouteMap({ routes, spots, officialToiletPlaces, highlightedRouteId }: { routes: EvaluatedRoute[]; spots: RestSpot[]; officialToiletPlaces: OfficialToiletPlace[]; highlightedRouteId: EvaluatedRoute["id"] }) {
-  const [showOfficial, setShowOfficial] = useState(true); const [showWheelchair, setShowWheelchair] = useState(true); const [showEstimated, setShowEstimated] = useState(true);
+export function RouteMap({ routes, spots, restCandidates, officialToiletPlaces, highlightedRouteId }: { routes: EvaluatedRoute[]; spots: RestSpot[]; restCandidates: RestCandidate[]; officialToiletPlaces: OfficialToiletPlace[]; highlightedRouteId: EvaluatedRoute["id"] }) {
+  const [showOfficial, setShowOfficial] = useState(true); const [showWheelchair, setShowWheelchair] = useState(true); const [showEstimated, setShowEstimated] = useState(true); const [showRestData, setShowRestData] = useState(true);
   const displayedOfficial = showOfficial ? officialToiletPlaces.filter((place) => !showWheelchair || place.hasWheelchairAccessibleRecord) : [];
   const highlightedRoute = routes.find((route) => route.id === highlightedRouteId);
   const largestGap = highlightedRoute?.publicToiletGapSegments.reduce((best, gap) => gap.gapMeters > best.gapMeters ? gap : best, highlightedRoute.publicToiletGapSegments[0]);
 
   return <section className="map-section" aria-labelledby="map-title">
     <div className="section-heading"><div><p className="eyebrow">地図</p><h2 id="map-title">デモ区間と休憩候補</h2></div><p className="map-note">直線距離と正規化したルート沿い距離は推定です</p></div>
-    <fieldset className="map-filters"><legend>地図に表示する情報</legend><label><input type="checkbox" checked={showOfficial} onChange={(event) => setShowOfficial(event.target.checked)} /> 公式掲載のトイレ候補・設備情報</label><label><input type="checkbox" checked={showWheelchair} onChange={(event) => setShowWheelchair(event.target.checked)} disabled={!showOfficial} /> 車椅子使用者対応情報あり</label><label><input type="checkbox" checked={showEstimated} onChange={(event) => setShowEstimated(event.target.checked)} /> 推定休憩候補</label></fieldset>
+    <fieldset className="map-filters"><legend>地図に表示する情報</legend><label><input type="checkbox" checked={showOfficial} onChange={(event) => setShowOfficial(event.target.checked)} /> 公式掲載のトイレ候補・設備情報</label><label><input type="checkbox" checked={showWheelchair} onChange={(event) => setShowWheelchair(event.target.checked)} disabled={!showOfficial} /> 車椅子使用者対応情報あり</label><label><input type="checkbox" checked={showRestData} onChange={(event) => setShowRestData(event.target.checked)} /> 公式の休憩・給水・屋内候補</label><label><input type="checkbox" checked={showEstimated} onChange={(event) => setShowEstimated(event.target.checked)} /> 推定休憩候補</label></fieldset>
     <div className="map-frame"><MapContainer center={[35.6901, 139.694]} zoom={16} scrollWheelZoom={false} aria-label="新宿駅西口から東京都庁までのデモ地図">
       <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <Marker position={points.origin}><Popup><strong>新宿駅西口</strong><br />出発地</Popup></Marker><Marker position={points.destination}><Popup><strong>東京都庁</strong><br />目的地</Popup></Marker>
       {routes.map((route) => <Polyline key={route.id} positions={route.coordinates} pathOptions={{ color: route.id === "comfort" ? "#087f5b" : "#46505a", weight: route.id === "comfort" ? 7 : 5, dashArray: route.id === "comfort" ? undefined : "9 8" }} />)}
       {largestGap && <Polyline positions={largestGap.coordinates} pathOptions={{ color: "#b42318", weight: 10, dashArray: "3 9", opacity: 0.9 }}><Popup><strong>公衆トイレ候補の空白区間</strong><br />デモ総距離へ正規化したルート沿い推定{Math.round(largestGap.gapMeters)}m</Popup></Polyline>}
       {showEstimated && spots.map((spot) => <CircleMarker key={spot.id} center={[spot.latitude, spot.longitude]} radius={9} pathOptions={{ color: "#713b00", fillColor: "#f3a712", fillOpacity: 1, weight: 3 }}><Popup><strong>{spot.name}</strong><br />種別：{categoryLabel[spot.category]}<br />座席：{value(spot.seating)}<br />屋内：{value(spot.indoor)}<br />営業時間：{spot.openingHours ?? "不明"}<br /><small>{spot.source.datasetName}（推定・未検証）</small></Popup></CircleMarker>)}
+      {showRestData && restCandidates.filter((candidate) => candidate.category !== "estimated_rest_spot").map((candidate) => { const water = candidate.category === "drinking_station"; const barrier = candidate.category === "barrier_free_facility"; return <CircleMarker key={candidate.id} center={[candidate.latitude, candidate.longitude]} radius={7} pathOptions={{ color: water ? "#005a9c" : barrier ? "#5b2c83" : "#276749", fillColor: water ? "#63b3ed" : barrier ? "#d6bcfa" : "#68d391", fillOpacity: 0.9, weight: 2 }}><Popup><strong>{candidate.name}</strong><br />分類：{water ? "給水地点" : barrier ? "バリアフリー掲載施設" : "公共施設"}<br />休憩信頼度：{candidate.confidence}<br />屋内：{value(candidate.indoor)}／座席：{value(candidate.seating)}<br /><small>{candidate.source.provider}の公式掲載情報。自由利用・着席・営業中は保証しません。</small></Popup></CircleMarker>; })}
+      {highlightedRoute && <CircleMarker center={highlightedRoute.restInsertionSuggestion.suggestedRestInsertionCoordinate} radius={12} pathOptions={{ color: "#9c2c00", fillColor: "#fff", fillOpacity: 0.9, weight: 4 }}><Popup><strong>理論上の休憩地点追加候補</strong><br />最長空白を約{Math.round(highlightedRoute.restInsertionSuggestion.improvementMeters)}m短縮する計算です。実在する設置可能場所ではありません。</Popup></CircleMarker>}
       {displayedOfficial.map((place) => {
         const primary = place.records[0]; const kind = place.hasPublicToiletRecord ? "public" : place.kinds.includes("facility_toilet_information") ? "facility" : "station";
         const colors = kind === "public" ? { color: "#063b73", fillColor: "#1479c9" } : kind === "facility" ? { color: "#5b2c83", fillColor: "#c9a7e8" } : { color: "#713b00", fillColor: "#f3a712" };

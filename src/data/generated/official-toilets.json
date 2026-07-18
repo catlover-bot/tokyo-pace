@@ -1,40 +1,12 @@
 {
   "metadata": {
-    "retrievedAt": "2026-07-18T16:41:33.291Z",
-    "license": "CC BY",
-    "recordCount": 77,
-    "shinjukuRecordCount": 456,
-    "excludedCount": 449,
-    "duplicateCandidateCount": 0,
-    "demoRouteNearbyCount": 77,
-    "officialPlaceCount": 46,
-    "demoRouteNearbyPlaceCount": 46,
-    "sources": [
-      {
-        "key": "shinjuku-public",
-        "provider": "新宿区",
-        "datasetName": "新宿区公衆トイレ一覧",
-        "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t131041d0000000123",
-        "resourceUrl": "https://www.city.shinjuku.lg.jp/content/000399974.csv",
-        "license": "CC BY"
-      },
-      {
-        "key": "tokyo-public-accessible",
-        "provider": "東京都福祉局",
-        "datasetName": "公共施設等の車椅子使用者対応トイレ",
-        "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-        "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
-        "license": "CC BY"
-      },
-      {
-        "key": "tokyo-station-accessible",
-        "provider": "東京都福祉局",
-        "datasetName": "鉄道駅の車椅子使用者対応トイレ",
-        "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-        "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/R0606/02/4_tonaitetsudoueki_barrier-free-wc.csv",
-        "license": "CC BY"
-      }
+    "manifestDatasetIds": [
+      "shinjuku-public",
+      "tokyo-public-accessible",
+      "tokyo-station-accessible"
     ],
+    "recordCount": 77,
+    "officialPlaceCount": 46,
     "scope": "デモルートから推定直線距離350m以内"
   },
   "places": [
@@ -58,13 +30,12 @@
           "openingHours": "9:00〜17:00（バリアフリートイレのみ時間制限あり）",
           "officialToiletKind": "public_toilet",
           "source": {
+            "sourceDatasetId": "shinjuku-public",
+            "sourceRecordId": "shinjuku-131041C00109",
             "provider": "新宿区",
             "datasetName": "新宿区公衆トイレ一覧",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t131041d0000000123",
-            "resourceUrl": "https://www.city.shinjuku.lg.jp/content/000399974.csv",
             "license": "CC BY",
             "datasetUpdatedAt": null,
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -83,13 +54,12 @@
           "openingHours": "9:00〜17:00（バリアフリートイレのみ時間制限あり）",
           "officialToiletKind": "public_toilet",
           "source": {
+            "sourceDatasetId": "shinjuku-public",
+            "sourceRecordId": "shinjuku-131041C00110",
             "provider": "新宿区",
             "datasetName": "新宿区公衆トイレ一覧",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t131041d0000000123",
-            "resourceUrl": "https://www.city.shinjuku.lg.jp/content/000399974.csv",
             "license": "CC BY",
             "datasetUpdatedAt": null,
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -108,13 +78,12 @@
           "openingHours": "9:00〜17:00（バリアフリートイレのみ時間制限あり）",
           "officialToiletKind": "public_toilet",
           "source": {
+            "sourceDatasetId": "shinjuku-public",
+            "sourceRecordId": "shinjuku-131041C00111",
             "provider": "新宿区",
             "datasetName": "新宿区公衆トイレ一覧",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t131041d0000000123",
-            "resourceUrl": "https://www.city.shinjuku.lg.jp/content/000399974.csv",
             "license": "CC BY",
             "datasetUpdatedAt": null,
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -133,13 +102,12 @@
           "openingHours": "9:00〜17:00（バリアフリートイレのみ時間制限あり）",
           "officialToiletKind": "public_toilet",
           "source": {
+            "sourceDatasetId": "shinjuku-public",
+            "sourceRecordId": "shinjuku-131041C00112",
             "provider": "新宿区",
             "datasetName": "新宿区公衆トイレ一覧",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t131041d0000000123",
-            "resourceUrl": "https://www.city.shinjuku.lg.jp/content/000399974.csv",
             "license": "CC BY",
             "datasetUpdatedAt": null,
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -158,13 +126,12 @@
           "openingHours": "9:00〜17:00（バリアフリートイレのみ時間制限あり）",
           "officialToiletKind": "public_toilet",
           "source": {
+            "sourceDatasetId": "shinjuku-public",
+            "sourceRecordId": "shinjuku-131041C00114",
             "provider": "新宿区",
             "datasetName": "新宿区公衆トイレ一覧",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t131041d0000000123",
-            "resourceUrl": "https://www.city.shinjuku.lg.jp/content/000399974.csv",
             "license": "CC BY",
             "datasetUpdatedAt": null,
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -183,13 +150,12 @@
           "openingHours": "9:00〜17:00（バリアフリートイレのみ時間制限あり）",
           "officialToiletKind": "public_toilet",
           "source": {
+            "sourceDatasetId": "shinjuku-public",
+            "sourceRecordId": "shinjuku-131041C00115",
             "provider": "新宿区",
             "datasetName": "新宿区公衆トイレ一覧",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t131041d0000000123",
-            "resourceUrl": "https://www.city.shinjuku.lg.jp/content/000399974.csv",
             "license": "CC BY",
             "datasetUpdatedAt": null,
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -221,13 +187,12 @@
           "openingHours": null,
           "officialToiletKind": "public_toilet",
           "source": {
+            "sourceDatasetId": "shinjuku-public",
+            "sourceRecordId": "shinjuku-131041C00205",
             "provider": "新宿区",
             "datasetName": "新宿区公衆トイレ一覧",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t131041d0000000123",
-            "resourceUrl": "https://www.city.shinjuku.lg.jp/content/000399974.csv",
             "license": "CC BY",
             "datasetUpdatedAt": null,
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -259,13 +224,12 @@
           "openingHours": "7:00〜24:00（バリアフリートイレのみ時間制限あり）",
           "officialToiletKind": "public_toilet",
           "source": {
+            "sourceDatasetId": "shinjuku-public",
+            "sourceRecordId": "shinjuku-131041C00217",
             "provider": "新宿区",
             "datasetName": "新宿区公衆トイレ一覧",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t131041d0000000123",
-            "resourceUrl": "https://www.city.shinjuku.lg.jp/content/000399974.csv",
             "license": "CC BY",
             "datasetUpdatedAt": null,
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -297,13 +261,12 @@
           "openingHours": "0845_1730 / 土日祝の利用については、当財団事業の実施がある場合には使用可能。",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-11-1-5-1",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2019-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -335,13 +298,12 @@
           "openingHours": "始発_終車",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-18-9-63-1",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2025-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -373,13 +335,12 @@
           "openingHours": "始発_終車",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-18-9-64-1",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2019-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -411,13 +372,12 @@
           "openingHours": "始発_終車",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-18-9-90-1",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2025-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -436,13 +396,12 @@
           "openingHours": "始発_終車",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-18-9-90-2",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2025-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -474,13 +433,12 @@
           "openingHours": "始発_終車",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-18-9-91-1",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2021-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -512,13 +470,12 @@
           "openingHours": "0000_2359",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-28-1-10-1",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2019-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -550,13 +507,12 @@
           "openingHours": "0800_1845 / 12月29日から1月3日までは利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-1-1",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -575,13 +531,12 @@
           "openingHours": "0800_1845 / 12月29日から1月3日まで利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-1-2",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -613,13 +568,12 @@
           "openingHours": "0930_2300 / 北展望室は当面休室",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-1-10",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2024-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -638,13 +592,12 @@
           "openingHours": "0930_2300 / 北展望室は当面休室",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-1-11",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2024-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -663,13 +616,12 @@
           "openingHours": "0800_1845 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-1-16",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -688,13 +640,12 @@
           "openingHours": "0800_1845 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-1-4",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -713,13 +664,12 @@
           "openingHours": "0800_1845 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-1-5",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -738,13 +688,12 @@
           "openingHours": "0800_2200 / 12月29日から1月3日まで利用不可。また都庁舎の点検日も利用不可。",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-1-8",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -763,13 +712,12 @@
           "openingHours": "0800_2200 / 12月29日から1月3日まで及び庁舎点検日は利用不可。",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-1-9",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -788,13 +736,12 @@
           "openingHours": "0800_1845 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-2-4",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -826,13 +773,12 @@
           "openingHours": "0930_2300 / 第一及び第三火曜日（祝日に重なる場合はその翌日）展望室休室",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-1-12",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2024-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -851,13 +797,12 @@
           "openingHours": "0930_2300 / 第一及び第三火曜日（祝日に重なる場合はその翌日）展望室休室",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-1-13",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2024-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -876,13 +821,12 @@
           "openingHours": "0800_1845 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-1-15",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -901,13 +845,12 @@
           "openingHours": "0800_1845 / 12月29日から1月3日は利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-1-3",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -939,13 +882,12 @@
           "openingHours": "0800_1845 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-1-14",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -977,13 +919,12 @@
           "openingHours": "0800_1845 / 12月29日から1月3日まで利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-1-6",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1015,13 +956,12 @@
           "openingHours": "0800_1845 / 12月29日から1月3日まで利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-1-7",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1053,13 +993,12 @@
           "openingHours": "0800_1845 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-2-1",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1091,13 +1030,12 @@
           "openingHours": "0800_2200 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-2-10",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1116,13 +1054,12 @@
           "openingHours": "0800_2200 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-2-11",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1141,13 +1078,12 @@
           "openingHours": "0800_1845 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-2-5",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1166,13 +1102,12 @@
           "openingHours": "0800_2200 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-2-6",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1191,13 +1126,12 @@
           "openingHours": "0800_2200 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-2-7",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1216,13 +1150,12 @@
           "openingHours": "0800_2200 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-2-8",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1241,13 +1174,12 @@
           "openingHours": "0800_2200 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-2-9",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1279,13 +1211,12 @@
           "openingHours": "0800_1845 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-2-2",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1317,13 +1248,12 @@
           "openingHours": "0800_1845 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-2-3",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2024-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1355,13 +1285,12 @@
           "openingHours": "0800_1800 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-3-1",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1380,13 +1309,12 @@
           "openingHours": "0800_1800 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-3-9",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1418,13 +1346,12 @@
           "openingHours": "0800_1800 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-3-10",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1443,13 +1370,12 @@
           "openingHours": "0800_1800 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-3-2",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1468,13 +1394,12 @@
           "openingHours": "0800_1800 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-3-7",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1506,13 +1431,12 @@
           "openingHours": "0800_1800 / 1030_1800 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-3-11",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1544,13 +1468,12 @@
           "openingHours": "0800_1800 / 1030_1800 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-3-12",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1582,13 +1505,12 @@
           "openingHours": "0800_1800 / 1030_1800 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-3-13",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1620,13 +1542,12 @@
           "openingHours": "0800_1800 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-3-5",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1645,13 +1566,12 @@
           "openingHours": "0800_1800 / 12月29日から1月3日まで及び庁舎点検日は利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13000-5-1-3-8",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1683,13 +1603,12 @@
           "openingHours": "0830_2145 / ただし、年末年始、2月、5月、8月、11月の第4日曜日は全館休館日のため終日使用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13104-99-1-12-1",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2019-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1721,13 +1640,12 @@
           "openingHours": "0900_2145 / ただし、年末年始、2月、5月、8月、11月の第4日曜日は全館休館日のため使用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13104-99-1-12-2",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2019-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1759,13 +1677,12 @@
           "openingHours": "0900_2200 / 休館日：毎月第2月曜日（祝日の場合は翌日）、年末年始（12/29～1/3）",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13104-99-1-13-1",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2024-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1784,13 +1701,12 @@
           "openingHours": "0900_2200 / 休館日：毎月第2月曜日（祝日の場合は翌日）、年末年始（12/29～1/3）",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13104-99-1-13-2",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2024-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1822,13 +1738,12 @@
           "openingHours": "1000_2100 / 毎月第四月曜日は休館のため、利用できない",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13104-99-10-17-1",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2019-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1860,13 +1775,12 @@
           "openingHours": "1000_2100 / 毎月第4月曜日及び年末年始（12月29日～1月3日）は施設休館のため利用不可",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13104-99-5-4-1",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1898,13 +1812,12 @@
           "openingHours": "0900_1700",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13104-99-7-13-1",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2025-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1936,13 +1849,12 @@
           "openingHours": "0900_1700",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13104-99-7-13-2",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2025-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -1974,13 +1886,12 @@
           "openingHours": "0900_1700",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13104-99-7-13-3",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2025-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -2012,13 +1923,12 @@
           "openingHours": "0900_1700",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13104-99-7-13-4",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2025-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -2050,13 +1960,12 @@
           "openingHours": "0900_1700",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13104-99-7-13-5",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2025-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -2088,13 +1997,12 @@
           "openingHours": "0900_1700",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13104-99-7-13-6",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2025-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -2126,13 +2034,12 @@
           "openingHours": "0700_2200",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13104-99-8-5-1",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2025-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -2164,13 +2071,12 @@
           "openingHours": "0700_2359",
           "officialToiletKind": "facility_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-public-accessible",
+            "sourceRecordId": "tokyo-public-13104-99-8-9-1",
             "provider": "東京都福祉局",
             "datasetName": "公共施設等の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/3_koukyoshisetsu_barieer_free_wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2025-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -2202,13 +2108,12 @@
           "openingHours": "始発_終車",
           "officialToiletKind": "station_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-station-accessible",
+            "sourceRecordId": "tokyo-station-1-1-1",
             "provider": "東京都福祉局",
             "datasetName": "鉄道駅の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/R0606/02/4_tonaitetsudoueki_barrier-free-wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2025-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -2227,13 +2132,12 @@
           "openingHours": "始発_終車",
           "officialToiletKind": "station_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-station-accessible",
+            "sourceRecordId": "tokyo-station-1-1-2",
             "provider": "東京都福祉局",
             "datasetName": "鉄道駅の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/R0606/02/4_tonaitetsudoueki_barrier-free-wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2025-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -2265,13 +2169,12 @@
           "openingHours": "始発_終車",
           "officialToiletKind": "station_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-station-accessible",
+            "sourceRecordId": "tokyo-station-1-1-3",
             "provider": "東京都福祉局",
             "datasetName": "鉄道駅の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/R0606/02/4_tonaitetsudoueki_barrier-free-wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2019-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -2290,13 +2193,12 @@
           "openingHours": "始発_終車",
           "officialToiletKind": "station_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-station-accessible",
+            "sourceRecordId": "tokyo-station-1-1-4",
             "provider": "東京都福祉局",
             "datasetName": "鉄道駅の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/R0606/02/4_tonaitetsudoueki_barrier-free-wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2019-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -2328,13 +2230,12 @@
           "openingHours": "始発_終車",
           "officialToiletKind": "station_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-station-accessible",
+            "sourceRecordId": "tokyo-station-10-6-1",
             "provider": "東京都福祉局",
             "datasetName": "鉄道駅の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/R0606/02/4_tonaitetsudoueki_barrier-free-wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2024-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -2366,13 +2267,12 @@
           "openingHours": "始発_終車",
           "officialToiletKind": "station_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-station-accessible",
+            "sourceRecordId": "tokyo-station-14-54-1",
             "provider": "東京都福祉局",
             "datasetName": "鉄道駅の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/R0606/02/4_tonaitetsudoueki_barrier-free-wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2019-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -2404,13 +2304,12 @@
           "openingHours": "始発_終車",
           "officialToiletKind": "station_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-station-accessible",
+            "sourceRecordId": "tokyo-station-14-54-2",
             "provider": "東京都福祉局",
             "datasetName": "鉄道駅の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/R0606/02/4_tonaitetsudoueki_barrier-free-wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2019-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -2442,13 +2341,12 @@
           "openingHours": "始発_終車",
           "officialToiletKind": "station_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-station-accessible",
+            "sourceRecordId": "tokyo-station-14-54-3",
             "provider": "東京都福祉局",
             "datasetName": "鉄道駅の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/R0606/02/4_tonaitetsudoueki_barrier-free-wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2019-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -2467,13 +2365,12 @@
           "openingHours": "始発_終車",
           "officialToiletKind": "station_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-station-accessible",
+            "sourceRecordId": "tokyo-station-14-54-4",
             "provider": "東京都福祉局",
             "datasetName": "鉄道駅の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/R0606/02/4_tonaitetsudoueki_barrier-free-wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2019-01",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -2505,13 +2402,12 @@
           "openingHours": "始発_終車",
           "officialToiletKind": "station_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-station-accessible",
+            "sourceRecordId": "tokyo-station-2-1-1",
             "provider": "東京都福祉局",
             "datasetName": "鉄道駅の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/R0606/02/4_tonaitetsudoueki_barrier-free-wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2021-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
@@ -2543,13 +2439,12 @@
           "openingHours": "始発_終車",
           "officialToiletKind": "station_toilet_information",
           "source": {
+            "sourceDatasetId": "tokyo-station-accessible",
+            "sourceRecordId": "tokyo-station-2-1-2",
             "provider": "東京都福祉局",
             "datasetName": "鉄道駅の車椅子使用者対応トイレ",
-            "datasetUrl": "https://catalog.data.metro.tokyo.lg.jp/dataset/t000054d0000000342",
-            "resourceUrl": "https://www.opendata.metro.tokyo.lg.jp/fukushi/R0606/02/4_tonaitetsudoueki_barrier-free-wc.csv",
             "license": "CC BY",
             "datasetUpdatedAt": "2022-11",
-            "retrievedAt": "2026-07-18T16:41:33.291Z",
             "fieldVerifiedAt": null
           },
           "confidence": "official"
