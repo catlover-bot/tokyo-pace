@@ -13,11 +13,32 @@ export type RoutePreferences = {
   requireToilet: boolean; avoidSteepSlopes: boolean; preferIndoorRest: boolean;
 };
 
+export type WalkingSegment = {
+  id: string;
+  name: string;
+  distanceMeters: number;
+  walkingMinutes: number;
+  endsAtRestSpot: boolean;
+  restSpotId: string | null;
+};
+
 export type DemoRoute = {
   id: "standard" | "comfort"; name: string; coordinates: [number, number][];
   durationMinutes: number; distanceMeters: number; restSpotIds: string[];
-  maxContinuousWalkingMinutes: number; toiletAvailable: boolean; steepSlopeCount: number;
+  walkingSegments: WalkingSegment[]; toiletAvailable: boolean; steepSlopeCount: number;
   indoorRestCount: number;
 };
 
-export type EvaluatedRoute = DemoRoute & { score: number; reasons: string[]; meetsPreferences: boolean };
+export type ContinuityMetrics = {
+  continuityFeasible: boolean;
+  maxContinuousWalkingMinutes: number;
+  longestRestGapMeters: number;
+  continuousWalkingExcessMinutes: number;
+};
+
+export type EvaluatedRoute = DemoRoute & ContinuityMetrics & {
+  continuousWalkingLimitMinutes: number;
+  score: number;
+  reasons: string[];
+  meetsPreferences: boolean;
+};
