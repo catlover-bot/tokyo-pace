@@ -1,5 +1,17 @@
 # TOKYO PACE
 
+## 動的歩行ルーティング
+
+利用者が対象地域内の出発地・目的地を地図またはプリセットで指定し、検索ボタンを押した場合だけ、React → `POST /api/routes` → Cloudflare Worker → openrouteservice Directions APIの順で経路候補を取得します。ブラウザからopenrouteserviceへ直接接続せず、`OPENROUTESERVICE_API_KEY`はWorker Secretだけで使用します。
+
+候補は標準歩行、階段回避を要求した歩行、車いすプロファイルの3種類です。道路ネットワークと属性はOpenStreetMap由来です。車いすプロファイルや階段回避要求は実際の通行可能性、工事、段差、路面状態を保証しません。
+
+対象地域は緯度35.67〜35.73、経度139.67〜139.74の新宿駅・東京都庁・新宿中央公園周辺です。外部経路を取得できない場合は、利用者が明示的に`DemoRouteProvider`の固定デモを選べます。
+
+Secretは`wrangler secret put OPENROUTESERVICE_API_KEY`で設定します。ローカルではGit管理されない`.dev.vars`を使用でき、`.dev.vars.example`にはキー名だけを記載しています。値をソース、設定ファイル、ログ、レスポンスへ含めません。
+
+同一要求は丸めた座標、固定プロファイル／options、APIスキーマバージョンから作るキーで15分キャッシュします。APIキーはキーに含めません。距離・時間はopenrouteserviceの推定値で、施設空白と連続歩行は各経路折れ線へ公式候補を再射影して経路距離尺度で計算します。
+
 ## 休憩・給水・屋内候補
 
 `npm run data:update`は公式トイレに加え、東京都「だれでも東京」、東京都水道局 Tokyowater Drinking Station、新宿区公共施設情報を更新スクリプトで取得し、文字コード変換・列検証・正規化後のJSONを生成します。ブラウザは外部CSVへアクセスしません。

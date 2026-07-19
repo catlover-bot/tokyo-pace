@@ -1,10 +1,11 @@
 import { demoRoutes } from "../data/routes";
 import type { RouteProvider } from "./RouteProvider";
+import type { RouteSearchRequest } from "../types";
 
 export class DemoRouteProvider implements RouteProvider {
-  async getRoutes(originId: string, destinationId: string) {
+  async getRoutes(request?: RouteSearchRequest) {
+    void request;
     await new Promise((resolve) => setTimeout(resolve, 250));
-    if (originId !== "shinjuku-west" || destinationId !== "tocho") throw new Error("このデモで選択できる区間ではありません。");
-    return structuredClone(demoRoutes);
+    return structuredClone(demoRoutes).map((route) => ({ ...route, provider: "demo" as const, isFallback: true, sourceAttribution: "TOKYO PACE 固定デモデータ" }));
   }
 }

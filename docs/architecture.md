@@ -1,5 +1,13 @@
 # アーキテクチャ
 
+## 動的ルーティング
+
+`ApiRouteProvider`はブラウザから同一オリジンのWorker APIだけを呼びます。Workerの固定openrouteservice adapterが`foot-walking`標準、`foot-walking`階段回避、`wheelchair`制約付きの3候補を取得し、Leaflet座標順の内部`DemoRoute`互換型へ正規化します。UI・評価層はopenrouteserviceの生GeoJSONを参照しません。
+
+Workerは入力サイズ、JSON、有限座標、緯度経度範囲、新宿bbox、同一点、直線距離を検証します。外部通信は8秒で打ち切り、認証・レート制限・タイムアウト・上流障害を安全なエラーへ変換します。外部本文とSecretは返しません。キャッシュキーは座標を小数5桁へ丸め、固定profile／optionsとスキーマ版を含めてSHA-256化し、TTLは900秒です。
+
+動的経路ではconfirmed／supportedの厳格な休憩候補だけでwalkingSegmentsを分割します。区間時間は経路全体の距離・所要時間に対する距離比で決定的に推定し、possibleは厳格成立へ使用しません。公式トイレ、休憩、給水、屋内候補は経路ごとに再射影します。
+
 ## 休憩ネットワーク
 
 公式CSV → `scripts/update-open-data.mjs`（取得、UTF-8／Shift_JIS／UTF-16LE変換、ヘッダー検証、null正規化、原子的書込み）→ 生成JSON → ルート近傍抽出・射影・正規化空白分析 → React表示、の一方向構成です。外部CSVをクライアントから取得しません。

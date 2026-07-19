@@ -71,8 +71,14 @@ export type OfficialToiletPlace = {
 
 export type RoutePreferences = {
   maxContinuousWalkingMinutes: 5 | 10 | 15;
-  requireToilet: boolean; avoidSteepSlopes: boolean; preferIndoorRest: boolean;
+  requireToilet: boolean; avoidSteepSlopes: boolean; preferIndoorRest: boolean; avoidSteps?: boolean;
 };
+
+export type GeoPoint = { latitude: number; longitude: number };
+export type RouteSearchRequest = { origin: GeoPoint; destination: GeoPoint; preferences: RoutePreferences };
+export type RouteProfile = "standard" | "step_avoiding" | "wheelchair_profile";
+export type RouteStep = { instruction: string; distanceMeters: number; durationSeconds: number };
+export type RouteExtraSegment = { from: number; to: number; value: number };
 
 export type WalkingSegment = {
   id: string;
@@ -84,10 +90,20 @@ export type WalkingSegment = {
 };
 
 export type DemoRoute = {
-  id: "standard" | "comfort"; name: string; coordinates: [number, number][];
-  durationMinutes: number; distanceMeters: number; restSpotIds: string[];
+  id: string; name: string; coordinates: [number, number][];
+  durationMinutes: number; durationSeconds?: number; distanceMeters: number; restSpotIds: string[];
   walkingSegments: WalkingSegment[]; steepSlopeCount: number;
   indoorRestCount: number;
+  provider?: "demo" | "openrouteservice";
+  profile?: RouteProfile;
+  bbox?: [number, number, number, number];
+  steps?: RouteStep[];
+  wayTypes?: RouteExtraSegment[];
+  steepnessSegments?: RouteExtraSegment[];
+  sourceAttribution?: string;
+  generatedAt?: string;
+  warnings?: string[];
+  isFallback?: boolean;
 };
 
 export type ContinuityMetrics = {
