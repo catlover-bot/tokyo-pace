@@ -1,0 +1,17 @@
+{
+  "metadata": {
+    "sourceDatasetId": "tokyo-pace-field-verification-rest-spots",
+    "contentSha256": "33488d9856161e4954d49c7ff52dfd5a2cca02b5a4869dae91ad33b0341337a7",
+    "normalizedRecordCount": 0,
+    "fullCandidateCount": 0,
+    "candidateCount": 0,
+    "latestVerifiedAt": null,
+    "confidenceCounts": {
+      "confirmed": 0,
+      "supported": 0,
+      "possible": 0
+    },
+    "scope": "デモルートから推定直線距離350m以内"
+  },
+  "candidates": []
+}

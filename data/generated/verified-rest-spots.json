@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "schemaVersion": 1,
+    "sourceDatasetId": "tokyo-pace-field-verification-rest-spots",
+    "sourceType": "tokyo_pace_field_verification",
+    "provider": "TOKYO PACE 現地確認",
+    "datasetName": "TOKYO PACE 休憩地点現地確認",
+    "license": null,
+    "attribution": "TOKYO PACE 現地確認データ",
+    "generatedBy": "TOKYO PACE",
+    "generatedAt": "2026-07-18T19:14:16.703Z",
+    "sourcePath": "data/field-verification/rest-spots.csv",
+    "contentSha256": "33488d9856161e4954d49c7ff52dfd5a2cca02b5a4869dae91ad33b0341337a7",
+    "byteSize": 274,
+    "inputRowCount": 0,
+    "normalizedRecordCount": 0,
+    "excludedRecordCount": 0,
+    "effectiveCandidateCount": 0,
+    "latestVerifiedAt": null,
+    "confidenceCounts": {
+      "confirmed": 0,
+      "supported": 0,
+      "possible": 0
+    },
+    "exclusionReasonCounts": {},
+    "exclusions": []
+  },
+  "records": [],
+  "candidates": []
+}

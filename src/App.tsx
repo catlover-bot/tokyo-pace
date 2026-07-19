@@ -1,7 +1,9 @@
 import { lazy, Suspense, useMemo, useRef, useState } from "react";
+import type { VerifiedRestMetadata } from "./components/AnalysisDataPanel";
 import { RouteSearchStatus } from "./components/RouteSearchStatus";
 import { restSpots } from "./data/restSpots";
-import { latestOpenDataRetrievedAt } from "./data/openDataManifest";
+import { latestOpenDataRetrievedAt, openDataManifest } from "./data/openDataManifest";
+import { parseApplicationMode } from "./domain/applicationMode";
 import { distancePointToRouteMeters, findOfficialToiletPlacesNearRoute } from "./domain/geo";
 import { prepareDynamicRoute } from "./domain/dynamicRoute";
 import { buildRouteComparisonViewModels, selectRouteId } from "./domain/routeComparison";
@@ -14,19 +16,22 @@ import type { DemoRoute, GeoPoint, OfficialToiletPlace, RestCandidate, RoutePref
 
 const RouteMap = lazy(() => import("./components/RouteMap").then((module) => ({ default: module.RouteMap })));
 const RouteComparison = lazy(() => import("./components/RouteComparison").then((module) => ({ default: module.RouteComparison })));
+const AnalysisDataPanel = lazy(() => import("./components/AnalysisDataPanel").then((module) => ({ default: module.AnalysisDataPanel })));
+const FieldCheckPage = lazy(() => import("./components/FieldCheckPage").then((module) => ({ default: module.FieldCheckPage })));
 const apiProvider = new ApiRouteProvider(); const demoProvider = new DemoRouteProvider();
 const presets = { "shinjuku-west": { label: "新宿駅西口", point: { latitude: 35.69092, longitude: 139.69917 } }, tocho: { label: "東京都庁", point: { latitude: 35.68945, longitude: 139.69215 } }, park: { label: "新宿中央公園", point: { latitude: 35.68908, longitude: 139.68925 } } } as const;
 const initialPreferences: RoutePreferences = { maxContinuousWalkingMinutes: 10, requireToilet: true, avoidSteepSlopes: true, preferIndoorRest: false, avoidSteps: true };
 
-export default function App() {
+function RoutePlanningApp() {
   const [preferences, setPreferences] = useState(initialPreferences); const [draft, setDraft] = useState(initialPreferences);
   const [origin, setOrigin] = useState<GeoPoint>(presets["shinjuku-west"].point); const [destination, setDestination] = useState<GeoPoint>(presets.tocho.point);
   const [selectionMode, setSelectionMode] = useState<"origin" | "destination" | null>(null); const [routes, setRoutes] = useState<DemoRoute[]>([]);
   const [officialToiletPlaces, setOfficialToiletPlaces] = useState<OfficialToiletPlace[]>([]); const [allRestCandidates, setAllRestCandidates] = useState<RestCandidate[]>([]);
+  const [verifiedMetadata, setVerifiedMetadata] = useState<VerifiedRestMetadata>({ normalizedRecordCount: 0, latestVerifiedAt: null });
   const [loading, setLoading] = useState(false); const [error, setError] = useState<string | null>(null); const [fallback, setFallback] = useState(false);
   const [selectedRouteId, setSelectedRouteId] = useState<string | null>(null); const controller = useRef<AbortController | null>(null);
   const request = (next = draft) => ({ origin, destination, preferences: next });
-  const loadAnalysisData = async () => { const [toilets, rest] = await Promise.all([import("./data/officialToilets"), import("./data/restCandidates")]); setOfficialToiletPlaces(toilets.officialToiletPlaces); setAllRestCandidates(rest.allRestCandidates); return { toilets: toilets.officialToiletPlaces, rest: rest.allRestCandidates }; };
+  const loadAnalysisData = async () => { const [toilets, rest, verified] = await Promise.all([import("./data/officialToilets"), import("./data/restCandidates"), import("./data/verifiedRestSpots")]); setOfficialToiletPlaces(toilets.officialToiletPlaces); setAllRestCandidates(rest.allRestCandidates); setVerifiedMetadata(verified.verifiedRestMetadata); return { toilets: toilets.officialToiletPlaces, rest: rest.allRestCandidates }; };
   const search = async () => {
     controller.current?.abort(); const next = new AbortController(); controller.current = next;
     setLoading(true); setError(null); setFallback(false); setRoutes([]); setSelectedRouteId(null);
@@ -34,10 +39,12 @@ export default function App() {
     catch (cause) { if (!next.signal.aborted) { reportRouteSearchError(cause); setError(toRouteSearchErrorMessage(cause)); } }
     finally { if (!next.signal.aborted) setLoading(false); }
   };
-  const showDemo = async () => { setLoading(true); setError(null); setRoutes([]); setSelectedRouteId(null); try { await loadAnalysisData(); setRoutes(await demoProvider.getRoutes(request())); setPreferences(draft); setFallback(true); } finally { setLoading(false); } };
+  const showDemo = async () => { setLoading(true); setError(null); setRoutes([]); setSelectedRouteId(null); try { const data = await loadAnalysisData(); const demoRoutes = await demoProvider.getRoutes(request()); const hasVerifiedStrictCandidate = data.rest.some((candidate) => candidate.confidence === "confirmed" || candidate.confidence === "supported"); setRoutes(hasVerifiedStrictCandidate ? demoRoutes.map((route) => prepareDynamicRoute(route, data.rest)) : demoRoutes); setPreferences(draft); setFallback(true); } finally { setLoading(false); } };
   const evaluated = useMemo(() => selectRecommendedRoute(routes, preferences, officialToiletPlaces, allRestCandidates), [routes, preferences, officialToiletPlaces, allRestCandidates]);
   const comparison = useMemo(() => buildRouteComparisonViewModels(evaluated, preferences), [evaluated, preferences]);
   const activeRouteId = selectRouteId(selectedRouteId, comparison.routes.map((model) => model.routeId), comparison.recommendedRouteId);
+  const activeEvaluatedRoute = evaluated.find((route) => route.id === activeRouteId);
+  const analysisGeneratedAt = activeEvaluatedRoute?.generatedAt ?? latestOpenDataRetrievedAt ?? "2000-01-01T00:00:00.000Z";
   const nearbyToilets = useMemo(() => [...new Map(routes.flatMap((route) => findOfficialToiletPlacesNearRoute(officialToiletPlaces, route.coordinates, 350, 30)).map((place) => [place.clusterId, place])).values()].slice(0, 30), [routes, officialToiletPlaces]);
   const nearbyRest = useMemo(() => allRestCandidates.filter((candidate) => routes.some((route) => distancePointToRouteMeters([candidate.latitude, candidate.longitude], route.coordinates) <= 350)).slice(0, 30), [routes, allRestCandidates]);
   const setPreset = (kind: "origin" | "destination", key: keyof typeof presets) => kind === "origin" ? setOrigin(presets[key].point) : setDestination(presets[key].point);
@@ -53,9 +60,16 @@ export default function App() {
       </section>
       <RouteSearchStatus loading={loading} error={error} onRetry={() => void search()} onFallback={() => void showDemo()} />
       {comparison.routes.length > 0 && <Suspense fallback={<div className="loading" role="status">経路比較を準備しています…</div>}><RouteComparison comparison={comparison} selectedRouteId={activeRouteId} fallback={fallback} onSelect={setSelectedRouteId} /></Suspense>}
+      {activeEvaluatedRoute && <Suspense fallback={<div className="loading" role="status">分析データを準備しています…</div>}><AnalysisDataPanel route={activeEvaluatedRoute} restCandidates={allRestCandidates} manifest={openDataManifest} verifiedMetadata={verifiedMetadata} generatedAt={analysisGeneratedAt} /></Suspense>}
       <Suspense fallback={<div className="loading">地図を読み込んでいます…</div>}><RouteMap routes={evaluated} spots={restSpots} restCandidates={nearbyRest} officialToiletPlaces={nearbyToilets} selectedRouteId={activeRouteId} origin={[origin.latitude, origin.longitude]} destination={[destination.latitude, destination.longitude]} selectionMode={selectionMode} onSelectRoute={setSelectedRouteId} onMapPoint={(point) => { if (selectionMode) { const next = applySelectedMapPoint(selectionMode, { origin, destination }, { latitude: point[0], longitude: point[1] }); setOrigin(next.origin); setDestination(next.destination); setSelectionMode(null); } }} /></Suspense>
       <section className="data-sources"><h2>データと注意事項</h2><p>対象範囲：緯度{SHINJUKU_ROUTING_BBOX.minLatitude}〜{SHINJUKU_ROUTING_BBOX.maxLatitude}、経度{SHINJUKU_ROUTING_BBOX.minLongitude}〜{SHINJUKU_ROUTING_BBOX.maxLongitude}。経路はopenrouteserviceとOpenStreetMap由来、施設は公式オープンデータです。取得日：{latestOpenDataRetrievedAt ? new Date(latestOpenDataRetrievedAt).toLocaleDateString("ja-JP") : "不明"}。</p><p>TOKYO PACEの順位と説明は既存の条件負担スコアと決定的なルールから生成し、AIで文章を生成していません。現地状況を保証するものではありません。</p></section>
     </main>
     <footer><strong>TOKYO PACE</strong><p>経路の安全性、設備の利用可否、車いすでの到達可能性を保証しません。</p></footer>
   </>;
+}
+
+export default function App() {
+  const search = typeof window === "undefined" ? "" : window.location.search;
+  if (parseApplicationMode(search) === "field-check") return <Suspense fallback={<div className="loading" role="status">現地確認画面を読み込んでいます…</div>}><FieldCheckPage /></Suspense>;
+  return <RoutePlanningApp />;
 }

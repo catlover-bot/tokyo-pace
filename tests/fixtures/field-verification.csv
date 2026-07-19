@@ -1,0 +1,4 @@
+verificationId,candidateId,name,latitude,longitude,address,verifiedAt,verifier,verificationMethod,publiclyAccessible,seatingAvailable,indoorOrCovered,drinkingWaterAvailable,toiletAvailable,wheelchairAccessible,openingHoursObserved,accessRestrictions,evidenceReference,notes
+v-confirmed,candidate-a,確認済み休憩地点,35.690000,139.690000,東京都新宿区,2026-07-19T10:00:00+09:00,tokyo-pace-field-team,on_site_observation,true,true,false,null,true,true,09:00-17:00,,https://example.com/evidence/a,現地確認
+v-supported,candidate-b,根拠あり候補,35.691000,139.691000,東京都新宿区,2026-07-19T11:00:00+09:00,tokyo-pace-field-team,combined_on_site_and_official,true,null,true,null,null,true,,,urn:tokyo-pace:field-note:b,
+v-possible,candidate-c,参考候補,35.692000,139.692000,東京都新宿区,2026-07-19T12:00:00+09:00,tokyo-pace-field-team,official_source_review,null,null,null,null,null,null,,,https://example.com/evidence/c,

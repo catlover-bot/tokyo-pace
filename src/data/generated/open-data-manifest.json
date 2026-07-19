@@ -1,5 +1,7 @@
 {
   "schemaVersion": 1,
+  "generatedBy": "TOKYO PACE",
+  "generatedAt": "2026-07-18T19:14:16.703Z",
   "datasets": [
     {
       "datasetId": "daredemo-accommodation",
@@ -12,7 +14,13 @@
       "excludedRecordCount": 8,
       "sourceUpdatedAt": null,
       "encoding": "utf-8",
-      "license": "CC BY"
+      "license": "CC BY",
+      "provider": "東京都デジタルサービス局",
+      "datasetName": "宿泊施設等の施設情報ポータルサイト「だれでも東京」（宿泊施設）",
+      "sourceType": "official_open_data",
+      "attribution": "東京都デジタルサービス局「宿泊施設等の施設情報ポータルサイト「だれでも東京」（宿泊施設）」（CC BY）",
+      "generatedBy": "TOKYO PACE",
+      "generatedAt": "2026-07-18T19:14:16.703Z"
     },
     {
       "datasetId": "daredemo-dining",
@@ -25,7 +33,13 @@
       "excludedRecordCount": 0,
       "sourceUpdatedAt": null,
       "encoding": "shift_jis",
-      "license": "CC BY"
+      "license": "CC BY",
+      "provider": "東京都デジタルサービス局",
+      "datasetName": "宿泊施設等の施設情報ポータルサイト「だれでも東京」（飲食）",
+      "sourceType": "official_open_data",
+      "attribution": "東京都デジタルサービス局「宿泊施設等の施設情報ポータルサイト「だれでも東京」（飲食）」（CC BY）",
+      "generatedBy": "TOKYO PACE",
+      "generatedAt": "2026-07-18T19:14:16.703Z"
     },
     {
       "datasetId": "daredemo-leisure",
@@ -38,7 +52,13 @@
       "excludedRecordCount": 0,
       "sourceUpdatedAt": null,
       "encoding": "shift_jis",
-      "license": "CC BY"
+      "license": "CC BY",
+      "provider": "東京都デジタルサービス局",
+      "datasetName": "宿泊施設等の施設情報ポータルサイト「だれでも東京」（レジャー）",
+      "sourceType": "official_open_data",
+      "attribution": "東京都デジタルサービス局「宿泊施設等の施設情報ポータルサイト「だれでも東京」（レジャー）」（CC BY）",
+      "generatedBy": "TOKYO PACE",
+      "generatedAt": "2026-07-18T19:14:16.703Z"
     },
     {
       "datasetId": "daredemo-parks",
@@ -51,7 +71,13 @@
       "excludedRecordCount": 2,
       "sourceUpdatedAt": null,
       "encoding": "shift_jis",
-      "license": "CC BY"
+      "license": "CC BY",
+      "provider": "東京都デジタルサービス局",
+      "datasetName": "宿泊施設等の施設情報ポータルサイト「だれでも東京」（公園）",
+      "sourceType": "official_open_data",
+      "attribution": "東京都デジタルサービス局「宿泊施設等の施設情報ポータルサイト「だれでも東京」（公園）」（CC BY）",
+      "generatedBy": "TOKYO PACE",
+      "generatedAt": "2026-07-18T19:14:16.703Z"
     },
     {
       "datasetId": "daredemo-public_facilities",
@@ -64,7 +90,13 @@
       "excludedRecordCount": 38,
       "sourceUpdatedAt": null,
       "encoding": "shift_jis",
-      "license": "CC BY"
+      "license": "CC BY",
+      "provider": "東京都デジタルサービス局",
+      "datasetName": "宿泊施設等の施設情報ポータルサイト「だれでも東京」（公共施設）",
+      "sourceType": "official_open_data",
+      "attribution": "東京都デジタルサービス局「宿泊施設等の施設情報ポータルサイト「だれでも東京」（公共施設）」（CC BY）",
+      "generatedBy": "TOKYO PACE",
+      "generatedAt": "2026-07-18T19:14:16.703Z"
     },
     {
       "datasetId": "daredemo-shopping",
@@ -77,7 +109,13 @@
       "excludedRecordCount": 0,
       "sourceUpdatedAt": null,
       "encoding": "shift_jis",
-      "license": "CC BY"
+      "license": "CC BY",
+      "provider": "東京都デジタルサービス局",
+      "datasetName": "宿泊施設等の施設情報ポータルサイト「だれでも東京」（ショッピング）",
+      "sourceType": "official_open_data",
+      "attribution": "東京都デジタルサービス局「宿泊施設等の施設情報ポータルサイト「だれでも東京」（ショッピング）」（CC BY）",
+      "generatedBy": "TOKYO PACE",
+      "generatedAt": "2026-07-18T19:14:16.703Z"
     },
     {
       "datasetId": "daredemo-transport",
@@ -90,7 +128,13 @@
       "excludedRecordCount": 1,
       "sourceUpdatedAt": null,
       "encoding": "shift_jis",
-      "license": "CC BY"
+      "license": "CC BY",
+      "provider": "東京都デジタルサービス局",
+      "datasetName": "宿泊施設等の施設情報ポータルサイト「だれでも東京」（交通）",
+      "sourceType": "official_open_data",
+      "attribution": "東京都デジタルサービス局「宿泊施設等の施設情報ポータルサイト「だれでも東京」（交通）」（CC BY）",
+      "generatedBy": "TOKYO PACE",
+      "generatedAt": "2026-07-18T19:14:16.703Z"
     },
     {
       "datasetId": "shinjuku-public",
@@ -103,7 +147,13 @@
       "excludedRecordCount": 0,
       "sourceUpdatedAt": null,
       "encoding": "utf-16le",
-      "license": "CC BY"
+      "license": "CC BY",
+      "provider": "新宿区",
+      "datasetName": "新宿区公衆トイレ一覧",
+      "sourceType": "official_open_data",
+      "attribution": "新宿区「新宿区公衆トイレ一覧」（CC BY）",
+      "generatedBy": "TOKYO PACE",
+      "generatedAt": "2026-07-18T19:14:16.703Z"
     },
     {
       "datasetId": "shinjuku-public-facilities",
@@ -116,7 +166,13 @@
       "excludedRecordCount": 0,
       "sourceUpdatedAt": "2025-12-12",
       "encoding": "utf-16le",
-      "license": "CC BY"
+      "license": "CC BY",
+      "provider": "新宿区",
+      "datasetName": "新宿区の公共施設情報",
+      "sourceType": "official_open_data",
+      "attribution": "新宿区「新宿区の公共施設情報」（CC BY）",
+      "generatedBy": "TOKYO PACE",
+      "generatedAt": "2026-07-18T19:14:16.703Z"
     },
     {
       "datasetId": "tokyo-drinking-stations",
@@ -129,7 +185,13 @@
       "excludedRecordCount": 0,
       "sourceUpdatedAt": "2025-09-16",
       "encoding": "shift_jis",
-      "license": "CC BY"
+      "license": "CC BY",
+      "provider": "東京都水道局",
+      "datasetName": "Tokyowater Drinking Station 一覧",
+      "sourceType": "official_open_data",
+      "attribution": "東京都水道局「Tokyowater Drinking Station 一覧」（CC BY）",
+      "generatedBy": "TOKYO PACE",
+      "generatedAt": "2026-07-18T19:14:16.703Z"
     },
     {
       "datasetId": "tokyo-public-accessible",
@@ -142,7 +204,13 @@
       "excludedRecordCount": 436,
       "sourceUpdatedAt": null,
       "encoding": "shift_jis",
-      "license": "CC BY"
+      "license": "CC BY",
+      "provider": "東京都福祉局",
+      "datasetName": "公共施設等の車椅子使用者対応トイレ",
+      "sourceType": "official_open_data",
+      "attribution": "東京都福祉局「公共施設等の車椅子使用者対応トイレ」（CC BY）",
+      "generatedBy": "TOKYO PACE",
+      "generatedAt": "2026-07-18T19:14:16.703Z"
     },
     {
       "datasetId": "tokyo-station-accessible",
@@ -155,7 +223,13 @@
       "excludedRecordCount": 13,
       "sourceUpdatedAt": null,
       "encoding": "shift_jis",
-      "license": "CC BY"
+      "license": "CC BY",
+      "provider": "東京都福祉局",
+      "datasetName": "鉄道駅の車椅子使用者対応トイレ",
+      "sourceType": "official_open_data",
+      "attribution": "東京都福祉局「鉄道駅の車椅子使用者対応トイレ」（CC BY）",
+      "generatedBy": "TOKYO PACE",
+      "generatedAt": "2026-07-18T19:14:16.703Z"
     }
   ]
 }

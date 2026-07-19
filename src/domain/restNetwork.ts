@@ -3,12 +3,12 @@ import type { Coordinate } from "./geo";
 import type { DemoRoute, GapSegment, RestCandidate, RestConfidence, RestInsertionSuggestion } from "../types";
 
 export const REST_CANDIDATE_DISTANCE_METERS = 350;
-const rank: Record<RestConfidence, number> = { confirmed: 0, supported: 1, possible: 2, estimated: 3 };
 
 export function deriveRestConfidence(candidate: Pick<RestCandidate, "category" | "seating" | "indoor" | "drinkingWaterAvailable" | "source">): RestConfidence {
   if (candidate.category === "estimated_rest_spot") return "estimated";
-  if (candidate.category === "verified_rest_spot" || candidate.source.fieldVerifiedAt || candidate.seating === true) return "confirmed";
-  if (candidate.indoor === true && candidate.drinkingWaterAvailable === true) return "supported";
+  // Official attributes or a date alone are not enough to prove that a person can
+  // enter and sit down. Field verification promotion is handled by the stricter
+  // pure rules in fieldVerification.mjs.
   return "possible";
 }
 
@@ -52,30 +52,65 @@ export function suggestRestInsertion(route: DemoRoute, segments: GapSegment[]): 
   return { suggestedRestInsertionProgressMeters: insertion, suggestedRestInsertionCoordinate: coordinateAtRouteProgress(route, insertion), currentLongestRestGapMeters: largest.gapMeters, improvedLongestRestGapMeters: improved, improvementMeters: improvement, improvementRatio: largest.gapMeters ? improvement / largest.gapMeters : 0 };
 }
 
-const eligibleRest = (candidate: RestCandidate) => candidate.category === "verified_rest_spot" || candidate.category === "estimated_rest_spot" || candidate.seating === true;
+const isStrictRest = (candidate: RestCandidate) => candidate.category !== "drinking_station" && (candidate.confidence === "confirmed" || candidate.confidence === "supported");
+const isPossibleRestReference = (candidate: RestCandidate) => candidate.category !== "drinking_station" && candidate.confidence === "possible";
+const isFieldVerified = (candidate: RestCandidate) => Boolean(candidate.fieldVerificationId || candidate.source.fieldVerifiedAt);
+const totalWalkingMinutes = (route: DemoRoute) => route.durationSeconds === undefined ? route.durationMinutes : route.durationSeconds / 60;
+
+function buildNetworkSnapshot(route: DemoRoute, strictCandidates: RestCandidate[], walkingLimitMinutes: number) {
+  const gaps = deriveCandidateGaps(route, strictCandidates);
+  const longestUncoveredWalkingMinutes = route.distanceMeters ? gaps.longestGapMeters / route.distanceMeters * totalWalkingMinutes(route) : 0;
+  const continuityFeasibleByRestNetwork = longestUncoveredWalkingMinutes <= walkingLimitMinutes;
+  return {
+    strictRestCandidateCount: strictCandidates.length,
+    maxContinuousWalkingMinutes: longestUncoveredWalkingMinutes,
+    longestRestGapMeters: gaps.longestGapMeters,
+    continuityFeasibleByRestNetwork,
+    longestUncoveredWalkingMinutes,
+    restNetworkCoverageRatio: route.distanceMeters ? Math.max(0, 1 - gaps.longestGapMeters / route.distanceMeters) : 0,
+    continuityFailureReason: continuityFeasibleByRestNetwork ? null : strictCandidates.length
+      ? `現地確認の根拠がある休憩候補を含めても最長${Math.ceil(longestUncoveredWalkingMinutes)}分の空白があります`
+      : `現地確認の根拠がある途中の休憩候補がなく、経路全体で最長${Math.ceil(longestUncoveredWalkingMinutes)}分歩く計算です`,
+    restInsertionSuggestion: suggestRestInsertion(route, gaps.segments),
+  };
+}
+
 export function evaluateRestNetwork(route: DemoRoute, candidates: RestCandidate[], walkingLimitMinutes: number, segmentFeasible: boolean) {
   const nearby = candidates.filter((candidate) => distancePointToRouteMeters([candidate.latitude, candidate.longitude], route.coordinates) <= REST_CANDIDATE_DISTANCE_METERS);
-  const rest = nearby.filter(eligibleRest); const water = nearby.filter((candidate) => candidate.drinkingWaterAvailable === true);
+  const strictRest = nearby.filter(isStrictRest); const water = nearby.filter((candidate) => candidate.drinkingWaterAvailable === true);
   const indoor = nearby.filter((candidate) => candidate.indoor === true);
-  const restGaps = deriveCandidateGaps(route, rest); const waterGaps = deriveCandidateGaps(route, water); const indoorGaps = deriveCandidateGaps(route, indoor);
-  const results = (["confirmed", "supported", "possible", "estimated"] as RestConfidence[]).map((level) => {
-    const allowed = rest.filter((candidate) => rank[candidate.confidence] <= rank[level]);
-    const gap = deriveCandidateGaps(route, allowed).longestGapMeters;
-    return { level, minutes: route.distanceMeters ? gap / route.distanceMeters * route.durationMinutes : 0 };
-  });
-  const success = results.find((item) => item.minutes <= walkingLimitMinutes);
-  const longestMinutes = restGaps.longestGapMeters / route.distanceMeters * route.durationMinutes;
+  const restGaps = deriveCandidateGaps(route, strictRest); const waterGaps = deriveCandidateGaps(route, water); const indoorGaps = deriveCandidateGaps(route, indoor);
+  const confirmed = strictRest.filter((candidate) => candidate.confidence === "confirmed");
+  const confirmedSnapshot = buildNetworkSnapshot(route, confirmed, walkingLimitMinutes);
+  const afterSnapshot = buildNetworkSnapshot(route, strictRest, walkingLimitMinutes);
+  const beforeStrict = strictRest.filter((candidate) => !isFieldVerified(candidate));
+  const beforeSnapshot = buildNetworkSnapshot(route, beforeStrict, walkingLimitMinutes);
+  const fieldImprovementMeters = Math.max(0, beforeSnapshot.longestRestGapMeters - afterSnapshot.longestRestGapMeters);
+  const networkLevel = confirmed.length > 0 && confirmedSnapshot.continuityFeasibleByRestNetwork
+    ? "confirmed" as const
+    : strictRest.some((candidate) => candidate.confidence === "supported") && afterSnapshot.continuityFeasibleByRestNetwork
+      ? "supported" as const
+      : "none" as const;
   return {
-    nearestRestCandidateDistanceMeters: rest.length ? Math.round(Math.min(...rest.map((candidate) => distancePointToRouteMeters([candidate.latitude, candidate.longitude], route.coordinates)))) : null,
+    nearestRestCandidateDistanceMeters: strictRest.length ? Math.round(Math.min(...strictRest.map((candidate) => distancePointToRouteMeters([candidate.latitude, candidate.longitude], route.coordinates)))) : null,
     nearestDrinkingStationDistanceMeters: water.length ? Math.round(Math.min(...water.map((candidate) => distancePointToRouteMeters([candidate.latitude, candidate.longitude], route.coordinates)))) : null,
     longestRestGapMeters: restGaps.longestGapMeters, longestDrinkingWaterGapMeters: waterGaps.longestGapMeters, longestIndoorCandidateGapMeters: indoorGaps.longestGapMeters,
-    restCandidateCount: rest.length, drinkingStationCount: water.length, indoorCandidateCount: indoor.length,
-    confirmedRestSpotCount: rest.filter((x) => x.confidence === "confirmed").length, supportedRestSpotCount: rest.filter((x) => x.confidence === "supported").length, possibleRestSpotCount: rest.filter((x) => x.confidence === "possible").length,
-    referencePossibleCandidateCount: nearby.filter((x) => x.confidence === "possible").length,
-    continuityFeasibleBySegment: segmentFeasible, continuityFeasibleByRestNetwork: Boolean(success), longestUncoveredWalkingMinutes: longestMinutes,
-    restNetworkCoverageRatio: Math.max(0, 1 - restGaps.longestGapMeters / route.distanceMeters), restNetworkLevel: success?.level ?? ("none" as const),
-    continuityFailureReason: success ? null : `休憩根拠のある候補を含めても最長${Math.ceil(longestMinutes)}分の空白があります`,
+    restCandidateCount: strictRest.length, drinkingStationCount: water.length, indoorCandidateCount: indoor.length,
+    confirmedRestSpotCount: confirmed.length, supportedRestSpotCount: strictRest.filter((x) => x.confidence === "supported").length, possibleRestSpotCount: nearby.filter(isPossibleRestReference).length,
+    strictRestCandidateCount: strictRest.length,
+    referencePossibleCandidateCount: nearby.filter(isPossibleRestReference).length,
+    referenceEstimatedCandidateCount: nearby.filter((candidate) => candidate.confidence === "estimated").length,
+    continuityFeasibleBySegment: segmentFeasible, continuityFeasibleByRestNetwork: afterSnapshot.continuityFeasibleByRestNetwork, longestUncoveredWalkingMinutes: afterSnapshot.longestUncoveredWalkingMinutes,
+    restNetworkCoverageRatio: afterSnapshot.restNetworkCoverageRatio, restNetworkLevel: networkLevel,
+    continuityFailureReason: afterSnapshot.continuityFailureReason,
     restGapSegments: restGaps.segments, drinkingWaterGapSegments: waterGaps.segments, indoorCandidateGapSegments: indoorGaps.segments,
     restInsertionSuggestion: suggestRestInsertion(route, restGaps.segments),
+    fieldVerificationComparison: {
+      hasFieldVerificationData: strictRest.some(isFieldVerified),
+      before: beforeSnapshot,
+      after: afterSnapshot,
+      improvementMeters: fieldImprovementMeters,
+      improvementRatio: beforeSnapshot.longestRestGapMeters ? fieldImprovementMeters / beforeSnapshot.longestRestGapMeters : 0,
+    },
   };
 }

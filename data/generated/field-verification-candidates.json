@@ -1,0 +1,591 @@
+{
+  "metadata": {
+    "schemaVersion": 1,
+    "generatedBy": "TOKYO PACE",
+    "generatedAt": "2026-07-18T19:14:16.703Z",
+    "routeIds": [
+      "comfort",
+      "standard"
+    ],
+    "maximumDistanceToRouteMeters": 350,
+    "requestedLimit": 12,
+    "eligibleGroupCount": 10,
+    "coordinateConflictGroupCount": 1,
+    "excludedCoordinateConflictCandidateCount": 4,
+    "excludedCoordinateConflictPlaceCount": 4,
+    "candidateCount": 10,
+    "sourceDatasetIds": [
+      "daredemo-accommodation",
+      "daredemo-parks",
+      "daredemo-shopping",
+      "shinjuku-public-facilities"
+    ]
+  },
+  "candidates": [
+    {
+      "fieldCheckPriority": 1,
+      "candidateId": "daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371",
+      "verificationId": "fv-daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371",
+      "name": "ハイアットリージェンシー東京",
+      "latitude": 35.691099,
+      "longitude": 139.691371,
+      "address": "東京都新宿区西新宿2-7-2",
+      "categories": [
+        "barrier_free_facility"
+      ],
+      "routeIds": [
+        "comfort",
+        "standard"
+      ],
+      "primaryRouteId": "comfort",
+      "distanceToRouteMeters": 62,
+      "routeProgressMeters": 680,
+      "currentLongestGapMeters": 1350,
+      "expectedImprovedGapMeters": 680,
+      "expectedImprovementMeters": 670,
+      "expectedImprovementRatio": 0.4966,
+      "distanceToSuggestedInsertionMeters": 63,
+      "selectionReasons": [
+        "現在の最長休憩空白区間内",
+        "理論上の休憩地点追加候補に近い",
+        "デモルートから推定直線100m以内",
+        "公式のバリアフリー施設情報",
+        "新宿区内として公式掲載",
+        "複数のデモルートに近い"
+      ],
+      "officialSourceIds": [
+        "daredemo-accommodation:daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371"
+      ],
+      "groupedCandidateIds": [
+        "daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371"
+      ],
+      "routeMetrics": [
+        {
+          "routeId": "comfort",
+          "distanceToRouteMeters": 62,
+          "routeProgressMeters": 680,
+          "currentLongestGapMeters": 1350,
+          "expectedImprovedGapMeters": 680,
+          "expectedImprovementMeters": 670,
+          "expectedImprovementRatio": 0.4966,
+          "distanceToSuggestedInsertionMeters": 63,
+          "insideLargestGap": true
+        },
+        {
+          "routeId": "standard",
+          "distanceToRouteMeters": 196,
+          "routeProgressMeters": 1050,
+          "currentLongestGapMeters": 1050,
+          "expectedImprovedGapMeters": 1050,
+          "expectedImprovementMeters": 0,
+          "expectedImprovementRatio": 0,
+          "distanceToSuggestedInsertionMeters": 391,
+          "insideLargestGap": true
+        }
+      ]
+    },
+    {
+      "fieldCheckPriority": 2,
+      "candidateId": "daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787",
+      "verificationId": "fv-daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787",
+      "name": "ヒルトン東京",
+      "latitude": 35.692478,
+      "longitude": 139.691379,
+      "address": "東京都新宿区西新宿6-6-2",
+      "categories": [
+        "barrier_free_facility"
+      ],
+      "routeIds": [
+        "comfort",
+        "standard"
+      ],
+      "primaryRouteId": "comfort",
+      "distanceToRouteMeters": 214,
+      "routeProgressMeters": 656,
+      "currentLongestGapMeters": 1350,
+      "expectedImprovedGapMeters": 694,
+      "expectedImprovementMeters": 656,
+      "expectedImprovementRatio": 0.486,
+      "distanceToSuggestedInsertionMeters": 215,
+      "selectionReasons": [
+        "現在の最長休憩空白区間内",
+        "公式のバリアフリー施設情報",
+        "新宿区内として公式掲載",
+        "複数のデモルートに近い"
+      ],
+      "officialSourceIds": [
+        "daredemo-accommodation:daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787"
+      ],
+      "groupedCandidateIds": [
+        "daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787"
+      ],
+      "routeMetrics": [
+        {
+          "routeId": "comfort",
+          "distanceToRouteMeters": 214,
+          "routeProgressMeters": 656,
+          "currentLongestGapMeters": 1350,
+          "expectedImprovedGapMeters": 694,
+          "expectedImprovementMeters": 656,
+          "expectedImprovementRatio": 0.486,
+          "distanceToSuggestedInsertionMeters": 215,
+          "insideLargestGap": true
+        },
+        {
+          "routeId": "standard",
+          "distanceToRouteMeters": 340,
+          "routeProgressMeters": 971,
+          "currentLongestGapMeters": 1050,
+          "expectedImprovedGapMeters": 971,
+          "expectedImprovementMeters": 79,
+          "expectedImprovementRatio": 0.0756,
+          "distanceToSuggestedInsertionMeters": 448,
+          "insideLargestGap": true
+        }
+      ]
+    },
+    {
+      "fieldCheckPriority": 3,
+      "candidateId": "shinjuku-facility-131041000179",
+      "verificationId": "fv-shinjuku-facility-131041000179",
+      "name": "新宿観光振興協会",
+      "latitude": 35.693465,
+      "longitude": 139.690394,
+      "address": "東京都新宿区西新宿6-8-2区立産業会館3階",
+      "categories": [
+        "public_facility"
+      ],
+      "routeIds": [
+        "comfort"
+      ],
+      "primaryRouteId": "comfort",
+      "distanceToRouteMeters": 336,
+      "routeProgressMeters": 725,
+      "currentLongestGapMeters": 1350,
+      "expectedImprovedGapMeters": 725,
+      "expectedImprovementMeters": 625,
+      "expectedImprovementRatio": 0.4628,
+      "distanceToSuggestedInsertionMeters": 340,
+      "selectionReasons": [
+        "現在の最長休憩空白区間内",
+        "公式の公共施設情報",
+        "新宿区内として公式掲載"
+      ],
+      "officialSourceIds": [
+        "shinjuku-public-facilities:shinjuku-facility-131041000179",
+        "shinjuku-public-facilities:shinjuku-facility-131041000185",
+        "shinjuku-public-facilities:shinjuku-facility-131041000192"
+      ],
+      "groupedCandidateIds": [
+        "shinjuku-facility-131041000179",
+        "shinjuku-facility-131041000185",
+        "shinjuku-facility-131041000192"
+      ],
+      "routeMetrics": [
+        {
+          "routeId": "comfort",
+          "distanceToRouteMeters": 336,
+          "routeProgressMeters": 725,
+          "currentLongestGapMeters": 1350,
+          "expectedImprovedGapMeters": 725,
+          "expectedImprovementMeters": 625,
+          "expectedImprovementRatio": 0.4628,
+          "distanceToSuggestedInsertionMeters": 340,
+          "insideLargestGap": true
+        }
+      ]
+    },
+    {
+      "fieldCheckPriority": 4,
+      "candidateId": "daredemo-accommodation-京王プラザホテル-131041-35689954-139694016",
+      "verificationId": "fv-daredemo-accommodation-京王プラザホテル-131041-35689954-139694016",
+      "name": "京王プラザホテル",
+      "latitude": 35.689954,
+      "longitude": 139.694016,
+      "address": "東京都新宿区西新宿2-2-1",
+      "categories": [
+        "barrier_free_facility"
+      ],
+      "routeIds": [
+        "comfort",
+        "standard"
+      ],
+      "primaryRouteId": "comfort",
+      "distanceToRouteMeters": 100,
+      "routeProgressMeters": 469,
+      "currentLongestGapMeters": 1350,
+      "expectedImprovedGapMeters": 881,
+      "expectedImprovementMeters": 469,
+      "expectedImprovementRatio": 0.3475,
+      "distanceToSuggestedInsertionMeters": 234,
+      "selectionReasons": [
+        "現在の最長休憩空白区間内",
+        "デモルートから推定直線100m以内",
+        "公式のバリアフリー施設情報",
+        "新宿区内として公式掲載",
+        "複数のデモルートに近い"
+      ],
+      "officialSourceIds": [
+        "daredemo-accommodation:daredemo-accommodation-京王プラザホテル-131041-35689954-139694016"
+      ],
+      "groupedCandidateIds": [
+        "daredemo-accommodation-京王プラザホテル-131041-35689954-139694016"
+      ],
+      "routeMetrics": [
+        {
+          "routeId": "comfort",
+          "distanceToRouteMeters": 100,
+          "routeProgressMeters": 469,
+          "currentLongestGapMeters": 1350,
+          "expectedImprovedGapMeters": 881,
+          "expectedImprovementMeters": 469,
+          "expectedImprovementRatio": 0.3475,
+          "distanceToSuggestedInsertionMeters": 234,
+          "insideLargestGap": true
+        },
+        {
+          "routeId": "standard",
+          "distanceToRouteMeters": 5,
+          "routeProgressMeters": 766,
+          "currentLongestGapMeters": 1050,
+          "expectedImprovedGapMeters": 766,
+          "expectedImprovementMeters": 284,
+          "expectedImprovementRatio": 0.2703,
+          "distanceToSuggestedInsertionMeters": 151,
+          "insideLargestGap": true
+        }
+      ]
+    },
+    {
+      "fieldCheckPriority": 5,
+      "candidateId": "shinjuku-facility-131041000146",
+      "verificationId": "fv-shinjuku-facility-131041000146",
+      "name": "環境学習情報センター （エコギャラリー新宿）",
+      "latitude": 35.691028,
+      "longitude": 139.68861,
+      "address": "東京都新宿区西新宿2-11-4",
+      "categories": [
+        "public_facility"
+      ],
+      "routeIds": [
+        "comfort"
+      ],
+      "primaryRouteId": "comfort",
+      "distanceToRouteMeters": 93,
+      "routeProgressMeters": 920,
+      "currentLongestGapMeters": 1350,
+      "expectedImprovedGapMeters": 920,
+      "expectedImprovementMeters": 430,
+      "expectedImprovementRatio": 0.3184,
+      "distanceToSuggestedInsertionMeters": 269,
+      "selectionReasons": [
+        "現在の最長休憩空白区間内",
+        "デモルートから推定直線100m以内",
+        "公式の公共施設情報",
+        "新宿区内として公式掲載"
+      ],
+      "officialSourceIds": [
+        "shinjuku-public-facilities:shinjuku-facility-131041000146",
+        "shinjuku-public-facilities:shinjuku-facility-131041000172"
+      ],
+      "groupedCandidateIds": [
+        "shinjuku-facility-131041000146",
+        "shinjuku-facility-131041000172"
+      ],
+      "routeMetrics": [
+        {
+          "routeId": "comfort",
+          "distanceToRouteMeters": 93,
+          "routeProgressMeters": 920,
+          "currentLongestGapMeters": 1350,
+          "expectedImprovedGapMeters": 920,
+          "expectedImprovementMeters": 430,
+          "expectedImprovementRatio": 0.3184,
+          "distanceToSuggestedInsertionMeters": 269,
+          "insideLargestGap": true
+        }
+      ]
+    },
+    {
+      "fieldCheckPriority": 6,
+      "candidateId": "shinjuku-facility-131041000270",
+      "verificationId": "fv-shinjuku-facility-131041000270",
+      "name": "新宿養護学校",
+      "latitude": 35.688299,
+      "longitude": 139.6861,
+      "address": "東京都新宿区西新宿4-20-11",
+      "categories": [
+        "public_facility"
+      ],
+      "routeIds": [
+        "comfort"
+      ],
+      "primaryRouteId": "comfort",
+      "distanceToRouteMeters": 254,
+      "routeProgressMeters": 1006,
+      "currentLongestGapMeters": 1350,
+      "expectedImprovedGapMeters": 1006,
+      "expectedImprovementMeters": 344,
+      "expectedImprovementRatio": 0.255,
+      "distanceToSuggestedInsertionMeters": 550,
+      "selectionReasons": [
+        "現在の最長休憩空白区間内",
+        "公式の公共施設情報",
+        "新宿区内として公式掲載"
+      ],
+      "officialSourceIds": [
+        "shinjuku-public-facilities:shinjuku-facility-131041000270"
+      ],
+      "groupedCandidateIds": [
+        "shinjuku-facility-131041000270"
+      ],
+      "routeMetrics": [
+        {
+          "routeId": "comfort",
+          "distanceToRouteMeters": 254,
+          "routeProgressMeters": 1006,
+          "currentLongestGapMeters": 1350,
+          "expectedImprovedGapMeters": 1006,
+          "expectedImprovementMeters": 344,
+          "expectedImprovementRatio": 0.255,
+          "distanceToSuggestedInsertionMeters": 550,
+          "insideLargestGap": true
+        }
+      ]
+    },
+    {
+      "fieldCheckPriority": 7,
+      "candidateId": "shinjuku-facility-131041000014",
+      "verificationId": "fv-shinjuku-facility-131041000014",
+      "name": "角筈特別出張所",
+      "latitude": 35.686226,
+      "longitude": 139.689065,
+      "address": "東京都新宿区西新宿4-33-7",
+      "categories": [
+        "public_facility"
+      ],
+      "routeIds": [
+        "comfort"
+      ],
+      "primaryRouteId": "comfort",
+      "distanceToRouteMeters": 318,
+      "routeProgressMeters": 1092,
+      "currentLongestGapMeters": 1350,
+      "expectedImprovedGapMeters": 1092,
+      "expectedImprovementMeters": 258,
+      "expectedImprovementRatio": 0.1908,
+      "distanceToSuggestedInsertionMeters": 530,
+      "selectionReasons": [
+        "現在の最長休憩空白区間内",
+        "公式の公共施設情報",
+        "新宿区内として公式掲載"
+      ],
+      "officialSourceIds": [
+        "shinjuku-public-facilities:shinjuku-facility-131041000014",
+        "shinjuku-public-facilities:shinjuku-facility-131041000126",
+        "shinjuku-public-facilities:shinjuku-facility-131041000136",
+        "shinjuku-public-facilities:shinjuku-facility-131041000168"
+      ],
+      "groupedCandidateIds": [
+        "shinjuku-facility-131041000014",
+        "shinjuku-facility-131041000126",
+        "shinjuku-facility-131041000136",
+        "shinjuku-facility-131041000168"
+      ],
+      "routeMetrics": [
+        {
+          "routeId": "comfort",
+          "distanceToRouteMeters": 318,
+          "routeProgressMeters": 1092,
+          "currentLongestGapMeters": 1350,
+          "expectedImprovedGapMeters": 1092,
+          "expectedImprovementMeters": 258,
+          "expectedImprovementRatio": 0.1908,
+          "distanceToSuggestedInsertionMeters": 530,
+          "insideLargestGap": true
+        }
+      ]
+    },
+    {
+      "fieldCheckPriority": 8,
+      "candidateId": "daredemo-shopping-ヨドバシカメラ新宿西口本店-131041-35689815-139697891",
+      "verificationId": "fv-daredemo-shopping-ヨドバシカメラ新宿西口本店-131041-35689815-139697891",
+      "name": "ヨドバシカメラ新宿西口本店",
+      "latitude": 35.689815,
+      "longitude": 139.697891,
+      "address": "東京都新宿区西新宿1-11-1",
+      "categories": [
+        "barrier_free_facility"
+      ],
+      "routeIds": [
+        "comfort",
+        "standard"
+      ],
+      "primaryRouteId": "standard",
+      "distanceToRouteMeters": 104,
+      "routeProgressMeters": 212,
+      "currentLongestGapMeters": 1050,
+      "expectedImprovedGapMeters": 838,
+      "expectedImprovementMeters": 212,
+      "expectedImprovementRatio": 0.2021,
+      "distanceToSuggestedInsertionMeters": 216,
+      "selectionReasons": [
+        "現在の最長休憩空白区間内",
+        "公式のバリアフリー施設情報",
+        "新宿区内として公式掲載",
+        "複数のデモルートに近い"
+      ],
+      "officialSourceIds": [
+        "daredemo-shopping:daredemo-shopping-ヨドバシカメラ新宿西口本店-131041-35689815-139697891"
+      ],
+      "groupedCandidateIds": [
+        "daredemo-shopping-ヨドバシカメラ新宿西口本店-131041-35689815-139697891"
+      ],
+      "routeMetrics": [
+        {
+          "routeId": "comfort",
+          "distanceToRouteMeters": 128,
+          "routeProgressMeters": 107,
+          "currentLongestGapMeters": 1350,
+          "expectedImprovedGapMeters": 1243,
+          "expectedImprovementMeters": 107,
+          "expectedImprovementRatio": 0.0792,
+          "distanceToSuggestedInsertionMeters": 580,
+          "insideLargestGap": true
+        },
+        {
+          "routeId": "standard",
+          "distanceToRouteMeters": 104,
+          "routeProgressMeters": 212,
+          "currentLongestGapMeters": 1050,
+          "expectedImprovedGapMeters": 838,
+          "expectedImprovementMeters": 212,
+          "expectedImprovementRatio": 0.2021,
+          "distanceToSuggestedInsertionMeters": 216,
+          "insideLargestGap": true
+        }
+      ]
+    },
+    {
+      "fieldCheckPriority": 9,
+      "candidateId": "daredemo-parks-新宿区立新宿中央公園-131041-3568933778-1396898986",
+      "verificationId": "fv-daredemo-parks-新宿区立新宿中央公園-131041-3568933778-1396898986",
+      "name": "新宿区立新宿中央公園",
+      "latitude": 35.689338,
+      "longitude": 139.689899,
+      "address": "東京都新宿区西新宿2-11-1",
+      "categories": [
+        "barrier_free_facility"
+      ],
+      "routeIds": [
+        "comfort",
+        "standard"
+      ],
+      "primaryRouteId": "comfort",
+      "distanceToRouteMeters": 19,
+      "routeProgressMeters": 1153,
+      "currentLongestGapMeters": 1350,
+      "expectedImprovedGapMeters": 1153,
+      "expectedImprovementMeters": 197,
+      "expectedImprovementRatio": 0.146,
+      "distanceToSuggestedInsertionMeters": 200,
+      "selectionReasons": [
+        "現在の最長休憩空白区間内",
+        "デモルートから推定直線100m以内",
+        "公式のバリアフリー施設情報",
+        "新宿区内として公式掲載",
+        "複数のデモルートに近い"
+      ],
+      "officialSourceIds": [
+        "daredemo-parks:daredemo-parks-新宿区立新宿中央公園-131041-3568933778-1396898986"
+      ],
+      "groupedCandidateIds": [
+        "daredemo-parks-新宿区立新宿中央公園-131041-3568933778-1396898986"
+      ],
+      "routeMetrics": [
+        {
+          "routeId": "comfort",
+          "distanceToRouteMeters": 19,
+          "routeProgressMeters": 1153,
+          "currentLongestGapMeters": 1350,
+          "expectedImprovedGapMeters": 1153,
+          "expectedImprovementMeters": 197,
+          "expectedImprovementRatio": 0.146,
+          "distanceToSuggestedInsertionMeters": 200,
+          "insideLargestGap": true
+        },
+        {
+          "routeId": "standard",
+          "distanceToRouteMeters": 204,
+          "routeProgressMeters": 1050,
+          "currentLongestGapMeters": 1050,
+          "expectedImprovedGapMeters": 1050,
+          "expectedImprovementMeters": 0,
+          "expectedImprovementRatio": 0,
+          "distanceToSuggestedInsertionMeters": 528,
+          "insideLargestGap": true
+        }
+      ]
+    },
+    {
+      "fieldCheckPriority": 10,
+      "candidateId": "daredemo-shopping-ニュウマン新宿-131041-3568856722-1397014075",
+      "verificationId": "fv-daredemo-shopping-ニュウマン新宿-131041-3568856722-1397014075",
+      "name": "ニュウマン新宿",
+      "latitude": 35.688567,
+      "longitude": 139.701407,
+      "address": "東京都新宿区新宿4-1-6",
+      "categories": [
+        "barrier_free_facility"
+      ],
+      "routeIds": [
+        "comfort",
+        "standard"
+      ],
+      "primaryRouteId": "comfort",
+      "distanceToRouteMeters": 331,
+      "routeProgressMeters": 0,
+      "currentLongestGapMeters": 1350,
+      "expectedImprovedGapMeters": 1350,
+      "expectedImprovementMeters": 0,
+      "expectedImprovementRatio": 0,
+      "distanceToSuggestedInsertionMeters": 919,
+      "selectionReasons": [
+        "現在の最長休憩空白区間内",
+        "公式のバリアフリー施設情報",
+        "新宿区内として公式掲載",
+        "複数のデモルートに近い"
+      ],
+      "officialSourceIds": [
+        "daredemo-shopping:daredemo-shopping-ニュウマン新宿-131041-3568856722-1397014075"
+      ],
+      "groupedCandidateIds": [
+        "daredemo-shopping-ニュウマン新宿-131041-3568856722-1397014075"
+      ],
+      "routeMetrics": [
+        {
+          "routeId": "comfort",
+          "distanceToRouteMeters": 331,
+          "routeProgressMeters": 0,
+          "currentLongestGapMeters": 1350,
+          "expectedImprovedGapMeters": 1350,
+          "expectedImprovementMeters": 0,
+          "expectedImprovementRatio": 0,
+          "distanceToSuggestedInsertionMeters": 919,
+          "insideLargestGap": true
+        },
+        {
+          "routeId": "standard",
+          "distanceToRouteMeters": 331,
+          "routeProgressMeters": 0,
+          "currentLongestGapMeters": 1050,
+          "expectedImprovedGapMeters": 1050,
+          "expectedImprovementMeters": 0,
+          "expectedImprovementRatio": 0,
+          "distanceToSuggestedInsertionMeters": 561,
+          "insideLargestGap": true
+        }
+      ]
+    }
+  ]
+}

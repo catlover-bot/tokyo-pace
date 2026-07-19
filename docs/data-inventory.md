@@ -8,6 +8,19 @@
 | Tokyowater Drinking Station | 東京都水道局 | CSV・Shift_JIS | CC BY | 給水地点 |
 | 新宿区公共施設情報 | 新宿区 | CSV・UTF-16LE | CC BY | 公共施設候補 |
 
+## 現地確認入力と派生データ
+
+| データ | 区分 | 保存先 | ライセンス・出典 | 公開範囲 |
+|---|---|---|---|---|
+| 休憩地点の現地確認履歴 | TOKYO PACEによる人手確認入力 | `data/field-verification/rest-spots.csv` | TOKYO PACE現地確認。元候補の公式source IDを保持 | 全履歴は開発・監査用。不要な個人情報を記録しない |
+| 正規化済み確認地点 | TOKYO PACE生成データ | `data/generated/verified-rest-spots.json` | 元公式データと現地確認根拠を分離 | ブラウザ版はデモルート近傍の評価属性だけ。verifier/notesなし |
+| 現地確認優先候補 | TOKYO PACE理論分析 | `data/generated/field-verification-candidates.json/.csv` | 元公式source ID、`generatedBy`を保持 | 上位10〜15地点（上限12）。座標品質異常は除外。休憩可否・設置可能性の保証ではない |
+| 選択経路分析CSV/GeoJSON | 利用時に生成するTOKYO PACE分析 | ブラウザダウンロード | FeatureごとにOSM/ODbL、公式CC BY、TOKYO PACE派生を区別 | 選択中経路だけ |
+
+現地確認CSVの初期状態はヘッダーのみで、2026-07-19時点の実確認結果は0件です。`true` / `false` / `null`を区別し、空欄は不明として扱います。確認日時だけ、公式掲載だけ、座席属性だけではconfirmedへ昇格しません。confirmed/supportedだけが厳格な休憩ネットワークへ入り、possible/estimatedは参考です。
+
+現地確認候補は公式の公共施設・バリアフリー掲載施設を対象に、デモルートの最長空白と理論追加位置への近さ、複数経路への効果を計算した派生値です。施設からルートまでは推定直線距離、進行位置・空白・改善はデモルート総距離へ正規化したルート沿い推定距離です。実道路の徒歩距離ではありません。
+
 不明属性は`false`ではなく`null`とし、座席・屋内・自由利用をデータなしに推測しません。生成JSONには構造化された提供者、データセットURL、配布URL、ライセンス、更新・取得・現地確認日時を保持します。
 
 取得日時、配布URL、SHA-256、バイト数、文字コードは`open-data-manifest.json`へ集約します。全件版は`data/generated/`、ブラウザ向け縮小版は`src/data/generated/`に分離し、後者には全件レコードを重複保存しません。
@@ -27,6 +40,8 @@
 `npm run data:update` が公式CSVを取得し、文字コード、必須ヘッダー、座標を検証します。元CSVは `data/raw/`、全件の正規化JSONは `data/generated/`、デモルートから直線距離350m以内に限定したアプリ同梱JSONは `src/data/generated/` に生成します。生成物には取得日時と出典を記録します。
 
 空欄は `null`、明示的な「有・○」は `true`、「無・×」は `false` とします。座標欠損、不正数値、範囲外座標は理由をログに残して除外します。スキーマ変更で必須ヘッダーがなくなった場合は処理を停止し、既存の生成ファイルを維持します。
+
+同じ更新処理で現地確認CSVも検証しますが、これは外部取得データではないため、公式CSVの`retrievedAt` manifestへ混在させません。入力SHA-256、バイト数、有効・除外件数、最新確認日時、confidence件数、除外理由はverified生成物の独立metadataへ記録します。決定性検証は生成JSONに加えて派生CSVも比較します。
 
 ## レコード分類と監査
 

@@ -3,6 +3,8 @@ export type Confidence = "official" | "verified" | "estimated";
 export type PlaceCategory = "drinking_station" | "barrier_free_facility" | "public_facility" | "verified_rest_spot" | "estimated_rest_spot";
 export type RestConfidence = "confirmed" | "supported" | "possible" | "estimated";
 export type OfficialToiletKind = "public_toilet" | "facility_toilet_information" | "station_toilet_information";
+export type FieldVerificationMethod = "on_site_observation" | "combined_on_site_and_official" | "official_source_review" | "staff_confirmation";
+export type AnalysisSourceType = "official_open_data" | "openstreetmap_route" | "tokyo_pace_field_verification" | "tokyo_pace_derived_analysis" | "tokyo_pace_estimated_demo";
 
 export type DataSource = {
   sourceDatasetId?: string;
@@ -15,10 +17,39 @@ export type DataSource = {
   datasetUpdatedAt: string | null;
   retrievedAt?: string | null;
   fieldVerifiedAt: string | null;
+  sourceType?: AnalysisSourceType;
+  attribution?: string | null;
 };
 
-export type OpenDataManifestEntry = { datasetId: string; datasetUrl: string; resourceUrl: string; retrievedAt: string; contentSha256: string; byteSize: number; normalizedRecordCount: number; excludedRecordCount: number; sourceUpdatedAt: string | null; encoding: string; license: string };
-export type OpenDataManifest = { schemaVersion: number; datasets: OpenDataManifestEntry[] };
+export type OpenDataManifestEntry = { datasetId: string; datasetUrl: string; resourceUrl: string; retrievedAt: string; contentSha256: string; byteSize: number; normalizedRecordCount: number; excludedRecordCount: number; sourceUpdatedAt: string | null; encoding: string; license: string; sourceType?: AnalysisSourceType; provider?: string; datasetName?: string; attribution?: string; generatedBy?: string; generatedAt?: string };
+export type OpenDataManifest = { schemaVersion: number; datasets: OpenDataManifestEntry[]; generatedBy?: string; generatedAt?: string };
+
+export type FieldVerificationRecord = {
+  verificationId: string; candidateId: string; name: string; latitude: number; longitude: number;
+  address: string | null; verifiedAt: string | null; verifier: string | null;
+  verificationMethod: FieldVerificationMethod | null;
+  publiclyAccessible: boolean | null; seatingAvailable: boolean | null; indoorOrCovered: boolean | null;
+  drinkingWaterAvailable: boolean | null; toiletAvailable: boolean | null; wheelchairAccessible: boolean | null;
+  openingHoursObserved: string | null; accessRestrictions: string | null; evidenceReference: string | null; notes: string | null;
+  confidence: Exclude<RestConfidence, "estimated">;
+};
+
+export type FieldVerificationRouteMetric = {
+  routeId: string; distanceToRouteMeters: number; routeProgressMeters: number;
+  currentLongestGapMeters: number; expectedImprovedGapMeters: number;
+  expectedImprovementMeters: number; expectedImprovementRatio: number;
+  distanceToSuggestedInsertionMeters: number; insideLargestGap: boolean;
+};
+
+export type FieldVerificationCandidate = {
+  candidateId: string; verificationId: string; name: string; address: string | null;
+  latitude: number; longitude: number; routeIds: string[]; primaryRouteId: string;
+  distanceToRouteMeters: number; routeProgressMeters: number;
+  currentLongestGapMeters: number; expectedImprovedGapMeters: number;
+  expectedImprovementMeters: number; expectedImprovementRatio: number;
+  selectionReasons: string[]; officialSourceIds: string[]; fieldCheckPriority: number;
+  routeMetrics: FieldVerificationRouteMetric[];
+};
 
 export type RestSpot = {
   id: string; name: string; latitude: number; longitude: number; category: RestSpotCategory;
@@ -36,6 +67,8 @@ export type RestCandidate = {
   openingHours: string | null; indoor: boolean | null; seating: boolean | null;
   drinkingWaterAvailable: boolean | null; wheelchairAccessible: boolean | null;
   source: DataSource;
+  fieldVerificationId?: string | null;
+  officialSourceIds?: string[];
 };
 
 export type GapSegment = { startProgressMeters: number; endProgressMeters: number; gapMeters: number; coordinates: [number, number][] };
@@ -45,17 +78,28 @@ export type RestInsertionSuggestion = {
   currentLongestRestGapMeters: number; improvedLongestRestGapMeters: number;
   improvementMeters: number; improvementRatio: number;
 };
+export type RestNetworkSnapshot = {
+  strictRestCandidateCount: number; maxContinuousWalkingMinutes: number; longestRestGapMeters: number;
+  continuityFeasibleByRestNetwork: boolean; longestUncoveredWalkingMinutes: number;
+  restNetworkCoverageRatio: number; continuityFailureReason: string | null;
+  restInsertionSuggestion: RestInsertionSuggestion;
+};
+export type FieldVerificationImpactComparison = {
+  hasFieldVerificationData: boolean; before: RestNetworkSnapshot; after: RestNetworkSnapshot;
+  improvementMeters: number; improvementRatio: number;
+};
 export type RestNetworkMetrics = {
   nearestRestCandidateDistanceMeters: number | null; nearestDrinkingStationDistanceMeters: number | null;
   longestRestGapMeters: number; longestDrinkingWaterGapMeters: number; longestIndoorCandidateGapMeters: number;
   restCandidateCount: number; drinkingStationCount: number; indoorCandidateCount: number;
   confirmedRestSpotCount: number; supportedRestSpotCount: number; possibleRestSpotCount: number;
-  referencePossibleCandidateCount: number;
+  strictRestCandidateCount: number; referencePossibleCandidateCount: number; referenceEstimatedCandidateCount: number;
   continuityFeasibleBySegment: boolean; continuityFeasibleByRestNetwork: boolean;
   longestUncoveredWalkingMinutes: number; restNetworkCoverageRatio: number;
   continuityFailureReason: string | null; restNetworkLevel: RestConfidence | "none";
   restGapSegments: GapSegment[]; drinkingWaterGapSegments: GapSegment[]; indoorCandidateGapSegments: GapSegment[];
   restInsertionSuggestion: RestInsertionSuggestion;
+  fieldVerificationComparison: FieldVerificationImpactComparison;
 };
 
 export type OfficialToiletPlace = {

@@ -51130,5 +51130,26 @@
         "null": 0
       }
     }
+  },
+  "fieldVerification": {
+    "sourceDatasetId": "tokyo-pace-field-verification-rest-spots",
+    "inputRowCount": 0,
+    "normalizedRecordCount": 0,
+    "excludedRecordCount": 0,
+    "effectiveCandidateCount": 0,
+    "confidenceCounts": {
+      "confirmed": 0,
+      "supported": 0,
+      "possible": 0
+    },
+    "exclusionReasonCounts": {},
+    "exclusions": [],
+    "candidateExtraction": {
+      "eligibleGroupCount": 10,
+      "candidateCount": 10,
+      "coordinateConflictGroupCount": 1,
+      "excludedCoordinateConflictCandidateCount": 4,
+      "excludedCoordinateConflictPlaceCount": 4
+    }
   }
 }

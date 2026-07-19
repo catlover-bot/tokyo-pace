@@ -1,0 +1,43 @@
+export type FieldVerificationConfidence = "confirmed" | "supported" | "possible";
+export type FieldVerificationRecord = {
+  verificationId: string;
+  candidateId: string;
+  name: string;
+  latitude: number;
+  longitude: number;
+  address: string | null;
+  verifiedAt: string | null;
+  verifier: string | null;
+  verificationMethod: string | null;
+  publiclyAccessible: boolean | null;
+  seatingAvailable: boolean | null;
+  indoorOrCovered: boolean | null;
+  drinkingWaterAvailable: boolean | null;
+  toiletAvailable: boolean | null;
+  wheelchairAccessible: boolean | null;
+  openingHoursObserved: string | null;
+  accessRestrictions: string | null;
+  evidenceReference: string | null;
+  notes: string | null;
+  confidence: FieldVerificationConfidence;
+};
+export const FIELD_VERIFICATION_DATASET_ID: string;
+export const FIELD_VERIFICATION_HEADERS: string[];
+export const FIELD_VERIFICATION_METHODS: string[];
+export function parseVerificationBoolean(value: string | undefined): { value?: boolean | null; error?: string };
+export function normalizeVerifiedAt(value: string | undefined): { value?: string | null; error?: string };
+export function isValidEvidenceReference(value: string | undefined): boolean;
+export function deriveFieldVerificationConfidence(record: Partial<FieldVerificationRecord>): FieldVerificationConfidence;
+export function normalizeFieldVerificationRows(rows: Record<string, string>[], candidates: Array<{ id: string }>): {
+  records: FieldVerificationRecord[];
+  exclusions: Array<{ rowNumber: number; verificationId: string | null; candidateId: string | null; reasons: string[] }>;
+  inputCount: number;
+  normalizedCount: number;
+  excludedCount: number;
+};
+export function selectEffectiveFieldVerifications(records: FieldVerificationRecord[]): FieldVerificationRecord[];
+export function buildVerifiedRestCandidates(records: FieldVerificationRecord[], candidates: Array<Record<string, unknown>>, candidateGroups?: Array<{
+  candidateId: string;
+  groupedCandidateIds?: string[];
+  officialSourceIds?: string[];
+}>): Array<Record<string, unknown>>;

@@ -1,0 +1,58 @@
+{
+  "routes": [
+    {
+      "id": "standard",
+      "name": "標準歩行候補",
+      "coordinates": [[35.69092, 139.69917], [35.69062, 139.69675], [35.69010, 139.69435], [35.68945, 139.69215]],
+      "durationMinutes": 14,
+      "durationSeconds": 840,
+      "distanceMeters": 1050,
+      "restSpotIds": [],
+      "walkingSegments": [{"id": "standard-source", "name": "経路全体", "distanceMeters": 1050, "walkingMinutes": 14, "endsAtRestSpot": false, "restSpotId": null}],
+      "steepSlopeCount": 1,
+      "indoorRestCount": 0,
+      "provider": "openrouteservice",
+      "profile": "standard",
+      "sourceAttribution": "© OpenStreetMap contributors / openrouteservice",
+      "generatedAt": "2026-07-19T00:00:00.000Z",
+      "warnings": ["現地の通行可否を確認してください"],
+      "isFallback": false
+    },
+    {
+      "id": "step_avoiding",
+      "name": "階段回避要求候補",
+      "coordinates": [[35.69092, 139.69917], [35.69105, 139.69640], [35.69030, 139.69380], [35.68945, 139.69215]],
+      "durationMinutes": 17,
+      "durationSeconds": 1020,
+      "distanceMeters": 1180,
+      "restSpotIds": [],
+      "walkingSegments": [{"id": "step-source", "name": "経路全体", "distanceMeters": 1180, "walkingMinutes": 17, "endsAtRestSpot": false, "restSpotId": null}],
+      "steepSlopeCount": 0,
+      "indoorRestCount": 0,
+      "provider": "openrouteservice",
+      "profile": "step_avoiding",
+      "sourceAttribution": "© OpenStreetMap contributors / openrouteservice",
+      "generatedAt": "2026-07-19T00:00:00.000Z",
+      "warnings": ["階段回避要求は現地の段差がないことを保証しません"],
+      "isFallback": false
+    },
+    {
+      "id": "wheelchair_profile",
+      "name": "車いすプロファイル候補",
+      "coordinates": [[35.69092, 139.69917], [35.69020, 139.69710], [35.68915, 139.69410], [35.68945, 139.69215]],
+      "durationMinutes": 20,
+      "durationSeconds": 1200,
+      "distanceMeters": 1320,
+      "restSpotIds": [],
+      "walkingSegments": [{"id": "wheelchair-source", "name": "経路全体", "distanceMeters": 1320, "walkingMinutes": 20, "endsAtRestSpot": false, "restSpotId": null}],
+      "steepSlopeCount": 0,
+      "indoorRestCount": 0,
+      "provider": "openrouteservice",
+      "profile": "wheelchair_profile",
+      "sourceAttribution": "© OpenStreetMap contributors / openrouteservice",
+      "generatedAt": "2026-07-19T00:00:00.000Z",
+      "warnings": ["車いすでの通行可能性は現地確認が必要です"],
+      "isFallback": false
+    }
+  ]
+}

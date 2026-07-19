@@ -4,6 +4,13 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { buildOpenDataAudit, clusterOfficialToiletRecords, distanceRecordToRoutes } from "../src/domain/officialToiletQuality.mjs";
+import {
+  FIELD_VERIFICATION_DATASET_ID,
+  FIELD_VERIFICATION_HEADERS,
+  buildVerifiedRestCandidates,
+  normalizeFieldVerificationRows,
+} from "../src/domain/fieldVerification.mjs";
+import { extractFieldVerificationCandidates } from "../src/domain/fieldVerificationCandidates.mjs";
 
 export const DATASETS = [
   {
@@ -132,10 +139,11 @@ const approximateDistance = (a, b) => {
   return Math.hypot(latitudeMeters, longitudeMeters);
 };
 
-const DEMO_ROUTES = [
-  [[35.69092, 139.69917], [35.69062, 139.69675], [35.69010, 139.69435], [35.68945, 139.69215]],
-  [[35.69092, 139.69917], [35.69105, 139.69550], [35.69018, 139.68858], [35.68955, 139.68845], [35.68908, 139.68925], [35.68945, 139.69215]],
+export const DEMO_ROUTE_DEFINITIONS = [
+  { id: "standard", distanceMeters: 1050, coordinates: [[35.69092, 139.69917], [35.69062, 139.69675], [35.69010, 139.69435], [35.68945, 139.69215]] },
+  { id: "comfort", distanceMeters: 1350, coordinates: [[35.69092, 139.69917], [35.69105, 139.69550], [35.69018, 139.68858], [35.68955, 139.68845], [35.68908, 139.68925], [35.68945, 139.69215]] },
 ];
+const DEMO_ROUTES = DEMO_ROUTE_DEFINITIONS.map((route) => route.coordinates);
 export function findDuplicateCandidates(records) {
   const candidates = [];
   for (let left = 0; left < records.length; left += 1) for (let right = left + 1; right < records.length; right += 1) {
@@ -216,7 +224,38 @@ async function obtainDataset(dataset, fetchImpl, rawSnapshotDir) {
 }
 export function resolveRetrievedAt(sourceDatasetId, manifest) { return manifest.datasets.find((item) => item.datasetId === sourceDatasetId)?.retrievedAt ?? null; }
 
-export async function runUpdate({ fetchImpl = fetch, rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), ".."), retrievedAt = new Date().toISOString(), rawSnapshotDir = null } = {}) {
+export const FIELD_VERIFICATION_CANDIDATE_CSV_HEADERS = [
+  "fieldCheckPriority", "candidateId", "verificationId", "name", "address", "latitude", "longitude",
+  "routeIds", "primaryRouteId", "distanceToRouteMeters", "routeProgressMeters", "currentLongestGapMeters",
+  "expectedImprovedGapMeters", "expectedImprovementMeters", "expectedImprovementRatio",
+  "selectionReasons", "officialSourceIds",
+];
+
+const csvCell = (value) => {
+  const text = Array.isArray(value) ? value.join("|") : value === null || value === undefined ? "" : String(value);
+  return /[",\r\n]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
+};
+
+export function fieldVerificationCandidatesCsv(candidates) {
+  const rows = candidates.map((candidate) => FIELD_VERIFICATION_CANDIDATE_CSV_HEADERS.map((header) => csvCell(candidate[header])).join(","));
+  return `${FIELD_VERIFICATION_CANDIDATE_CSV_HEADERS.join(",")}\n${rows.length ? `${rows.join("\n")}\n` : ""}`;
+}
+
+async function loadFieldVerification(file, candidates, candidateGroups = []) {
+  const bytes = new Uint8Array(await readFile(file));
+  const parsed = parseCsv(new TextDecoder("utf-8").decode(bytes));
+  validateHeaders(parsed.headers, FIELD_VERIFICATION_HEADERS);
+  const normalized = normalizeFieldVerificationRows(parsed.records, candidates);
+  const records = normalized.records;
+  const verifiedCandidates = buildVerifiedRestCandidates(records, candidates, candidateGroups);
+  const exclusionReasonCounts = {};
+  for (const exclusion of normalized.exclusions) for (const reason of exclusion.reasons) {
+    exclusionReasonCounts[reason] = (exclusionReasonCounts[reason] ?? 0) + 1;
+  }
+  return { bytes, records, verifiedCandidates, ...normalized, exclusionReasonCounts: Object.fromEntries(Object.entries(exclusionReasonCounts).sort()) };
+}
+
+export async function runUpdate({ fetchImpl = fetch, rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), ".."), retrievedAt = new Date().toISOString(), rawSnapshotDir = null, fieldVerificationPath = path.join(rootDir, "data/field-verification/rest-spots.csv") } = {}) {
   const oldManifest = await previousManifest(rootDir);
   const downloaded = [];
   for (const dataset of DATASETS) {
@@ -227,19 +266,36 @@ export async function runUpdate({ fetchImpl = fetch, rootDir = path.resolve(path
   const restDownloaded = [];
   for (const dataset of REST_DATASETS) { const source = await obtainDataset(dataset, fetchImpl, rawSnapshotDir); try { restDownloaded.push({ dataset, ...source, ...normalizeRestDataset(source.text, dataset, retrievedAt) }); } catch (error) { throw new Error(`${dataset.datasetName}: ${error instanceof Error ? error.message : error}`, { cause: error }); } }
   const allDownloads = [...downloaded, ...restDownloaded];
-  const manifestDatasets = allDownloads.map((item) => {
+  const manifestDatasetInputs = allDownloads.map((item) => {
     const hash = contentSha256(item.bytes); const old = oldManifest.datasets.find((entry) => entry.datasetId === item.dataset.key);
     return { datasetId: item.dataset.key, datasetUrl: item.dataset.datasetUrl, resourceUrl: item.dataset.resourceUrl,
       retrievedAt: retainedRetrievedAt(old, hash, retrievedAt),
       contentSha256: hash, byteSize: item.bytes.byteLength, normalizedRecordCount: item.records.length,
       excludedRecordCount: item.excludedCount, sourceUpdatedAt: item.dataset.datasetUpdatedAt ?? null,
-      encoding: item.dataset.encoding, license: item.dataset.license ?? "CC BY" };
+      encoding: item.dataset.encoding, license: item.dataset.license ?? "CC BY",
+      provider: item.dataset.provider, datasetName: item.dataset.datasetName };
   }).sort((a, b) => a.datasetId.localeCompare(b.datasetId));
-  const manifest = { schemaVersion: 1, datasets: manifestDatasets };
-  const generationRetrievedAt = [...manifestDatasets.map((item) => item.retrievedAt)].sort().at(-1) ?? retrievedAt;
+  const generationRetrievedAt = [...manifestDatasetInputs.map((item) => item.retrievedAt)].sort().at(-1) ?? retrievedAt;
+  const manifestDatasets = manifestDatasetInputs.map((item) => ({
+    ...item,
+    sourceType: "official_open_data",
+    attribution: `${item.provider}「${item.datasetName}」（${item.license}）`,
+    generatedBy: "TOKYO PACE",
+    generatedAt: generationRetrievedAt,
+  }));
+  const manifest = { schemaVersion: 1, generatedBy: "TOKYO PACE", generatedAt: generationRetrievedAt, datasets: manifestDatasets };
   const restRecords = restDownloaded.flatMap((item) => item.records).sort(recordOrder);
   const restCandidates = deduplicateRestCandidates(restRecords);
   const nearbyRestCandidates = restCandidates.filter((candidate) => distanceRecordToRoutes(candidate, DEMO_ROUTES) <= 350);
+  const unverifiedFieldCandidateGroups = extractFieldVerificationCandidates({ routes: DEMO_ROUTE_DEFINITIONS, candidates: restCandidates, limit: Number.MAX_SAFE_INTEGER }).candidates;
+  const fieldVerification = await loadFieldVerification(fieldVerificationPath, restCandidates, unverifiedFieldCandidateGroups);
+  const nearbyVerifiedCandidates = fieldVerification.verifiedCandidates.filter((candidate) => distanceRecordToRoutes(candidate, DEMO_ROUTES) <= 350);
+  const replacedCandidateIds = new Set(fieldVerification.verifiedCandidates.flatMap((candidate) => candidate.relatedCandidateIds));
+  const restCandidatesWithVerification = [
+    ...restCandidates.filter((candidate) => !replacedCandidateIds.has(candidate.id)),
+    ...fieldVerification.verifiedCandidates,
+  ].sort(recordOrder);
+  const fieldCandidateExtraction = extractFieldVerificationCandidates({ routes: DEMO_ROUTE_DEFINITIONS, candidates: restCandidatesWithVerification, limit: 12 });
   const records = downloaded.flatMap(({ records: items }) => items).sort(recordOrder);
   const shinjukuRecords = records.filter((record) => record.address?.includes("新宿区"));
   const places = clusterOfficialToiletRecords(records);
@@ -256,32 +312,99 @@ export async function runUpdate({ fetchImpl = fetch, rootDir = path.resolve(path
   const generated = stableJson({ metadata, records });
   const generatedPlaces = stableJson({ metadata, places });
   const uiGenerated = stableJson({ metadata: { manifestDatasetIds: metadata.manifestDatasetIds, recordCount: demoRouteRecords.length, officialPlaceCount: demoRoutePlaces.length, scope: "デモルートから推定直線距離350m以内" }, places: demoRoutePlaces });
-  await Promise.all(downloaded.map(({ dataset, bytes }) => atomicWrite(path.join(rootDir, "data/raw", `${dataset.key}.csv`), bytes)));
-  await Promise.all(restDownloaded.map(({ dataset, bytes }) => atomicWrite(path.join(rootDir, "data/raw", `${dataset.key}.csv`), bytes)));
-  await atomicWrite(path.join(rootDir, "data/generated/official-toilets.json"), generated);
-  await atomicWrite(path.join(rootDir, "data/generated/official-toilet-places.json"), generatedPlaces);
-  await atomicWrite(path.join(rootDir, "data/generated/open-data-audit.json"), stableJson(audit));
-  await atomicWrite(path.join(rootDir, "data/generated/open-data-manifest.json"), stableJson(manifest));
-  await atomicWrite(path.join(rootDir, "src/data/generated/open-data-manifest.json"), stableJson(manifest));
-  await atomicWrite(path.join(rootDir, "src/data/generated/official-toilets.json"), uiGenerated);
   const restMetadata = { manifestDatasetIds: REST_DATASETS.map((item) => item.key).sort(), recordCount: restRecords.length, candidateCount: restCandidates.length, demoRouteNearbyCount: nearbyRestCandidates.length, duplicateCandidateCount: restRecords.length - restCandidates.length,
     confidenceCounts: Object.fromEntries(["confirmed", "supported", "possible", "estimated"].map((confidence) => [confidence, restCandidates.filter((item) => item.confidence === confidence).length])),
     attributeNullRates: Object.fromEntries(["openingHours", "indoor", "seating", "drinkingWaterAvailable", "wheelchairAccessible"].map((field) => [field, restRecords.length ? restRecords.filter((item) => item[field] === null).length / restRecords.length : 0])),
     datasets: restDownloaded.map((item) => ({ key: item.dataset.key, inputCount: item.inputCount, normalizedCount: item.records.length, excludedCount: item.excludedCount, exclusionReasons: item.exclusionReasons, shinjukuCount: item.records.filter((record) => record.address?.includes("新宿区")).length, demoRouteNearbyCount: item.records.filter((record) => distanceRecordToRoutes(record, DEMO_ROUTES) <= 350).length, license: item.dataset.license })),
     sources: REST_DATASETS.map(({ key, provider, datasetName, datasetUrl, resourceUrl, license }) => ({ key, provider, datasetName, datasetUrl, resourceUrl, license })) };
-  await atomicWrite(path.join(rootDir, "data/generated/rest-candidates.json"), stableJson({ metadata: restMetadata, records: restRecords, candidates: restCandidates }));
-  await atomicWrite(path.join(rootDir, "src/data/generated/rest-candidates.json"), stableJson({ metadata: { manifestDatasetIds: restMetadata.manifestDatasetIds, candidateCount: nearbyRestCandidates.length, scope: "デモルートから推定直線距離350m以内" }, candidates: nearbyRestCandidates }));
+  const latestFieldVerifiedAt = fieldVerification.records.map((record) => record.verifiedAt).filter(Boolean).sort().at(-1) ?? null;
+  const fieldMetadata = {
+    schemaVersion: 1,
+    sourceDatasetId: FIELD_VERIFICATION_DATASET_ID,
+    sourceType: "tokyo_pace_field_verification",
+    provider: "TOKYO PACE 現地確認",
+    datasetName: "TOKYO PACE 休憩地点現地確認",
+    license: null,
+    attribution: "TOKYO PACE 現地確認データ",
+    generatedBy: "TOKYO PACE",
+    generatedAt: generationRetrievedAt,
+    sourcePath: "data/field-verification/rest-spots.csv",
+    contentSha256: contentSha256(fieldVerification.bytes),
+    byteSize: fieldVerification.bytes.byteLength,
+    inputRowCount: fieldVerification.inputCount,
+    normalizedRecordCount: fieldVerification.normalizedCount,
+    excludedRecordCount: fieldVerification.excludedCount,
+    effectiveCandidateCount: fieldVerification.verifiedCandidates.length,
+    latestVerifiedAt: latestFieldVerifiedAt,
+    confidenceCounts: Object.fromEntries(["confirmed", "supported", "possible"].map((confidence) => [confidence, fieldVerification.verifiedCandidates.filter((candidate) => candidate.confidence === confidence).length])),
+    exclusionReasonCounts: fieldVerification.exclusionReasonCounts,
+    exclusions: fieldVerification.exclusions,
+  };
+  const fieldCandidateMetadata = {
+    schemaVersion: 1,
+    generatedBy: "TOKYO PACE",
+    generatedAt: generationRetrievedAt,
+    routeIds: DEMO_ROUTE_DEFINITIONS.map((route) => route.id).sort(),
+    maximumDistanceToRouteMeters: 350,
+    requestedLimit: 12,
+    eligibleGroupCount: fieldCandidateExtraction.eligibleGroupCount,
+    coordinateConflictGroupCount: fieldCandidateExtraction.coordinateConflictGroupCount,
+    excludedCoordinateConflictCandidateCount: fieldCandidateExtraction.excludedCoordinateConflictCandidateCount,
+    excludedCoordinateConflictPlaceCount: fieldCandidateExtraction.excludedCoordinateConflictPlaceCount,
+    candidateCount: fieldCandidateExtraction.candidates.length,
+    sourceDatasetIds: [...new Set(fieldCandidateExtraction.candidates.flatMap((candidate) => candidate.officialSourceIds.map((sourceId) => sourceId.split(":", 1)[0])))].sort(),
+  };
+  const auditWithFieldVerification = {
+    ...audit,
+    fieldVerification: {
+      sourceDatasetId: FIELD_VERIFICATION_DATASET_ID,
+      inputRowCount: fieldMetadata.inputRowCount,
+      normalizedRecordCount: fieldMetadata.normalizedRecordCount,
+      excludedRecordCount: fieldMetadata.excludedRecordCount,
+      effectiveCandidateCount: fieldMetadata.effectiveCandidateCount,
+      confidenceCounts: fieldMetadata.confidenceCounts,
+      exclusionReasonCounts: fieldMetadata.exclusionReasonCounts,
+      exclusions: fieldMetadata.exclusions,
+      candidateExtraction: {
+        eligibleGroupCount: fieldCandidateMetadata.eligibleGroupCount,
+        candidateCount: fieldCandidateMetadata.candidateCount,
+        coordinateConflictGroupCount: fieldCandidateMetadata.coordinateConflictGroupCount,
+        excludedCoordinateConflictCandidateCount: fieldCandidateMetadata.excludedCoordinateConflictCandidateCount,
+        excludedCoordinateConflictPlaceCount: fieldCandidateMetadata.excludedCoordinateConflictPlaceCount,
+      },
+    },
+  };
+  const artifacts = [
+    ...downloaded.map(({ dataset, bytes }) => ({ relative: `data/raw/${dataset.key}.csv`, content: bytes })),
+    ...restDownloaded.map(({ dataset, bytes }) => ({ relative: `data/raw/${dataset.key}.csv`, content: bytes })),
+    { relative: "data/generated/official-toilets.json", content: generated },
+    { relative: "data/generated/official-toilet-places.json", content: generatedPlaces },
+    { relative: "data/generated/open-data-audit.json", content: stableJson(auditWithFieldVerification) },
+    { relative: "data/generated/open-data-manifest.json", content: stableJson(manifest) },
+    { relative: "src/data/generated/open-data-manifest.json", content: stableJson(manifest) },
+    { relative: "src/data/generated/official-toilets.json", content: uiGenerated },
+    { relative: "data/generated/rest-candidates.json", content: stableJson({ metadata: restMetadata, records: restRecords, candidates: restCandidates }) },
+    { relative: "src/data/generated/rest-candidates.json", content: stableJson({ metadata: { manifestDatasetIds: restMetadata.manifestDatasetIds, candidateCount: nearbyRestCandidates.length, scope: "デモルートから推定直線距離350m以内" }, candidates: nearbyRestCandidates }) },
+    { relative: "data/generated/verified-rest-spots.json", content: stableJson({ metadata: fieldMetadata, records: fieldVerification.records, candidates: fieldVerification.verifiedCandidates }) },
+    { relative: "src/data/generated/verified-rest-spots.json", content: stableJson({ metadata: { sourceDatasetId: fieldMetadata.sourceDatasetId, contentSha256: fieldMetadata.contentSha256, normalizedRecordCount: fieldMetadata.normalizedRecordCount, fullCandidateCount: fieldMetadata.effectiveCandidateCount, candidateCount: nearbyVerifiedCandidates.length, latestVerifiedAt: fieldMetadata.latestVerifiedAt, confidenceCounts: fieldMetadata.confidenceCounts, scope: "デモルートから推定直線距離350m以内" }, candidates: nearbyVerifiedCandidates }) },
+    { relative: "data/generated/field-verification-candidates.json", content: stableJson({ metadata: fieldCandidateMetadata, candidates: fieldCandidateExtraction.candidates }) },
+    { relative: "src/data/generated/field-verification-candidates.json", content: stableJson({ metadata: fieldCandidateMetadata, candidates: fieldCandidateExtraction.candidates }) },
+    { relative: "data/generated/field-verification-candidates.csv", content: fieldVerificationCandidatesCsv(fieldCandidateExtraction.candidates) },
+  ];
+  for (const artifact of artifacts.filter((item) => item.relative.endsWith(".json"))) JSON.parse(String(artifact.content));
+  await Promise.all(artifacts.map((artifact) => atomicWrite(path.join(rootDir, artifact.relative), artifact.content)));
   for (const item of downloaded) console.log(`${item.dataset.datasetName}: ${item.records.length}件（除外${item.excludedCount}件）`, item.exclusionReasons);
   for (const item of restDownloaded) console.log(`${item.dataset.datasetName}: 取得${item.inputCount}件 / 正規化${item.records.length}件 / 除外${item.excludedCount}件 / ${item.dataset.license} / ${resolveRetrievedAt(item.dataset.key, manifest)}`, item.exclusionReasons);
   console.log(`休憩・給水・屋内候補: 原レコード${restRecords.length}件 / 候補${restCandidates.length}地点 / デモルート350m以内${nearbyRestCandidates.length}地点 / 重複候補${restRecords.length - restCandidates.length}件`);
   console.log(`原レコード: ${records.length}件 / 表示候補地点: ${places.length}地点 / 新宿区: ${shinjukuRecords.length}件 / デモルート350m以内: ${demoRouteRecords.length}件・${demoRoutePlaces.length}地点`);
   console.log(`監査: 同一座標群${audit.identicalCoordinateGroupCount} / 10m以内群${audit.proximityGroupsWithin10m.length} / 25m以内群${audit.proximityGroupsWithin25m.length} / 曖昧近接ペア${audit.ambiguousNearbyPairCount}`);
-  return { metadata, manifest, records, duplicateCandidates, restMetadata, restCandidates, datasets: downloaded.map(({ dataset, inputCount, records: items, excludedCount, exclusionReasons }) => ({ key: dataset.key, inputCount, recordCount: items.length, excludedCount, exclusionReasons })) };
+  console.log(`現地確認: 入力${fieldMetadata.inputRowCount}件 / 正規化${fieldMetadata.normalizedRecordCount}件 / 除外${fieldMetadata.excludedRecordCount}件 / 確認候補${fieldCandidateMetadata.candidateCount}地点 / 座標品質異常${fieldCandidateMetadata.excludedCoordinateConflictPlaceCount}地点を除外`);
+  return { metadata, manifest, records, duplicateCandidates, restMetadata, restCandidates, fieldMetadata, fieldVerificationCandidates: fieldCandidateExtraction.candidates, datasets: downloaded.map(({ dataset, inputCount, records: items, excludedCount, exclusionReasons }) => ({ key: dataset.key, inputCount, recordCount: items.length, excludedCount, exclusionReasons })) };
 }
 
 async function generatedHashes(rootDir) {
   const files = [];
-  for (const relative of ["data/generated", "src/data/generated"]) for (const name of await readdir(path.join(rootDir, relative))) if (name.endsWith(".json")) {
+  for (const relative of ["data/generated", "src/data/generated"]) for (const name of await readdir(path.join(rootDir, relative))) if (name.endsWith(".json") || name.endsWith(".csv")) {
     const file = path.join(rootDir, relative, name); files.push([`${relative}/${name}`, contentSha256(await readFile(file))]);
   }
   return Object.fromEntries(files.sort(([a], [b]) => a.localeCompare(b)));
@@ -289,7 +412,7 @@ async function generatedHashes(rootDir) {
 export async function verifyDeterminism({ sourceRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..") } = {}) {
   const first = await mkdtemp(path.join(tmpdir(), "tokyo-pace-determinism-a-")); const second = await mkdtemp(path.join(tmpdir(), "tokyo-pace-determinism-b-"));
   try {
-    const options = { retrievedAt: "2000-01-01T00:00:00.000Z", rawSnapshotDir: path.join(sourceRoot, "data/raw") };
+    const options = { retrievedAt: "2000-01-01T00:00:00.000Z", rawSnapshotDir: path.join(sourceRoot, "data/raw"), fieldVerificationPath: path.join(sourceRoot, "data/field-verification/rest-spots.csv") };
     await runUpdate({ ...options, rootDir: first }); await runUpdate({ ...options, rootDir: second });
     const a = await generatedHashes(first); const b = await generatedHashes(second); const changed = [...new Set([...Object.keys(a), ...Object.keys(b)])].filter((file) => a[file] !== b[file]);
     if (changed.length) throw new Error(`再現性検証に失敗: ${changed.join(", ")}`);

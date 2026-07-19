@@ -76,7 +76,7 @@ export function evaluateRoute(route: DemoRoute, preferences: RoutePreferences, o
     violations.continuous ? `希望の連続歩行時間を${continuity.continuousWalkingExcessMinutes}分超過` : "希望の連続歩行時間内",
   ];
   return {
-    ...route, ...continuity, ...restNetwork, ...(restCandidates.length === 0 ? { longestRestGapMeters: continuity.longestRestGapMeters } : {}), continuousWalkingLimitMinutes: preferences.maxContinuousWalkingMinutes, score, scoreBreakdown, preferenceViolationCount: Object.values(violations).filter(Boolean).length, reasons,
+    ...route, ...continuity, ...restNetwork, ...(restNetwork.strictRestCandidateCount === 0 ? { longestRestGapMeters: continuity.longestRestGapMeters } : {}), continuousWalkingLimitMinutes: preferences.maxContinuousWalkingMinutes, score, scoreBreakdown, preferenceViolationCount: Object.values(violations).filter(Boolean).length, reasons,
     meetsPreferences: !Object.values(violations).some(Boolean),
     officialToiletRecordCount: nearbyOfficialToiletPlaces.reduce((sum, place) => sum + place.sourceRecordCount, 0),
     officialToiletPlaceCount: nearbyOfficialToiletPlaces.length,
