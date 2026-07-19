@@ -52,12 +52,29 @@ describe("決定的ランキング", () => {
 
 describe("推奨理由", () => {
   it("必須条件達成を最優先理由にする", () => expect(build([makeRoute("standard")]).routes[0].recommendationReasons[0].code).toBe("MEETS_ALL_REQUIRED_PREFERENCES"));
+  it("希望条件をすべて満たす説明を利用者向け表現で生成する", () => expect(build([makeRoute("standard")]).routes[0].recommendationReasons[0].text).toBe("設定した希望条件をすべて満たしています"));
+  it("全候補未達では比較対象数を含む二つの主要理由を生成する", () => {
+    const result = build([
+      makeRoute("standard", { meetsPreferences: false, preferenceViolationCount: 1 }),
+      makeRoute("step_avoiding", { meetsPreferences: false, preferenceViolationCount: 2 }),
+      makeRoute("wheelchair_profile", { meetsPreferences: false, preferenceViolationCount: 3 }),
+    ], preferences, 10);
+    const texts = result.routes[0].recommendationReasons.map((reason) => reason.text);
+    expect(texts).toContain("3候補の中で、希望条件を満たさなかった項目が最も少ない候補です");
+    expect(texts).toContain("3候補の中で、条件負担スコアが最も低い候補です");
+  });
   it("最大連続歩行が最短の理由を生成する", () => expect(build([makeRoute("standard", { maxContinuousWalkingMinutes: 9 }), makeRoute("step_avoiding", { maxContinuousWalkingMinutes: 7 })], preferences, 10).routes.find((x) => x.routeId === "step_avoiding")?.recommendationReasons.map((x) => x.code)).toContain("LOWEST_MAX_CONTINUOUS_WALK"));
   it("休憩空白が最短の理由を生成する", () => expect(build([makeRoute("standard", { longestRestGapMeters: 600 }), makeRoute("step_avoiding", { longestRestGapMeters: 400 })], preferences, 10).routes.find((x) => x.routeId === "step_avoiding")?.recommendationReasons.map((x) => x.code)).toContain("LOWEST_REST_GAP"));
   it("階段回避希望がある場合だけ階段回避理由を生成する", () => { const route = makeRoute("step_avoiding"); expect(build([route], preferences, 10).routes[0].recommendationReasons.map((x) => x.code)).toContain("STEP_AVOIDING_PROFILE"); expect(build([route], { ...preferences, avoidSteps: false }, 10).routes[0].recommendationReasons.map((x) => x.code)).not.toContain("STEP_AVOIDING_PROFILE"); });
   it("車いす候補に通行保証表現を生成しない", () => { const text = JSON.stringify(build([makeRoute("wheelchair_profile")]).routes[0]); expect(text).not.toContain("車いすで通れる"); expect(text).not.toContain("完全バリアフリー"); });
   it("possible施設だけでは厳格な休憩理由を生成しない", () => { const model = build([makeRoute("standard", { restNetworkLevel: "possible", continuityFeasibleByRestNetwork: true, confirmedRestSpotCount: 0, referencePossibleCandidateCount: 5 })], preferences, 10).routes[0]; expect(model.recommendationReasons.map((x) => x.code)).not.toContain("STRICT_REST_NETWORK_FEASIBLE"); expect(model.possibleRestCandidateCount).toBe(5); });
-  it("confirmedまたはsupportedだけを厳格成立理由にする", () => expect(build([makeRoute("standard", { restNetworkLevel: "supported" })], preferences, 10).routes[0].recommendationReasons.map((x) => x.code)).toContain("STRICT_REST_NETWORK_FEASIBLE"));
+  it("confirmedまたはsupportedの途中地点が区間を分割した場合だけ厳格成立理由にする", () => {
+    const walkingSegments = [
+      { id: "before-rest", name: "休憩地点まで", distanceMeters: 500, walkingMinutes: 5, endsAtRestSpot: true, restSpotId: "strict-rest" },
+      { id: "after-rest", name: "休憩地点から", distanceMeters: 500, walkingMinutes: 5, endsAtRestSpot: false, restSpotId: null },
+    ];
+    expect(build([makeRoute("standard", { restNetworkLevel: "supported", supportedRestSpotCount: 1, walkingSegments })], preferences, 10).routes[0].recommendationReasons.map((x) => x.code)).toContain("STRICT_REST_NETWORK_FEASIBLE");
+  });
   it("理由を指定最大件数に制限する", () => expect(build([makeRoute("standard")], preferences, 3).routes[0].recommendationReasons).toHaveLength(3));
   it("トイレ希望がなければトイレを推奨理由にしない", () => expect(build([makeRoute("standard")], { ...preferences, requireToilet: false }, 10).routes[0].recommendationReasons.map((x) => x.code)).not.toContain("PUBLIC_TOILET_CANDIDATES_NEAR_ROUTE"));
   it("根拠がない最短理由を生成しない", () => expect(build([makeRoute("standard", { distanceMeters: 1000 }), makeRoute("step_avoiding", { distanceMeters: 1200 })], preferences, 10).routes.find((x) => x.routeId === "step_avoiding")?.recommendationReasons.map((x) => x.code)).not.toContain("SHORTEST_DISTANCE"));
@@ -68,9 +85,9 @@ describe("条件違反と表示用属性", () => {
   it("公衆トイレ条件未達を説明する", () => expect(build([makeRoute("standard", { hasPublicToiletCandidate: false })]).routes[0].constraintViolations.map((x) => x.code)).toContain("PUBLIC_TOILET_REQUIRED_MISSING"));
   it("急坂条件未達を説明する", () => expect(build([makeRoute("standard", { steepSlopeCount: 2 })]).routes[0].constraintViolations.map((x) => x.code)).toContain("STEEP_SLOPE_REQUIREMENT_NOT_MET"));
   it("屋内候補条件未達を説明する", () => expect(build([makeRoute("standard", { indoorRestCount: 0 })]).routes[0].constraintViolations.map((x) => x.code)).toContain("INDOOR_REST_REQUIREMENT_NOT_MET"));
-  it("厳格な休憩場所のつながり未成立を分けて説明する", () => expect(build([makeRoute("standard", { continuityFeasibleByRestNetwork: false, restNetworkLevel: "none" })]).routes[0].constraintViolations.map((x) => x.code)).toContain("STRICT_REST_NETWORK_NOT_FEASIBLE"));
+  it("厳格な休憩地点なしで経路全体が上限超過する場合を分けて説明する", () => expect(build([makeRoute("standard", { durationMinutes: 13.2, durationSeconds: 792, continuityFeasibleByRestNetwork: false, restNetworkLevel: "none" })]).routes[0].constraintViolations.map((x) => x.code)).toContain("STRICT_REST_NETWORK_NOT_FEASIBLE"));
   it("違反がない場合は空配列にする", () => expect(build([makeRoute("standard")]).routes[0].constraintViolations).toEqual([]));
-  it("複数違反を決定的な順序にする", () => { const codes = build([makeRoute("standard", { continuityFeasible: false, continuousWalkingExcessMinutes: 2, hasPublicToiletCandidate: false, steepSlopeCount: 1, indoorRestCount: 0, continuityFeasibleByRestNetwork: false, restNetworkLevel: "none" })]).routes[0].constraintViolations.map((x) => x.code); expect(codes).toEqual(["MAX_CONTINUOUS_WALK_EXCEEDED", "PUBLIC_TOILET_REQUIRED_MISSING", "STEEP_SLOPE_REQUIREMENT_NOT_MET", "INDOOR_REST_REQUIREMENT_NOT_MET", "STRICT_REST_NETWORK_NOT_FEASIBLE"]); });
+  it("複数違反を決定的な順序にする", () => { const codes = build([makeRoute("standard", { durationMinutes: 12, durationSeconds: 720, continuityFeasible: false, continuousWalkingExcessMinutes: 2, hasPublicToiletCandidate: false, steepSlopeCount: 1, indoorRestCount: 0, continuityFeasibleByRestNetwork: false, restNetworkLevel: "none" })]).routes[0].constraintViolations.map((x) => x.code); expect(codes).toEqual(["MAX_CONTINUOUS_WALK_EXCEEDED", "PUBLIC_TOILET_REQUIRED_MISSING", "STEEP_SLOPE_REQUIREMENT_NOT_MET", "INDOOR_REST_REQUIREMENT_NOT_MET", "STRICT_REST_NETWORK_NOT_FEASIBLE"]); });
   it("最短と最短時間を別々に判定する", () => { const result = build([makeRoute("standard", { distanceMeters: 900, durationSeconds: 700 }), makeRoute("step_avoiding", { distanceMeters: 1100, durationSeconds: 600 })]); expect(result.routes.find((x) => x.routeId === "standard")?.isShortest).toBe(true); expect(result.routes.find((x) => x.routeId === "step_avoiding")?.isFastest).toBe(true); });
   it("固定デモとAPI由来を区別する", () => { const models = build([makeRoute("standard", { provider: "demo", isFallback: true }), makeRoute("step_avoiding")]).routes; expect(models.find((x) => x.routeId === "standard")).toMatchObject({ providerLabel: "固定デモ", isFallback: true }); expect(models.find((x) => x.routeId === "step_avoiding")?.providerLabel).toBe("OpenRouteService"); });
   it("選択IDが消えた場合だけ推奨へ戻す", () => { expect(selectRouteId("b", ["a", "b"], "a")).toBe("b"); expect(selectRouteId("missing", ["a", "b"], "a")).toBe("a"); });

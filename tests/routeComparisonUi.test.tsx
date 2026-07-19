@@ -32,7 +32,7 @@ describe("経路比較UI", () => {
 });
 
 describe("地図選択の表示規則", () => {
-  it("選択経路を太く不透明にする", () => expect(getRouteLineStyle({ id: "standard", profile: "standard" }, true)).toMatchObject({ weight: 9, opacity: 1 }));
-  it("非選択経路を細く薄くする", () => expect(getRouteLineStyle({ id: "standard", profile: "standard" }, false)).toMatchObject({ weight: 4, opacity: 0.28 }));
+  it("選択経路を太く不透明にする", () => expect(getRouteLineStyle({ id: "standard", profile: "standard" }, true)).toMatchObject({ weight: 6, opacity: 1 }));
+  it("非選択経路を細く薄くする", () => expect(getRouteLineStyle({ id: "standard", profile: "standard" }, false)).toMatchObject({ weight: 3, opacity: 0.38 }));
   it("標準は実線、階段回避は破線、車いす候補は点線を維持する", () => { expect(getRouteLineStyle({ id: "standard", profile: "standard" }, true)).not.toHaveProperty("dashArray"); expect(getRouteLineStyle({ id: "step_avoiding", profile: "step_avoiding" }, true).dashArray).toBe("12 8"); expect(getRouteLineStyle({ id: "wheelchair_profile", profile: "wheelchair_profile" }, true).dashArray).toBe("3 8"); });
 });

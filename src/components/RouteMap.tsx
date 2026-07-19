@@ -1,11 +1,31 @@
 import { useEffect, useState } from "react";
-import { CircleMarker, MapContainer, Marker, Polyline, Popup, TileLayer, useMap, useMapEvents } from "react-leaflet";
+import { CircleMarker, MapContainer, Marker, Pane, Polyline, Popup, TileLayer, useMap, useMapEvents } from "react-leaflet";
 import type { EvaluatedRoute, OfficialToiletPlace, RestCandidate, RestSpot } from "../types";
+import {
+  FACILITY_MARKER_RADII,
+  FACILITY_MARKER_STYLES,
+  getFacilityLegendItems,
+  getRouteLegendItems,
+  getRouteMapMode,
+  MAP_PANES,
+  PUBLIC_TOILET_GAP_STYLE,
+  SELECTED_ROUTE_HALO_STYLE,
+  type FacilityLegendKind,
+} from "../domain/mapLayerPresentation";
 import { getRouteLineStyle } from "../domain/routePresentation";
 
 const categoryLabel = { park: "公園", public_facility: "公共施設", toilet: "トイレ", library: "図書館", other: "その他" };
 const toiletKindLabel = { public_toilet: "新宿区公衆トイレ", facility_toilet_information: "公共施設内の車椅子使用者対応トイレ情報", station_toilet_information: "鉄道駅内の車椅子使用者対応トイレ情報" };
 const value = (item: boolean | null) => item === null ? "不明" : item ? "あり" : "なし";
+const getOfficialMarkerKind = (place: OfficialToiletPlace): FacilityLegendKind => place.hasPublicToiletRecord ? "officialPublicToilet" : place.kinds.includes("facility_toilet_information") ? "officialFacilityToilet" : "officialStationToilet";
+
+function LineLegendItem({ label, style }: { label: string; style: { color: string; dashArray?: string; weight?: number; opacity?: number } }) {
+  return <span><svg width="40" height="14" viewBox="0 0 40 14" aria-hidden="true"><line x1="1" y1="7" x2="39" y2="7" stroke={style.color} strokeWidth={Math.min(style.weight ?? 4, 10)} strokeDasharray={style.dashArray} strokeLinecap="round" opacity={style.opacity ?? 1} /></svg>{label}</span>;
+}
+
+function MarkerLegendItem({ label, markerStyle }: { label: string; markerStyle: (typeof FACILITY_MARKER_STYLES)[FacilityLegendKind] }) {
+  return <span><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7" fill={markerStyle.fillColor} fillOpacity={markerStyle.fillOpacity} stroke={markerStyle.color} strokeOpacity={markerStyle.opacity} strokeWidth="2" /></svg>{label}</span>;
+}
 
 function MapPointSelector({ active, onPoint }: { active: boolean; onPoint(point: [number, number]): void }) { useMapEvents({ click: (event) => { if (active) onPoint([event.latlng.lat, event.latlng.lng]); } }); return null; }
 
@@ -14,9 +34,20 @@ function SelectedRouteViewport({ route }: { route?: EvaluatedRoute }) { const ma
 export function RouteMap({ routes, spots, restCandidates, officialToiletPlaces, selectedRouteId, origin, destination, selectionMode, onSelectRoute, onMapPoint }: { routes: EvaluatedRoute[]; spots: RestSpot[]; restCandidates: RestCandidate[]; officialToiletPlaces: OfficialToiletPlace[]; selectedRouteId: EvaluatedRoute["id"] | null; origin: [number, number]; destination: [number, number]; selectionMode: "origin" | "destination" | null; onSelectRoute(routeId: string): void; onMapPoint(point: [number, number]): void }) {
   const [showOfficial, setShowOfficial] = useState(true); const [showWheelchair, setShowWheelchair] = useState(true); const [showEstimated, setShowEstimated] = useState(true); const [showRestData, setShowRestData] = useState(true);
   const displayedOfficial = showOfficial ? officialToiletPlaces.filter((place) => !showWheelchair || place.hasWheelchairAccessibleRecord) : [];
+  const displayedRestCandidates = showRestData ? restCandidates.filter((candidate) => candidate.category !== "estimated_rest_spot") : [];
   const highlightedRoute = routes.find((route) => route.id === selectedRouteId);
-  const orderedRoutes = [...routes].sort((a, b) => Number(a.id === selectedRouteId) - Number(b.id === selectedRouteId));
+  const unselectedRoutes = routes.filter((route) => route.id !== selectedRouteId);
   const largestGap = highlightedRoute?.publicToiletGapSegments.reduce((best, gap) => gap.gapMeters > best.gapMeters ? gap : best, highlightedRoute.publicToiletGapSegments[0]);
+  const facilityLegendKinds: FacilityLegendKind[] = [
+    ...(showEstimated && spots.length > 0 ? ["estimatedRest" as const] : []),
+    ...(displayedRestCandidates.some((candidate) => candidate.category === "drinking_station") ? ["drinkingStation" as const] : []),
+    ...(displayedRestCandidates.some((candidate) => candidate.category === "barrier_free_facility") ? ["barrierFreeFacility" as const] : []),
+    ...(displayedRestCandidates.some((candidate) => candidate.category !== "drinking_station" && candidate.category !== "barrier_free_facility") ? ["publicFacility" as const] : []),
+    ...(highlightedRoute ? ["restSuggestion" as const] : []),
+    ...displayedOfficial.map(getOfficialMarkerKind),
+  ];
+  const routeLegendItems = getRouteLegendItems(getRouteMapMode(routes));
+  const facilityLegendItems = getFacilityLegendItems(facilityLegendKinds);
 
   return <section className="map-section" aria-labelledby="map-title">
     <div className="section-heading"><div><p className="eyebrow">地図</p><h2 id="map-title">選択した経路と施設候補</h2></div><p className="map-note">直線距離と正規化したルート沿い距離は推定です</p></div>
@@ -25,18 +56,36 @@ export function RouteMap({ routes, spots, restCandidates, officialToiletPlaces, 
       <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <MapPointSelector active={selectionMode !== null} onPoint={onMapPoint} />
       <SelectedRouteViewport route={highlightedRoute} />
-      <Marker position={origin}><Popup><strong>出発地</strong><br />地図クリックで再設定できます</Popup></Marker><Marker position={destination}><Popup><strong>目的地</strong><br />地図クリックで再設定できます</Popup></Marker>
-      {orderedRoutes.map((route) => <Polyline key={route.id} positions={route.coordinates} pathOptions={getRouteLineStyle(route, route.id === selectedRouteId)} eventHandlers={{ click: () => { if (selectionMode === null) onSelectRoute(route.id); } }}><Popup><strong>{route.name}</strong><br />{route.id === selectedRouteId ? "比較UIで選択中" : "クリックして地図で選択"}</Popup></Polyline>)}
-      {largestGap && <Polyline positions={largestGap.coordinates} pathOptions={{ color: "#b42318", weight: 10, dashArray: "3 9", opacity: 0.9 }}><Popup><strong>公衆トイレ候補の空白区間</strong><br />デモ総距離へ正規化したルート沿い推定{Math.round(largestGap.gapMeters)}m</Popup></Polyline>}
-      {showEstimated && spots.map((spot) => <CircleMarker key={spot.id} center={[spot.latitude, spot.longitude]} radius={9} pathOptions={{ color: "#713b00", fillColor: "#f3a712", fillOpacity: 1, weight: 3 }}><Popup><strong>{spot.name}</strong><br />種別：{categoryLabel[spot.category]}<br />座席：{value(spot.seating)}<br />屋内：{value(spot.indoor)}<br />営業時間：{spot.openingHours ?? "不明"}<br /><small>{spot.source.datasetName}（推定・未検証）</small></Popup></CircleMarker>)}
-      {showRestData && restCandidates.filter((candidate) => candidate.category !== "estimated_rest_spot").map((candidate) => { const water = candidate.category === "drinking_station"; const barrier = candidate.category === "barrier_free_facility"; return <CircleMarker key={candidate.id} center={[candidate.latitude, candidate.longitude]} radius={7} pathOptions={{ color: water ? "#005a9c" : barrier ? "#5b2c83" : "#276749", fillColor: water ? "#63b3ed" : barrier ? "#d6bcfa" : "#68d391", fillOpacity: 0.9, weight: 2 }}><Popup><strong>{candidate.name}</strong><br />分類：{water ? "給水地点" : barrier ? "バリアフリー掲載施設" : "公共施設"}<br />休憩信頼度：{candidate.confidence}<br />屋内：{value(candidate.indoor)}／座席：{value(candidate.seating)}<br /><small>{candidate.source.provider}の公式掲載情報。自由利用・着席・営業中は保証しません。</small></Popup></CircleMarker>; })}
-      {highlightedRoute && <CircleMarker center={highlightedRoute.restInsertionSuggestion.suggestedRestInsertionCoordinate} radius={12} pathOptions={{ color: "#9c2c00", fillColor: "#fff", fillOpacity: 0.9, weight: 4 }}><Popup><strong>理論上の休憩地点追加候補</strong><br />最長空白を約{Math.round(highlightedRoute.restInsertionSuggestion.improvementMeters)}m短縮する計算です。実在する設置可能場所ではありません。</Popup></CircleMarker>}
-      {displayedOfficial.map((place) => {
-        const primary = place.records[0]; const kind = place.hasPublicToiletRecord ? "public" : place.kinds.includes("facility_toilet_information") ? "facility" : "station";
-        const colors = kind === "public" ? { color: "#063b73", fillColor: "#1479c9" } : kind === "facility" ? { color: "#5b2c83", fillColor: "#c9a7e8" } : { color: "#713b00", fillColor: "#f3a712" };
-        return <CircleMarker key={place.clusterId} center={[place.representativeLatitude, place.representativeLongitude]} radius={10} pathOptions={{ ...colors, fillOpacity: 1, weight: 4 }}><Popup><strong>公式掲載のトイレ候補地点：{primary.name}</strong><br />原レコード：{place.sourceRecordCount}件<br />分類：{place.kinds.map((item) => toiletKindLabel[item]).join(" / ")}<hr />{place.records.map((record) => <div className="source-record" key={record.id}><strong>{record.name}</strong><br />住所：{record.address ?? "不明"}<br />種別：{record.officialToiletKind ? toiletKindLabel[record.officialToiletKind] : "不明"}<br />車椅子使用者対応情報：{value(record.wheelchairAccessible)}<br />利用時間情報：{record.openingHours ?? "不明"}<br />提供者：{record.source.provider}</div>)}<small>掲載情報であり、利用可能性、入場条件、実際の徒歩距離、車椅子での到達可能性は保証しません。</small></Popup></CircleMarker>;
-      })}
+      <Pane name={MAP_PANES.toiletGap.name} style={{ zIndex: MAP_PANES.toiletGap.zIndex }}>
+        {largestGap && <Polyline positions={largestGap.coordinates} pathOptions={PUBLIC_TOILET_GAP_STYLE}><Popup><strong>公衆トイレ候補の空白区間</strong><br />デモ総距離へ正規化したルート沿い推定{Math.round(largestGap.gapMeters)}m</Popup></Polyline>}
+      </Pane>
+      <Pane name={MAP_PANES.unselectedRoutes.name} style={{ zIndex: MAP_PANES.unselectedRoutes.zIndex }}>
+        {unselectedRoutes.map((route) => <Polyline key={route.id} positions={route.coordinates} pathOptions={getRouteLineStyle(route, false)} eventHandlers={{ click: () => { if (selectionMode === null) onSelectRoute(route.id); } }}><Popup><strong>{route.name}</strong><br />クリックして地図で選択</Popup></Polyline>)}
+      </Pane>
+      <Pane name={MAP_PANES.facilities.name} style={{ zIndex: MAP_PANES.facilities.zIndex }}>
+        {showEstimated && spots.map((spot) => <CircleMarker key={spot.id} center={[spot.latitude, spot.longitude]} radius={FACILITY_MARKER_RADII.estimatedRest} pathOptions={FACILITY_MARKER_STYLES.estimatedRest}><Popup><strong>{spot.name}</strong><br />種別：{categoryLabel[spot.category]}<br />座席：{value(spot.seating)}<br />屋内：{value(spot.indoor)}<br />営業時間：{spot.openingHours ?? "不明"}<br /><small>{spot.source.datasetName}（推定・未検証）</small></Popup></CircleMarker>)}
+        {displayedRestCandidates.map((candidate) => { const water = candidate.category === "drinking_station"; const barrier = candidate.category === "barrier_free_facility"; const markerStyle = water ? FACILITY_MARKER_STYLES.drinkingStation : barrier ? FACILITY_MARKER_STYLES.barrierFreeFacility : FACILITY_MARKER_STYLES.publicFacility; return <CircleMarker key={candidate.id} center={[candidate.latitude, candidate.longitude]} radius={FACILITY_MARKER_RADII.restCandidate} pathOptions={markerStyle}><Popup><strong>{candidate.name}</strong><br />分類：{water ? "給水地点" : barrier ? "バリアフリー掲載施設" : "公共施設"}<br />休憩信頼度：{candidate.confidence}<br />屋内：{value(candidate.indoor)}／座席：{value(candidate.seating)}<br /><small>{candidate.source.provider}の公式掲載情報。自由利用・着席・営業中は保証しません。</small></Popup></CircleMarker>; })}
+        {highlightedRoute && <CircleMarker center={highlightedRoute.restInsertionSuggestion.suggestedRestInsertionCoordinate} radius={FACILITY_MARKER_RADII.restSuggestion} pathOptions={FACILITY_MARKER_STYLES.restSuggestion}><Popup><strong>理論上の休憩地点追加候補</strong><br />最長空白を約{Math.round(highlightedRoute.restInsertionSuggestion.improvementMeters)}m短縮する計算です。実在する設置可能場所ではありません。</Popup></CircleMarker>}
+        {displayedOfficial.map((place) => {
+          const primary = place.records[0]; const markerKind = getOfficialMarkerKind(place);
+          return <CircleMarker key={place.clusterId} center={[place.representativeLatitude, place.representativeLongitude]} radius={FACILITY_MARKER_RADII.officialToilet} pathOptions={FACILITY_MARKER_STYLES[markerKind]}><Popup><strong>公式掲載のトイレ候補地点：{primary.name}</strong><br />原レコード：{place.sourceRecordCount}件<br />分類：{place.kinds.map((item) => toiletKindLabel[item]).join(" / ")}<hr />{place.records.map((record) => <div className="source-record" key={record.id}><strong>{record.name}</strong><br />住所：{record.address ?? "不明"}<br />種別：{record.officialToiletKind ? toiletKindLabel[record.officialToiletKind] : "不明"}<br />車椅子使用者対応情報：{value(record.wheelchairAccessible)}<br />利用時間情報：{record.openingHours ?? "不明"}<br />提供者：{record.source.provider}</div>)}<small>掲載情報であり、利用可能性、入場条件、実際の徒歩距離、車椅子での到達可能性は保証しません。</small></Popup></CircleMarker>;
+        })}
+      </Pane>
+      <Pane name={MAP_PANES.selectedRouteHalo.name} style={{ zIndex: MAP_PANES.selectedRouteHalo.zIndex, pointerEvents: "none" }}>
+        {highlightedRoute && <Polyline key={`halo-${highlightedRoute.id}`} positions={highlightedRoute.coordinates} pathOptions={SELECTED_ROUTE_HALO_STYLE} interactive={false} />}
+      </Pane>
+      <Pane name={MAP_PANES.selectedRoute.name} style={{ zIndex: MAP_PANES.selectedRoute.zIndex }}>
+        {highlightedRoute && <Polyline key={highlightedRoute.id} positions={highlightedRoute.coordinates} pathOptions={getRouteLineStyle(highlightedRoute, true)} eventHandlers={{ click: () => { if (selectionMode === null) onSelectRoute(highlightedRoute.id); } }}><Popup><strong>{highlightedRoute.name}</strong><br />比較UIで選択中</Popup></Polyline>}
+      </Pane>
+      <Pane name={MAP_PANES.endpoints.name} style={{ zIndex: MAP_PANES.endpoints.zIndex }}>
+        <Marker position={origin}><Popup><strong>出発地</strong><br />地図クリックで再設定できます</Popup></Marker><Marker position={destination}><Popup><strong>目的地</strong><br />地図クリックで再設定できます</Popup></Marker>
+      </Pane>
     </MapContainer></div>
-    <div className="legend" aria-label="凡例"><span>青実線：標準歩行候補</span><span>緑破線：階段回避要求候補</span><span>紫点線：車いすプロファイル候補</span><span><i className="line normal" />固定デモ通常ルート</span><span><i className="line comfort" />固定デモ安心ルート</span><span><i className="line toilet-gap" />公衆トイレ候補の空白区間</span><span><i className="dot official" />公衆トイレ候補</span><span><i className="dot facility" />公共施設内の設備情報</span><span><i className="dot station" />鉄道駅内の設備情報</span><span><i className="dot" />推定デモデータ</span><span>「不明」は情報なし（falseではありません）</span></div>
+    <div className="legend" aria-label="凡例">
+      {routeLegendItems.map((item) => <LineLegendItem key={item.key} label={item.label} style={item.lineStyle} />)}
+      {largestGap && <LineLegendItem label="公衆トイレ候補の空白区間" style={PUBLIC_TOILET_GAP_STYLE} />}
+      {facilityLegendItems.map((item) => <MarkerLegendItem key={item.key} label={item.label} markerStyle={item.markerStyle} />)}
+      <span>「不明」は情報なし（falseではありません）</span>
+    </div>
   </section>;
 }
