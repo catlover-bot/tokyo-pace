@@ -58,9 +58,16 @@ export function evaluateRoute(route: DemoRoute, preferences: RoutePreferences, o
     slope: preferences.avoidSteepSlopes && route.steepSlopeCount > 0,
     indoor: preferences.preferIndoorRest && route.indoorRestCount === 0,
   };
-  const score = route.durationMinutes * SCORE_WEIGHTS.minute + continuity.continuousWalkingExcessMinutes * SCORE_WEIGHTS.continuousMinuteOver
-    + (violations.toilet ? SCORE_WEIGHTS.missingToilet : 0) + (preferences.avoidSteepSlopes ? route.steepSlopeCount * SCORE_WEIGHTS.steepSlope : 0)
-    + (violations.indoor ? SCORE_WEIGHTS.missingIndoorRest : 0);
+  const scoreBreakdown = {
+    duration: route.durationMinutes * SCORE_WEIGHTS.minute,
+    continuousWalkingExcess: continuity.continuousWalkingExcessMinutes * SCORE_WEIGHTS.continuousMinuteOver,
+    missingPublicToilet: violations.toilet ? SCORE_WEIGHTS.missingToilet : 0,
+    steepSlope: preferences.avoidSteepSlopes ? route.steepSlopeCount * SCORE_WEIGHTS.steepSlope : 0,
+    missingIndoorRest: violations.indoor ? SCORE_WEIGHTS.missingIndoorRest : 0,
+    total: 0,
+  };
+  const score = scoreBreakdown.duration + scoreBreakdown.continuousWalkingExcess + scoreBreakdown.missingPublicToilet + scoreBreakdown.steepSlope + scoreBreakdown.missingIndoorRest;
+  scoreBreakdown.total = score;
   const reasons = [
     route.restSpotIds.length ? `休憩候補を${route.restSpotIds.length}か所経由` : "休憩候補の経由なし",
     hasPublicToiletCandidate ? `ルートから推定直線距離${PUBLIC_TOILET_QUALIFYING_DISTANCE_METERS}m以内に公衆トイレ候補${publicToiletPlaces.length}地点` : `ルートから推定直線距離${PUBLIC_TOILET_QUALIFYING_DISTANCE_METERS}m以内に公衆トイレ候補なし`,
@@ -69,7 +76,7 @@ export function evaluateRoute(route: DemoRoute, preferences: RoutePreferences, o
     violations.continuous ? `希望の連続歩行時間を${continuity.continuousWalkingExcessMinutes}分超過` : "希望の連続歩行時間内",
   ];
   return {
-    ...route, ...continuity, ...restNetwork, ...(restCandidates.length === 0 ? { longestRestGapMeters: continuity.longestRestGapMeters } : {}), continuousWalkingLimitMinutes: preferences.maxContinuousWalkingMinutes, score, reasons,
+    ...route, ...continuity, ...restNetwork, ...(restCandidates.length === 0 ? { longestRestGapMeters: continuity.longestRestGapMeters } : {}), continuousWalkingLimitMinutes: preferences.maxContinuousWalkingMinutes, score, scoreBreakdown, preferenceViolationCount: Object.values(violations).filter(Boolean).length, reasons,
     meetsPreferences: !Object.values(violations).some(Boolean),
     officialToiletRecordCount: nearbyOfficialToiletPlaces.reduce((sum, place) => sum + place.sourceRecordCount, 0),
     officialToiletPlaceCount: nearbyOfficialToiletPlaces.length,
@@ -85,5 +92,18 @@ export function evaluateRoute(route: DemoRoute, preferences: RoutePreferences, o
   };
 }
 
+const durationSeconds = (route: EvaluatedRoute) => route.durationSeconds ?? route.durationMinutes * 60;
+
+export function compareEvaluatedRoutes(a: EvaluatedRoute, b: EvaluatedRoute) {
+  return a.score - b.score
+    || Number(b.meetsPreferences) - Number(a.meetsPreferences)
+    || a.preferenceViolationCount - b.preferenceViolationCount
+    || a.maxContinuousWalkingMinutes - b.maxContinuousWalkingMinutes
+    || a.longestRestGapMeters - b.longestRestGapMeters
+    || durationSeconds(a) - durationSeconds(b)
+    || a.distanceMeters - b.distanceMeters
+    || a.id.localeCompare(b.id);
+}
+
 export const selectRecommendedRoute = (routes: DemoRoute[], preferences: RoutePreferences, officialToiletPlaces: OfficialToiletPlace[] = [], restCandidates: RestCandidate[] = []) =>
-  routes.map((route) => evaluateRoute(route, preferences, officialToiletPlaces, restCandidates)).sort((a, b) => a.score - b.score);
+  routes.map((route) => evaluateRoute(route, preferences, officialToiletPlaces, restCandidates)).sort(compareEvaluatedRoutes);

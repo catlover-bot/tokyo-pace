@@ -113,6 +113,15 @@ export type ContinuityMetrics = {
   continuousWalkingExcessMinutes: number;
 };
 
+export type RouteScoreBreakdown = {
+  duration: number;
+  continuousWalkingExcess: number;
+  missingPublicToilet: number;
+  steepSlope: number;
+  missingIndoorRest: number;
+  total: number;
+};
+
 export type PublicToiletGapSegment = {
   startProgressMeters: number;
   endProgressMeters: number;
@@ -126,6 +135,8 @@ export type PublicToiletGapSegment = {
 export type EvaluatedRoute = DemoRoute & ContinuityMetrics & RestNetworkMetrics & {
   continuousWalkingLimitMinutes: number;
   score: number;
+  scoreBreakdown: RouteScoreBreakdown;
+  preferenceViolationCount: number;
   reasons: string[];
   meetsPreferences: boolean;
   officialToiletRecordCount: number;

@@ -8,6 +8,16 @@ Workerは入力サイズ、JSON、有限座標、緯度経度範囲、新宿bbox
 
 動的経路ではconfirmed／supportedの厳格な休憩候補だけでwalkingSegmentsを分割します。区間時間は経路全体の距離・所要時間に対する距離比で決定的に推定し、possibleは厳格成立へ使用しません。公式トイレ、休憩、給水、屋内候補は経路ごとに再射影します。
 
+## 比較ViewModelと説明可能性
+
+`routeScore.ts`の既存加重値を「条件負担スコア」と呼び、唯一の推奨基準とします。`selectRecommendedRoute`と比較層は同じ決定的comparatorを使用します。条件負担スコアは低いほど設定した歩行条件に近い値です。値が同じ場合だけ、必須条件達成、違反数、最大連続歩行、最長休憩空白、実所要秒数、距離、routeIdで順序を固定します。
+
+`EvaluatedRoute`は条件負担スコアに加えて、所要時間、連続歩行超過、公衆トイレ条件、急坂、屋内条件の既存加算値を`scoreBreakdown`として返します。休憩空白、給水、屋内候補空白は現在の計算要素ではないため、内訳へ寄与したように扱いません。
+
+`routeComparison.ts`は評価済み経路から比較ViewModelを生成する純粋関数です。基準経路、差分、順位、理由コード、利点、注意点、条件違反、線種、出典を一度だけ生成し、推奨サマリー、比較表、詳細カードへ供給します。理由は固定優先度で最大4件とし、生成AIや外部サービスで文章を作りません。`possible`施設は厳格な休憩成立理由に使いません。
+
+Reactは`selectedRouteId`を比較UIと地図で共有します。ボタンまたは経路線の選択により、Leafletは選択線を太く、ほかを薄くし、選択座標のboundsへ合わせます。経路の線種はプロファイルごとに固定されます。比較UIは遅延読み込みし、生成済み施設データと地図の既存コード分割を維持します。
+
 ## 休憩ネットワーク
 
 公式CSV → `scripts/update-open-data.mjs`（取得、UTF-8／Shift_JIS／UTF-16LE変換、ヘッダー検証、null正規化、原子的書込み）→ 生成JSON → ルート近傍抽出・射影・正規化空白分析 → React表示、の一方向構成です。外部CSVをクライアントから取得しません。
@@ -18,17 +28,18 @@ Workerは入力サイズ、JSON、有限座標、緯度経度範囲、新宿bbox
 
 ## 構成
 
-React SPA を Vite で構築し、Cloudflare Vite plugin により Worker と静的アセットを一体で開発・配布します。`worker/index.ts` は将来の API 境界で、現在はヘルスチェックのみです。
+React SPA を Vite で構築し、Cloudflare Vite plugin により Worker と静的アセットを一体で開発・配布します。`worker/index.ts` はヘルスチェックと`POST /api/routes`を提供し、Secretをブラウザへ渡さずopenrouteserviceへ接続します。
 
 ```text
 UI (React / Leaflet)
   ↓ RouteProvider interface
-DemoRouteProvider
-  ↓
-ローカルのデモ経路データ
+ApiRouteProvider → Worker /api/routes → openrouteservice
+  または明示操作時だけ DemoRouteProvider
 
 walkingSegments → 純粋関数 deriveContinuityMetrics → 継続性指標
-UI → 純粋関数 routeScore → 評価済み経路・説明理由
+routeScore → EvaluatedRoute / scoreBreakdown
+  ↓ routeComparison（理由コード・差分・条件違反）
+比較表・カード ↔ selectedRouteId ↔ 地図
 
 公式CSV → scripts/update-open-data.mjs → data/generated + src/data/generated → UI / routeScore
 ```
