@@ -6,6 +6,7 @@ import { distancePointToRouteMeters, findOfficialToiletPlacesNearRoute } from ".
 import { prepareDynamicRoute } from "./domain/dynamicRoute";
 import { buildRouteComparisonViewModels, selectRouteId } from "./domain/routeComparison";
 import { selectRecommendedRoute } from "./domain/routeScore";
+import { reportRouteSearchError, toRouteSearchErrorMessage } from "./domain/routeSearchError";
 import { applySelectedMapPoint, SHINJUKU_ROUTING_BBOX } from "./domain/routing";
 import { ApiRouteProvider } from "./providers/ApiRouteProvider";
 import { DemoRouteProvider } from "./providers/DemoRouteProvider";
@@ -30,7 +31,7 @@ export default function App() {
     controller.current?.abort(); const next = new AbortController(); controller.current = next;
     setLoading(true); setError(null); setFallback(false); setRoutes([]); setSelectedRouteId(null);
     try { const [candidates, data] = await Promise.all([apiProvider.getRoutes(request(), next.signal), loadAnalysisData()]); setRoutes(candidates.map((route) => prepareDynamicRoute(route, data.rest))); setPreferences(draft); }
-    catch (cause) { if (!next.signal.aborted) setError(cause instanceof Error ? cause.message : "経路候補を取得できませんでした。"); }
+    catch (cause) { if (!next.signal.aborted) { reportRouteSearchError(cause); setError(toRouteSearchErrorMessage(cause)); } }
     finally { if (!next.signal.aborted) setLoading(false); }
   };
   const showDemo = async () => { setLoading(true); setError(null); setRoutes([]); setSelectedRouteId(null); try { await loadAnalysisData(); setRoutes(await demoProvider.getRoutes(request())); setPreferences(draft); setFallback(true); } finally { setLoading(false); } };
