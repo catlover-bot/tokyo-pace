@@ -51145,8 +51145,2292 @@
     "exclusionReasonCounts": {},
     "exclusions": [],
     "candidateExtraction": {
-      "eligibleGroupCount": 10,
-      "candidateCount": 10,
+      "preRankingGroupCount": 197,
+      "eligibleGroupCount": 8,
+      "candidateCount": 8,
+      "dynamicRouteSnapshot": {
+        "snapshotId": "shinjuku-west-to-tocho-v1",
+        "sourcePath": "data/routing-snapshots/shinjuku-west-to-tocho.v1.json",
+        "contentSha256": "57a7e8b4a768ff1e819d6ff5b38ab47c3fc15543aab937b5ed7be9a6fa3993d3",
+        "byteSize": 9346,
+        "capturedAt": "2026-07-23T06:28:03.624Z",
+        "sourceType": "openstreetmap_route",
+        "provider": "openrouteservice via TOKYO PACE Worker",
+        "license": "ODbL",
+        "attribution": "© OpenStreetMap contributors / openrouteservice"
+      },
+      "detourAccessLowerBoundFactor": 1,
+      "minimumDetourAdjustedImprovementMeters": 30,
+      "minimumDetourAdjustedImprovementRatio": 0.025,
+      "exclusionReasonCounts": {
+        "COORDINATE_SOURCE_ANOMALY": 4,
+        "DETOUR_ADJUSTED_IMPROVEMENT_BELOW_THRESHOLD": 3,
+        "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE": 127,
+        "RESTRICTED_OR_SENSITIVE_FACILITY": 55
+      },
+      "exclusions": [
+        {
+          "candidateId": "daredemo-transport-JR信濃町駅-131041-3569132917-1396995728",
+          "name": "JR 信濃町駅",
+          "groupedCandidateIds": [
+            "daredemo-transport-JR信濃町駅-131041-3569132917-1396995728"
+          ],
+          "reasonCode": "COORDINATE_SOURCE_ANOMALY",
+          "reason": "異なる施設が同一座標へ集中する上流品質異常"
+        },
+        {
+          "candidateId": "daredemo-transport-JR大久保駅-131041-3569132917-1396995728",
+          "name": "JR 大久保駅",
+          "groupedCandidateIds": [
+            "daredemo-transport-JR大久保駅-131041-3569132917-1396995728"
+          ],
+          "reasonCode": "COORDINATE_SOURCE_ANOMALY",
+          "reason": "異なる施設が同一座標へ集中する上流品質異常"
+        },
+        {
+          "candidateId": "daredemo-transport-JR新宿駅-131041-3569132917-1396995728",
+          "name": "JR 新宿駅",
+          "groupedCandidateIds": [
+            "daredemo-transport-JR新宿駅-131041-3569132917-1396995728"
+          ],
+          "reasonCode": "COORDINATE_SOURCE_ANOMALY",
+          "reason": "異なる施設が同一座標へ集中する上流品質異常"
+        },
+        {
+          "candidateId": "daredemo-transport-JR高田馬場駅-131041-3569132917-1396995728",
+          "name": "JR 高田馬場駅",
+          "groupedCandidateIds": [
+            "daredemo-transport-JR高田馬場駅-131041-3569132917-1396995728"
+          ],
+          "reasonCode": "COORDINATE_SOURCE_ANOMALY",
+          "reason": "異なる施設が同一座標へ集中する上流品質異常"
+        },
+        {
+          "candidateId": "daredemo-accommodation-新宿プリンスホテル-131041-35694454-13970019",
+          "name": "新宿プリンスホテル",
+          "groupedCandidateIds": [
+            "daredemo-accommodation-新宿プリンスホテル-131041-35694454-13970019"
+          ],
+          "reasonCode": "DETOUR_ADJUSTED_IMPROVEMENT_BELOW_THRESHOLD",
+          "reason": "迂回調整後の改善が30mまたは2.5%の基準に届かない",
+          "facilityAccessCategory": "private_hospitality",
+          "bestRouteMetric": {
+            "routeId": "step_avoiding",
+            "routeKey": "dynamic_snapshot:step_avoiding",
+            "routeSet": "dynamic_snapshot",
+            "profile": "step_avoiding",
+            "routeDistanceMeters": 1147,
+            "distanceToRouteMeters": 338,
+            "geometryProgressMeters": 83,
+            "routeProgressMeters": 83,
+            "nearestPointCoordinate": [
+              35.691522,
+              139.699189
+            ],
+            "currentLongestGapMeters": 1147,
+            "expectedImprovedGapMeters": 1064,
+            "expectedImprovementMeters": 83,
+            "expectedImprovementRatio": 0.0728,
+            "grossImprovementMeters": 83,
+            "grossImprovementRatio": 0.0728,
+            "estimatedDetourLowerBoundMeters": 338,
+            "detourAdjustedImprovementMeters": 0,
+            "detourAdjustedImprovementRatio": 0,
+            "suggestedInsertionProgressMeters": 574,
+            "suggestedInsertionCoordinate": [
+              35.692397,
+              139.694486
+            ],
+            "distanceToSuggestedInsertionMeters": 564,
+            "insideLargestGap": true,
+            "contributesToRanking": false
+          }
+        },
+        {
+          "candidateId": "daredemo-parks-新宿区立新宿中央公園-131041-3568933778-1396898986",
+          "name": "新宿区立新宿中央公園",
+          "groupedCandidateIds": [
+            "daredemo-parks-新宿区立新宿中央公園-131041-3568933778-1396898986"
+          ],
+          "reasonCode": "DETOUR_ADJUSTED_IMPROVEMENT_BELOW_THRESHOLD",
+          "reason": "迂回調整後の改善が30mまたは2.5%の基準に届かない",
+          "facilityAccessCategory": "public_outdoor_space",
+          "bestRouteMetric": {
+            "routeId": "step_avoiding",
+            "routeKey": "dynamic_snapshot:step_avoiding",
+            "routeSet": "dynamic_snapshot",
+            "profile": "step_avoiding",
+            "routeDistanceMeters": 1147,
+            "distanceToRouteMeters": 195,
+            "geometryProgressMeters": 1121,
+            "routeProgressMeters": 1122,
+            "nearestPointCoordinate": [
+              35.68962,
+              139.692035
+            ],
+            "currentLongestGapMeters": 1147,
+            "expectedImprovedGapMeters": 1122,
+            "expectedImprovementMeters": 25,
+            "expectedImprovementRatio": 0.0221,
+            "grossImprovementMeters": 25,
+            "grossImprovementRatio": 0.0221,
+            "estimatedDetourLowerBoundMeters": 195,
+            "detourAdjustedImprovementMeters": 0,
+            "detourAdjustedImprovementRatio": 0,
+            "suggestedInsertionProgressMeters": 574,
+            "suggestedInsertionCoordinate": [
+              35.692397,
+              139.694486
+            ],
+            "distanceToSuggestedInsertionMeters": 536,
+            "insideLargestGap": true,
+            "contributesToRanking": false
+          }
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000146",
+          "name": "環境学習情報センター （エコギャラリー新宿）",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000146",
+            "shinjuku-facility-131041000172"
+          ],
+          "reasonCode": "DETOUR_ADJUSTED_IMPROVEMENT_BELOW_THRESHOLD",
+          "reason": "迂回調整後の改善が30mまたは2.5%の基準に届かない",
+          "facilityAccessCategory": "public_service_facility",
+          "bestRouteMetric": {
+            "routeId": "step_avoiding",
+            "routeKey": "dynamic_snapshot:step_avoiding",
+            "routeSet": "dynamic_snapshot",
+            "profile": "step_avoiding",
+            "routeDistanceMeters": 1147,
+            "distanceToRouteMeters": 288,
+            "geometryProgressMeters": 900,
+            "routeProgressMeters": 901,
+            "nearestPointCoordinate": [
+              35.691537,
+              139.691734
+            ],
+            "currentLongestGapMeters": 1147,
+            "expectedImprovedGapMeters": 901,
+            "expectedImprovementMeters": 246,
+            "expectedImprovementRatio": 0.2147,
+            "grossImprovementMeters": 246,
+            "grossImprovementRatio": 0.2147,
+            "estimatedDetourLowerBoundMeters": 288,
+            "detourAdjustedImprovementMeters": 0,
+            "detourAdjustedImprovementRatio": 0,
+            "suggestedInsertionProgressMeters": 574,
+            "suggestedInsertionCoordinate": [
+              35.692397,
+              139.694486
+            ],
+            "distanceToSuggestedInsertionMeters": 552,
+            "insideLargestGap": true,
+            "contributesToRanking": false
+          }
+        },
+        {
+          "candidateId": "daredemo-accommodation-イーホテル東新宿-131041-35697687-139707196",
+          "name": "イーホテル東新宿",
+          "groupedCandidateIds": [
+            "daredemo-accommodation-イーホテル東新宿-131041-35697687-139707196"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "private_hospitality"
+        },
+        {
+          "candidateId": "daredemo-accommodation-ヴィアイン新宿-131041-35693411-139707298",
+          "name": "ヴィアイン新宿",
+          "groupedCandidateIds": [
+            "daredemo-accommodation-ヴィアイン新宿-131041-35693411-139707298"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "private_hospitality"
+        },
+        {
+          "candidateId": "daredemo-accommodation-ヴィアイン飯田橋後楽園-131041-357-1397",
+          "name": "ヴィアイン飯田橋後楽園",
+          "groupedCandidateIds": [
+            "daredemo-accommodation-ヴィアイン飯田橋後楽園-131041-357-1397"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "private_hospitality"
+        },
+        {
+          "candidateId": "daredemo-accommodation-シタディーン新宿東京-131041-35691049-139713121",
+          "name": "シタディーン新宿東京",
+          "groupedCandidateIds": [
+            "daredemo-accommodation-シタディーン新宿東京-131041-35691049-139713121"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "private_hospitality"
+        },
+        {
+          "candidateId": "daredemo-accommodation-ハンドレッドステイ東京新宿-131041-35702367-139695484",
+          "name": "ハンドレッドステイ東京新宿",
+          "groupedCandidateIds": [
+            "daredemo-accommodation-ハンドレッドステイ東京新宿-131041-35702367-139695484"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "private_hospitality"
+        },
+        {
+          "candidateId": "daredemo-accommodation-ホテルウィングインターナショナルプレミアム東京四谷-131041-35688021-139718394",
+          "name": "ホテルウィングインターナショナルプレミアム東京四谷",
+          "groupedCandidateIds": [
+            "daredemo-accommodation-ホテルウィングインターナショナルプレミアム東京四谷-131041-35688021-139718394"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "private_hospitality"
+        },
+        {
+          "candidateId": "daredemo-accommodation-ホテルグレイスリー新宿-131041-35695293-139701969",
+          "name": "ホテルグレイスリー新宿",
+          "groupedCandidateIds": [
+            "daredemo-accommodation-ホテルグレイスリー新宿-131041-35695293-139701969"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "private_hospitality"
+        },
+        {
+          "candidateId": "daredemo-accommodation-ホテルサンライト新宿-131041-35694181-13970713",
+          "name": "ホテルサンライト新宿",
+          "groupedCandidateIds": [
+            "daredemo-accommodation-ホテルサンライト新宿-131041-35694181-13970713"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "private_hospitality"
+        },
+        {
+          "candidateId": "daredemo-accommodation-ホテルニューショーヘイ-131041-35686756-139728313",
+          "name": "ホテルニューショーヘイ",
+          "groupedCandidateIds": [
+            "daredemo-accommodation-ホテルニューショーヘイ-131041-35686756-139728313"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "private_hospitality"
+        },
+        {
+          "candidateId": "daredemo-accommodation-ホテル京阪東京四谷-131041-35686892-139727431",
+          "name": "ホテル京阪 東京四谷",
+          "groupedCandidateIds": [
+            "daredemo-accommodation-ホテル京阪東京四谷-131041-35686892-139727431"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "private_hospitality"
+        },
+        {
+          "candidateId": "daredemo-accommodation-リーガロイヤルホテル東京-131041-35710472-139722619",
+          "name": "リーガロイヤルホテル東京",
+          "groupedCandidateIds": [
+            "daredemo-accommodation-リーガロイヤルホテル東京-131041-35710472-139722619"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "private_hospitality"
+        },
+        {
+          "candidateId": "daredemo-accommodation-三井ガーデンホテル神宮外苑の杜プレミア-131041-35680405-139715711",
+          "name": "三井ガーデンホテル神宮外苑の杜プレミア",
+          "groupedCandidateIds": [
+            "daredemo-accommodation-三井ガーデンホテル神宮外苑の杜プレミア-131041-35680405-139715711"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "private_hospitality"
+        },
+        {
+          "candidateId": "daredemo-accommodation-日本青年館ホテル-131041-35674472-139715487",
+          "name": "日本青年館ホテル",
+          "groupedCandidateIds": [
+            "daredemo-accommodation-日本青年館ホテル-131041-35674472-139715487"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "private_hospitality"
+        },
+        {
+          "candidateId": "daredemo-accommodation-東京セントラルユースホステル-131041-35700821-139743522",
+          "name": "東京セントラルユースホステル",
+          "groupedCandidateIds": [
+            "daredemo-accommodation-東京セントラルユースホステル-131041-35700821-139743522"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "private_hospitality"
+        },
+        {
+          "candidateId": "daredemo-dining-カフェシェーキーズ外苑信濃町-131041-35679503-139719256",
+          "name": "カフェシェーキーズ 外苑信濃町",
+          "groupedCandidateIds": [
+            "daredemo-dining-カフェシェーキーズ外苑信濃町-131041-35679503-139719256"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "commercial_facility"
+        },
+        {
+          "candidateId": "daredemo-dining-グッドモーニングカフェナワデイズ-131041-35681186-139714329",
+          "name": "グッドモーニングカフェ ナワデイズ",
+          "groupedCandidateIds": [
+            "daredemo-dining-グッドモーニングカフェナワデイズ-131041-35681186-139714329"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "commercial_facility"
+        },
+        {
+          "candidateId": "daredemo-dining-トラットリアダイパエサーニ-131041-3571099417-1397112192",
+          "name": "トラットリア ダイ パエサーニ",
+          "groupedCandidateIds": [
+            "daredemo-dining-トラットリアダイパエサーニ-131041-3571099417-1397112192"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "commercial_facility"
+        },
+        {
+          "candidateId": "daredemo-dining-御苑炉庵-131041-356897752-1397098318",
+          "name": "御苑　炉庵",
+          "groupedCandidateIds": [
+            "daredemo-dining-御苑炉庵-131041-356897752-1397098318"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "commercial_facility"
+        },
+        {
+          "candidateId": "daredemo-leisure-明治神宮外苑明治神宮野球場-131041-3567455833-1397170581",
+          "name": "明治神宮外苑 明治神宮野球場",
+          "groupedCandidateIds": [
+            "daredemo-leisure-明治神宮外苑明治神宮野球場-131041-3567455833-1397170581"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "commercial_facility"
+        },
+        {
+          "candidateId": "daredemo-parks-国民公園新宿御苑-131041-3568517611-1397096017",
+          "name": "国民公園　新宿御苑",
+          "groupedCandidateIds": [
+            "daredemo-parks-国民公園新宿御苑-131041-3568517611-1397096017"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "public_outdoor_space"
+        },
+        {
+          "candidateId": "daredemo-parks-戸山公園-131041-35707707-139705066",
+          "name": "戸山公園",
+          "groupedCandidateIds": [
+            "daredemo-parks-戸山公園-131041-35707707-139705066"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "public_outdoor_space"
+        },
+        {
+          "candidateId": "daredemo-shopping-伊勢丹新宿本店-131041-3569163306-1397045933",
+          "name": "伊勢丹新宿本店",
+          "groupedCandidateIds": [
+            "daredemo-shopping-伊勢丹新宿本店-131041-3569163306-1397045933"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "commercial_facility"
+        },
+        {
+          "candidateId": "daredemo-shopping-紀伊國屋ビル紀伊國屋書店新宿本店-131041-3569223444-1397030233",
+          "name": "紀伊國屋ビル（紀伊國屋書店新宿本店）",
+          "groupedCandidateIds": [
+            "daredemo-shopping-紀伊國屋ビル紀伊國屋書店新宿本店-131041-3569223444-1397030233"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "commercial_facility"
+        },
+        {
+          "candidateId": "daredemo-transport-京王新宿駅-131041-35688601-139787725",
+          "name": "京王 新宿駅",
+          "groupedCandidateIds": [
+            "daredemo-transport-京王新宿駅-131041-35688601-139787725"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "daredemo-transport-大江戸線中井-131041-356492077-1394872687",
+          "name": "大江戸線 中井",
+          "groupedCandidateIds": [
+            "daredemo-transport-大江戸線中井-131041-356492077-1394872687"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "daredemo-transport-大江戸線国立競技場-131041-356198513-1397260005",
+          "name": "大江戸線 国立競技場",
+          "groupedCandidateIds": [
+            "daredemo-transport-大江戸線国立競技場-131041-356198513-1397260005"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "daredemo-transport-大江戸線新宿西口-131041-357381581-1397586267",
+          "name": "大江戸線 新宿西口",
+          "groupedCandidateIds": [
+            "daredemo-transport-大江戸線新宿西口-131041-357381581-1397586267"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "daredemo-transport-大江戸線東新宿-131041-357333105-1398797813",
+          "name": "大江戸線 東新宿",
+          "groupedCandidateIds": [
+            "daredemo-transport-大江戸線東新宿-131041-357333105-1398797813"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "daredemo-transport-大江戸線牛込柳町-131041-357468149-1397516868",
+          "name": "大江戸線 牛込柳町",
+          "groupedCandidateIds": [
+            "daredemo-transport-大江戸線牛込柳町-131041-357468149-1397516868"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "daredemo-transport-大江戸線牛込神楽坂-131041-357866243-1397039723",
+          "name": "大江戸線 牛込神楽坂",
+          "groupedCandidateIds": [
+            "daredemo-transport-大江戸線牛込神楽坂-131041-357866243-1397039723"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "daredemo-transport-大江戸線若松河田-131041-35763949-1397246835",
+          "name": "大江戸線 若松河田",
+          "groupedCandidateIds": [
+            "daredemo-transport-大江戸線若松河田-131041-35763949-1397246835"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "daredemo-transport-大江戸線落合南長崎-131041-356662248-1394749951",
+          "name": "大江戸線 落合南長崎",
+          "groupedCandidateIds": [
+            "daredemo-transport-大江戸線落合南長崎-131041-356662248-1394749951"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "daredemo-transport-大江戸線西新宿五丁目-131041-356417094-1395182664",
+          "name": "大江戸線 西新宿五丁目",
+          "groupedCandidateIds": [
+            "daredemo-transport-大江戸線西新宿五丁目-131041-356417094-1395182664"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "daredemo-transport-大江戸線都庁前-131041-35760257-13972005",
+          "name": "大江戸線 都庁前",
+          "groupedCandidateIds": [
+            "daredemo-transport-大江戸線都庁前-131041-35760257-13972005"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "daredemo-transport-小田急新宿駅-131041-35687982-139796623",
+          "name": "小田急 新宿駅",
+          "groupedCandidateIds": [
+            "daredemo-transport-小田急新宿駅-131041-35687982-139796623"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "daredemo-transport-新宿線新宿三丁目-131041-357308925-1394682948",
+          "name": "新宿線 新宿三丁目",
+          "groupedCandidateIds": [
+            "daredemo-transport-新宿線新宿三丁目-131041-357308925-1394682948"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "daredemo-transport-新宿線曙橋-131041-3577811-1394913743",
+          "name": "新宿線 曙橋",
+          "groupedCandidateIds": [
+            "daredemo-transport-新宿線曙橋-131041-3577811-1394913743"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "daredemo-transport-東京メトロ新宿駅-131041-35695607-139775115",
+          "name": "東京メトロ 新宿駅",
+          "groupedCandidateIds": [
+            "daredemo-transport-東京メトロ新宿駅-131041-35695607-139775115"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "daredemo-transport-西武鉄道西武新宿駅-131041-35688399-139806057",
+          "name": "西武鉄道　西武新宿駅",
+          "groupedCandidateIds": [
+            "daredemo-transport-西武鉄道西武新宿駅-131041-35688399-139806057"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000001",
+          "name": "新宿区役所（本庁舎）",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000001",
+            "shinjuku-facility-131041000050",
+            "shinjuku-facility-131041000171"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "public_service_facility"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000002",
+          "name": "新宿区役所（第一分庁舎）",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000002"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "public_service_facility"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000003",
+          "name": "新宿区役所（第二分庁舎／分館）",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000003",
+            "shinjuku-facility-131041000023",
+            "shinjuku-facility-131041000187"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "public_service_facility"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000004",
+          "name": "新宿区役所（第二分庁舎分館分室）",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000004"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "public_service_facility"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000005",
+          "name": "四谷特別出張所",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000005",
+            "shinjuku-facility-131041000124",
+            "shinjuku-facility-131041000127",
+            "shinjuku-facility-131041000162"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "public_service_facility"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000006",
+          "name": "簞笥町特別出張所",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000006",
+            "shinjuku-facility-131041000125",
+            "shinjuku-facility-131041000128"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "public_service_facility"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000007",
+          "name": "榎町特別出張所",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000007",
+            "shinjuku-facility-131041000129"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "public_service_facility"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000008",
+          "name": "若松町特別出張所",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000008",
+            "shinjuku-facility-131041000130"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "public_service_facility"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000009",
+          "name": "大久保特別出張所",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000009",
+            "shinjuku-facility-131041000131",
+            "shinjuku-facility-131041000169"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "public_service_facility"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000010",
+          "name": "戸塚特別出張所",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000010",
+            "shinjuku-facility-131041000132"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "public_service_facility"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000011",
+          "name": "落合第一特別出張所",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000011",
+            "shinjuku-facility-131041000027",
+            "shinjuku-facility-131041000133"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "public_service_facility"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000012",
+          "name": "落合第二特別出張所",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000012",
+            "shinjuku-facility-131041000134"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "public_service_facility"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000013",
+          "name": "柏木特別出張所",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000013",
+            "shinjuku-facility-131041000071",
+            "shinjuku-facility-131041000117",
+            "shinjuku-facility-131041000135",
+            "shinjuku-facility-131041000209"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "public_service_facility"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000014",
+          "name": "角筈特別出張所",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000014",
+            "shinjuku-facility-131041000126",
+            "shinjuku-facility-131041000136",
+            "shinjuku-facility-131041000168"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "public_service_facility"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000015",
+          "name": "東部工事事務所（区道）",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000015",
+            "shinjuku-facility-131041000017",
+            "shinjuku-facility-131041000053",
+            "shinjuku-facility-131041000143"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000016",
+          "name": "西部工事事務所（区道）",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000016",
+            "shinjuku-facility-131041000018",
+            "shinjuku-facility-131041000170"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000019",
+          "name": "新宿清掃事務所",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000019"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000020",
+          "name": "新宿東清掃センター",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000020",
+            "shinjuku-facility-131041000025",
+            "shinjuku-facility-131041000051",
+            "shinjuku-facility-131041000121",
+            "shinjuku-facility-131041000148"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000021",
+          "name": "歌舞伎町清掃センター",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000021"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000022",
+          "name": "新宿中継・資源センター",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000022",
+            "shinjuku-facility-131041000152",
+            "shinjuku-facility-131041000160"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000024",
+          "name": "牛込保健センター",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000024",
+            "shinjuku-facility-131041000037"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000026",
+          "name": "東新宿保健センター",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000026"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000028",
+          "name": "元気館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000028"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000029",
+          "name": "あゆみの家",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000029"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000030",
+          "name": "子ども総合センター 発達支援コーナー",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000030",
+            "shinjuku-facility-131041000041",
+            "shinjuku-facility-131041000042",
+            "shinjuku-facility-131041000043",
+            "shinjuku-facility-131041000083",
+            "shinjuku-facility-131041000084",
+            "shinjuku-facility-131041000104",
+            "shinjuku-facility-131041000189"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000035",
+          "name": "シャロームみなみ風",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000035"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000036",
+          "name": "新宿けやき園",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000036"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000044",
+          "name": "新宿区立百人町高齢者在宅サービスセンター",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000044"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000045",
+          "name": "高齢者在宅サービスセンターあかね苑",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000045",
+            "shinjuku-facility-131041000052"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000046",
+          "name": "北新宿高齢者在宅サービスセンター",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000046",
+            "shinjuku-facility-131041000059"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000047",
+          "name": "若葉高齢者在宅サービスセンター",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000047"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000048",
+          "name": "中落合高齢者在宅サービスセンター",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000048",
+            "shinjuku-facility-131041000081"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000054",
+          "name": "若松町高齢者総合相談センター",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000054",
+            "shinjuku-facility-131041000064"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000055",
+          "name": "大久保高齢者総合相談センター",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000055"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000057",
+          "name": "落合第一高齢者総合相談センター",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000057"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000058",
+          "name": "落合第二高齢者総合相談センター",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000058"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000060",
+          "name": "角筈高齢者総合相談センター",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000060",
+            "shinjuku-facility-131041000065"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000061",
+          "name": "薬王寺地域ささえあい館 （ささえーる 薬王寺）",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000061",
+            "shinjuku-facility-131041000097"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000062",
+          "name": "高田馬場シニア活動館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000062"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000063",
+          "name": "信濃町シニア活動館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000063",
+            "shinjuku-facility-131041000087",
+            "shinjuku-facility-131041000089",
+            "shinjuku-facility-131041000212"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000066",
+          "name": "早稲田南町地域交流館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000066",
+            "shinjuku-facility-131041000098",
+            "shinjuku-facility-131041000203"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000067",
+          "name": "西早稲田地域交流館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000067"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000068",
+          "name": "新宿地域交流館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000068"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000069",
+          "name": "山吹町地域交流館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000069"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000070",
+          "name": "上落合地域交流館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000070",
+            "shinjuku-facility-131041000114"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000072",
+          "name": "下落合地域交流館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000072"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000073",
+          "name": "百人町地域交流館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000073",
+            "shinjuku-facility-131041000106",
+            "shinjuku-facility-131041000201"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000074",
+          "name": "東五軒町地域交流館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000074",
+            "shinjuku-facility-131041000095",
+            "shinjuku-facility-131041000200"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000075",
+          "name": "中町地域交流館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000075",
+            "shinjuku-facility-131041000093",
+            "shinjuku-facility-131041000167"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000076",
+          "name": "本塩町地域交流館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000076",
+            "shinjuku-facility-131041000090"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000077",
+          "name": "北山伏地域交流館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000077",
+            "shinjuku-facility-131041000092"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000078",
+          "name": "中落合地域交流館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000078",
+            "shinjuku-facility-131041000085",
+            "shinjuku-facility-131041000198"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000079",
+          "name": "北新宿第二地域交流館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000079",
+            "shinjuku-facility-131041000088",
+            "shinjuku-facility-131041000118",
+            "shinjuku-facility-131041000139",
+            "shinjuku-facility-131041000166",
+            "shinjuku-facility-131041000211"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000080",
+          "name": "高田馬場地域交流館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000080",
+            "shinjuku-facility-131041000108",
+            "shinjuku-facility-131041000194"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000082",
+          "name": "あんじゅうむ大久保高齢者地域交流スペース 一福",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000082"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000123",
+          "name": "二葉乳児院",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000123"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000137",
+          "name": "赤城生涯学習館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000137"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000138",
+          "name": "戸山生涯学習館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000138",
+            "shinjuku-facility-131041000165"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000140",
+          "name": "住吉町生涯学習館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000140"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000141",
+          "name": "西戸山生涯学習館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000141",
+            "shinjuku-facility-131041000225"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000142",
+          "name": "男女共同参画推進センター（ウィズ新宿）",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000142"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000145",
+          "name": "西早稲田リサイクル活動センター",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000145"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000147",
+          "name": "しんじゅく多文化共生プラザ",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000147"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000149",
+          "name": "新宿NPO協働推進センター",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000149"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000150",
+          "name": "新宿スポーツセンター",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000150"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000151",
+          "name": "新宿コズミックスポーツセンター",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000151",
+            "shinjuku-facility-131041000271"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000153",
+          "name": "四谷スポーツスクエア",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000153"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000154",
+          "name": "西戸山公園野球場",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000154"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "public_outdoor_space"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000155",
+          "name": "落合中央公園野球場",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000155",
+            "shinjuku-facility-131041000158"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "public_outdoor_space"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000156",
+          "name": "西落合公園少年野球場",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000156",
+            "shinjuku-facility-131041000159"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "public_outdoor_space"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000157",
+          "name": "甘泉園公園庭球場",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000157"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "public_outdoor_space"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000161",
+          "name": "中央図書館・ こども図書館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000161"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "public_service_facility"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000163",
+          "name": "鶴巻図書館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000163"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "public_service_facility"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000164",
+          "name": "西落合図書館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000164"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "public_service_facility"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000173",
+          "name": "新宿文化センター",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000173"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "public_service_facility"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000174",
+          "name": "新宿歴史博物館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000174"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000175",
+          "name": "漱石山房記念館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000175"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000176",
+          "name": "林芙美子記念館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000176"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000177",
+          "name": "佐伯祐三アトリエ記念館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000177"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000178",
+          "name": "中村彝アトリエ記念館",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000178"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000180",
+          "name": "四谷ひろば",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000180"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000186",
+          "name": "高田馬場創業支援センター",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000186",
+            "shinjuku-facility-131041000188"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000205",
+          "name": "あいじつ子ども園",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000205"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000206",
+          "name": "大木戸子ども園",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000206"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000210",
+          "name": "柏木子ども園（幼児園舎）",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000210",
+            "shinjuku-facility-131041000242"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000213",
+          "name": "戸山第一子ども園",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000213"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000215",
+          "name": "西新宿子ども園",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000215",
+            "shinjuku-facility-131041000251"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000216",
+          "name": "四谷子ども園",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000216",
+            "shinjuku-facility-131041000256"
+          ],
+          "reasonCode": "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE",
+          "reason": "代表動的3経路から推定直線350m以内にない",
+          "facilityAccessCategory": "official_public_access"
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000031",
+          "name": "障害者福祉センター",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000031",
+            "shinjuku-facility-131041000032"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000033",
+          "name": "障害者生活支援センター",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000033"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000034",
+          "name": "高田馬場福祉作業所",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000034",
+            "shinjuku-facility-131041000144"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000038",
+          "name": "新宿生活実習所 （ぽれぽれ福祉園） （短期入所）",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000038",
+            "shinjuku-facility-131041000049",
+            "shinjuku-facility-131041000094"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000039",
+          "name": "視覚障害者交流コーナー",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000039",
+            "shinjuku-facility-131041000040",
+            "shinjuku-facility-131041000056",
+            "shinjuku-facility-131041000120"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000086",
+          "name": "榎町子ども家庭支援センター児童コーナー",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000086",
+            "shinjuku-facility-131041000096"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000091",
+          "name": "四谷第六小学校内学童クラブ",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000091",
+            "shinjuku-facility-131041000228",
+            "shinjuku-facility-131041000257"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000099",
+          "name": "鶴巻小学校内学童クラブ",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000099"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000100",
+          "name": "富久小学校内学童クラブ",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000100",
+            "shinjuku-facility-131041000246"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000101",
+          "name": "富久町児童館・学童クラブ",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000101",
+            "shinjuku-facility-131041000196"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000102",
+          "name": "東戸山小学校内 学童クラブ",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000102",
+            "shinjuku-facility-131041000254"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000103",
+          "name": "大久保小学校内学童クラブ",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000103",
+            "shinjuku-facility-131041000219",
+            "shinjuku-facility-131041000235"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000105",
+          "name": "戸山小学校内学童クラブ",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000105",
+            "shinjuku-facility-131041000247"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000107",
+          "name": "高田馬場第一児童館・学童クラブ",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000107",
+            "shinjuku-facility-131041000250"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000109",
+          "name": "戸塚第一小学校内学童クラブ",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000109"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000110",
+          "name": "戸塚第二小学校内学童クラブ",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000110",
+            "shinjuku-facility-131041000224",
+            "shinjuku-facility-131041000249"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000111",
+          "name": "落合第一小学校内学童クラブ",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000111",
+            "shinjuku-facility-131041000236"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000112",
+          "name": "落合第四小学校内学童クラブ",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000112",
+            "shinjuku-facility-131041000221",
+            "shinjuku-facility-131041000239"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000113",
+          "name": "落合第五小学校内学童クラブ",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000113",
+            "shinjuku-facility-131041000208",
+            "shinjuku-facility-131041000240"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000115",
+          "name": "中井児童館・学童クラブ",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000115",
+            "shinjuku-facility-131041000207"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000116",
+          "name": "西落合児童館・学童クラブ",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000116",
+            "shinjuku-facility-131041000214"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000119",
+          "name": "西新宿児童館・学童クラブ",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000119"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000193",
+          "name": "大久保第一保育園",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000193"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000195",
+          "name": "長延保育園",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000195"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000197",
+          "name": "戸山第二保育園",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000197"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000199",
+          "name": "西早稲田保育園",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000199"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000202",
+          "name": "弁天町保育園",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000202"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000204",
+          "name": "早稲田南町保育園分園 （公設民営）",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000204"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000217",
+          "name": "市谷幼稚園",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000217",
+            "shinjuku-facility-131041000232"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000218",
+          "name": "牛込仲之幼稚園",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000218",
+            "shinjuku-facility-131041000233"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000220",
+          "name": "落合第三幼稚園",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000220",
+            "shinjuku-facility-131041000238"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000222",
+          "name": "津久戸幼稚園",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000222",
+            "shinjuku-facility-131041000243"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000223",
+          "name": "鶴巻幼稚園",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000223",
+            "shinjuku-facility-131041000244"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000226",
+          "name": "花園幼稚園",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000226",
+            "shinjuku-facility-131041000253"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000227",
+          "name": "余丁町幼稚園",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000227",
+            "shinjuku-facility-131041000255"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000229",
+          "name": "淀橋第四幼稚園",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000229",
+            "shinjuku-facility-131041000258"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000230",
+          "name": "早稲田幼稚園",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000230",
+            "shinjuku-facility-131041000259"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000231",
+          "name": "愛日小学校",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000231"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000234",
+          "name": "江戸川小学校",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000234"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000237",
+          "name": "落合第二小学校",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000237"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000241",
+          "name": "落合第六小学校",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000241"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000245",
+          "name": "天神小学校",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000245"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000248",
+          "name": "戸塚第一小学校",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000248"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000252",
+          "name": "西戸山小学校",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000252"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000260",
+          "name": "牛込第一中学校",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000260"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000261",
+          "name": "牛込第二中学校",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000261"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000262",
+          "name": "牛込第三中学校",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000262"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000263",
+          "name": "落合中学校",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000263"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000264",
+          "name": "落合第二中学校",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000264"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000265",
+          "name": "新宿中学校",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000265"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000266",
+          "name": "新宿西戸山中学校",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000266"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000267",
+          "name": "西新宿中学校",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000267"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000268",
+          "name": "西早稲田中学校",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000268"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000269",
+          "name": "四谷中学校",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000269"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        },
+        {
+          "candidateId": "shinjuku-facility-131041000270",
+          "name": "新宿養護学校",
+          "groupedCandidateIds": [
+            "shinjuku-facility-131041000270"
+          ],
+          "reasonCode": "RESTRICTED_OR_SENSITIVE_FACILITY",
+          "reason": "学校・福祉等の慎重な取扱いが必要な施設",
+          "facilityAccessCategory": "restricted_or_sensitive",
+          "categoryReasons": [
+            "学校・保育・福祉等を示す名称のため、一般向け現地調査先から除外"
+          ]
+        }
+      ],
       "coordinateConflictGroupCount": 1,
       "excludedCoordinateConflictCandidateCount": 4,
       "excludedCoordinateConflictPlaceCount": 4

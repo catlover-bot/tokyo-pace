@@ -8,8 +8,8 @@ import {
 } from "../src/domain/fieldVerificationTemplate";
 
 const candidates: FieldVerificationTemplateCandidate[] = [
-  { candidateId: "candidate-b", name: "候補B", latitude: 35.69, longitude: 139.69, address: "東京都新宿区B" },
-  { candidateId: "candidate-a", verificationId: "verification-a", name: "候補A, 西口", latitude: 35.691, longitude: 139.691, address: "東京都\n新宿区A" },
+  { candidateId: "candidate-b", fieldCheckPriority: 1, name: "候補B", latitude: 35.69, longitude: 139.69, address: "東京都新宿区B" },
+  { candidateId: "candidate-a", fieldCheckPriority: 2, verificationId: "verification-a", name: "候補A, 西口", latitude: 35.691, longitude: 139.691, address: "東京都\n新宿区A" },
 ];
 
 describe("現地確認CSVテンプレート", () => {
@@ -19,12 +19,18 @@ describe("現地確認CSVテンプレート", () => {
     expect(FIELD_VERIFICATION_TEMPLATE_FILENAME).toBe("tokyo-pace-field-verification-template.csv");
   });
 
-  it("candidateId順に並べ、同一入力をバイト単位で固定する", () => {
+  it("現地確認優先度順に並べ、同一入力をバイト単位で固定する", () => {
     const first = buildFieldVerificationTemplate(candidates);
     const second = buildFieldVerificationTemplate([...candidates].reverse());
     expect(first).toBe(second);
-    expect(first.indexOf("verification-a,candidate-a")).toBeLessThan(first.indexOf("fv-candidate-b,candidate-b"));
+    expect(first.indexOf("fv-candidate-b,candidate-b")).toBeLessThan(first.indexOf("verification-a,candidate-a"));
     expect(new TextEncoder().encode(first)).toEqual(new TextEncoder().encode(second));
+  });
+
+  it("優先度がない候補はcandidateIdで決定的に並べる", () => {
+    const withoutPriority = candidates.map((candidate) => ({ ...candidate, fieldCheckPriority: undefined }));
+    const csv = buildFieldVerificationTemplate(withoutPriority);
+    expect(csv.indexOf("verification-a,candidate-a")).toBeLessThan(csv.indexOf("fv-candidate-b,candidate-b"));
   });
 
   it("三値属性と未確認情報を空欄にしfalseを補わない", () => {
@@ -47,4 +53,3 @@ describe("現地確認CSVテンプレート", () => {
     expect(createVerificationId("place-001")).toBe("fv-place-001");
   });
 });
-

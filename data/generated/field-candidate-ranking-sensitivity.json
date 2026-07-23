@@ -1,0 +1,3942 @@
+{
+  "metadata": {
+    "schemaVersion": 1,
+    "datasetId": "tokyo-pace-field-candidate-ranking-sensitivity",
+    "sourceType": "tokyo_pace_derived_analysis",
+    "provider": "TOKYO PACE",
+    "datasetName": "TOKYO PACE field candidate ranking sensitivity analysis",
+    "generatedBy": "TOKYO PACE",
+    "generatedAt": "2026-07-18T19:14:16.703Z",
+    "sourceCandidateDatasetId": "tokyo-pace-field-verification-candidates",
+    "sourceCandidateCount": 8,
+    "candidateCount": 8,
+    "weightScenarioCount": 15,
+    "rankingScenarioCount": 15,
+    "rankingRowCount": 120,
+    "weightVariationRatio": 0.2,
+    "topRankLimit": 5,
+    "paretoCandidateCount": 6,
+    "configuration": {
+      "baselineDetourScenarioId": "lower_bound",
+      "detourScenarioCount": 3,
+      "detourScenarios": [
+        {
+          "id": "optimistic",
+          "distanceFactor": 0,
+          "description": "施設がルート投影位置上にあると仮定したgross改善"
+        },
+        {
+          "id": "lower_bound",
+          "distanceFactor": 1,
+          "description": "gross改善から一方向の施設―ルート推定直線距離を控除"
+        },
+        {
+          "id": "conservative_proxy",
+          "distanceFactor": 2,
+          "description": "gross改善から単純な往復分として推定直線距離の2倍を控除"
+        }
+      ],
+      "meaningfulImprovementMeters": 30,
+      "meaningfulImprovementRatio": 0.025,
+      "marginalUpperMeters": 50,
+      "marginalUpperRatio": 0.05,
+      "weightSensitivityMethod": "one_factor_at_a_time",
+      "baselineWeights": {
+        "improvementMeters": 0.6,
+        "improvementRatio": 200,
+        "routeProximity": 0.2,
+        "accessPrior": 1,
+        "categoryPenalty": 1,
+        "coveredRoutes": 40,
+        "sourceQuality": 12
+      },
+      "variedWeightKeys": [
+        "improvementMeters",
+        "improvementRatio",
+        "routeProximity",
+        "accessPrior",
+        "categoryPenalty",
+        "coveredRoutes",
+        "sourceQuality"
+      ],
+      "caveat": "直線控除は実道路上の迂回距離ではない"
+    }
+  },
+  "configuration": {
+    "baselineDetourScenarioId": "lower_bound",
+    "detourScenarioCount": 3,
+    "detourScenarios": [
+      {
+        "id": "optimistic",
+        "distanceFactor": 0,
+        "description": "施設がルート投影位置上にあると仮定したgross改善"
+      },
+      {
+        "id": "lower_bound",
+        "distanceFactor": 1,
+        "description": "gross改善から一方向の施設―ルート推定直線距離を控除"
+      },
+      {
+        "id": "conservative_proxy",
+        "distanceFactor": 2,
+        "description": "gross改善から単純な往復分として推定直線距離の2倍を控除"
+      }
+    ],
+    "meaningfulImprovementMeters": 30,
+    "meaningfulImprovementRatio": 0.025,
+    "marginalUpperMeters": 50,
+    "marginalUpperRatio": 0.05,
+    "weightSensitivityMethod": "one_factor_at_a_time",
+    "baselineWeights": {
+      "improvementMeters": 0.6,
+      "improvementRatio": 200,
+      "routeProximity": 0.2,
+      "accessPrior": 1,
+      "categoryPenalty": 1,
+      "coveredRoutes": 40,
+      "sourceQuality": 12
+    },
+    "variedWeightKeys": [
+      "improvementMeters",
+      "improvementRatio",
+      "routeProximity",
+      "accessPrior",
+      "categoryPenalty",
+      "coveredRoutes",
+      "sourceQuality"
+    ],
+    "caveat": "直線控除は実道路上の迂回距離ではない"
+  },
+  "weightScenarios": [
+    {
+      "id": "baseline",
+      "variedWeight": null,
+      "multiplier": 1,
+      "weights": {
+        "improvementMeters": 0.6,
+        "improvementRatio": 200,
+        "routeProximity": 0.2,
+        "accessPrior": 1,
+        "categoryPenalty": 1,
+        "coveredRoutes": 40,
+        "sourceQuality": 12
+      }
+    },
+    {
+      "id": "improvementMeters_minus_20_percent",
+      "variedWeight": "improvementMeters",
+      "multiplier": 0.8,
+      "weights": {
+        "improvementMeters": 0.48,
+        "improvementRatio": 200,
+        "routeProximity": 0.2,
+        "accessPrior": 1,
+        "categoryPenalty": 1,
+        "coveredRoutes": 40,
+        "sourceQuality": 12
+      }
+    },
+    {
+      "id": "improvementMeters_plus_20_percent",
+      "variedWeight": "improvementMeters",
+      "multiplier": 1.2,
+      "weights": {
+        "improvementMeters": 0.72,
+        "improvementRatio": 200,
+        "routeProximity": 0.2,
+        "accessPrior": 1,
+        "categoryPenalty": 1,
+        "coveredRoutes": 40,
+        "sourceQuality": 12
+      }
+    },
+    {
+      "id": "improvementRatio_minus_20_percent",
+      "variedWeight": "improvementRatio",
+      "multiplier": 0.8,
+      "weights": {
+        "improvementMeters": 0.6,
+        "improvementRatio": 160,
+        "routeProximity": 0.2,
+        "accessPrior": 1,
+        "categoryPenalty": 1,
+        "coveredRoutes": 40,
+        "sourceQuality": 12
+      }
+    },
+    {
+      "id": "improvementRatio_plus_20_percent",
+      "variedWeight": "improvementRatio",
+      "multiplier": 1.2,
+      "weights": {
+        "improvementMeters": 0.6,
+        "improvementRatio": 240,
+        "routeProximity": 0.2,
+        "accessPrior": 1,
+        "categoryPenalty": 1,
+        "coveredRoutes": 40,
+        "sourceQuality": 12
+      }
+    },
+    {
+      "id": "routeProximity_minus_20_percent",
+      "variedWeight": "routeProximity",
+      "multiplier": 0.8,
+      "weights": {
+        "improvementMeters": 0.6,
+        "improvementRatio": 200,
+        "routeProximity": 0.16000000000000003,
+        "accessPrior": 1,
+        "categoryPenalty": 1,
+        "coveredRoutes": 40,
+        "sourceQuality": 12
+      }
+    },
+    {
+      "id": "routeProximity_plus_20_percent",
+      "variedWeight": "routeProximity",
+      "multiplier": 1.2,
+      "weights": {
+        "improvementMeters": 0.6,
+        "improvementRatio": 200,
+        "routeProximity": 0.24,
+        "accessPrior": 1,
+        "categoryPenalty": 1,
+        "coveredRoutes": 40,
+        "sourceQuality": 12
+      }
+    },
+    {
+      "id": "accessPrior_minus_20_percent",
+      "variedWeight": "accessPrior",
+      "multiplier": 0.8,
+      "weights": {
+        "improvementMeters": 0.6,
+        "improvementRatio": 200,
+        "routeProximity": 0.2,
+        "accessPrior": 0.8,
+        "categoryPenalty": 1,
+        "coveredRoutes": 40,
+        "sourceQuality": 12
+      }
+    },
+    {
+      "id": "accessPrior_plus_20_percent",
+      "variedWeight": "accessPrior",
+      "multiplier": 1.2,
+      "weights": {
+        "improvementMeters": 0.6,
+        "improvementRatio": 200,
+        "routeProximity": 0.2,
+        "accessPrior": 1.2,
+        "categoryPenalty": 1,
+        "coveredRoutes": 40,
+        "sourceQuality": 12
+      }
+    },
+    {
+      "id": "categoryPenalty_minus_20_percent",
+      "variedWeight": "categoryPenalty",
+      "multiplier": 0.8,
+      "weights": {
+        "improvementMeters": 0.6,
+        "improvementRatio": 200,
+        "routeProximity": 0.2,
+        "accessPrior": 1,
+        "categoryPenalty": 0.8,
+        "coveredRoutes": 40,
+        "sourceQuality": 12
+      }
+    },
+    {
+      "id": "categoryPenalty_plus_20_percent",
+      "variedWeight": "categoryPenalty",
+      "multiplier": 1.2,
+      "weights": {
+        "improvementMeters": 0.6,
+        "improvementRatio": 200,
+        "routeProximity": 0.2,
+        "accessPrior": 1,
+        "categoryPenalty": 1.2,
+        "coveredRoutes": 40,
+        "sourceQuality": 12
+      }
+    },
+    {
+      "id": "coveredRoutes_minus_20_percent",
+      "variedWeight": "coveredRoutes",
+      "multiplier": 0.8,
+      "weights": {
+        "improvementMeters": 0.6,
+        "improvementRatio": 200,
+        "routeProximity": 0.2,
+        "accessPrior": 1,
+        "categoryPenalty": 1,
+        "coveredRoutes": 32,
+        "sourceQuality": 12
+      }
+    },
+    {
+      "id": "coveredRoutes_plus_20_percent",
+      "variedWeight": "coveredRoutes",
+      "multiplier": 1.2,
+      "weights": {
+        "improvementMeters": 0.6,
+        "improvementRatio": 200,
+        "routeProximity": 0.2,
+        "accessPrior": 1,
+        "categoryPenalty": 1,
+        "coveredRoutes": 48,
+        "sourceQuality": 12
+      }
+    },
+    {
+      "id": "sourceQuality_minus_20_percent",
+      "variedWeight": "sourceQuality",
+      "multiplier": 0.8,
+      "weights": {
+        "improvementMeters": 0.6,
+        "improvementRatio": 200,
+        "routeProximity": 0.2,
+        "accessPrior": 1,
+        "categoryPenalty": 1,
+        "coveredRoutes": 40,
+        "sourceQuality": 9.600000000000001
+      }
+    },
+    {
+      "id": "sourceQuality_plus_20_percent",
+      "variedWeight": "sourceQuality",
+      "multiplier": 1.2,
+      "weights": {
+        "improvementMeters": 0.6,
+        "improvementRatio": 200,
+        "routeProximity": 0.2,
+        "accessPrior": 1,
+        "categoryPenalty": 1,
+        "coveredRoutes": 40,
+        "sourceQuality": 14.399999999999999
+      }
+    }
+  ],
+  "rankings": [
+    {
+      "weightScenarioId": "baseline",
+      "candidateId": "shinjuku-facility-131041000179",
+      "name": "新宿観光振興協会",
+      "score": 222.36,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 61.8,
+        "improvementRatioPoints": 17.96,
+        "routeProximityPoints": 30.6,
+        "accessPriorPoints": 85,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 36,
+        "categoryPenalty": 5,
+        "duplicateFacilityPenalty": 4,
+        "total": 222.36
+      },
+      "lowerBoundAdjustedImprovementMeters": 103,
+      "lowerBoundAdjustedImprovementRatio": 0.0898,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 197,
+      "rank": 1
+    },
+    {
+      "weightScenarioId": "baseline",
+      "candidateId": "daredemo-shopping-ヨドバシカメラ新宿西口本店-131041-35689815-139697891",
+      "name": "ヨドバシカメラ新宿西口本店",
+      "score": 110.24,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 19.8,
+        "improvementRatioPoints": 5.64,
+        "routeProximityPoints": 50.8,
+        "accessPriorPoints": 45,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 35,
+        "duplicateFacilityPenalty": 0,
+        "total": 110.24
+      },
+      "lowerBoundAdjustedImprovementMeters": 33,
+      "lowerBoundAdjustedImprovementRatio": 0.0282,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 96,
+      "rank": 2
+    },
+    {
+      "weightScenarioId": "baseline",
+      "candidateId": "daredemo-accommodation-西鉄イン新宿-131041-35694278-13969433",
+      "name": "西鉄イン新宿",
+      "score": 108.06,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 204.6,
+        "improvementRatioPoints": 59.46,
+        "routeProximityPoints": 30,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 108.06
+      },
+      "lowerBoundAdjustedImprovementMeters": 341,
+      "lowerBoundAdjustedImprovementRatio": 0.2973,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 200,
+      "rank": 3
+    },
+    {
+      "weightScenarioId": "baseline",
+      "candidateId": "daredemo-shopping-ニュウマン新宿-131041-3568856722-1397014075",
+      "name": "ニュウマン新宿",
+      "score": 87.2,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 20.4,
+        "improvementRatioPoints": 5.8,
+        "routeProximityPoints": 27,
+        "accessPriorPoints": 45,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 35,
+        "duplicateFacilityPenalty": 0,
+        "total": 87.2
+      },
+      "lowerBoundAdjustedImprovementMeters": 34,
+      "lowerBoundAdjustedImprovementRatio": 0.029,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 215,
+      "rank": 4
+    },
+    {
+      "weightScenarioId": "baseline",
+      "candidateId": "daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787",
+      "name": "ヒルトン東京",
+      "score": 60.78,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 145.8,
+        "improvementRatioPoints": 42.38,
+        "routeProximityPoints": 58.6,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 60.78
+      },
+      "lowerBoundAdjustedImprovementMeters": 243,
+      "lowerBoundAdjustedImprovementRatio": 0.2119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 57,
+      "rank": 5
+    },
+    {
+      "weightScenarioId": "baseline",
+      "candidateId": "daredemo-accommodation-京王プラザホテル-131041-35689954-139694016",
+      "name": "京王プラザホテル",
+      "score": 60.04,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 136.2,
+        "improvementRatioPoints": 55.44,
+        "routeProximityPoints": 54.4,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 60.04
+      },
+      "lowerBoundAdjustedImprovementMeters": 227,
+      "lowerBoundAdjustedImprovementRatio": 0.2772,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 78,
+      "rank": 6
+    },
+    {
+      "weightScenarioId": "baseline",
+      "candidateId": "daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371",
+      "name": "ハイアットリージェンシー東京",
+      "score": 1.82,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 97.8,
+        "improvementRatioPoints": 28.42,
+        "routeProximityPoints": 61.6,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 1.82
+      },
+      "lowerBoundAdjustedImprovementMeters": 163,
+      "lowerBoundAdjustedImprovementRatio": 0.1421,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 42,
+      "rank": 7
+    },
+    {
+      "weightScenarioId": "baseline",
+      "candidateId": "daredemo-accommodation-京王プレッソイン新宿-131041-35685664-139692621",
+      "name": "京王プレッソイン新宿",
+      "score": -48.82,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 78.6,
+        "improvementRatioPoints": 22.38,
+        "routeProximityPoints": 36.2,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": -48.82
+      },
+      "lowerBoundAdjustedImprovementMeters": 131,
+      "lowerBoundAdjustedImprovementRatio": 0.1119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 169,
+      "rank": 8
+    },
+    {
+      "weightScenarioId": "improvementMeters_minus_20_percent",
+      "candidateId": "shinjuku-facility-131041000179",
+      "name": "新宿観光振興協会",
+      "score": 210,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 49.44,
+        "improvementRatioPoints": 17.96,
+        "routeProximityPoints": 30.6,
+        "accessPriorPoints": 85,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 36,
+        "categoryPenalty": 5,
+        "duplicateFacilityPenalty": 4,
+        "total": 210
+      },
+      "lowerBoundAdjustedImprovementMeters": 103,
+      "lowerBoundAdjustedImprovementRatio": 0.0898,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 197,
+      "rank": 1
+    },
+    {
+      "weightScenarioId": "improvementMeters_minus_20_percent",
+      "candidateId": "daredemo-shopping-ヨドバシカメラ新宿西口本店-131041-35689815-139697891",
+      "name": "ヨドバシカメラ新宿西口本店",
+      "score": 106.28,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 15.84,
+        "improvementRatioPoints": 5.64,
+        "routeProximityPoints": 50.8,
+        "accessPriorPoints": 45,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 35,
+        "duplicateFacilityPenalty": 0,
+        "total": 106.28
+      },
+      "lowerBoundAdjustedImprovementMeters": 33,
+      "lowerBoundAdjustedImprovementRatio": 0.0282,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 96,
+      "rank": 2
+    },
+    {
+      "weightScenarioId": "improvementMeters_minus_20_percent",
+      "candidateId": "daredemo-shopping-ニュウマン新宿-131041-3568856722-1397014075",
+      "name": "ニュウマン新宿",
+      "score": 83.12,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 16.32,
+        "improvementRatioPoints": 5.8,
+        "routeProximityPoints": 27,
+        "accessPriorPoints": 45,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 35,
+        "duplicateFacilityPenalty": 0,
+        "total": 83.12
+      },
+      "lowerBoundAdjustedImprovementMeters": 34,
+      "lowerBoundAdjustedImprovementRatio": 0.029,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 215,
+      "rank": 3
+    },
+    {
+      "weightScenarioId": "improvementMeters_minus_20_percent",
+      "candidateId": "daredemo-accommodation-西鉄イン新宿-131041-35694278-13969433",
+      "name": "西鉄イン新宿",
+      "score": 67.14,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 163.68,
+        "improvementRatioPoints": 59.46,
+        "routeProximityPoints": 30,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 67.14
+      },
+      "lowerBoundAdjustedImprovementMeters": 341,
+      "lowerBoundAdjustedImprovementRatio": 0.2973,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 200,
+      "rank": 4
+    },
+    {
+      "weightScenarioId": "improvementMeters_minus_20_percent",
+      "candidateId": "daredemo-accommodation-京王プラザホテル-131041-35689954-139694016",
+      "name": "京王プラザホテル",
+      "score": 32.8,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 108.96,
+        "improvementRatioPoints": 55.44,
+        "routeProximityPoints": 54.4,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 32.8
+      },
+      "lowerBoundAdjustedImprovementMeters": 227,
+      "lowerBoundAdjustedImprovementRatio": 0.2772,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 78,
+      "rank": 5
+    },
+    {
+      "weightScenarioId": "improvementMeters_minus_20_percent",
+      "candidateId": "daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787",
+      "name": "ヒルトン東京",
+      "score": 31.62,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 116.64,
+        "improvementRatioPoints": 42.38,
+        "routeProximityPoints": 58.6,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 31.62
+      },
+      "lowerBoundAdjustedImprovementMeters": 243,
+      "lowerBoundAdjustedImprovementRatio": 0.2119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 57,
+      "rank": 6
+    },
+    {
+      "weightScenarioId": "improvementMeters_minus_20_percent",
+      "candidateId": "daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371",
+      "name": "ハイアットリージェンシー東京",
+      "score": -17.74,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 78.24,
+        "improvementRatioPoints": 28.42,
+        "routeProximityPoints": 61.6,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": -17.74
+      },
+      "lowerBoundAdjustedImprovementMeters": 163,
+      "lowerBoundAdjustedImprovementRatio": 0.1421,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 42,
+      "rank": 7
+    },
+    {
+      "weightScenarioId": "improvementMeters_minus_20_percent",
+      "candidateId": "daredemo-accommodation-京王プレッソイン新宿-131041-35685664-139692621",
+      "name": "京王プレッソイン新宿",
+      "score": -64.54,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 62.88,
+        "improvementRatioPoints": 22.38,
+        "routeProximityPoints": 36.2,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": -64.54
+      },
+      "lowerBoundAdjustedImprovementMeters": 131,
+      "lowerBoundAdjustedImprovementRatio": 0.1119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 169,
+      "rank": 8
+    },
+    {
+      "weightScenarioId": "improvementMeters_plus_20_percent",
+      "candidateId": "shinjuku-facility-131041000179",
+      "name": "新宿観光振興協会",
+      "score": 234.72,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 74.16,
+        "improvementRatioPoints": 17.96,
+        "routeProximityPoints": 30.6,
+        "accessPriorPoints": 85,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 36,
+        "categoryPenalty": 5,
+        "duplicateFacilityPenalty": 4,
+        "total": 234.72
+      },
+      "lowerBoundAdjustedImprovementMeters": 103,
+      "lowerBoundAdjustedImprovementRatio": 0.0898,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 197,
+      "rank": 1
+    },
+    {
+      "weightScenarioId": "improvementMeters_plus_20_percent",
+      "candidateId": "daredemo-accommodation-西鉄イン新宿-131041-35694278-13969433",
+      "name": "西鉄イン新宿",
+      "score": 148.98,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 245.52,
+        "improvementRatioPoints": 59.46,
+        "routeProximityPoints": 30,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 148.98
+      },
+      "lowerBoundAdjustedImprovementMeters": 341,
+      "lowerBoundAdjustedImprovementRatio": 0.2973,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 200,
+      "rank": 2
+    },
+    {
+      "weightScenarioId": "improvementMeters_plus_20_percent",
+      "candidateId": "daredemo-shopping-ヨドバシカメラ新宿西口本店-131041-35689815-139697891",
+      "name": "ヨドバシカメラ新宿西口本店",
+      "score": 114.2,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 23.76,
+        "improvementRatioPoints": 5.64,
+        "routeProximityPoints": 50.8,
+        "accessPriorPoints": 45,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 35,
+        "duplicateFacilityPenalty": 0,
+        "total": 114.2
+      },
+      "lowerBoundAdjustedImprovementMeters": 33,
+      "lowerBoundAdjustedImprovementRatio": 0.0282,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 96,
+      "rank": 3
+    },
+    {
+      "weightScenarioId": "improvementMeters_plus_20_percent",
+      "candidateId": "daredemo-shopping-ニュウマン新宿-131041-3568856722-1397014075",
+      "name": "ニュウマン新宿",
+      "score": 91.28,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 24.48,
+        "improvementRatioPoints": 5.8,
+        "routeProximityPoints": 27,
+        "accessPriorPoints": 45,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 35,
+        "duplicateFacilityPenalty": 0,
+        "total": 91.28
+      },
+      "lowerBoundAdjustedImprovementMeters": 34,
+      "lowerBoundAdjustedImprovementRatio": 0.029,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 215,
+      "rank": 4
+    },
+    {
+      "weightScenarioId": "improvementMeters_plus_20_percent",
+      "candidateId": "daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787",
+      "name": "ヒルトン東京",
+      "score": 89.94,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 174.96,
+        "improvementRatioPoints": 42.38,
+        "routeProximityPoints": 58.6,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 89.94
+      },
+      "lowerBoundAdjustedImprovementMeters": 243,
+      "lowerBoundAdjustedImprovementRatio": 0.2119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 57,
+      "rank": 5
+    },
+    {
+      "weightScenarioId": "improvementMeters_plus_20_percent",
+      "candidateId": "daredemo-accommodation-京王プラザホテル-131041-35689954-139694016",
+      "name": "京王プラザホテル",
+      "score": 87.28,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 163.44,
+        "improvementRatioPoints": 55.44,
+        "routeProximityPoints": 54.4,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 87.28
+      },
+      "lowerBoundAdjustedImprovementMeters": 227,
+      "lowerBoundAdjustedImprovementRatio": 0.2772,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 78,
+      "rank": 6
+    },
+    {
+      "weightScenarioId": "improvementMeters_plus_20_percent",
+      "candidateId": "daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371",
+      "name": "ハイアットリージェンシー東京",
+      "score": 21.38,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 117.36,
+        "improvementRatioPoints": 28.42,
+        "routeProximityPoints": 61.6,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 21.38
+      },
+      "lowerBoundAdjustedImprovementMeters": 163,
+      "lowerBoundAdjustedImprovementRatio": 0.1421,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 42,
+      "rank": 7
+    },
+    {
+      "weightScenarioId": "improvementMeters_plus_20_percent",
+      "candidateId": "daredemo-accommodation-京王プレッソイン新宿-131041-35685664-139692621",
+      "name": "京王プレッソイン新宿",
+      "score": -33.1,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 94.32,
+        "improvementRatioPoints": 22.38,
+        "routeProximityPoints": 36.2,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": -33.1
+      },
+      "lowerBoundAdjustedImprovementMeters": 131,
+      "lowerBoundAdjustedImprovementRatio": 0.1119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 169,
+      "rank": 8
+    },
+    {
+      "weightScenarioId": "improvementRatio_minus_20_percent",
+      "candidateId": "shinjuku-facility-131041000179",
+      "name": "新宿観光振興協会",
+      "score": 218.77,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 61.8,
+        "improvementRatioPoints": 14.37,
+        "routeProximityPoints": 30.6,
+        "accessPriorPoints": 85,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 36,
+        "categoryPenalty": 5,
+        "duplicateFacilityPenalty": 4,
+        "total": 218.77
+      },
+      "lowerBoundAdjustedImprovementMeters": 103,
+      "lowerBoundAdjustedImprovementRatio": 0.0898,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 197,
+      "rank": 1
+    },
+    {
+      "weightScenarioId": "improvementRatio_minus_20_percent",
+      "candidateId": "daredemo-shopping-ヨドバシカメラ新宿西口本店-131041-35689815-139697891",
+      "name": "ヨドバシカメラ新宿西口本店",
+      "score": 109.11,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 19.8,
+        "improvementRatioPoints": 4.51,
+        "routeProximityPoints": 50.8,
+        "accessPriorPoints": 45,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 35,
+        "duplicateFacilityPenalty": 0,
+        "total": 109.11
+      },
+      "lowerBoundAdjustedImprovementMeters": 33,
+      "lowerBoundAdjustedImprovementRatio": 0.0282,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 96,
+      "rank": 2
+    },
+    {
+      "weightScenarioId": "improvementRatio_minus_20_percent",
+      "candidateId": "daredemo-accommodation-西鉄イン新宿-131041-35694278-13969433",
+      "name": "西鉄イン新宿",
+      "score": 96.17,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 204.6,
+        "improvementRatioPoints": 47.57,
+        "routeProximityPoints": 30,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 96.17
+      },
+      "lowerBoundAdjustedImprovementMeters": 341,
+      "lowerBoundAdjustedImprovementRatio": 0.2973,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 200,
+      "rank": 3
+    },
+    {
+      "weightScenarioId": "improvementRatio_minus_20_percent",
+      "candidateId": "daredemo-shopping-ニュウマン新宿-131041-3568856722-1397014075",
+      "name": "ニュウマン新宿",
+      "score": 86.04,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 20.4,
+        "improvementRatioPoints": 4.64,
+        "routeProximityPoints": 27,
+        "accessPriorPoints": 45,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 35,
+        "duplicateFacilityPenalty": 0,
+        "total": 86.04
+      },
+      "lowerBoundAdjustedImprovementMeters": 34,
+      "lowerBoundAdjustedImprovementRatio": 0.029,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 215,
+      "rank": 4
+    },
+    {
+      "weightScenarioId": "improvementRatio_minus_20_percent",
+      "candidateId": "daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787",
+      "name": "ヒルトン東京",
+      "score": 52.3,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 145.8,
+        "improvementRatioPoints": 33.9,
+        "routeProximityPoints": 58.6,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 52.3
+      },
+      "lowerBoundAdjustedImprovementMeters": 243,
+      "lowerBoundAdjustedImprovementRatio": 0.2119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 57,
+      "rank": 5
+    },
+    {
+      "weightScenarioId": "improvementRatio_minus_20_percent",
+      "candidateId": "daredemo-accommodation-京王プラザホテル-131041-35689954-139694016",
+      "name": "京王プラザホテル",
+      "score": 48.95,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 136.2,
+        "improvementRatioPoints": 44.35,
+        "routeProximityPoints": 54.4,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 48.95
+      },
+      "lowerBoundAdjustedImprovementMeters": 227,
+      "lowerBoundAdjustedImprovementRatio": 0.2772,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 78,
+      "rank": 6
+    },
+    {
+      "weightScenarioId": "improvementRatio_minus_20_percent",
+      "candidateId": "daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371",
+      "name": "ハイアットリージェンシー東京",
+      "score": -3.86,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 97.8,
+        "improvementRatioPoints": 22.74,
+        "routeProximityPoints": 61.6,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": -3.86
+      },
+      "lowerBoundAdjustedImprovementMeters": 163,
+      "lowerBoundAdjustedImprovementRatio": 0.1421,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 42,
+      "rank": 7
+    },
+    {
+      "weightScenarioId": "improvementRatio_minus_20_percent",
+      "candidateId": "daredemo-accommodation-京王プレッソイン新宿-131041-35685664-139692621",
+      "name": "京王プレッソイン新宿",
+      "score": -53.3,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 78.6,
+        "improvementRatioPoints": 17.9,
+        "routeProximityPoints": 36.2,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": -53.3
+      },
+      "lowerBoundAdjustedImprovementMeters": 131,
+      "lowerBoundAdjustedImprovementRatio": 0.1119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 169,
+      "rank": 8
+    },
+    {
+      "weightScenarioId": "improvementRatio_plus_20_percent",
+      "candidateId": "shinjuku-facility-131041000179",
+      "name": "新宿観光振興協会",
+      "score": 225.95,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 61.8,
+        "improvementRatioPoints": 21.55,
+        "routeProximityPoints": 30.6,
+        "accessPriorPoints": 85,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 36,
+        "categoryPenalty": 5,
+        "duplicateFacilityPenalty": 4,
+        "total": 225.95
+      },
+      "lowerBoundAdjustedImprovementMeters": 103,
+      "lowerBoundAdjustedImprovementRatio": 0.0898,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 197,
+      "rank": 1
+    },
+    {
+      "weightScenarioId": "improvementRatio_plus_20_percent",
+      "candidateId": "daredemo-accommodation-西鉄イン新宿-131041-35694278-13969433",
+      "name": "西鉄イン新宿",
+      "score": 119.95,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 204.6,
+        "improvementRatioPoints": 71.35,
+        "routeProximityPoints": 30,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 119.95
+      },
+      "lowerBoundAdjustedImprovementMeters": 341,
+      "lowerBoundAdjustedImprovementRatio": 0.2973,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 200,
+      "rank": 2
+    },
+    {
+      "weightScenarioId": "improvementRatio_plus_20_percent",
+      "candidateId": "daredemo-shopping-ヨドバシカメラ新宿西口本店-131041-35689815-139697891",
+      "name": "ヨドバシカメラ新宿西口本店",
+      "score": 111.37,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 19.8,
+        "improvementRatioPoints": 6.77,
+        "routeProximityPoints": 50.8,
+        "accessPriorPoints": 45,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 35,
+        "duplicateFacilityPenalty": 0,
+        "total": 111.37
+      },
+      "lowerBoundAdjustedImprovementMeters": 33,
+      "lowerBoundAdjustedImprovementRatio": 0.0282,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 96,
+      "rank": 3
+    },
+    {
+      "weightScenarioId": "improvementRatio_plus_20_percent",
+      "candidateId": "daredemo-shopping-ニュウマン新宿-131041-3568856722-1397014075",
+      "name": "ニュウマン新宿",
+      "score": 88.36,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 20.4,
+        "improvementRatioPoints": 6.96,
+        "routeProximityPoints": 27,
+        "accessPriorPoints": 45,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 35,
+        "duplicateFacilityPenalty": 0,
+        "total": 88.36
+      },
+      "lowerBoundAdjustedImprovementMeters": 34,
+      "lowerBoundAdjustedImprovementRatio": 0.029,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 215,
+      "rank": 4
+    },
+    {
+      "weightScenarioId": "improvementRatio_plus_20_percent",
+      "candidateId": "daredemo-accommodation-京王プラザホテル-131041-35689954-139694016",
+      "name": "京王プラザホテル",
+      "score": 71.13,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 136.2,
+        "improvementRatioPoints": 66.53,
+        "routeProximityPoints": 54.4,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 71.13
+      },
+      "lowerBoundAdjustedImprovementMeters": 227,
+      "lowerBoundAdjustedImprovementRatio": 0.2772,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 78,
+      "rank": 5
+    },
+    {
+      "weightScenarioId": "improvementRatio_plus_20_percent",
+      "candidateId": "daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787",
+      "name": "ヒルトン東京",
+      "score": 69.26,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 145.8,
+        "improvementRatioPoints": 50.86,
+        "routeProximityPoints": 58.6,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 69.26
+      },
+      "lowerBoundAdjustedImprovementMeters": 243,
+      "lowerBoundAdjustedImprovementRatio": 0.2119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 57,
+      "rank": 6
+    },
+    {
+      "weightScenarioId": "improvementRatio_plus_20_percent",
+      "candidateId": "daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371",
+      "name": "ハイアットリージェンシー東京",
+      "score": 7.5,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 97.8,
+        "improvementRatioPoints": 34.1,
+        "routeProximityPoints": 61.6,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 7.5
+      },
+      "lowerBoundAdjustedImprovementMeters": 163,
+      "lowerBoundAdjustedImprovementRatio": 0.1421,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 42,
+      "rank": 7
+    },
+    {
+      "weightScenarioId": "improvementRatio_plus_20_percent",
+      "candidateId": "daredemo-accommodation-京王プレッソイン新宿-131041-35685664-139692621",
+      "name": "京王プレッソイン新宿",
+      "score": -44.34,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 78.6,
+        "improvementRatioPoints": 26.86,
+        "routeProximityPoints": 36.2,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": -44.34
+      },
+      "lowerBoundAdjustedImprovementMeters": 131,
+      "lowerBoundAdjustedImprovementRatio": 0.1119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 169,
+      "rank": 8
+    },
+    {
+      "weightScenarioId": "routeProximity_minus_20_percent",
+      "candidateId": "shinjuku-facility-131041000179",
+      "name": "新宿観光振興協会",
+      "score": 216.24,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 61.8,
+        "improvementRatioPoints": 17.96,
+        "routeProximityPoints": 24.48,
+        "accessPriorPoints": 85,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 36,
+        "categoryPenalty": 5,
+        "duplicateFacilityPenalty": 4,
+        "total": 216.24
+      },
+      "lowerBoundAdjustedImprovementMeters": 103,
+      "lowerBoundAdjustedImprovementRatio": 0.0898,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 197,
+      "rank": 1
+    },
+    {
+      "weightScenarioId": "routeProximity_minus_20_percent",
+      "candidateId": "daredemo-accommodation-西鉄イン新宿-131041-35694278-13969433",
+      "name": "西鉄イン新宿",
+      "score": 102.06,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 204.6,
+        "improvementRatioPoints": 59.46,
+        "routeProximityPoints": 24,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 102.06
+      },
+      "lowerBoundAdjustedImprovementMeters": 341,
+      "lowerBoundAdjustedImprovementRatio": 0.2973,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 200,
+      "rank": 2
+    },
+    {
+      "weightScenarioId": "routeProximity_minus_20_percent",
+      "candidateId": "daredemo-shopping-ヨドバシカメラ新宿西口本店-131041-35689815-139697891",
+      "name": "ヨドバシカメラ新宿西口本店",
+      "score": 100.08,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 19.8,
+        "improvementRatioPoints": 5.64,
+        "routeProximityPoints": 40.64,
+        "accessPriorPoints": 45,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 35,
+        "duplicateFacilityPenalty": 0,
+        "total": 100.08
+      },
+      "lowerBoundAdjustedImprovementMeters": 33,
+      "lowerBoundAdjustedImprovementRatio": 0.0282,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 96,
+      "rank": 3
+    },
+    {
+      "weightScenarioId": "routeProximity_minus_20_percent",
+      "candidateId": "daredemo-shopping-ニュウマン新宿-131041-3568856722-1397014075",
+      "name": "ニュウマン新宿",
+      "score": 81.8,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 20.4,
+        "improvementRatioPoints": 5.8,
+        "routeProximityPoints": 21.6,
+        "accessPriorPoints": 45,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 35,
+        "duplicateFacilityPenalty": 0,
+        "total": 81.8
+      },
+      "lowerBoundAdjustedImprovementMeters": 34,
+      "lowerBoundAdjustedImprovementRatio": 0.029,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 215,
+      "rank": 4
+    },
+    {
+      "weightScenarioId": "routeProximity_minus_20_percent",
+      "candidateId": "daredemo-accommodation-京王プラザホテル-131041-35689954-139694016",
+      "name": "京王プラザホテル",
+      "score": 49.16,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 136.2,
+        "improvementRatioPoints": 55.44,
+        "routeProximityPoints": 43.52,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 49.16
+      },
+      "lowerBoundAdjustedImprovementMeters": 227,
+      "lowerBoundAdjustedImprovementRatio": 0.2772,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 78,
+      "rank": 5
+    },
+    {
+      "weightScenarioId": "routeProximity_minus_20_percent",
+      "candidateId": "daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787",
+      "name": "ヒルトン東京",
+      "score": 49.06,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 145.8,
+        "improvementRatioPoints": 42.38,
+        "routeProximityPoints": 46.88,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 49.06
+      },
+      "lowerBoundAdjustedImprovementMeters": 243,
+      "lowerBoundAdjustedImprovementRatio": 0.2119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 57,
+      "rank": 6
+    },
+    {
+      "weightScenarioId": "routeProximity_minus_20_percent",
+      "candidateId": "daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371",
+      "name": "ハイアットリージェンシー東京",
+      "score": -10.5,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 97.8,
+        "improvementRatioPoints": 28.42,
+        "routeProximityPoints": 49.28,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": -10.5
+      },
+      "lowerBoundAdjustedImprovementMeters": 163,
+      "lowerBoundAdjustedImprovementRatio": 0.1421,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 42,
+      "rank": 7
+    },
+    {
+      "weightScenarioId": "routeProximity_minus_20_percent",
+      "candidateId": "daredemo-accommodation-京王プレッソイン新宿-131041-35685664-139692621",
+      "name": "京王プレッソイン新宿",
+      "score": -56.06,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 78.6,
+        "improvementRatioPoints": 22.38,
+        "routeProximityPoints": 28.96,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": -56.06
+      },
+      "lowerBoundAdjustedImprovementMeters": 131,
+      "lowerBoundAdjustedImprovementRatio": 0.1119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 169,
+      "rank": 8
+    },
+    {
+      "weightScenarioId": "routeProximity_plus_20_percent",
+      "candidateId": "shinjuku-facility-131041000179",
+      "name": "新宿観光振興協会",
+      "score": 228.48,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 61.8,
+        "improvementRatioPoints": 17.96,
+        "routeProximityPoints": 36.72,
+        "accessPriorPoints": 85,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 36,
+        "categoryPenalty": 5,
+        "duplicateFacilityPenalty": 4,
+        "total": 228.48
+      },
+      "lowerBoundAdjustedImprovementMeters": 103,
+      "lowerBoundAdjustedImprovementRatio": 0.0898,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 197,
+      "rank": 1
+    },
+    {
+      "weightScenarioId": "routeProximity_plus_20_percent",
+      "candidateId": "daredemo-shopping-ヨドバシカメラ新宿西口本店-131041-35689815-139697891",
+      "name": "ヨドバシカメラ新宿西口本店",
+      "score": 120.4,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 19.8,
+        "improvementRatioPoints": 5.64,
+        "routeProximityPoints": 60.96,
+        "accessPriorPoints": 45,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 35,
+        "duplicateFacilityPenalty": 0,
+        "total": 120.4
+      },
+      "lowerBoundAdjustedImprovementMeters": 33,
+      "lowerBoundAdjustedImprovementRatio": 0.0282,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 96,
+      "rank": 2
+    },
+    {
+      "weightScenarioId": "routeProximity_plus_20_percent",
+      "candidateId": "daredemo-accommodation-西鉄イン新宿-131041-35694278-13969433",
+      "name": "西鉄イン新宿",
+      "score": 114.06,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 204.6,
+        "improvementRatioPoints": 59.46,
+        "routeProximityPoints": 36,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 114.06
+      },
+      "lowerBoundAdjustedImprovementMeters": 341,
+      "lowerBoundAdjustedImprovementRatio": 0.2973,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 200,
+      "rank": 3
+    },
+    {
+      "weightScenarioId": "routeProximity_plus_20_percent",
+      "candidateId": "daredemo-shopping-ニュウマン新宿-131041-3568856722-1397014075",
+      "name": "ニュウマン新宿",
+      "score": 92.6,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 20.4,
+        "improvementRatioPoints": 5.8,
+        "routeProximityPoints": 32.4,
+        "accessPriorPoints": 45,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 35,
+        "duplicateFacilityPenalty": 0,
+        "total": 92.6
+      },
+      "lowerBoundAdjustedImprovementMeters": 34,
+      "lowerBoundAdjustedImprovementRatio": 0.029,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 215,
+      "rank": 4
+    },
+    {
+      "weightScenarioId": "routeProximity_plus_20_percent",
+      "candidateId": "daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787",
+      "name": "ヒルトン東京",
+      "score": 72.5,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 145.8,
+        "improvementRatioPoints": 42.38,
+        "routeProximityPoints": 70.32,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 72.5
+      },
+      "lowerBoundAdjustedImprovementMeters": 243,
+      "lowerBoundAdjustedImprovementRatio": 0.2119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 57,
+      "rank": 5
+    },
+    {
+      "weightScenarioId": "routeProximity_plus_20_percent",
+      "candidateId": "daredemo-accommodation-京王プラザホテル-131041-35689954-139694016",
+      "name": "京王プラザホテル",
+      "score": 70.92,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 136.2,
+        "improvementRatioPoints": 55.44,
+        "routeProximityPoints": 65.28,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 70.92
+      },
+      "lowerBoundAdjustedImprovementMeters": 227,
+      "lowerBoundAdjustedImprovementRatio": 0.2772,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 78,
+      "rank": 6
+    },
+    {
+      "weightScenarioId": "routeProximity_plus_20_percent",
+      "candidateId": "daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371",
+      "name": "ハイアットリージェンシー東京",
+      "score": 14.14,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 97.8,
+        "improvementRatioPoints": 28.42,
+        "routeProximityPoints": 73.92,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 14.14
+      },
+      "lowerBoundAdjustedImprovementMeters": 163,
+      "lowerBoundAdjustedImprovementRatio": 0.1421,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 42,
+      "rank": 7
+    },
+    {
+      "weightScenarioId": "routeProximity_plus_20_percent",
+      "candidateId": "daredemo-accommodation-京王プレッソイン新宿-131041-35685664-139692621",
+      "name": "京王プレッソイン新宿",
+      "score": -41.58,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 78.6,
+        "improvementRatioPoints": 22.38,
+        "routeProximityPoints": 43.44,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": -41.58
+      },
+      "lowerBoundAdjustedImprovementMeters": 131,
+      "lowerBoundAdjustedImprovementRatio": 0.1119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 169,
+      "rank": 8
+    },
+    {
+      "weightScenarioId": "accessPrior_minus_20_percent",
+      "candidateId": "shinjuku-facility-131041000179",
+      "name": "新宿観光振興協会",
+      "score": 205.36,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 61.8,
+        "improvementRatioPoints": 17.96,
+        "routeProximityPoints": 30.6,
+        "accessPriorPoints": 68,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 36,
+        "categoryPenalty": 5,
+        "duplicateFacilityPenalty": 4,
+        "total": 205.36
+      },
+      "lowerBoundAdjustedImprovementMeters": 103,
+      "lowerBoundAdjustedImprovementRatio": 0.0898,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 197,
+      "rank": 1
+    },
+    {
+      "weightScenarioId": "accessPrior_minus_20_percent",
+      "candidateId": "daredemo-accommodation-西鉄イン新宿-131041-35694278-13969433",
+      "name": "西鉄イン新宿",
+      "score": 106.06,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 204.6,
+        "improvementRatioPoints": 59.46,
+        "routeProximityPoints": 30,
+        "accessPriorPoints": 8,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 106.06
+      },
+      "lowerBoundAdjustedImprovementMeters": 341,
+      "lowerBoundAdjustedImprovementRatio": 0.2973,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 200,
+      "rank": 2
+    },
+    {
+      "weightScenarioId": "accessPrior_minus_20_percent",
+      "candidateId": "daredemo-shopping-ヨドバシカメラ新宿西口本店-131041-35689815-139697891",
+      "name": "ヨドバシカメラ新宿西口本店",
+      "score": 101.24,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 19.8,
+        "improvementRatioPoints": 5.64,
+        "routeProximityPoints": 50.8,
+        "accessPriorPoints": 36,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 35,
+        "duplicateFacilityPenalty": 0,
+        "total": 101.24
+      },
+      "lowerBoundAdjustedImprovementMeters": 33,
+      "lowerBoundAdjustedImprovementRatio": 0.0282,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 96,
+      "rank": 3
+    },
+    {
+      "weightScenarioId": "accessPrior_minus_20_percent",
+      "candidateId": "daredemo-shopping-ニュウマン新宿-131041-3568856722-1397014075",
+      "name": "ニュウマン新宿",
+      "score": 78.2,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 20.4,
+        "improvementRatioPoints": 5.8,
+        "routeProximityPoints": 27,
+        "accessPriorPoints": 36,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 35,
+        "duplicateFacilityPenalty": 0,
+        "total": 78.2
+      },
+      "lowerBoundAdjustedImprovementMeters": 34,
+      "lowerBoundAdjustedImprovementRatio": 0.029,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 215,
+      "rank": 4
+    },
+    {
+      "weightScenarioId": "accessPrior_minus_20_percent",
+      "candidateId": "daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787",
+      "name": "ヒルトン東京",
+      "score": 58.78,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 145.8,
+        "improvementRatioPoints": 42.38,
+        "routeProximityPoints": 58.6,
+        "accessPriorPoints": 8,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 58.78
+      },
+      "lowerBoundAdjustedImprovementMeters": 243,
+      "lowerBoundAdjustedImprovementRatio": 0.2119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 57,
+      "rank": 5
+    },
+    {
+      "weightScenarioId": "accessPrior_minus_20_percent",
+      "candidateId": "daredemo-accommodation-京王プラザホテル-131041-35689954-139694016",
+      "name": "京王プラザホテル",
+      "score": 58.04,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 136.2,
+        "improvementRatioPoints": 55.44,
+        "routeProximityPoints": 54.4,
+        "accessPriorPoints": 8,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 58.04
+      },
+      "lowerBoundAdjustedImprovementMeters": 227,
+      "lowerBoundAdjustedImprovementRatio": 0.2772,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 78,
+      "rank": 6
+    },
+    {
+      "weightScenarioId": "accessPrior_minus_20_percent",
+      "candidateId": "daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371",
+      "name": "ハイアットリージェンシー東京",
+      "score": -0.18,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 97.8,
+        "improvementRatioPoints": 28.42,
+        "routeProximityPoints": 61.6,
+        "accessPriorPoints": 8,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": -0.18
+      },
+      "lowerBoundAdjustedImprovementMeters": 163,
+      "lowerBoundAdjustedImprovementRatio": 0.1421,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 42,
+      "rank": 7
+    },
+    {
+      "weightScenarioId": "accessPrior_minus_20_percent",
+      "candidateId": "daredemo-accommodation-京王プレッソイン新宿-131041-35685664-139692621",
+      "name": "京王プレッソイン新宿",
+      "score": -50.82,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 78.6,
+        "improvementRatioPoints": 22.38,
+        "routeProximityPoints": 36.2,
+        "accessPriorPoints": 8,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": -50.82
+      },
+      "lowerBoundAdjustedImprovementMeters": 131,
+      "lowerBoundAdjustedImprovementRatio": 0.1119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 169,
+      "rank": 8
+    },
+    {
+      "weightScenarioId": "accessPrior_plus_20_percent",
+      "candidateId": "shinjuku-facility-131041000179",
+      "name": "新宿観光振興協会",
+      "score": 239.36,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 61.8,
+        "improvementRatioPoints": 17.96,
+        "routeProximityPoints": 30.6,
+        "accessPriorPoints": 102,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 36,
+        "categoryPenalty": 5,
+        "duplicateFacilityPenalty": 4,
+        "total": 239.36
+      },
+      "lowerBoundAdjustedImprovementMeters": 103,
+      "lowerBoundAdjustedImprovementRatio": 0.0898,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 197,
+      "rank": 1
+    },
+    {
+      "weightScenarioId": "accessPrior_plus_20_percent",
+      "candidateId": "daredemo-shopping-ヨドバシカメラ新宿西口本店-131041-35689815-139697891",
+      "name": "ヨドバシカメラ新宿西口本店",
+      "score": 119.24,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 19.8,
+        "improvementRatioPoints": 5.64,
+        "routeProximityPoints": 50.8,
+        "accessPriorPoints": 54,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 35,
+        "duplicateFacilityPenalty": 0,
+        "total": 119.24
+      },
+      "lowerBoundAdjustedImprovementMeters": 33,
+      "lowerBoundAdjustedImprovementRatio": 0.0282,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 96,
+      "rank": 2
+    },
+    {
+      "weightScenarioId": "accessPrior_plus_20_percent",
+      "candidateId": "daredemo-accommodation-西鉄イン新宿-131041-35694278-13969433",
+      "name": "西鉄イン新宿",
+      "score": 110.06,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 204.6,
+        "improvementRatioPoints": 59.46,
+        "routeProximityPoints": 30,
+        "accessPriorPoints": 12,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 110.06
+      },
+      "lowerBoundAdjustedImprovementMeters": 341,
+      "lowerBoundAdjustedImprovementRatio": 0.2973,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 200,
+      "rank": 3
+    },
+    {
+      "weightScenarioId": "accessPrior_plus_20_percent",
+      "candidateId": "daredemo-shopping-ニュウマン新宿-131041-3568856722-1397014075",
+      "name": "ニュウマン新宿",
+      "score": 96.2,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 20.4,
+        "improvementRatioPoints": 5.8,
+        "routeProximityPoints": 27,
+        "accessPriorPoints": 54,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 35,
+        "duplicateFacilityPenalty": 0,
+        "total": 96.2
+      },
+      "lowerBoundAdjustedImprovementMeters": 34,
+      "lowerBoundAdjustedImprovementRatio": 0.029,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 215,
+      "rank": 4
+    },
+    {
+      "weightScenarioId": "accessPrior_plus_20_percent",
+      "candidateId": "daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787",
+      "name": "ヒルトン東京",
+      "score": 62.78,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 145.8,
+        "improvementRatioPoints": 42.38,
+        "routeProximityPoints": 58.6,
+        "accessPriorPoints": 12,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 62.78
+      },
+      "lowerBoundAdjustedImprovementMeters": 243,
+      "lowerBoundAdjustedImprovementRatio": 0.2119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 57,
+      "rank": 5
+    },
+    {
+      "weightScenarioId": "accessPrior_plus_20_percent",
+      "candidateId": "daredemo-accommodation-京王プラザホテル-131041-35689954-139694016",
+      "name": "京王プラザホテル",
+      "score": 62.04,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 136.2,
+        "improvementRatioPoints": 55.44,
+        "routeProximityPoints": 54.4,
+        "accessPriorPoints": 12,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 62.04
+      },
+      "lowerBoundAdjustedImprovementMeters": 227,
+      "lowerBoundAdjustedImprovementRatio": 0.2772,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 78,
+      "rank": 6
+    },
+    {
+      "weightScenarioId": "accessPrior_plus_20_percent",
+      "candidateId": "daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371",
+      "name": "ハイアットリージェンシー東京",
+      "score": 3.82,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 97.8,
+        "improvementRatioPoints": 28.42,
+        "routeProximityPoints": 61.6,
+        "accessPriorPoints": 12,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 3.82
+      },
+      "lowerBoundAdjustedImprovementMeters": 163,
+      "lowerBoundAdjustedImprovementRatio": 0.1421,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 42,
+      "rank": 7
+    },
+    {
+      "weightScenarioId": "accessPrior_plus_20_percent",
+      "candidateId": "daredemo-accommodation-京王プレッソイン新宿-131041-35685664-139692621",
+      "name": "京王プレッソイン新宿",
+      "score": -46.82,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 78.6,
+        "improvementRatioPoints": 22.38,
+        "routeProximityPoints": 36.2,
+        "accessPriorPoints": 12,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": -46.82
+      },
+      "lowerBoundAdjustedImprovementMeters": 131,
+      "lowerBoundAdjustedImprovementRatio": 0.1119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 169,
+      "rank": 8
+    },
+    {
+      "weightScenarioId": "categoryPenalty_minus_20_percent",
+      "candidateId": "shinjuku-facility-131041000179",
+      "name": "新宿観光振興協会",
+      "score": 223.36,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 61.8,
+        "improvementRatioPoints": 17.96,
+        "routeProximityPoints": 30.6,
+        "accessPriorPoints": 85,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 36,
+        "categoryPenalty": 4,
+        "duplicateFacilityPenalty": 4,
+        "total": 223.36
+      },
+      "lowerBoundAdjustedImprovementMeters": 103,
+      "lowerBoundAdjustedImprovementRatio": 0.0898,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 197,
+      "rank": 1
+    },
+    {
+      "weightScenarioId": "categoryPenalty_minus_20_percent",
+      "candidateId": "daredemo-accommodation-西鉄イン新宿-131041-35694278-13969433",
+      "name": "西鉄イン新宿",
+      "score": 152.06,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 204.6,
+        "improvementRatioPoints": 59.46,
+        "routeProximityPoints": 30,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 176,
+        "duplicateFacilityPenalty": 0,
+        "total": 152.06
+      },
+      "lowerBoundAdjustedImprovementMeters": 341,
+      "lowerBoundAdjustedImprovementRatio": 0.2973,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 200,
+      "rank": 2
+    },
+    {
+      "weightScenarioId": "categoryPenalty_minus_20_percent",
+      "candidateId": "daredemo-shopping-ヨドバシカメラ新宿西口本店-131041-35689815-139697891",
+      "name": "ヨドバシカメラ新宿西口本店",
+      "score": 117.24,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 19.8,
+        "improvementRatioPoints": 5.64,
+        "routeProximityPoints": 50.8,
+        "accessPriorPoints": 45,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 28,
+        "duplicateFacilityPenalty": 0,
+        "total": 117.24
+      },
+      "lowerBoundAdjustedImprovementMeters": 33,
+      "lowerBoundAdjustedImprovementRatio": 0.0282,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 96,
+      "rank": 3
+    },
+    {
+      "weightScenarioId": "categoryPenalty_minus_20_percent",
+      "candidateId": "daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787",
+      "name": "ヒルトン東京",
+      "score": 104.78,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 145.8,
+        "improvementRatioPoints": 42.38,
+        "routeProximityPoints": 58.6,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 176,
+        "duplicateFacilityPenalty": 0,
+        "total": 104.78
+      },
+      "lowerBoundAdjustedImprovementMeters": 243,
+      "lowerBoundAdjustedImprovementRatio": 0.2119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 57,
+      "rank": 4
+    },
+    {
+      "weightScenarioId": "categoryPenalty_minus_20_percent",
+      "candidateId": "daredemo-accommodation-京王プラザホテル-131041-35689954-139694016",
+      "name": "京王プラザホテル",
+      "score": 104.04,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 136.2,
+        "improvementRatioPoints": 55.44,
+        "routeProximityPoints": 54.4,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 176,
+        "duplicateFacilityPenalty": 0,
+        "total": 104.04
+      },
+      "lowerBoundAdjustedImprovementMeters": 227,
+      "lowerBoundAdjustedImprovementRatio": 0.2772,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 78,
+      "rank": 5
+    },
+    {
+      "weightScenarioId": "categoryPenalty_minus_20_percent",
+      "candidateId": "daredemo-shopping-ニュウマン新宿-131041-3568856722-1397014075",
+      "name": "ニュウマン新宿",
+      "score": 94.2,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 20.4,
+        "improvementRatioPoints": 5.8,
+        "routeProximityPoints": 27,
+        "accessPriorPoints": 45,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 28,
+        "duplicateFacilityPenalty": 0,
+        "total": 94.2
+      },
+      "lowerBoundAdjustedImprovementMeters": 34,
+      "lowerBoundAdjustedImprovementRatio": 0.029,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 215,
+      "rank": 6
+    },
+    {
+      "weightScenarioId": "categoryPenalty_minus_20_percent",
+      "candidateId": "daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371",
+      "name": "ハイアットリージェンシー東京",
+      "score": 45.82,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 97.8,
+        "improvementRatioPoints": 28.42,
+        "routeProximityPoints": 61.6,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 176,
+        "duplicateFacilityPenalty": 0,
+        "total": 45.82
+      },
+      "lowerBoundAdjustedImprovementMeters": 163,
+      "lowerBoundAdjustedImprovementRatio": 0.1421,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 42,
+      "rank": 7
+    },
+    {
+      "weightScenarioId": "categoryPenalty_minus_20_percent",
+      "candidateId": "daredemo-accommodation-京王プレッソイン新宿-131041-35685664-139692621",
+      "name": "京王プレッソイン新宿",
+      "score": -4.82,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 78.6,
+        "improvementRatioPoints": 22.38,
+        "routeProximityPoints": 36.2,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 176,
+        "duplicateFacilityPenalty": 0,
+        "total": -4.82
+      },
+      "lowerBoundAdjustedImprovementMeters": 131,
+      "lowerBoundAdjustedImprovementRatio": 0.1119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 169,
+      "rank": 8
+    },
+    {
+      "weightScenarioId": "categoryPenalty_plus_20_percent",
+      "candidateId": "shinjuku-facility-131041000179",
+      "name": "新宿観光振興協会",
+      "score": 221.36,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 61.8,
+        "improvementRatioPoints": 17.96,
+        "routeProximityPoints": 30.6,
+        "accessPriorPoints": 85,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 36,
+        "categoryPenalty": 6,
+        "duplicateFacilityPenalty": 4,
+        "total": 221.36
+      },
+      "lowerBoundAdjustedImprovementMeters": 103,
+      "lowerBoundAdjustedImprovementRatio": 0.0898,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 197,
+      "rank": 1
+    },
+    {
+      "weightScenarioId": "categoryPenalty_plus_20_percent",
+      "candidateId": "daredemo-shopping-ヨドバシカメラ新宿西口本店-131041-35689815-139697891",
+      "name": "ヨドバシカメラ新宿西口本店",
+      "score": 103.24,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 19.8,
+        "improvementRatioPoints": 5.64,
+        "routeProximityPoints": 50.8,
+        "accessPriorPoints": 45,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 42,
+        "duplicateFacilityPenalty": 0,
+        "total": 103.24
+      },
+      "lowerBoundAdjustedImprovementMeters": 33,
+      "lowerBoundAdjustedImprovementRatio": 0.0282,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 96,
+      "rank": 2
+    },
+    {
+      "weightScenarioId": "categoryPenalty_plus_20_percent",
+      "candidateId": "daredemo-shopping-ニュウマン新宿-131041-3568856722-1397014075",
+      "name": "ニュウマン新宿",
+      "score": 80.2,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 20.4,
+        "improvementRatioPoints": 5.8,
+        "routeProximityPoints": 27,
+        "accessPriorPoints": 45,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 42,
+        "duplicateFacilityPenalty": 0,
+        "total": 80.2
+      },
+      "lowerBoundAdjustedImprovementMeters": 34,
+      "lowerBoundAdjustedImprovementRatio": 0.029,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 215,
+      "rank": 3
+    },
+    {
+      "weightScenarioId": "categoryPenalty_plus_20_percent",
+      "candidateId": "daredemo-accommodation-西鉄イン新宿-131041-35694278-13969433",
+      "name": "西鉄イン新宿",
+      "score": 64.06,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 204.6,
+        "improvementRatioPoints": 59.46,
+        "routeProximityPoints": 30,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 264,
+        "duplicateFacilityPenalty": 0,
+        "total": 64.06
+      },
+      "lowerBoundAdjustedImprovementMeters": 341,
+      "lowerBoundAdjustedImprovementRatio": 0.2973,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 200,
+      "rank": 4
+    },
+    {
+      "weightScenarioId": "categoryPenalty_plus_20_percent",
+      "candidateId": "daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787",
+      "name": "ヒルトン東京",
+      "score": 16.78,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 145.8,
+        "improvementRatioPoints": 42.38,
+        "routeProximityPoints": 58.6,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 264,
+        "duplicateFacilityPenalty": 0,
+        "total": 16.78
+      },
+      "lowerBoundAdjustedImprovementMeters": 243,
+      "lowerBoundAdjustedImprovementRatio": 0.2119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 57,
+      "rank": 5
+    },
+    {
+      "weightScenarioId": "categoryPenalty_plus_20_percent",
+      "candidateId": "daredemo-accommodation-京王プラザホテル-131041-35689954-139694016",
+      "name": "京王プラザホテル",
+      "score": 16.04,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 136.2,
+        "improvementRatioPoints": 55.44,
+        "routeProximityPoints": 54.4,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 264,
+        "duplicateFacilityPenalty": 0,
+        "total": 16.04
+      },
+      "lowerBoundAdjustedImprovementMeters": 227,
+      "lowerBoundAdjustedImprovementRatio": 0.2772,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 78,
+      "rank": 6
+    },
+    {
+      "weightScenarioId": "categoryPenalty_plus_20_percent",
+      "candidateId": "daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371",
+      "name": "ハイアットリージェンシー東京",
+      "score": -42.18,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 97.8,
+        "improvementRatioPoints": 28.42,
+        "routeProximityPoints": 61.6,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 264,
+        "duplicateFacilityPenalty": 0,
+        "total": -42.18
+      },
+      "lowerBoundAdjustedImprovementMeters": 163,
+      "lowerBoundAdjustedImprovementRatio": 0.1421,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 42,
+      "rank": 7
+    },
+    {
+      "weightScenarioId": "categoryPenalty_plus_20_percent",
+      "candidateId": "daredemo-accommodation-京王プレッソイン新宿-131041-35685664-139692621",
+      "name": "京王プレッソイン新宿",
+      "score": -92.82,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 78.6,
+        "improvementRatioPoints": 22.38,
+        "routeProximityPoints": 36.2,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 264,
+        "duplicateFacilityPenalty": 0,
+        "total": -92.82
+      },
+      "lowerBoundAdjustedImprovementMeters": 131,
+      "lowerBoundAdjustedImprovementRatio": 0.1119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 169,
+      "rank": 8
+    },
+    {
+      "weightScenarioId": "coveredRoutes_minus_20_percent",
+      "candidateId": "shinjuku-facility-131041000179",
+      "name": "新宿観光振興協会",
+      "score": 222.36,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 61.8,
+        "improvementRatioPoints": 17.96,
+        "routeProximityPoints": 30.6,
+        "accessPriorPoints": 85,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 36,
+        "categoryPenalty": 5,
+        "duplicateFacilityPenalty": 4,
+        "total": 222.36
+      },
+      "lowerBoundAdjustedImprovementMeters": 103,
+      "lowerBoundAdjustedImprovementRatio": 0.0898,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 197,
+      "rank": 1
+    },
+    {
+      "weightScenarioId": "coveredRoutes_minus_20_percent",
+      "candidateId": "daredemo-shopping-ヨドバシカメラ新宿西口本店-131041-35689815-139697891",
+      "name": "ヨドバシカメラ新宿西口本店",
+      "score": 110.24,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 19.8,
+        "improvementRatioPoints": 5.64,
+        "routeProximityPoints": 50.8,
+        "accessPriorPoints": 45,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 35,
+        "duplicateFacilityPenalty": 0,
+        "total": 110.24
+      },
+      "lowerBoundAdjustedImprovementMeters": 33,
+      "lowerBoundAdjustedImprovementRatio": 0.0282,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 96,
+      "rank": 2
+    },
+    {
+      "weightScenarioId": "coveredRoutes_minus_20_percent",
+      "candidateId": "daredemo-accommodation-西鉄イン新宿-131041-35694278-13969433",
+      "name": "西鉄イン新宿",
+      "score": 108.06,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 204.6,
+        "improvementRatioPoints": 59.46,
+        "routeProximityPoints": 30,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 108.06
+      },
+      "lowerBoundAdjustedImprovementMeters": 341,
+      "lowerBoundAdjustedImprovementRatio": 0.2973,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 200,
+      "rank": 3
+    },
+    {
+      "weightScenarioId": "coveredRoutes_minus_20_percent",
+      "candidateId": "daredemo-shopping-ニュウマン新宿-131041-3568856722-1397014075",
+      "name": "ニュウマン新宿",
+      "score": 87.2,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 20.4,
+        "improvementRatioPoints": 5.8,
+        "routeProximityPoints": 27,
+        "accessPriorPoints": 45,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 35,
+        "duplicateFacilityPenalty": 0,
+        "total": 87.2
+      },
+      "lowerBoundAdjustedImprovementMeters": 34,
+      "lowerBoundAdjustedImprovementRatio": 0.029,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 215,
+      "rank": 4
+    },
+    {
+      "weightScenarioId": "coveredRoutes_minus_20_percent",
+      "candidateId": "daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787",
+      "name": "ヒルトン東京",
+      "score": 60.78,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 145.8,
+        "improvementRatioPoints": 42.38,
+        "routeProximityPoints": 58.6,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 60.78
+      },
+      "lowerBoundAdjustedImprovementMeters": 243,
+      "lowerBoundAdjustedImprovementRatio": 0.2119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 57,
+      "rank": 5
+    },
+    {
+      "weightScenarioId": "coveredRoutes_minus_20_percent",
+      "candidateId": "daredemo-accommodation-京王プラザホテル-131041-35689954-139694016",
+      "name": "京王プラザホテル",
+      "score": 60.04,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 136.2,
+        "improvementRatioPoints": 55.44,
+        "routeProximityPoints": 54.4,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 60.04
+      },
+      "lowerBoundAdjustedImprovementMeters": 227,
+      "lowerBoundAdjustedImprovementRatio": 0.2772,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 78,
+      "rank": 6
+    },
+    {
+      "weightScenarioId": "coveredRoutes_minus_20_percent",
+      "candidateId": "daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371",
+      "name": "ハイアットリージェンシー東京",
+      "score": 1.82,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 97.8,
+        "improvementRatioPoints": 28.42,
+        "routeProximityPoints": 61.6,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 1.82
+      },
+      "lowerBoundAdjustedImprovementMeters": 163,
+      "lowerBoundAdjustedImprovementRatio": 0.1421,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 42,
+      "rank": 7
+    },
+    {
+      "weightScenarioId": "coveredRoutes_minus_20_percent",
+      "candidateId": "daredemo-accommodation-京王プレッソイン新宿-131041-35685664-139692621",
+      "name": "京王プレッソイン新宿",
+      "score": -48.82,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 78.6,
+        "improvementRatioPoints": 22.38,
+        "routeProximityPoints": 36.2,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": -48.82
+      },
+      "lowerBoundAdjustedImprovementMeters": 131,
+      "lowerBoundAdjustedImprovementRatio": 0.1119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 169,
+      "rank": 8
+    },
+    {
+      "weightScenarioId": "coveredRoutes_plus_20_percent",
+      "candidateId": "shinjuku-facility-131041000179",
+      "name": "新宿観光振興協会",
+      "score": 222.36,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 61.8,
+        "improvementRatioPoints": 17.96,
+        "routeProximityPoints": 30.6,
+        "accessPriorPoints": 85,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 36,
+        "categoryPenalty": 5,
+        "duplicateFacilityPenalty": 4,
+        "total": 222.36
+      },
+      "lowerBoundAdjustedImprovementMeters": 103,
+      "lowerBoundAdjustedImprovementRatio": 0.0898,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 197,
+      "rank": 1
+    },
+    {
+      "weightScenarioId": "coveredRoutes_plus_20_percent",
+      "candidateId": "daredemo-shopping-ヨドバシカメラ新宿西口本店-131041-35689815-139697891",
+      "name": "ヨドバシカメラ新宿西口本店",
+      "score": 110.24,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 19.8,
+        "improvementRatioPoints": 5.64,
+        "routeProximityPoints": 50.8,
+        "accessPriorPoints": 45,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 35,
+        "duplicateFacilityPenalty": 0,
+        "total": 110.24
+      },
+      "lowerBoundAdjustedImprovementMeters": 33,
+      "lowerBoundAdjustedImprovementRatio": 0.0282,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 96,
+      "rank": 2
+    },
+    {
+      "weightScenarioId": "coveredRoutes_plus_20_percent",
+      "candidateId": "daredemo-accommodation-西鉄イン新宿-131041-35694278-13969433",
+      "name": "西鉄イン新宿",
+      "score": 108.06,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 204.6,
+        "improvementRatioPoints": 59.46,
+        "routeProximityPoints": 30,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 108.06
+      },
+      "lowerBoundAdjustedImprovementMeters": 341,
+      "lowerBoundAdjustedImprovementRatio": 0.2973,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 200,
+      "rank": 3
+    },
+    {
+      "weightScenarioId": "coveredRoutes_plus_20_percent",
+      "candidateId": "daredemo-shopping-ニュウマン新宿-131041-3568856722-1397014075",
+      "name": "ニュウマン新宿",
+      "score": 87.2,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 20.4,
+        "improvementRatioPoints": 5.8,
+        "routeProximityPoints": 27,
+        "accessPriorPoints": 45,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 35,
+        "duplicateFacilityPenalty": 0,
+        "total": 87.2
+      },
+      "lowerBoundAdjustedImprovementMeters": 34,
+      "lowerBoundAdjustedImprovementRatio": 0.029,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 215,
+      "rank": 4
+    },
+    {
+      "weightScenarioId": "coveredRoutes_plus_20_percent",
+      "candidateId": "daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787",
+      "name": "ヒルトン東京",
+      "score": 60.78,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 145.8,
+        "improvementRatioPoints": 42.38,
+        "routeProximityPoints": 58.6,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 60.78
+      },
+      "lowerBoundAdjustedImprovementMeters": 243,
+      "lowerBoundAdjustedImprovementRatio": 0.2119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 57,
+      "rank": 5
+    },
+    {
+      "weightScenarioId": "coveredRoutes_plus_20_percent",
+      "candidateId": "daredemo-accommodation-京王プラザホテル-131041-35689954-139694016",
+      "name": "京王プラザホテル",
+      "score": 60.04,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 136.2,
+        "improvementRatioPoints": 55.44,
+        "routeProximityPoints": 54.4,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 60.04
+      },
+      "lowerBoundAdjustedImprovementMeters": 227,
+      "lowerBoundAdjustedImprovementRatio": 0.2772,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 78,
+      "rank": 6
+    },
+    {
+      "weightScenarioId": "coveredRoutes_plus_20_percent",
+      "candidateId": "daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371",
+      "name": "ハイアットリージェンシー東京",
+      "score": 1.82,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 97.8,
+        "improvementRatioPoints": 28.42,
+        "routeProximityPoints": 61.6,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 1.82
+      },
+      "lowerBoundAdjustedImprovementMeters": 163,
+      "lowerBoundAdjustedImprovementRatio": 0.1421,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 42,
+      "rank": 7
+    },
+    {
+      "weightScenarioId": "coveredRoutes_plus_20_percent",
+      "candidateId": "daredemo-accommodation-京王プレッソイン新宿-131041-35685664-139692621",
+      "name": "京王プレッソイン新宿",
+      "score": -48.82,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 78.6,
+        "improvementRatioPoints": 22.38,
+        "routeProximityPoints": 36.2,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": -48.82
+      },
+      "lowerBoundAdjustedImprovementMeters": 131,
+      "lowerBoundAdjustedImprovementRatio": 0.1119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 169,
+      "rank": 8
+    },
+    {
+      "weightScenarioId": "sourceQuality_minus_20_percent",
+      "candidateId": "shinjuku-facility-131041000179",
+      "name": "新宿観光振興協会",
+      "score": 215.16,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 61.8,
+        "improvementRatioPoints": 17.96,
+        "routeProximityPoints": 30.6,
+        "accessPriorPoints": 85,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 28.8,
+        "categoryPenalty": 5,
+        "duplicateFacilityPenalty": 4,
+        "total": 215.16
+      },
+      "lowerBoundAdjustedImprovementMeters": 103,
+      "lowerBoundAdjustedImprovementRatio": 0.0898,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 197,
+      "rank": 1
+    },
+    {
+      "weightScenarioId": "sourceQuality_minus_20_percent",
+      "candidateId": "daredemo-shopping-ヨドバシカメラ新宿西口本店-131041-35689815-139697891",
+      "name": "ヨドバシカメラ新宿西口本店",
+      "score": 105.44,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 19.8,
+        "improvementRatioPoints": 5.64,
+        "routeProximityPoints": 50.8,
+        "accessPriorPoints": 45,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 19.2,
+        "categoryPenalty": 35,
+        "duplicateFacilityPenalty": 0,
+        "total": 105.44
+      },
+      "lowerBoundAdjustedImprovementMeters": 33,
+      "lowerBoundAdjustedImprovementRatio": 0.0282,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 96,
+      "rank": 2
+    },
+    {
+      "weightScenarioId": "sourceQuality_minus_20_percent",
+      "candidateId": "daredemo-accommodation-西鉄イン新宿-131041-35694278-13969433",
+      "name": "西鉄イン新宿",
+      "score": 103.26,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 204.6,
+        "improvementRatioPoints": 59.46,
+        "routeProximityPoints": 30,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 19.2,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 103.26
+      },
+      "lowerBoundAdjustedImprovementMeters": 341,
+      "lowerBoundAdjustedImprovementRatio": 0.2973,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 200,
+      "rank": 3
+    },
+    {
+      "weightScenarioId": "sourceQuality_minus_20_percent",
+      "candidateId": "daredemo-shopping-ニュウマン新宿-131041-3568856722-1397014075",
+      "name": "ニュウマン新宿",
+      "score": 82.4,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 20.4,
+        "improvementRatioPoints": 5.8,
+        "routeProximityPoints": 27,
+        "accessPriorPoints": 45,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 19.2,
+        "categoryPenalty": 35,
+        "duplicateFacilityPenalty": 0,
+        "total": 82.4
+      },
+      "lowerBoundAdjustedImprovementMeters": 34,
+      "lowerBoundAdjustedImprovementRatio": 0.029,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 215,
+      "rank": 4
+    },
+    {
+      "weightScenarioId": "sourceQuality_minus_20_percent",
+      "candidateId": "daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787",
+      "name": "ヒルトン東京",
+      "score": 55.98,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 145.8,
+        "improvementRatioPoints": 42.38,
+        "routeProximityPoints": 58.6,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 19.2,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 55.98
+      },
+      "lowerBoundAdjustedImprovementMeters": 243,
+      "lowerBoundAdjustedImprovementRatio": 0.2119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 57,
+      "rank": 5
+    },
+    {
+      "weightScenarioId": "sourceQuality_minus_20_percent",
+      "candidateId": "daredemo-accommodation-京王プラザホテル-131041-35689954-139694016",
+      "name": "京王プラザホテル",
+      "score": 55.24,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 136.2,
+        "improvementRatioPoints": 55.44,
+        "routeProximityPoints": 54.4,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 19.2,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 55.24
+      },
+      "lowerBoundAdjustedImprovementMeters": 227,
+      "lowerBoundAdjustedImprovementRatio": 0.2772,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 78,
+      "rank": 6
+    },
+    {
+      "weightScenarioId": "sourceQuality_minus_20_percent",
+      "candidateId": "daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371",
+      "name": "ハイアットリージェンシー東京",
+      "score": -2.98,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 97.8,
+        "improvementRatioPoints": 28.42,
+        "routeProximityPoints": 61.6,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 19.2,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": -2.98
+      },
+      "lowerBoundAdjustedImprovementMeters": 163,
+      "lowerBoundAdjustedImprovementRatio": 0.1421,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 42,
+      "rank": 7
+    },
+    {
+      "weightScenarioId": "sourceQuality_minus_20_percent",
+      "candidateId": "daredemo-accommodation-京王プレッソイン新宿-131041-35685664-139692621",
+      "name": "京王プレッソイン新宿",
+      "score": -53.62,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 78.6,
+        "improvementRatioPoints": 22.38,
+        "routeProximityPoints": 36.2,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 19.2,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": -53.62
+      },
+      "lowerBoundAdjustedImprovementMeters": 131,
+      "lowerBoundAdjustedImprovementRatio": 0.1119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 169,
+      "rank": 8
+    },
+    {
+      "weightScenarioId": "sourceQuality_plus_20_percent",
+      "candidateId": "shinjuku-facility-131041000179",
+      "name": "新宿観光振興協会",
+      "score": 229.56,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 61.8,
+        "improvementRatioPoints": 17.96,
+        "routeProximityPoints": 30.6,
+        "accessPriorPoints": 85,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 43.2,
+        "categoryPenalty": 5,
+        "duplicateFacilityPenalty": 4,
+        "total": 229.56
+      },
+      "lowerBoundAdjustedImprovementMeters": 103,
+      "lowerBoundAdjustedImprovementRatio": 0.0898,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 197,
+      "rank": 1
+    },
+    {
+      "weightScenarioId": "sourceQuality_plus_20_percent",
+      "candidateId": "daredemo-shopping-ヨドバシカメラ新宿西口本店-131041-35689815-139697891",
+      "name": "ヨドバシカメラ新宿西口本店",
+      "score": 115.04,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 19.8,
+        "improvementRatioPoints": 5.64,
+        "routeProximityPoints": 50.8,
+        "accessPriorPoints": 45,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 28.8,
+        "categoryPenalty": 35,
+        "duplicateFacilityPenalty": 0,
+        "total": 115.04
+      },
+      "lowerBoundAdjustedImprovementMeters": 33,
+      "lowerBoundAdjustedImprovementRatio": 0.0282,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 96,
+      "rank": 2
+    },
+    {
+      "weightScenarioId": "sourceQuality_plus_20_percent",
+      "candidateId": "daredemo-accommodation-西鉄イン新宿-131041-35694278-13969433",
+      "name": "西鉄イン新宿",
+      "score": 112.86,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 204.6,
+        "improvementRatioPoints": 59.46,
+        "routeProximityPoints": 30,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 28.8,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 112.86
+      },
+      "lowerBoundAdjustedImprovementMeters": 341,
+      "lowerBoundAdjustedImprovementRatio": 0.2973,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 200,
+      "rank": 3
+    },
+    {
+      "weightScenarioId": "sourceQuality_plus_20_percent",
+      "candidateId": "daredemo-shopping-ニュウマン新宿-131041-3568856722-1397014075",
+      "name": "ニュウマン新宿",
+      "score": 92,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 20.4,
+        "improvementRatioPoints": 5.8,
+        "routeProximityPoints": 27,
+        "accessPriorPoints": 45,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 28.8,
+        "categoryPenalty": 35,
+        "duplicateFacilityPenalty": 0,
+        "total": 92
+      },
+      "lowerBoundAdjustedImprovementMeters": 34,
+      "lowerBoundAdjustedImprovementRatio": 0.029,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 215,
+      "rank": 4
+    },
+    {
+      "weightScenarioId": "sourceQuality_plus_20_percent",
+      "candidateId": "daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787",
+      "name": "ヒルトン東京",
+      "score": 65.58,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 145.8,
+        "improvementRatioPoints": 42.38,
+        "routeProximityPoints": 58.6,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 28.8,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 65.58
+      },
+      "lowerBoundAdjustedImprovementMeters": 243,
+      "lowerBoundAdjustedImprovementRatio": 0.2119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 57,
+      "rank": 5
+    },
+    {
+      "weightScenarioId": "sourceQuality_plus_20_percent",
+      "candidateId": "daredemo-accommodation-京王プラザホテル-131041-35689954-139694016",
+      "name": "京王プラザホテル",
+      "score": 64.84,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 136.2,
+        "improvementRatioPoints": 55.44,
+        "routeProximityPoints": 54.4,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 28.8,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 64.84
+      },
+      "lowerBoundAdjustedImprovementMeters": 227,
+      "lowerBoundAdjustedImprovementRatio": 0.2772,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 78,
+      "rank": 6
+    },
+    {
+      "weightScenarioId": "sourceQuality_plus_20_percent",
+      "candidateId": "daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371",
+      "name": "ハイアットリージェンシー東京",
+      "score": 6.62,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 97.8,
+        "improvementRatioPoints": 28.42,
+        "routeProximityPoints": 61.6,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 28.8,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 6.62
+      },
+      "lowerBoundAdjustedImprovementMeters": 163,
+      "lowerBoundAdjustedImprovementRatio": 0.1421,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 42,
+      "rank": 7
+    },
+    {
+      "weightScenarioId": "sourceQuality_plus_20_percent",
+      "candidateId": "daredemo-accommodation-京王プレッソイン新宿-131041-35685664-139692621",
+      "name": "京王プレッソイン新宿",
+      "score": -44.02,
+      "scoreBreakdown": {
+        "improvementMetersPoints": 78.6,
+        "improvementRatioPoints": 22.38,
+        "routeProximityPoints": 36.2,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 28.8,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": -44.02
+      },
+      "lowerBoundAdjustedImprovementMeters": 131,
+      "lowerBoundAdjustedImprovementRatio": 0.1119,
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 169,
+      "rank": 8
+    }
+  ],
+  "candidates": [
+    {
+      "candidateId": "shinjuku-facility-131041000179",
+      "name": "新宿観光振興協会",
+      "address": "東京都新宿区西新宿6-8-2区立産業会館3階",
+      "latitude": 35.693465,
+      "longitude": 139.690394,
+      "facilityAccessCategory": "public_service_facility",
+      "facilityAccessCategoryLabel": "一般利用目的が明確な公共施設",
+      "primaryRouteId": "step_avoiding",
+      "dynamicRouteIds": [
+        "step_avoiding"
+      ],
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 197,
+      "optimisticImprovementMeters": 300,
+      "lowerBoundAdjustedImprovementMeters": 103,
+      "conservativeProxyImprovementMeters": 0,
+      "optimisticImprovementRatio": 0.2616,
+      "lowerBoundAdjustedImprovementRatio": 0.0898,
+      "conservativeProxyImprovementRatio": 0,
+      "detourSensitivityClass": "sensitive",
+      "baselineRank": 1,
+      "bestRank": 1,
+      "worstRank": 1,
+      "meanRank": 1,
+      "top5AppearanceRate": 1,
+      "rankStabilityClass": "stable_top5",
+      "twoAxisClassification": "low_improvement_easy_to_verify",
+      "mobilityImprovementEvaluation": {
+        "conservativeProxyImprovementMeters": 0,
+        "conservativeProxyImprovementRatio": 0,
+        "numberOfCoveredRoutes": 1,
+        "distanceToRouteMeters": 197
+      },
+      "verificationValue": {
+        "generalUsePurposeClarity": "clear_public_purpose",
+        "generalUsePurposeClarityScore": 3,
+        "officialSourceQuality": "high",
+        "officialSourceQualityScore": 3,
+        "onSiteResolutionNeed": "medium",
+        "accessRestrictionConcern": "low"
+      },
+      "isParetoNonDominated": true,
+      "scenarioRanks": [
+        {
+          "weightScenarioId": "baseline",
+          "rank": 1,
+          "score": 222.36
+        },
+        {
+          "weightScenarioId": "improvementMeters_minus_20_percent",
+          "rank": 1,
+          "score": 210
+        },
+        {
+          "weightScenarioId": "improvementMeters_plus_20_percent",
+          "rank": 1,
+          "score": 234.72
+        },
+        {
+          "weightScenarioId": "improvementRatio_minus_20_percent",
+          "rank": 1,
+          "score": 218.77
+        },
+        {
+          "weightScenarioId": "improvementRatio_plus_20_percent",
+          "rank": 1,
+          "score": 225.95
+        },
+        {
+          "weightScenarioId": "routeProximity_minus_20_percent",
+          "rank": 1,
+          "score": 216.24
+        },
+        {
+          "weightScenarioId": "routeProximity_plus_20_percent",
+          "rank": 1,
+          "score": 228.48
+        },
+        {
+          "weightScenarioId": "accessPrior_minus_20_percent",
+          "rank": 1,
+          "score": 205.36
+        },
+        {
+          "weightScenarioId": "accessPrior_plus_20_percent",
+          "rank": 1,
+          "score": 239.36
+        },
+        {
+          "weightScenarioId": "categoryPenalty_minus_20_percent",
+          "rank": 1,
+          "score": 223.36
+        },
+        {
+          "weightScenarioId": "categoryPenalty_plus_20_percent",
+          "rank": 1,
+          "score": 221.36
+        },
+        {
+          "weightScenarioId": "coveredRoutes_minus_20_percent",
+          "rank": 1,
+          "score": 222.36
+        },
+        {
+          "weightScenarioId": "coveredRoutes_plus_20_percent",
+          "rank": 1,
+          "score": 222.36
+        },
+        {
+          "weightScenarioId": "sourceQuality_minus_20_percent",
+          "rank": 1,
+          "score": 215.16
+        },
+        {
+          "weightScenarioId": "sourceQuality_plus_20_percent",
+          "rank": 1,
+          "score": 229.56
+        }
+      ]
+    },
+    {
+      "candidateId": "daredemo-shopping-ヨドバシカメラ新宿西口本店-131041-35689815-139697891",
+      "name": "ヨドバシカメラ新宿西口本店",
+      "address": "東京都新宿区西新宿1-11-1",
+      "latitude": 35.689815,
+      "longitude": 139.697891,
+      "facilityAccessCategory": "commercial_facility",
+      "facilityAccessCategoryLabel": "商業施設",
+      "primaryRouteId": "wheelchair_profile",
+      "dynamicRouteIds": [
+        "wheelchair_profile"
+      ],
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 96,
+      "optimisticImprovementMeters": 129,
+      "lowerBoundAdjustedImprovementMeters": 33,
+      "conservativeProxyImprovementMeters": 0,
+      "optimisticImprovementRatio": 0.1102,
+      "lowerBoundAdjustedImprovementRatio": 0.0282,
+      "conservativeProxyImprovementRatio": 0,
+      "detourSensitivityClass": "marginal",
+      "baselineRank": 2,
+      "bestRank": 2,
+      "worstRank": 3,
+      "meanRank": 2.33,
+      "top5AppearanceRate": 1,
+      "rankStabilityClass": "stable_top5",
+      "twoAxisClassification": "low_priority",
+      "mobilityImprovementEvaluation": {
+        "conservativeProxyImprovementMeters": 0,
+        "conservativeProxyImprovementRatio": 0,
+        "numberOfCoveredRoutes": 1,
+        "distanceToRouteMeters": 96
+      },
+      "verificationValue": {
+        "generalUsePurposeClarity": "official_or_commercial_purpose_rest_use_unknown",
+        "generalUsePurposeClarityScore": 2,
+        "officialSourceQuality": "medium",
+        "officialSourceQualityScore": 2,
+        "onSiteResolutionNeed": "high",
+        "accessRestrictionConcern": "medium"
+      },
+      "isParetoNonDominated": true,
+      "scenarioRanks": [
+        {
+          "weightScenarioId": "baseline",
+          "rank": 2,
+          "score": 110.24
+        },
+        {
+          "weightScenarioId": "improvementMeters_minus_20_percent",
+          "rank": 2,
+          "score": 106.28
+        },
+        {
+          "weightScenarioId": "improvementMeters_plus_20_percent",
+          "rank": 3,
+          "score": 114.2
+        },
+        {
+          "weightScenarioId": "improvementRatio_minus_20_percent",
+          "rank": 2,
+          "score": 109.11
+        },
+        {
+          "weightScenarioId": "improvementRatio_plus_20_percent",
+          "rank": 3,
+          "score": 111.37
+        },
+        {
+          "weightScenarioId": "routeProximity_minus_20_percent",
+          "rank": 3,
+          "score": 100.08
+        },
+        {
+          "weightScenarioId": "routeProximity_plus_20_percent",
+          "rank": 2,
+          "score": 120.4
+        },
+        {
+          "weightScenarioId": "accessPrior_minus_20_percent",
+          "rank": 3,
+          "score": 101.24
+        },
+        {
+          "weightScenarioId": "accessPrior_plus_20_percent",
+          "rank": 2,
+          "score": 119.24
+        },
+        {
+          "weightScenarioId": "categoryPenalty_minus_20_percent",
+          "rank": 3,
+          "score": 117.24
+        },
+        {
+          "weightScenarioId": "categoryPenalty_plus_20_percent",
+          "rank": 2,
+          "score": 103.24
+        },
+        {
+          "weightScenarioId": "coveredRoutes_minus_20_percent",
+          "rank": 2,
+          "score": 110.24
+        },
+        {
+          "weightScenarioId": "coveredRoutes_plus_20_percent",
+          "rank": 2,
+          "score": 110.24
+        },
+        {
+          "weightScenarioId": "sourceQuality_minus_20_percent",
+          "rank": 2,
+          "score": 105.44
+        },
+        {
+          "weightScenarioId": "sourceQuality_plus_20_percent",
+          "rank": 2,
+          "score": 115.04
+        }
+      ]
+    },
+    {
+      "candidateId": "daredemo-accommodation-西鉄イン新宿-131041-35694278-13969433",
+      "name": "西鉄イン新宿",
+      "address": "東京都新宿区西新宿7-23-2",
+      "latitude": 35.694278,
+      "longitude": 139.69433,
+      "facilityAccessCategory": "private_hospitality",
+      "facilityAccessCategoryLabel": "ホテル等の民間施設",
+      "primaryRouteId": "step_avoiding",
+      "dynamicRouteIds": [
+        "step_avoiding"
+      ],
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 200,
+      "optimisticImprovementMeters": 541,
+      "lowerBoundAdjustedImprovementMeters": 341,
+      "conservativeProxyImprovementMeters": 141,
+      "optimisticImprovementRatio": 0.4717,
+      "lowerBoundAdjustedImprovementRatio": 0.2973,
+      "conservativeProxyImprovementRatio": 0.1229,
+      "detourSensitivityClass": "robust",
+      "baselineRank": 3,
+      "bestRank": 2,
+      "worstRank": 4,
+      "meanRank": 2.8,
+      "top5AppearanceRate": 1,
+      "rankStabilityClass": "stable_top5",
+      "twoAxisClassification": "high_improvement_access_uncertain",
+      "mobilityImprovementEvaluation": {
+        "conservativeProxyImprovementMeters": 141,
+        "conservativeProxyImprovementRatio": 0.1229,
+        "numberOfCoveredRoutes": 1,
+        "distanceToRouteMeters": 200
+      },
+      "verificationValue": {
+        "generalUsePurposeClarity": "special_access_conditions_unknown",
+        "generalUsePurposeClarityScore": 1,
+        "officialSourceQuality": "medium",
+        "officialSourceQualityScore": 2,
+        "onSiteResolutionNeed": "high",
+        "accessRestrictionConcern": "high"
+      },
+      "isParetoNonDominated": true,
+      "scenarioRanks": [
+        {
+          "weightScenarioId": "baseline",
+          "rank": 3,
+          "score": 108.06
+        },
+        {
+          "weightScenarioId": "improvementMeters_minus_20_percent",
+          "rank": 4,
+          "score": 67.14
+        },
+        {
+          "weightScenarioId": "improvementMeters_plus_20_percent",
+          "rank": 2,
+          "score": 148.98
+        },
+        {
+          "weightScenarioId": "improvementRatio_minus_20_percent",
+          "rank": 3,
+          "score": 96.17
+        },
+        {
+          "weightScenarioId": "improvementRatio_plus_20_percent",
+          "rank": 2,
+          "score": 119.95
+        },
+        {
+          "weightScenarioId": "routeProximity_minus_20_percent",
+          "rank": 2,
+          "score": 102.06
+        },
+        {
+          "weightScenarioId": "routeProximity_plus_20_percent",
+          "rank": 3,
+          "score": 114.06
+        },
+        {
+          "weightScenarioId": "accessPrior_minus_20_percent",
+          "rank": 2,
+          "score": 106.06
+        },
+        {
+          "weightScenarioId": "accessPrior_plus_20_percent",
+          "rank": 3,
+          "score": 110.06
+        },
+        {
+          "weightScenarioId": "categoryPenalty_minus_20_percent",
+          "rank": 2,
+          "score": 152.06
+        },
+        {
+          "weightScenarioId": "categoryPenalty_plus_20_percent",
+          "rank": 4,
+          "score": 64.06
+        },
+        {
+          "weightScenarioId": "coveredRoutes_minus_20_percent",
+          "rank": 3,
+          "score": 108.06
+        },
+        {
+          "weightScenarioId": "coveredRoutes_plus_20_percent",
+          "rank": 3,
+          "score": 108.06
+        },
+        {
+          "weightScenarioId": "sourceQuality_minus_20_percent",
+          "rank": 3,
+          "score": 103.26
+        },
+        {
+          "weightScenarioId": "sourceQuality_plus_20_percent",
+          "rank": 3,
+          "score": 112.86
+        }
+      ]
+    },
+    {
+      "candidateId": "daredemo-shopping-ニュウマン新宿-131041-3568856722-1397014075",
+      "name": "ニュウマン新宿",
+      "address": "東京都新宿区新宿4-1-6",
+      "latitude": 35.688567,
+      "longitude": 139.701407,
+      "facilityAccessCategory": "commercial_facility",
+      "facilityAccessCategoryLabel": "商業施設",
+      "primaryRouteId": "wheelchair_profile",
+      "dynamicRouteIds": [
+        "wheelchair_profile"
+      ],
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 215,
+      "optimisticImprovementMeters": 249,
+      "lowerBoundAdjustedImprovementMeters": 34,
+      "conservativeProxyImprovementMeters": 0,
+      "optimisticImprovementRatio": 0.2126,
+      "lowerBoundAdjustedImprovementRatio": 0.029,
+      "conservativeProxyImprovementRatio": 0,
+      "detourSensitivityClass": "marginal",
+      "baselineRank": 4,
+      "bestRank": 3,
+      "worstRank": 6,
+      "meanRank": 4,
+      "top5AppearanceRate": 0.9333,
+      "rankStabilityClass": "resilient_top5",
+      "twoAxisClassification": "low_priority",
+      "mobilityImprovementEvaluation": {
+        "conservativeProxyImprovementMeters": 0,
+        "conservativeProxyImprovementRatio": 0,
+        "numberOfCoveredRoutes": 1,
+        "distanceToRouteMeters": 215
+      },
+      "verificationValue": {
+        "generalUsePurposeClarity": "official_or_commercial_purpose_rest_use_unknown",
+        "generalUsePurposeClarityScore": 2,
+        "officialSourceQuality": "medium",
+        "officialSourceQualityScore": 2,
+        "onSiteResolutionNeed": "high",
+        "accessRestrictionConcern": "medium"
+      },
+      "isParetoNonDominated": false,
+      "scenarioRanks": [
+        {
+          "weightScenarioId": "baseline",
+          "rank": 4,
+          "score": 87.2
+        },
+        {
+          "weightScenarioId": "improvementMeters_minus_20_percent",
+          "rank": 3,
+          "score": 83.12
+        },
+        {
+          "weightScenarioId": "improvementMeters_plus_20_percent",
+          "rank": 4,
+          "score": 91.28
+        },
+        {
+          "weightScenarioId": "improvementRatio_minus_20_percent",
+          "rank": 4,
+          "score": 86.04
+        },
+        {
+          "weightScenarioId": "improvementRatio_plus_20_percent",
+          "rank": 4,
+          "score": 88.36
+        },
+        {
+          "weightScenarioId": "routeProximity_minus_20_percent",
+          "rank": 4,
+          "score": 81.8
+        },
+        {
+          "weightScenarioId": "routeProximity_plus_20_percent",
+          "rank": 4,
+          "score": 92.6
+        },
+        {
+          "weightScenarioId": "accessPrior_minus_20_percent",
+          "rank": 4,
+          "score": 78.2
+        },
+        {
+          "weightScenarioId": "accessPrior_plus_20_percent",
+          "rank": 4,
+          "score": 96.2
+        },
+        {
+          "weightScenarioId": "categoryPenalty_minus_20_percent",
+          "rank": 6,
+          "score": 94.2
+        },
+        {
+          "weightScenarioId": "categoryPenalty_plus_20_percent",
+          "rank": 3,
+          "score": 80.2
+        },
+        {
+          "weightScenarioId": "coveredRoutes_minus_20_percent",
+          "rank": 4,
+          "score": 87.2
+        },
+        {
+          "weightScenarioId": "coveredRoutes_plus_20_percent",
+          "rank": 4,
+          "score": 87.2
+        },
+        {
+          "weightScenarioId": "sourceQuality_minus_20_percent",
+          "rank": 4,
+          "score": 82.4
+        },
+        {
+          "weightScenarioId": "sourceQuality_plus_20_percent",
+          "rank": 4,
+          "score": 92
+        }
+      ]
+    },
+    {
+      "candidateId": "daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787",
+      "name": "ヒルトン東京",
+      "address": "東京都新宿区西新宿6-6-2",
+      "latitude": 35.692478,
+      "longitude": 139.691379,
+      "facilityAccessCategory": "private_hospitality",
+      "facilityAccessCategoryLabel": "ホテル等の民間施設",
+      "primaryRouteId": "step_avoiding",
+      "dynamicRouteIds": [
+        "step_avoiding"
+      ],
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 57,
+      "optimisticImprovementMeters": 300,
+      "lowerBoundAdjustedImprovementMeters": 243,
+      "conservativeProxyImprovementMeters": 186,
+      "optimisticImprovementRatio": 0.2616,
+      "lowerBoundAdjustedImprovementRatio": 0.2119,
+      "conservativeProxyImprovementRatio": 0.1622,
+      "detourSensitivityClass": "robust",
+      "baselineRank": 5,
+      "bestRank": 4,
+      "worstRank": 6,
+      "meanRank": 5.13,
+      "top5AppearanceRate": 0.8,
+      "rankStabilityClass": "resilient_top5",
+      "twoAxisClassification": "high_improvement_access_uncertain",
+      "mobilityImprovementEvaluation": {
+        "conservativeProxyImprovementMeters": 186,
+        "conservativeProxyImprovementRatio": 0.1622,
+        "numberOfCoveredRoutes": 1,
+        "distanceToRouteMeters": 57
+      },
+      "verificationValue": {
+        "generalUsePurposeClarity": "special_access_conditions_unknown",
+        "generalUsePurposeClarityScore": 1,
+        "officialSourceQuality": "medium",
+        "officialSourceQualityScore": 2,
+        "onSiteResolutionNeed": "high",
+        "accessRestrictionConcern": "high"
+      },
+      "isParetoNonDominated": true,
+      "scenarioRanks": [
+        {
+          "weightScenarioId": "baseline",
+          "rank": 5,
+          "score": 60.78
+        },
+        {
+          "weightScenarioId": "improvementMeters_minus_20_percent",
+          "rank": 6,
+          "score": 31.62
+        },
+        {
+          "weightScenarioId": "improvementMeters_plus_20_percent",
+          "rank": 5,
+          "score": 89.94
+        },
+        {
+          "weightScenarioId": "improvementRatio_minus_20_percent",
+          "rank": 5,
+          "score": 52.3
+        },
+        {
+          "weightScenarioId": "improvementRatio_plus_20_percent",
+          "rank": 6,
+          "score": 69.26
+        },
+        {
+          "weightScenarioId": "routeProximity_minus_20_percent",
+          "rank": 6,
+          "score": 49.06
+        },
+        {
+          "weightScenarioId": "routeProximity_plus_20_percent",
+          "rank": 5,
+          "score": 72.5
+        },
+        {
+          "weightScenarioId": "accessPrior_minus_20_percent",
+          "rank": 5,
+          "score": 58.78
+        },
+        {
+          "weightScenarioId": "accessPrior_plus_20_percent",
+          "rank": 5,
+          "score": 62.78
+        },
+        {
+          "weightScenarioId": "categoryPenalty_minus_20_percent",
+          "rank": 4,
+          "score": 104.78
+        },
+        {
+          "weightScenarioId": "categoryPenalty_plus_20_percent",
+          "rank": 5,
+          "score": 16.78
+        },
+        {
+          "weightScenarioId": "coveredRoutes_minus_20_percent",
+          "rank": 5,
+          "score": 60.78
+        },
+        {
+          "weightScenarioId": "coveredRoutes_plus_20_percent",
+          "rank": 5,
+          "score": 60.78
+        },
+        {
+          "weightScenarioId": "sourceQuality_minus_20_percent",
+          "rank": 5,
+          "score": 55.98
+        },
+        {
+          "weightScenarioId": "sourceQuality_plus_20_percent",
+          "rank": 5,
+          "score": 65.58
+        }
+      ]
+    },
+    {
+      "candidateId": "daredemo-accommodation-京王プラザホテル-131041-35689954-139694016",
+      "name": "京王プラザホテル",
+      "address": "東京都新宿区西新宿2-2-1",
+      "latitude": 35.689954,
+      "longitude": 139.694016,
+      "facilityAccessCategory": "private_hospitality",
+      "facilityAccessCategoryLabel": "ホテル等の民間施設",
+      "primaryRouteId": "standard",
+      "dynamicRouteIds": [
+        "standard"
+      ],
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 78,
+      "optimisticImprovementMeters": 305,
+      "lowerBoundAdjustedImprovementMeters": 227,
+      "conservativeProxyImprovementMeters": 149,
+      "optimisticImprovementRatio": 0.3724,
+      "lowerBoundAdjustedImprovementRatio": 0.2772,
+      "conservativeProxyImprovementRatio": 0.1819,
+      "detourSensitivityClass": "robust",
+      "baselineRank": 6,
+      "bestRank": 5,
+      "worstRank": 6,
+      "meanRank": 5.73,
+      "top5AppearanceRate": 0.2667,
+      "rankStabilityClass": "variable",
+      "twoAxisClassification": "high_improvement_access_uncertain",
+      "mobilityImprovementEvaluation": {
+        "conservativeProxyImprovementMeters": 149,
+        "conservativeProxyImprovementRatio": 0.1819,
+        "numberOfCoveredRoutes": 1,
+        "distanceToRouteMeters": 78
+      },
+      "verificationValue": {
+        "generalUsePurposeClarity": "special_access_conditions_unknown",
+        "generalUsePurposeClarityScore": 1,
+        "officialSourceQuality": "medium",
+        "officialSourceQualityScore": 2,
+        "onSiteResolutionNeed": "high",
+        "accessRestrictionConcern": "high"
+      },
+      "isParetoNonDominated": true,
+      "scenarioRanks": [
+        {
+          "weightScenarioId": "baseline",
+          "rank": 6,
+          "score": 60.04
+        },
+        {
+          "weightScenarioId": "improvementMeters_minus_20_percent",
+          "rank": 5,
+          "score": 32.8
+        },
+        {
+          "weightScenarioId": "improvementMeters_plus_20_percent",
+          "rank": 6,
+          "score": 87.28
+        },
+        {
+          "weightScenarioId": "improvementRatio_minus_20_percent",
+          "rank": 6,
+          "score": 48.95
+        },
+        {
+          "weightScenarioId": "improvementRatio_plus_20_percent",
+          "rank": 5,
+          "score": 71.13
+        },
+        {
+          "weightScenarioId": "routeProximity_minus_20_percent",
+          "rank": 5,
+          "score": 49.16
+        },
+        {
+          "weightScenarioId": "routeProximity_plus_20_percent",
+          "rank": 6,
+          "score": 70.92
+        },
+        {
+          "weightScenarioId": "accessPrior_minus_20_percent",
+          "rank": 6,
+          "score": 58.04
+        },
+        {
+          "weightScenarioId": "accessPrior_plus_20_percent",
+          "rank": 6,
+          "score": 62.04
+        },
+        {
+          "weightScenarioId": "categoryPenalty_minus_20_percent",
+          "rank": 5,
+          "score": 104.04
+        },
+        {
+          "weightScenarioId": "categoryPenalty_plus_20_percent",
+          "rank": 6,
+          "score": 16.04
+        },
+        {
+          "weightScenarioId": "coveredRoutes_minus_20_percent",
+          "rank": 6,
+          "score": 60.04
+        },
+        {
+          "weightScenarioId": "coveredRoutes_plus_20_percent",
+          "rank": 6,
+          "score": 60.04
+        },
+        {
+          "weightScenarioId": "sourceQuality_minus_20_percent",
+          "rank": 6,
+          "score": 55.24
+        },
+        {
+          "weightScenarioId": "sourceQuality_plus_20_percent",
+          "rank": 6,
+          "score": 64.84
+        }
+      ]
+    },
+    {
+      "candidateId": "daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371",
+      "name": "ハイアットリージェンシー東京",
+      "address": "東京都新宿区西新宿2-7-2",
+      "latitude": 35.691099,
+      "longitude": 139.691371,
+      "facilityAccessCategory": "private_hospitality",
+      "facilityAccessCategoryLabel": "ホテル等の民間施設",
+      "primaryRouteId": "step_avoiding",
+      "dynamicRouteIds": [
+        "step_avoiding"
+      ],
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 42,
+      "optimisticImprovementMeters": 205,
+      "lowerBoundAdjustedImprovementMeters": 163,
+      "conservativeProxyImprovementMeters": 121,
+      "optimisticImprovementRatio": 0.1787,
+      "lowerBoundAdjustedImprovementRatio": 0.1421,
+      "conservativeProxyImprovementRatio": 0.1055,
+      "detourSensitivityClass": "robust",
+      "baselineRank": 7,
+      "bestRank": 7,
+      "worstRank": 7,
+      "meanRank": 7,
+      "top5AppearanceRate": 0,
+      "rankStabilityClass": "consistently_outside_top5",
+      "twoAxisClassification": "high_improvement_access_uncertain",
+      "mobilityImprovementEvaluation": {
+        "conservativeProxyImprovementMeters": 121,
+        "conservativeProxyImprovementRatio": 0.1055,
+        "numberOfCoveredRoutes": 1,
+        "distanceToRouteMeters": 42
+      },
+      "verificationValue": {
+        "generalUsePurposeClarity": "special_access_conditions_unknown",
+        "generalUsePurposeClarityScore": 1,
+        "officialSourceQuality": "medium",
+        "officialSourceQualityScore": 2,
+        "onSiteResolutionNeed": "high",
+        "accessRestrictionConcern": "high"
+      },
+      "isParetoNonDominated": true,
+      "scenarioRanks": [
+        {
+          "weightScenarioId": "baseline",
+          "rank": 7,
+          "score": 1.82
+        },
+        {
+          "weightScenarioId": "improvementMeters_minus_20_percent",
+          "rank": 7,
+          "score": -17.74
+        },
+        {
+          "weightScenarioId": "improvementMeters_plus_20_percent",
+          "rank": 7,
+          "score": 21.38
+        },
+        {
+          "weightScenarioId": "improvementRatio_minus_20_percent",
+          "rank": 7,
+          "score": -3.86
+        },
+        {
+          "weightScenarioId": "improvementRatio_plus_20_percent",
+          "rank": 7,
+          "score": 7.5
+        },
+        {
+          "weightScenarioId": "routeProximity_minus_20_percent",
+          "rank": 7,
+          "score": -10.5
+        },
+        {
+          "weightScenarioId": "routeProximity_plus_20_percent",
+          "rank": 7,
+          "score": 14.14
+        },
+        {
+          "weightScenarioId": "accessPrior_minus_20_percent",
+          "rank": 7,
+          "score": -0.18
+        },
+        {
+          "weightScenarioId": "accessPrior_plus_20_percent",
+          "rank": 7,
+          "score": 3.82
+        },
+        {
+          "weightScenarioId": "categoryPenalty_minus_20_percent",
+          "rank": 7,
+          "score": 45.82
+        },
+        {
+          "weightScenarioId": "categoryPenalty_plus_20_percent",
+          "rank": 7,
+          "score": -42.18
+        },
+        {
+          "weightScenarioId": "coveredRoutes_minus_20_percent",
+          "rank": 7,
+          "score": 1.82
+        },
+        {
+          "weightScenarioId": "coveredRoutes_plus_20_percent",
+          "rank": 7,
+          "score": 1.82
+        },
+        {
+          "weightScenarioId": "sourceQuality_minus_20_percent",
+          "rank": 7,
+          "score": -2.98
+        },
+        {
+          "weightScenarioId": "sourceQuality_plus_20_percent",
+          "rank": 7,
+          "score": 6.62
+        }
+      ]
+    },
+    {
+      "candidateId": "daredemo-accommodation-京王プレッソイン新宿-131041-35685664-139692621",
+      "name": "京王プレッソイン新宿",
+      "address": "東京都新宿区西新宿3-4-5",
+      "latitude": 35.685664,
+      "longitude": 139.692621,
+      "facilityAccessCategory": "private_hospitality",
+      "facilityAccessCategoryLabel": "ホテル等の民間施設",
+      "primaryRouteId": "wheelchair_profile",
+      "dynamicRouteIds": [
+        "wheelchair_profile"
+      ],
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 169,
+      "optimisticImprovementMeters": 300,
+      "lowerBoundAdjustedImprovementMeters": 131,
+      "conservativeProxyImprovementMeters": 0,
+      "optimisticImprovementRatio": 0.2562,
+      "lowerBoundAdjustedImprovementRatio": 0.1119,
+      "conservativeProxyImprovementRatio": 0,
+      "detourSensitivityClass": "sensitive",
+      "baselineRank": 8,
+      "bestRank": 8,
+      "worstRank": 8,
+      "meanRank": 8,
+      "top5AppearanceRate": 0,
+      "rankStabilityClass": "consistently_outside_top5",
+      "twoAxisClassification": "low_priority",
+      "mobilityImprovementEvaluation": {
+        "conservativeProxyImprovementMeters": 0,
+        "conservativeProxyImprovementRatio": 0,
+        "numberOfCoveredRoutes": 1,
+        "distanceToRouteMeters": 169
+      },
+      "verificationValue": {
+        "generalUsePurposeClarity": "special_access_conditions_unknown",
+        "generalUsePurposeClarityScore": 1,
+        "officialSourceQuality": "medium",
+        "officialSourceQualityScore": 2,
+        "onSiteResolutionNeed": "high",
+        "accessRestrictionConcern": "high"
+      },
+      "isParetoNonDominated": false,
+      "scenarioRanks": [
+        {
+          "weightScenarioId": "baseline",
+          "rank": 8,
+          "score": -48.82
+        },
+        {
+          "weightScenarioId": "improvementMeters_minus_20_percent",
+          "rank": 8,
+          "score": -64.54
+        },
+        {
+          "weightScenarioId": "improvementMeters_plus_20_percent",
+          "rank": 8,
+          "score": -33.1
+        },
+        {
+          "weightScenarioId": "improvementRatio_minus_20_percent",
+          "rank": 8,
+          "score": -53.3
+        },
+        {
+          "weightScenarioId": "improvementRatio_plus_20_percent",
+          "rank": 8,
+          "score": -44.34
+        },
+        {
+          "weightScenarioId": "routeProximity_minus_20_percent",
+          "rank": 8,
+          "score": -56.06
+        },
+        {
+          "weightScenarioId": "routeProximity_plus_20_percent",
+          "rank": 8,
+          "score": -41.58
+        },
+        {
+          "weightScenarioId": "accessPrior_minus_20_percent",
+          "rank": 8,
+          "score": -50.82
+        },
+        {
+          "weightScenarioId": "accessPrior_plus_20_percent",
+          "rank": 8,
+          "score": -46.82
+        },
+        {
+          "weightScenarioId": "categoryPenalty_minus_20_percent",
+          "rank": 8,
+          "score": -4.82
+        },
+        {
+          "weightScenarioId": "categoryPenalty_plus_20_percent",
+          "rank": 8,
+          "score": -92.82
+        },
+        {
+          "weightScenarioId": "coveredRoutes_minus_20_percent",
+          "rank": 8,
+          "score": -48.82
+        },
+        {
+          "weightScenarioId": "coveredRoutes_plus_20_percent",
+          "rank": 8,
+          "score": -48.82
+        },
+        {
+          "weightScenarioId": "sourceQuality_minus_20_percent",
+          "rank": 8,
+          "score": -53.62
+        },
+        {
+          "weightScenarioId": "sourceQuality_plus_20_percent",
+          "rank": 8,
+          "score": -44.02
+        }
+      ]
+    }
+  ],
+  "paretoCandidateIds": [
+    "daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371",
+    "daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787",
+    "daredemo-accommodation-京王プラザホテル-131041-35689954-139694016",
+    "daredemo-accommodation-西鉄イン新宿-131041-35694278-13969433",
+    "daredemo-shopping-ヨドバシカメラ新宿西口本店-131041-35689815-139697891",
+    "shinjuku-facility-131041000179"
+  ]
+}

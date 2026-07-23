@@ -1,0 +1,419 @@
+{
+  "metadata": {
+    "schemaVersion": 1,
+    "datasetId": "tokyo-pace-field-candidate-ranking-sensitivity",
+    "sourceType": "tokyo_pace_derived_analysis",
+    "provider": "TOKYO PACE",
+    "datasetName": "TOKYO PACE field candidate ranking sensitivity analysis",
+    "generatedBy": "TOKYO PACE",
+    "generatedAt": "2026-07-18T19:14:16.703Z",
+    "sourceCandidateDatasetId": "tokyo-pace-field-verification-candidates",
+    "sourceCandidateCount": 8,
+    "candidateCount": 8,
+    "weightScenarioCount": 15,
+    "rankingScenarioCount": 15,
+    "rankingRowCount": 120,
+    "weightVariationRatio": 0.2,
+    "topRankLimit": 5,
+    "paretoCandidateCount": 6,
+    "configuration": {
+      "baselineDetourScenarioId": "lower_bound",
+      "detourScenarioCount": 3,
+      "detourScenarios": [
+        {
+          "id": "optimistic",
+          "distanceFactor": 0,
+          "description": "施設がルート投影位置上にあると仮定したgross改善"
+        },
+        {
+          "id": "lower_bound",
+          "distanceFactor": 1,
+          "description": "gross改善から一方向の施設―ルート推定直線距離を控除"
+        },
+        {
+          "id": "conservative_proxy",
+          "distanceFactor": 2,
+          "description": "gross改善から単純な往復分として推定直線距離の2倍を控除"
+        }
+      ],
+      "meaningfulImprovementMeters": 30,
+      "meaningfulImprovementRatio": 0.025,
+      "marginalUpperMeters": 50,
+      "marginalUpperRatio": 0.05,
+      "weightSensitivityMethod": "one_factor_at_a_time",
+      "baselineWeights": {
+        "improvementMeters": 0.6,
+        "improvementRatio": 200,
+        "routeProximity": 0.2,
+        "accessPrior": 1,
+        "categoryPenalty": 1,
+        "coveredRoutes": 40,
+        "sourceQuality": 12
+      },
+      "variedWeightKeys": [
+        "improvementMeters",
+        "improvementRatio",
+        "routeProximity",
+        "accessPrior",
+        "categoryPenalty",
+        "coveredRoutes",
+        "sourceQuality"
+      ],
+      "caveat": "直線控除は実道路上の迂回距離ではない"
+    }
+  },
+  "candidates": [
+    {
+      "candidateId": "shinjuku-facility-131041000179",
+      "name": "新宿観光振興協会",
+      "address": "東京都新宿区西新宿6-8-2区立産業会館3階",
+      "latitude": 35.693465,
+      "longitude": 139.690394,
+      "facilityAccessCategory": "public_service_facility",
+      "facilityAccessCategoryLabel": "一般利用目的が明確な公共施設",
+      "primaryRouteId": "step_avoiding",
+      "dynamicRouteIds": [
+        "step_avoiding"
+      ],
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 197,
+      "optimisticImprovementMeters": 300,
+      "lowerBoundAdjustedImprovementMeters": 103,
+      "conservativeProxyImprovementMeters": 0,
+      "optimisticImprovementRatio": 0.2616,
+      "lowerBoundAdjustedImprovementRatio": 0.0898,
+      "conservativeProxyImprovementRatio": 0,
+      "detourSensitivityClass": "sensitive",
+      "baselineRank": 1,
+      "bestRank": 1,
+      "worstRank": 1,
+      "meanRank": 1,
+      "top5AppearanceRate": 1,
+      "rankStabilityClass": "stable_top5",
+      "twoAxisClassification": "low_improvement_easy_to_verify",
+      "mobilityImprovementEvaluation": {
+        "conservativeProxyImprovementMeters": 0,
+        "conservativeProxyImprovementRatio": 0,
+        "numberOfCoveredRoutes": 1,
+        "distanceToRouteMeters": 197
+      },
+      "verificationValue": {
+        "generalUsePurposeClarity": "clear_public_purpose",
+        "generalUsePurposeClarityScore": 3,
+        "officialSourceQuality": "high",
+        "officialSourceQualityScore": 3,
+        "onSiteResolutionNeed": "medium",
+        "accessRestrictionConcern": "low"
+      },
+      "isParetoNonDominated": true
+    },
+    {
+      "candidateId": "daredemo-shopping-ヨドバシカメラ新宿西口本店-131041-35689815-139697891",
+      "name": "ヨドバシカメラ新宿西口本店",
+      "address": "東京都新宿区西新宿1-11-1",
+      "latitude": 35.689815,
+      "longitude": 139.697891,
+      "facilityAccessCategory": "commercial_facility",
+      "facilityAccessCategoryLabel": "商業施設",
+      "primaryRouteId": "wheelchair_profile",
+      "dynamicRouteIds": [
+        "wheelchair_profile"
+      ],
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 96,
+      "optimisticImprovementMeters": 129,
+      "lowerBoundAdjustedImprovementMeters": 33,
+      "conservativeProxyImprovementMeters": 0,
+      "optimisticImprovementRatio": 0.1102,
+      "lowerBoundAdjustedImprovementRatio": 0.0282,
+      "conservativeProxyImprovementRatio": 0,
+      "detourSensitivityClass": "marginal",
+      "baselineRank": 2,
+      "bestRank": 2,
+      "worstRank": 3,
+      "meanRank": 2.33,
+      "top5AppearanceRate": 1,
+      "rankStabilityClass": "stable_top5",
+      "twoAxisClassification": "low_priority",
+      "mobilityImprovementEvaluation": {
+        "conservativeProxyImprovementMeters": 0,
+        "conservativeProxyImprovementRatio": 0,
+        "numberOfCoveredRoutes": 1,
+        "distanceToRouteMeters": 96
+      },
+      "verificationValue": {
+        "generalUsePurposeClarity": "official_or_commercial_purpose_rest_use_unknown",
+        "generalUsePurposeClarityScore": 2,
+        "officialSourceQuality": "medium",
+        "officialSourceQualityScore": 2,
+        "onSiteResolutionNeed": "high",
+        "accessRestrictionConcern": "medium"
+      },
+      "isParetoNonDominated": true
+    },
+    {
+      "candidateId": "daredemo-accommodation-西鉄イン新宿-131041-35694278-13969433",
+      "name": "西鉄イン新宿",
+      "address": "東京都新宿区西新宿7-23-2",
+      "latitude": 35.694278,
+      "longitude": 139.69433,
+      "facilityAccessCategory": "private_hospitality",
+      "facilityAccessCategoryLabel": "ホテル等の民間施設",
+      "primaryRouteId": "step_avoiding",
+      "dynamicRouteIds": [
+        "step_avoiding"
+      ],
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 200,
+      "optimisticImprovementMeters": 541,
+      "lowerBoundAdjustedImprovementMeters": 341,
+      "conservativeProxyImprovementMeters": 141,
+      "optimisticImprovementRatio": 0.4717,
+      "lowerBoundAdjustedImprovementRatio": 0.2973,
+      "conservativeProxyImprovementRatio": 0.1229,
+      "detourSensitivityClass": "robust",
+      "baselineRank": 3,
+      "bestRank": 2,
+      "worstRank": 4,
+      "meanRank": 2.8,
+      "top5AppearanceRate": 1,
+      "rankStabilityClass": "stable_top5",
+      "twoAxisClassification": "high_improvement_access_uncertain",
+      "mobilityImprovementEvaluation": {
+        "conservativeProxyImprovementMeters": 141,
+        "conservativeProxyImprovementRatio": 0.1229,
+        "numberOfCoveredRoutes": 1,
+        "distanceToRouteMeters": 200
+      },
+      "verificationValue": {
+        "generalUsePurposeClarity": "special_access_conditions_unknown",
+        "generalUsePurposeClarityScore": 1,
+        "officialSourceQuality": "medium",
+        "officialSourceQualityScore": 2,
+        "onSiteResolutionNeed": "high",
+        "accessRestrictionConcern": "high"
+      },
+      "isParetoNonDominated": true
+    },
+    {
+      "candidateId": "daredemo-shopping-ニュウマン新宿-131041-3568856722-1397014075",
+      "name": "ニュウマン新宿",
+      "address": "東京都新宿区新宿4-1-6",
+      "latitude": 35.688567,
+      "longitude": 139.701407,
+      "facilityAccessCategory": "commercial_facility",
+      "facilityAccessCategoryLabel": "商業施設",
+      "primaryRouteId": "wheelchair_profile",
+      "dynamicRouteIds": [
+        "wheelchair_profile"
+      ],
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 215,
+      "optimisticImprovementMeters": 249,
+      "lowerBoundAdjustedImprovementMeters": 34,
+      "conservativeProxyImprovementMeters": 0,
+      "optimisticImprovementRatio": 0.2126,
+      "lowerBoundAdjustedImprovementRatio": 0.029,
+      "conservativeProxyImprovementRatio": 0,
+      "detourSensitivityClass": "marginal",
+      "baselineRank": 4,
+      "bestRank": 3,
+      "worstRank": 6,
+      "meanRank": 4,
+      "top5AppearanceRate": 0.9333,
+      "rankStabilityClass": "resilient_top5",
+      "twoAxisClassification": "low_priority",
+      "mobilityImprovementEvaluation": {
+        "conservativeProxyImprovementMeters": 0,
+        "conservativeProxyImprovementRatio": 0,
+        "numberOfCoveredRoutes": 1,
+        "distanceToRouteMeters": 215
+      },
+      "verificationValue": {
+        "generalUsePurposeClarity": "official_or_commercial_purpose_rest_use_unknown",
+        "generalUsePurposeClarityScore": 2,
+        "officialSourceQuality": "medium",
+        "officialSourceQualityScore": 2,
+        "onSiteResolutionNeed": "high",
+        "accessRestrictionConcern": "medium"
+      },
+      "isParetoNonDominated": false
+    },
+    {
+      "candidateId": "daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787",
+      "name": "ヒルトン東京",
+      "address": "東京都新宿区西新宿6-6-2",
+      "latitude": 35.692478,
+      "longitude": 139.691379,
+      "facilityAccessCategory": "private_hospitality",
+      "facilityAccessCategoryLabel": "ホテル等の民間施設",
+      "primaryRouteId": "step_avoiding",
+      "dynamicRouteIds": [
+        "step_avoiding"
+      ],
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 57,
+      "optimisticImprovementMeters": 300,
+      "lowerBoundAdjustedImprovementMeters": 243,
+      "conservativeProxyImprovementMeters": 186,
+      "optimisticImprovementRatio": 0.2616,
+      "lowerBoundAdjustedImprovementRatio": 0.2119,
+      "conservativeProxyImprovementRatio": 0.1622,
+      "detourSensitivityClass": "robust",
+      "baselineRank": 5,
+      "bestRank": 4,
+      "worstRank": 6,
+      "meanRank": 5.13,
+      "top5AppearanceRate": 0.8,
+      "rankStabilityClass": "resilient_top5",
+      "twoAxisClassification": "high_improvement_access_uncertain",
+      "mobilityImprovementEvaluation": {
+        "conservativeProxyImprovementMeters": 186,
+        "conservativeProxyImprovementRatio": 0.1622,
+        "numberOfCoveredRoutes": 1,
+        "distanceToRouteMeters": 57
+      },
+      "verificationValue": {
+        "generalUsePurposeClarity": "special_access_conditions_unknown",
+        "generalUsePurposeClarityScore": 1,
+        "officialSourceQuality": "medium",
+        "officialSourceQualityScore": 2,
+        "onSiteResolutionNeed": "high",
+        "accessRestrictionConcern": "high"
+      },
+      "isParetoNonDominated": true
+    },
+    {
+      "candidateId": "daredemo-accommodation-京王プラザホテル-131041-35689954-139694016",
+      "name": "京王プラザホテル",
+      "address": "東京都新宿区西新宿2-2-1",
+      "latitude": 35.689954,
+      "longitude": 139.694016,
+      "facilityAccessCategory": "private_hospitality",
+      "facilityAccessCategoryLabel": "ホテル等の民間施設",
+      "primaryRouteId": "standard",
+      "dynamicRouteIds": [
+        "standard"
+      ],
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 78,
+      "optimisticImprovementMeters": 305,
+      "lowerBoundAdjustedImprovementMeters": 227,
+      "conservativeProxyImprovementMeters": 149,
+      "optimisticImprovementRatio": 0.3724,
+      "lowerBoundAdjustedImprovementRatio": 0.2772,
+      "conservativeProxyImprovementRatio": 0.1819,
+      "detourSensitivityClass": "robust",
+      "baselineRank": 6,
+      "bestRank": 5,
+      "worstRank": 6,
+      "meanRank": 5.73,
+      "top5AppearanceRate": 0.2667,
+      "rankStabilityClass": "variable",
+      "twoAxisClassification": "high_improvement_access_uncertain",
+      "mobilityImprovementEvaluation": {
+        "conservativeProxyImprovementMeters": 149,
+        "conservativeProxyImprovementRatio": 0.1819,
+        "numberOfCoveredRoutes": 1,
+        "distanceToRouteMeters": 78
+      },
+      "verificationValue": {
+        "generalUsePurposeClarity": "special_access_conditions_unknown",
+        "generalUsePurposeClarityScore": 1,
+        "officialSourceQuality": "medium",
+        "officialSourceQualityScore": 2,
+        "onSiteResolutionNeed": "high",
+        "accessRestrictionConcern": "high"
+      },
+      "isParetoNonDominated": true
+    },
+    {
+      "candidateId": "daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371",
+      "name": "ハイアットリージェンシー東京",
+      "address": "東京都新宿区西新宿2-7-2",
+      "latitude": 35.691099,
+      "longitude": 139.691371,
+      "facilityAccessCategory": "private_hospitality",
+      "facilityAccessCategoryLabel": "ホテル等の民間施設",
+      "primaryRouteId": "step_avoiding",
+      "dynamicRouteIds": [
+        "step_avoiding"
+      ],
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 42,
+      "optimisticImprovementMeters": 205,
+      "lowerBoundAdjustedImprovementMeters": 163,
+      "conservativeProxyImprovementMeters": 121,
+      "optimisticImprovementRatio": 0.1787,
+      "lowerBoundAdjustedImprovementRatio": 0.1421,
+      "conservativeProxyImprovementRatio": 0.1055,
+      "detourSensitivityClass": "robust",
+      "baselineRank": 7,
+      "bestRank": 7,
+      "worstRank": 7,
+      "meanRank": 7,
+      "top5AppearanceRate": 0,
+      "rankStabilityClass": "consistently_outside_top5",
+      "twoAxisClassification": "high_improvement_access_uncertain",
+      "mobilityImprovementEvaluation": {
+        "conservativeProxyImprovementMeters": 121,
+        "conservativeProxyImprovementRatio": 0.1055,
+        "numberOfCoveredRoutes": 1,
+        "distanceToRouteMeters": 42
+      },
+      "verificationValue": {
+        "generalUsePurposeClarity": "special_access_conditions_unknown",
+        "generalUsePurposeClarityScore": 1,
+        "officialSourceQuality": "medium",
+        "officialSourceQualityScore": 2,
+        "onSiteResolutionNeed": "high",
+        "accessRestrictionConcern": "high"
+      },
+      "isParetoNonDominated": true
+    },
+    {
+      "candidateId": "daredemo-accommodation-京王プレッソイン新宿-131041-35685664-139692621",
+      "name": "京王プレッソイン新宿",
+      "address": "東京都新宿区西新宿3-4-5",
+      "latitude": 35.685664,
+      "longitude": 139.692621,
+      "facilityAccessCategory": "private_hospitality",
+      "facilityAccessCategoryLabel": "ホテル等の民間施設",
+      "primaryRouteId": "wheelchair_profile",
+      "dynamicRouteIds": [
+        "wheelchair_profile"
+      ],
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 169,
+      "optimisticImprovementMeters": 300,
+      "lowerBoundAdjustedImprovementMeters": 131,
+      "conservativeProxyImprovementMeters": 0,
+      "optimisticImprovementRatio": 0.2562,
+      "lowerBoundAdjustedImprovementRatio": 0.1119,
+      "conservativeProxyImprovementRatio": 0,
+      "detourSensitivityClass": "sensitive",
+      "baselineRank": 8,
+      "bestRank": 8,
+      "worstRank": 8,
+      "meanRank": 8,
+      "top5AppearanceRate": 0,
+      "rankStabilityClass": "consistently_outside_top5",
+      "twoAxisClassification": "low_priority",
+      "mobilityImprovementEvaluation": {
+        "conservativeProxyImprovementMeters": 0,
+        "conservativeProxyImprovementRatio": 0,
+        "numberOfCoveredRoutes": 1,
+        "distanceToRouteMeters": 169
+      },
+      "verificationValue": {
+        "generalUsePurposeClarity": "special_access_conditions_unknown",
+        "generalUsePurposeClarityScore": 1,
+        "officialSourceQuality": "medium",
+        "officialSourceQualityScore": 2,
+        "onSiteResolutionNeed": "high",
+        "accessRestrictionConcern": "high"
+      },
+      "isParetoNonDominated": false
+    }
+  ]
+}

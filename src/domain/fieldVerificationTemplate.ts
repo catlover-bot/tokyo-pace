@@ -25,6 +25,7 @@ export const FIELD_VERIFICATION_TEMPLATE_FILENAME = "tokyo-pace-field-verificati
 export type FieldVerificationTemplateCandidate = {
   candidateId: string;
   verificationId?: string;
+  fieldCheckPriority?: number;
   name: string;
   latitude: number;
   longitude: number;
@@ -45,7 +46,9 @@ function encodeCsvCell(value: string | number | null): string {
 }
 
 export function buildFieldVerificationTemplate(candidates: readonly FieldVerificationTemplateCandidate[]): string {
-  const sorted = [...candidates].sort((a, b) => a.candidateId.localeCompare(b.candidateId));
+  const sorted = [...candidates].sort((a, b) =>
+    (a.fieldCheckPriority ?? Number.MAX_SAFE_INTEGER) - (b.fieldCheckPriority ?? Number.MAX_SAFE_INTEGER)
+    || a.candidateId.localeCompare(b.candidateId));
   const rows = sorted.map((candidate) => {
     const values: Record<(typeof FIELD_VERIFICATION_COLUMNS)[number], string | number | null> = {
       verificationId: candidate.verificationId ?? createVerificationId(candidate.candidateId),

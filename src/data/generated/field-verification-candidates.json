@@ -4,19 +4,50 @@
     "generatedBy": "TOKYO PACE",
     "generatedAt": "2026-07-18T19:14:16.703Z",
     "routeIds": [
+      "standard",
+      "step_avoiding",
+      "wheelchair_profile"
+    ],
+    "dynamicRouteIds": [
+      "standard",
+      "step_avoiding",
+      "wheelchair_profile"
+    ],
+    "fixedDemoRouteIds": [
       "comfort",
       "standard"
     ],
+    "dynamicRouteSnapshot": {
+      "snapshotId": "shinjuku-west-to-tocho-v1",
+      "sourcePath": "data/routing-snapshots/shinjuku-west-to-tocho.v1.json",
+      "contentSha256": "57a7e8b4a768ff1e819d6ff5b38ab47c3fc15543aab937b5ed7be9a6fa3993d3",
+      "byteSize": 9346,
+      "capturedAt": "2026-07-23T06:28:03.624Z",
+      "sourceType": "openstreetmap_route",
+      "provider": "openrouteservice via TOKYO PACE Worker",
+      "license": "ODbL",
+      "attribution": "© OpenStreetMap contributors / openrouteservice"
+    },
     "maximumDistanceToRouteMeters": 350,
-    "requestedLimit": 12,
-    "eligibleGroupCount": 10,
+    "requestedLimit": null,
+    "detourAccessLowerBoundFactor": 1,
+    "minimumDetourAdjustedImprovementMeters": 30,
+    "minimumDetourAdjustedImprovementRatio": 0.025,
+    "preRankingGroupCount": 197,
+    "eligibleGroupCount": 8,
+    "rankedCandidateCount": 8,
     "coordinateConflictGroupCount": 1,
     "excludedCoordinateConflictCandidateCount": 4,
     "excludedCoordinateConflictPlaceCount": 4,
-    "candidateCount": 10,
+    "exclusionReasonCounts": {
+      "COORDINATE_SOURCE_ANOMALY": 4,
+      "DETOUR_ADJUSTED_IMPROVEMENT_BELOW_THRESHOLD": 3,
+      "NO_DYNAMIC_ROUTE_WITHIN_DISTANCE": 127,
+      "RESTRICTED_OR_SENSITIVE_FACILITY": 55
+    },
+    "candidateCount": 8,
     "sourceDatasetIds": [
       "daredemo-accommodation",
-      "daredemo-parks",
       "daredemo-shopping",
       "shinjuku-public-facilities"
     ]
@@ -24,128 +55,6 @@
   "candidates": [
     {
       "fieldCheckPriority": 1,
-      "candidateId": "daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371",
-      "verificationId": "fv-daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371",
-      "name": "ハイアットリージェンシー東京",
-      "latitude": 35.691099,
-      "longitude": 139.691371,
-      "address": "東京都新宿区西新宿2-7-2",
-      "categories": [
-        "barrier_free_facility"
-      ],
-      "routeIds": [
-        "comfort",
-        "standard"
-      ],
-      "primaryRouteId": "comfort",
-      "distanceToRouteMeters": 62,
-      "routeProgressMeters": 680,
-      "currentLongestGapMeters": 1350,
-      "expectedImprovedGapMeters": 680,
-      "expectedImprovementMeters": 670,
-      "expectedImprovementRatio": 0.4966,
-      "distanceToSuggestedInsertionMeters": 63,
-      "selectionReasons": [
-        "現在の最長休憩空白区間内",
-        "理論上の休憩地点追加候補に近い",
-        "デモルートから推定直線100m以内",
-        "公式のバリアフリー施設情報",
-        "新宿区内として公式掲載",
-        "複数のデモルートに近い"
-      ],
-      "officialSourceIds": [
-        "daredemo-accommodation:daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371"
-      ],
-      "groupedCandidateIds": [
-        "daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371"
-      ],
-      "routeMetrics": [
-        {
-          "routeId": "comfort",
-          "distanceToRouteMeters": 62,
-          "routeProgressMeters": 680,
-          "currentLongestGapMeters": 1350,
-          "expectedImprovedGapMeters": 680,
-          "expectedImprovementMeters": 670,
-          "expectedImprovementRatio": 0.4966,
-          "distanceToSuggestedInsertionMeters": 63,
-          "insideLargestGap": true
-        },
-        {
-          "routeId": "standard",
-          "distanceToRouteMeters": 196,
-          "routeProgressMeters": 1050,
-          "currentLongestGapMeters": 1050,
-          "expectedImprovedGapMeters": 1050,
-          "expectedImprovementMeters": 0,
-          "expectedImprovementRatio": 0,
-          "distanceToSuggestedInsertionMeters": 391,
-          "insideLargestGap": true
-        }
-      ]
-    },
-    {
-      "fieldCheckPriority": 2,
-      "candidateId": "daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787",
-      "verificationId": "fv-daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787",
-      "name": "ヒルトン東京",
-      "latitude": 35.692478,
-      "longitude": 139.691379,
-      "address": "東京都新宿区西新宿6-6-2",
-      "categories": [
-        "barrier_free_facility"
-      ],
-      "routeIds": [
-        "comfort",
-        "standard"
-      ],
-      "primaryRouteId": "comfort",
-      "distanceToRouteMeters": 214,
-      "routeProgressMeters": 656,
-      "currentLongestGapMeters": 1350,
-      "expectedImprovedGapMeters": 694,
-      "expectedImprovementMeters": 656,
-      "expectedImprovementRatio": 0.486,
-      "distanceToSuggestedInsertionMeters": 215,
-      "selectionReasons": [
-        "現在の最長休憩空白区間内",
-        "公式のバリアフリー施設情報",
-        "新宿区内として公式掲載",
-        "複数のデモルートに近い"
-      ],
-      "officialSourceIds": [
-        "daredemo-accommodation:daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787"
-      ],
-      "groupedCandidateIds": [
-        "daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787"
-      ],
-      "routeMetrics": [
-        {
-          "routeId": "comfort",
-          "distanceToRouteMeters": 214,
-          "routeProgressMeters": 656,
-          "currentLongestGapMeters": 1350,
-          "expectedImprovedGapMeters": 694,
-          "expectedImprovementMeters": 656,
-          "expectedImprovementRatio": 0.486,
-          "distanceToSuggestedInsertionMeters": 215,
-          "insideLargestGap": true
-        },
-        {
-          "routeId": "standard",
-          "distanceToRouteMeters": 340,
-          "routeProgressMeters": 971,
-          "currentLongestGapMeters": 1050,
-          "expectedImprovedGapMeters": 971,
-          "expectedImprovementMeters": 79,
-          "expectedImprovementRatio": 0.0756,
-          "distanceToSuggestedInsertionMeters": 448,
-          "insideLargestGap": true
-        }
-      ]
-    },
-    {
-      "fieldCheckPriority": 3,
       "candidateId": "shinjuku-facility-131041000179",
       "verificationId": "fv-shinjuku-facility-131041000179",
       "name": "新宿観光振興協会",
@@ -155,21 +64,79 @@
       "categories": [
         "public_facility"
       ],
-      "routeIds": [
+      "facilityAccessCategory": "public_service_facility",
+      "facilityAccessCategoryLabel": "一般利用目的が明確な公共施設",
+      "accessPrior": 85,
+      "categoryPenalty": 5,
+      "categoryReasonCodes": [
+        "PUBLIC_SERVICE_NAME"
+      ],
+      "categoryReasons": [
+        "名称から区役所・出張所・観光案内等の一般利用目的を確認できる"
+      ],
+      "requiresSpecialCaution": false,
+      "specialCautions": [
+        "窓口・開館時間、来訪目的がない場合の入館、休憩スペースの利用条件を確認する。"
+      ],
+      "officialSourceQuality": "high",
+      "officialSourceQualityScore": 3,
+      "dynamicRouteIds": [
+        "step_avoiding"
+      ],
+      "fixedDemoRouteIds": [
         "comfort"
       ],
-      "primaryRouteId": "comfort",
-      "distanceToRouteMeters": 336,
-      "routeProgressMeters": 725,
-      "currentLongestGapMeters": 1350,
-      "expectedImprovedGapMeters": 725,
-      "expectedImprovementMeters": 625,
-      "expectedImprovementRatio": 0.4628,
-      "distanceToSuggestedInsertionMeters": 340,
+      "routeIds": [
+        "step_avoiding"
+      ],
+      "primaryRouteId": "step_avoiding",
+      "primaryRouteKey": "dynamic_snapshot:step_avoiding",
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 197,
+      "estimatedDetourLowerBoundMeters": 197,
+      "routeProgressMeters": 847,
+      "nearestPointCoordinate": [
+        35.692008,
+        139.691644
+      ],
+      "theoreticalInsertionCoordinate": [
+        35.692397,
+        139.694486
+      ],
+      "currentLongestGapMeters": 1147,
+      "expectedImprovedGapMeters": 847,
+      "expectedImprovementMeters": 300,
+      "expectedImprovementRatio": 0.2613,
+      "grossImprovementMeters": 300,
+      "grossImprovementRatio": 0.2613,
+      "detourAdjustedImprovementMeters": 103,
+      "detourAdjustedImprovementRatio": 0.0895,
+      "distanceToSuggestedInsertionMeters": 388,
+      "rankingScore": 222.3,
+      "rankingScoreBreakdown": {
+        "improvementMetersPoints": 61.8,
+        "improvementRatioPoints": 17.9,
+        "routeProximityPoints": 30.6,
+        "accessPriorPoints": 85,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 36,
+        "categoryPenalty": 5,
+        "duplicateFacilityPenalty": 4,
+        "total": 222.3
+      },
+      "selectionReasonCodes": [
+        "POSITIVE_DETOUR_ADJUSTED_IMPROVEMENT",
+        "PUBLIC_SERVICE_PRIORITY",
+        "HIGH_OFFICIAL_SOURCE_QUALITY",
+        "DEDUPLICATED_FACILITY",
+        "NO_EXISTING_STRICT_DUPLICATE"
+      ],
       "selectionReasons": [
-        "現在の最長休憩空白区間内",
-        "公式の公共施設情報",
-        "新宿区内として公式掲載"
+        "施設からルートまでの推定直線下限を差し引いても休憩空白の改善が残る",
+        "一般利用目的が明確な公共施設を優先",
+        "自治体等の構造化された公式情報を根拠にする",
+        "同一施設と考えられる複数レコードを1地点として評価",
+        "既存のconfirmed / supported地点とは重複しない"
       ],
       "officialSourceIds": [
         "shinjuku-public-facilities:shinjuku-facility-131041000179",
@@ -181,233 +148,114 @@
         "shinjuku-facility-131041000185",
         "shinjuku-facility-131041000192"
       ],
+      "duplicateFacilityHandling": {
+        "method": "name_or_address_within_25m",
+        "groupedRecordCount": 3,
+        "countedPlaceCount": 1
+      },
+      "existingStrictOverlap": false,
       "routeMetrics": [
         {
+          "routeId": "step_avoiding",
+          "routeKey": "dynamic_snapshot:step_avoiding",
+          "routeSet": "dynamic_snapshot",
+          "profile": "step_avoiding",
+          "routeDistanceMeters": 1147,
+          "distanceToRouteMeters": 197,
+          "geometryProgressMeters": 847,
+          "routeProgressMeters": 847,
+          "nearestPointCoordinate": [
+            35.692008,
+            139.691644
+          ],
+          "currentLongestGapMeters": 1147,
+          "expectedImprovedGapMeters": 847,
+          "expectedImprovementMeters": 300,
+          "expectedImprovementRatio": 0.2613,
+          "grossImprovementMeters": 300,
+          "grossImprovementRatio": 0.2613,
+          "estimatedDetourLowerBoundMeters": 197,
+          "detourAdjustedImprovementMeters": 103,
+          "detourAdjustedImprovementRatio": 0.0895,
+          "suggestedInsertionProgressMeters": 574,
+          "suggestedInsertionCoordinate": [
+            35.692397,
+            139.694486
+          ],
+          "distanceToSuggestedInsertionMeters": 388,
+          "insideLargestGap": true,
+          "contributesToRanking": true
+        }
+      ],
+      "dynamicRouteMetrics": [
+        {
+          "routeId": "step_avoiding",
+          "routeKey": "dynamic_snapshot:step_avoiding",
+          "routeSet": "dynamic_snapshot",
+          "profile": "step_avoiding",
+          "routeDistanceMeters": 1147,
+          "distanceToRouteMeters": 197,
+          "geometryProgressMeters": 847,
+          "routeProgressMeters": 847,
+          "nearestPointCoordinate": [
+            35.692008,
+            139.691644
+          ],
+          "currentLongestGapMeters": 1147,
+          "expectedImprovedGapMeters": 847,
+          "expectedImprovementMeters": 300,
+          "expectedImprovementRatio": 0.2613,
+          "grossImprovementMeters": 300,
+          "grossImprovementRatio": 0.2613,
+          "estimatedDetourLowerBoundMeters": 197,
+          "detourAdjustedImprovementMeters": 103,
+          "detourAdjustedImprovementRatio": 0.0895,
+          "suggestedInsertionProgressMeters": 574,
+          "suggestedInsertionCoordinate": [
+            35.692397,
+            139.694486
+          ],
+          "distanceToSuggestedInsertionMeters": 388,
+          "insideLargestGap": true,
+          "contributesToRanking": true
+        }
+      ],
+      "fixedDemoRouteMetrics": [
+        {
           "routeId": "comfort",
+          "routeKey": "fixed_demo:comfort",
+          "routeSet": "fixed_demo",
+          "profile": null,
+          "routeDistanceMeters": 1350,
           "distanceToRouteMeters": 336,
+          "geometryProgressMeters": 746,
           "routeProgressMeters": 725,
+          "nearestPointCoordinate": [
+            35.69048,
+            139.690963
+          ],
           "currentLongestGapMeters": 1350,
           "expectedImprovedGapMeters": 725,
           "expectedImprovementMeters": 625,
           "expectedImprovementRatio": 0.4628,
+          "grossImprovementMeters": 625,
+          "grossImprovementRatio": 0.4628,
+          "estimatedDetourLowerBoundMeters": 336,
+          "detourAdjustedImprovementMeters": 289,
+          "detourAdjustedImprovementRatio": 0.2139,
+          "suggestedInsertionProgressMeters": 675,
+          "suggestedInsertionCoordinate": [
+            35.690551,
+            139.691528
+          ],
           "distanceToSuggestedInsertionMeters": 340,
-          "insideLargestGap": true
+          "insideLargestGap": true,
+          "contributesToRanking": false
         }
       ]
     },
     {
-      "fieldCheckPriority": 4,
-      "candidateId": "daredemo-accommodation-京王プラザホテル-131041-35689954-139694016",
-      "verificationId": "fv-daredemo-accommodation-京王プラザホテル-131041-35689954-139694016",
-      "name": "京王プラザホテル",
-      "latitude": 35.689954,
-      "longitude": 139.694016,
-      "address": "東京都新宿区西新宿2-2-1",
-      "categories": [
-        "barrier_free_facility"
-      ],
-      "routeIds": [
-        "comfort",
-        "standard"
-      ],
-      "primaryRouteId": "comfort",
-      "distanceToRouteMeters": 100,
-      "routeProgressMeters": 469,
-      "currentLongestGapMeters": 1350,
-      "expectedImprovedGapMeters": 881,
-      "expectedImprovementMeters": 469,
-      "expectedImprovementRatio": 0.3475,
-      "distanceToSuggestedInsertionMeters": 234,
-      "selectionReasons": [
-        "現在の最長休憩空白区間内",
-        "デモルートから推定直線100m以内",
-        "公式のバリアフリー施設情報",
-        "新宿区内として公式掲載",
-        "複数のデモルートに近い"
-      ],
-      "officialSourceIds": [
-        "daredemo-accommodation:daredemo-accommodation-京王プラザホテル-131041-35689954-139694016"
-      ],
-      "groupedCandidateIds": [
-        "daredemo-accommodation-京王プラザホテル-131041-35689954-139694016"
-      ],
-      "routeMetrics": [
-        {
-          "routeId": "comfort",
-          "distanceToRouteMeters": 100,
-          "routeProgressMeters": 469,
-          "currentLongestGapMeters": 1350,
-          "expectedImprovedGapMeters": 881,
-          "expectedImprovementMeters": 469,
-          "expectedImprovementRatio": 0.3475,
-          "distanceToSuggestedInsertionMeters": 234,
-          "insideLargestGap": true
-        },
-        {
-          "routeId": "standard",
-          "distanceToRouteMeters": 5,
-          "routeProgressMeters": 766,
-          "currentLongestGapMeters": 1050,
-          "expectedImprovedGapMeters": 766,
-          "expectedImprovementMeters": 284,
-          "expectedImprovementRatio": 0.2703,
-          "distanceToSuggestedInsertionMeters": 151,
-          "insideLargestGap": true
-        }
-      ]
-    },
-    {
-      "fieldCheckPriority": 5,
-      "candidateId": "shinjuku-facility-131041000146",
-      "verificationId": "fv-shinjuku-facility-131041000146",
-      "name": "環境学習情報センター （エコギャラリー新宿）",
-      "latitude": 35.691028,
-      "longitude": 139.68861,
-      "address": "東京都新宿区西新宿2-11-4",
-      "categories": [
-        "public_facility"
-      ],
-      "routeIds": [
-        "comfort"
-      ],
-      "primaryRouteId": "comfort",
-      "distanceToRouteMeters": 93,
-      "routeProgressMeters": 920,
-      "currentLongestGapMeters": 1350,
-      "expectedImprovedGapMeters": 920,
-      "expectedImprovementMeters": 430,
-      "expectedImprovementRatio": 0.3184,
-      "distanceToSuggestedInsertionMeters": 269,
-      "selectionReasons": [
-        "現在の最長休憩空白区間内",
-        "デモルートから推定直線100m以内",
-        "公式の公共施設情報",
-        "新宿区内として公式掲載"
-      ],
-      "officialSourceIds": [
-        "shinjuku-public-facilities:shinjuku-facility-131041000146",
-        "shinjuku-public-facilities:shinjuku-facility-131041000172"
-      ],
-      "groupedCandidateIds": [
-        "shinjuku-facility-131041000146",
-        "shinjuku-facility-131041000172"
-      ],
-      "routeMetrics": [
-        {
-          "routeId": "comfort",
-          "distanceToRouteMeters": 93,
-          "routeProgressMeters": 920,
-          "currentLongestGapMeters": 1350,
-          "expectedImprovedGapMeters": 920,
-          "expectedImprovementMeters": 430,
-          "expectedImprovementRatio": 0.3184,
-          "distanceToSuggestedInsertionMeters": 269,
-          "insideLargestGap": true
-        }
-      ]
-    },
-    {
-      "fieldCheckPriority": 6,
-      "candidateId": "shinjuku-facility-131041000270",
-      "verificationId": "fv-shinjuku-facility-131041000270",
-      "name": "新宿養護学校",
-      "latitude": 35.688299,
-      "longitude": 139.6861,
-      "address": "東京都新宿区西新宿4-20-11",
-      "categories": [
-        "public_facility"
-      ],
-      "routeIds": [
-        "comfort"
-      ],
-      "primaryRouteId": "comfort",
-      "distanceToRouteMeters": 254,
-      "routeProgressMeters": 1006,
-      "currentLongestGapMeters": 1350,
-      "expectedImprovedGapMeters": 1006,
-      "expectedImprovementMeters": 344,
-      "expectedImprovementRatio": 0.255,
-      "distanceToSuggestedInsertionMeters": 550,
-      "selectionReasons": [
-        "現在の最長休憩空白区間内",
-        "公式の公共施設情報",
-        "新宿区内として公式掲載"
-      ],
-      "officialSourceIds": [
-        "shinjuku-public-facilities:shinjuku-facility-131041000270"
-      ],
-      "groupedCandidateIds": [
-        "shinjuku-facility-131041000270"
-      ],
-      "routeMetrics": [
-        {
-          "routeId": "comfort",
-          "distanceToRouteMeters": 254,
-          "routeProgressMeters": 1006,
-          "currentLongestGapMeters": 1350,
-          "expectedImprovedGapMeters": 1006,
-          "expectedImprovementMeters": 344,
-          "expectedImprovementRatio": 0.255,
-          "distanceToSuggestedInsertionMeters": 550,
-          "insideLargestGap": true
-        }
-      ]
-    },
-    {
-      "fieldCheckPriority": 7,
-      "candidateId": "shinjuku-facility-131041000014",
-      "verificationId": "fv-shinjuku-facility-131041000014",
-      "name": "角筈特別出張所",
-      "latitude": 35.686226,
-      "longitude": 139.689065,
-      "address": "東京都新宿区西新宿4-33-7",
-      "categories": [
-        "public_facility"
-      ],
-      "routeIds": [
-        "comfort"
-      ],
-      "primaryRouteId": "comfort",
-      "distanceToRouteMeters": 318,
-      "routeProgressMeters": 1092,
-      "currentLongestGapMeters": 1350,
-      "expectedImprovedGapMeters": 1092,
-      "expectedImprovementMeters": 258,
-      "expectedImprovementRatio": 0.1908,
-      "distanceToSuggestedInsertionMeters": 530,
-      "selectionReasons": [
-        "現在の最長休憩空白区間内",
-        "公式の公共施設情報",
-        "新宿区内として公式掲載"
-      ],
-      "officialSourceIds": [
-        "shinjuku-public-facilities:shinjuku-facility-131041000014",
-        "shinjuku-public-facilities:shinjuku-facility-131041000126",
-        "shinjuku-public-facilities:shinjuku-facility-131041000136",
-        "shinjuku-public-facilities:shinjuku-facility-131041000168"
-      ],
-      "groupedCandidateIds": [
-        "shinjuku-facility-131041000014",
-        "shinjuku-facility-131041000126",
-        "shinjuku-facility-131041000136",
-        "shinjuku-facility-131041000168"
-      ],
-      "routeMetrics": [
-        {
-          "routeId": "comfort",
-          "distanceToRouteMeters": 318,
-          "routeProgressMeters": 1092,
-          "currentLongestGapMeters": 1350,
-          "expectedImprovedGapMeters": 1092,
-          "expectedImprovementMeters": 258,
-          "expectedImprovementRatio": 0.1908,
-          "distanceToSuggestedInsertionMeters": 530,
-          "insideLargestGap": true
-        }
-      ]
-    },
-    {
-      "fieldCheckPriority": 8,
+      "fieldCheckPriority": 2,
       "candidateId": "daredemo-shopping-ヨドバシカメラ新宿西口本店-131041-35689815-139697891",
       "verificationId": "fv-daredemo-shopping-ヨドバシカメラ新宿西口本店-131041-35689815-139697891",
       "name": "ヨドバシカメラ新宿西口本店",
@@ -417,23 +265,80 @@
       "categories": [
         "barrier_free_facility"
       ],
-      "routeIds": [
+      "facilityAccessCategory": "commercial_facility",
+      "facilityAccessCategoryLabel": "商業施設",
+      "accessPrior": 45,
+      "categoryPenalty": 35,
+      "categoryReasonCodes": [
+        "COMMERCIAL_DATASET"
+      ],
+      "categoryReasons": [
+        "商業・飲食・レジャー施設として公式掲載"
+      ],
+      "requiresSpecialCaution": true,
+      "specialCautions": [
+        "営業時間、購入を伴わない滞在の可否、座席の利用条件を確認する。"
+      ],
+      "officialSourceQuality": "medium",
+      "officialSourceQualityScore": 2,
+      "dynamicRouteIds": [
+        "wheelchair_profile"
+      ],
+      "fixedDemoRouteIds": [
         "comfort",
         "standard"
       ],
-      "primaryRouteId": "standard",
-      "distanceToRouteMeters": 104,
-      "routeProgressMeters": 212,
-      "currentLongestGapMeters": 1050,
-      "expectedImprovedGapMeters": 838,
-      "expectedImprovementMeters": 212,
-      "expectedImprovementRatio": 0.2021,
-      "distanceToSuggestedInsertionMeters": 216,
+      "routeIds": [
+        "wheelchair_profile"
+      ],
+      "primaryRouteId": "wheelchair_profile",
+      "primaryRouteKey": "dynamic_snapshot:wheelchair_profile",
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 96,
+      "estimatedDetourLowerBoundMeters": 96,
+      "routeProgressMeters": 129,
+      "nearestPointCoordinate": [
+        35.689908,
+        139.698945
+      ],
+      "theoreticalInsertionCoordinate": [
+        35.687552,
+        139.695735
+      ],
+      "currentLongestGapMeters": 1171,
+      "expectedImprovedGapMeters": 1042,
+      "expectedImprovementMeters": 129,
+      "expectedImprovementRatio": 0.1098,
+      "grossImprovementMeters": 129,
+      "grossImprovementRatio": 0.1098,
+      "detourAdjustedImprovementMeters": 33,
+      "detourAdjustedImprovementRatio": 0.0278,
+      "distanceToSuggestedInsertionMeters": 318,
+      "rankingScore": 110.16,
+      "rankingScoreBreakdown": {
+        "improvementMetersPoints": 19.8,
+        "improvementRatioPoints": 5.56,
+        "routeProximityPoints": 50.8,
+        "accessPriorPoints": 45,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 35,
+        "duplicateFacilityPenalty": 0,
+        "total": 110.16
+      },
+      "selectionReasonCodes": [
+        "POSITIVE_DETOUR_ADJUSTED_IMPROVEMENT",
+        "MARGINAL_DETOUR_ADJUSTED_IMPROVEMENT",
+        "CLOSE_TO_DYNAMIC_ROUTE_100M",
+        "NO_EXISTING_STRICT_DUPLICATE",
+        "COMMERCIAL_ACCESS_CONFIRMATION_NEEDED"
+      ],
       "selectionReasons": [
-        "現在の最長休憩空白区間内",
-        "公式のバリアフリー施設情報",
-        "新宿区内として公式掲載",
-        "複数のデモルートに近い"
+        "施設からルートまでの推定直線下限を差し引いても休憩空白の改善が残る",
+        "迂回調整後の改善は30〜49mで、効果が限定的か現地で確認する必要がある",
+        "代表動的経路から推定直線100m以内",
+        "既存のconfirmed / supported地点とは重複しない",
+        "商業施設の営業時間・利用条件の確認が必要"
       ],
       "officialSourceIds": [
         "daredemo-shopping:daredemo-shopping-ヨドバシカメラ新宿西口本店-131041-35689815-139697891"
@@ -441,94 +346,428 @@
       "groupedCandidateIds": [
         "daredemo-shopping-ヨドバシカメラ新宿西口本店-131041-35689815-139697891"
       ],
+      "duplicateFacilityHandling": {
+        "method": "name_or_address_within_25m",
+        "groupedRecordCount": 1,
+        "countedPlaceCount": 1
+      },
+      "existingStrictOverlap": false,
       "routeMetrics": [
         {
+          "routeId": "standard",
+          "routeKey": "dynamic_snapshot:standard",
+          "routeSet": "dynamic_snapshot",
+          "profile": "standard",
+          "routeDistanceMeters": 819,
+          "distanceToRouteMeters": 124,
+          "geometryProgressMeters": 96,
+          "routeProgressMeters": 96,
+          "nearestPointCoordinate": [
+            35.690897,
+            139.698231
+          ],
+          "currentLongestGapMeters": 819,
+          "expectedImprovedGapMeters": 723,
+          "expectedImprovementMeters": 96,
+          "expectedImprovementRatio": 0.1172,
+          "grossImprovementMeters": 96,
+          "grossImprovementRatio": 0.1172,
+          "estimatedDetourLowerBoundMeters": 124,
+          "detourAdjustedImprovementMeters": 0,
+          "detourAdjustedImprovementRatio": 0,
+          "suggestedInsertionProgressMeters": 410,
+          "suggestedInsertionCoordinate": [
+            35.690837,
+            139.694973
+          ],
+          "distanceToSuggestedInsertionMeters": 287,
+          "insideLargestGap": true,
+          "contributesToRanking": false
+        },
+        {
+          "routeId": "step_avoiding",
+          "routeKey": "dynamic_snapshot:step_avoiding",
+          "routeSet": "dynamic_snapshot",
+          "profile": "step_avoiding",
+          "routeDistanceMeters": 1147,
+          "distanceToRouteMeters": 165,
+          "geometryProgressMeters": 3,
+          "routeProgressMeters": 3,
+          "nearestPointCoordinate": [
+            35.69089,
+            139.699154
+          ],
+          "currentLongestGapMeters": 1147,
+          "expectedImprovedGapMeters": 1144,
+          "expectedImprovementMeters": 3,
+          "expectedImprovementRatio": 0.0029,
+          "grossImprovementMeters": 3,
+          "grossImprovementRatio": 0.0029,
+          "estimatedDetourLowerBoundMeters": 165,
+          "detourAdjustedImprovementMeters": 0,
+          "detourAdjustedImprovementRatio": 0,
+          "suggestedInsertionProgressMeters": 574,
+          "suggestedInsertionCoordinate": [
+            35.692397,
+            139.694486
+          ],
+          "distanceToSuggestedInsertionMeters": 421,
+          "insideLargestGap": true,
+          "contributesToRanking": false
+        },
+        {
+          "routeId": "wheelchair_profile",
+          "routeKey": "dynamic_snapshot:wheelchair_profile",
+          "routeSet": "dynamic_snapshot",
+          "profile": "wheelchair_profile",
+          "routeDistanceMeters": 1171,
+          "distanceToRouteMeters": 96,
+          "geometryProgressMeters": 129,
+          "routeProgressMeters": 129,
+          "nearestPointCoordinate": [
+            35.689908,
+            139.698945
+          ],
+          "currentLongestGapMeters": 1171,
+          "expectedImprovedGapMeters": 1042,
+          "expectedImprovementMeters": 129,
+          "expectedImprovementRatio": 0.1098,
+          "grossImprovementMeters": 129,
+          "grossImprovementRatio": 0.1098,
+          "estimatedDetourLowerBoundMeters": 96,
+          "detourAdjustedImprovementMeters": 33,
+          "detourAdjustedImprovementRatio": 0.0278,
+          "suggestedInsertionProgressMeters": 586,
+          "suggestedInsertionCoordinate": [
+            35.687552,
+            139.695735
+          ],
+          "distanceToSuggestedInsertionMeters": 318,
+          "insideLargestGap": true,
+          "contributesToRanking": true
+        }
+      ],
+      "dynamicRouteMetrics": [
+        {
+          "routeId": "standard",
+          "routeKey": "dynamic_snapshot:standard",
+          "routeSet": "dynamic_snapshot",
+          "profile": "standard",
+          "routeDistanceMeters": 819,
+          "distanceToRouteMeters": 124,
+          "geometryProgressMeters": 96,
+          "routeProgressMeters": 96,
+          "nearestPointCoordinate": [
+            35.690897,
+            139.698231
+          ],
+          "currentLongestGapMeters": 819,
+          "expectedImprovedGapMeters": 723,
+          "expectedImprovementMeters": 96,
+          "expectedImprovementRatio": 0.1172,
+          "grossImprovementMeters": 96,
+          "grossImprovementRatio": 0.1172,
+          "estimatedDetourLowerBoundMeters": 124,
+          "detourAdjustedImprovementMeters": 0,
+          "detourAdjustedImprovementRatio": 0,
+          "suggestedInsertionProgressMeters": 410,
+          "suggestedInsertionCoordinate": [
+            35.690837,
+            139.694973
+          ],
+          "distanceToSuggestedInsertionMeters": 287,
+          "insideLargestGap": true,
+          "contributesToRanking": false
+        },
+        {
+          "routeId": "step_avoiding",
+          "routeKey": "dynamic_snapshot:step_avoiding",
+          "routeSet": "dynamic_snapshot",
+          "profile": "step_avoiding",
+          "routeDistanceMeters": 1147,
+          "distanceToRouteMeters": 165,
+          "geometryProgressMeters": 3,
+          "routeProgressMeters": 3,
+          "nearestPointCoordinate": [
+            35.69089,
+            139.699154
+          ],
+          "currentLongestGapMeters": 1147,
+          "expectedImprovedGapMeters": 1144,
+          "expectedImprovementMeters": 3,
+          "expectedImprovementRatio": 0.0029,
+          "grossImprovementMeters": 3,
+          "grossImprovementRatio": 0.0029,
+          "estimatedDetourLowerBoundMeters": 165,
+          "detourAdjustedImprovementMeters": 0,
+          "detourAdjustedImprovementRatio": 0,
+          "suggestedInsertionProgressMeters": 574,
+          "suggestedInsertionCoordinate": [
+            35.692397,
+            139.694486
+          ],
+          "distanceToSuggestedInsertionMeters": 421,
+          "insideLargestGap": true,
+          "contributesToRanking": false
+        },
+        {
+          "routeId": "wheelchair_profile",
+          "routeKey": "dynamic_snapshot:wheelchair_profile",
+          "routeSet": "dynamic_snapshot",
+          "profile": "wheelchair_profile",
+          "routeDistanceMeters": 1171,
+          "distanceToRouteMeters": 96,
+          "geometryProgressMeters": 129,
+          "routeProgressMeters": 129,
+          "nearestPointCoordinate": [
+            35.689908,
+            139.698945
+          ],
+          "currentLongestGapMeters": 1171,
+          "expectedImprovedGapMeters": 1042,
+          "expectedImprovementMeters": 129,
+          "expectedImprovementRatio": 0.1098,
+          "grossImprovementMeters": 129,
+          "grossImprovementRatio": 0.1098,
+          "estimatedDetourLowerBoundMeters": 96,
+          "detourAdjustedImprovementMeters": 33,
+          "detourAdjustedImprovementRatio": 0.0278,
+          "suggestedInsertionProgressMeters": 586,
+          "suggestedInsertionCoordinate": [
+            35.687552,
+            139.695735
+          ],
+          "distanceToSuggestedInsertionMeters": 318,
+          "insideLargestGap": true,
+          "contributesToRanking": true
+        }
+      ],
+      "fixedDemoRouteMetrics": [
+        {
           "routeId": "comfort",
+          "routeKey": "fixed_demo:comfort",
+          "routeSet": "fixed_demo",
+          "profile": null,
+          "routeDistanceMeters": 1350,
           "distanceToRouteMeters": 128,
+          "geometryProgressMeters": 110,
           "routeProgressMeters": 107,
+          "nearestPointCoordinate": [
+            35.690963,
+            139.697953
+          ],
           "currentLongestGapMeters": 1350,
           "expectedImprovedGapMeters": 1243,
           "expectedImprovementMeters": 107,
           "expectedImprovementRatio": 0.0792,
+          "grossImprovementMeters": 107,
+          "grossImprovementRatio": 0.0792,
+          "estimatedDetourLowerBoundMeters": 128,
+          "detourAdjustedImprovementMeters": 0,
+          "detourAdjustedImprovementRatio": 0,
+          "suggestedInsertionProgressMeters": 675,
+          "suggestedInsertionCoordinate": [
+            35.690551,
+            139.691528
+          ],
           "distanceToSuggestedInsertionMeters": 580,
-          "insideLargestGap": true
+          "insideLargestGap": true,
+          "contributesToRanking": false
         },
         {
           "routeId": "standard",
+          "routeKey": "fixed_demo:standard",
+          "routeSet": "fixed_demo",
+          "profile": null,
+          "routeDistanceMeters": 1050,
           "distanceToRouteMeters": 104,
+          "geometryProgressMeters": 133,
           "routeProgressMeters": 212,
+          "nearestPointCoordinate": [
+            35.69074,
+            139.697717
+          ],
           "currentLongestGapMeters": 1050,
           "expectedImprovedGapMeters": 838,
           "expectedImprovementMeters": 212,
           "expectedImprovementRatio": 0.2021,
+          "grossImprovementMeters": 212,
+          "grossImprovementRatio": 0.2021,
+          "estimatedDetourLowerBoundMeters": 104,
+          "detourAdjustedImprovementMeters": 108,
+          "detourAdjustedImprovementRatio": 0.103,
+          "suggestedInsertionProgressMeters": 525,
+          "suggestedInsertionCoordinate": [
+            35.690371,
+            139.695602
+          ],
           "distanceToSuggestedInsertionMeters": 216,
-          "insideLargestGap": true
+          "insideLargestGap": true,
+          "contributesToRanking": false
         }
       ]
     },
     {
-      "fieldCheckPriority": 9,
-      "candidateId": "daredemo-parks-新宿区立新宿中央公園-131041-3568933778-1396898986",
-      "verificationId": "fv-daredemo-parks-新宿区立新宿中央公園-131041-3568933778-1396898986",
-      "name": "新宿区立新宿中央公園",
-      "latitude": 35.689338,
-      "longitude": 139.689899,
-      "address": "東京都新宿区西新宿2-11-1",
+      "fieldCheckPriority": 3,
+      "candidateId": "daredemo-accommodation-西鉄イン新宿-131041-35694278-13969433",
+      "verificationId": "fv-daredemo-accommodation-西鉄イン新宿-131041-35694278-13969433",
+      "name": "西鉄イン新宿",
+      "latitude": 35.694278,
+      "longitude": 139.69433,
+      "address": "東京都新宿区西新宿7-23-2",
       "categories": [
         "barrier_free_facility"
       ],
-      "routeIds": [
-        "comfort",
-        "standard"
+      "facilityAccessCategory": "private_hospitality",
+      "facilityAccessCategoryLabel": "ホテル等の民間施設",
+      "accessPrior": 10,
+      "categoryPenalty": 220,
+      "categoryReasonCodes": [
+        "PRIVATE_HOSPITALITY_DATASET"
       ],
-      "primaryRouteId": "comfort",
-      "distanceToRouteMeters": 19,
-      "routeProgressMeters": 1153,
-      "currentLongestGapMeters": 1350,
-      "expectedImprovedGapMeters": 1153,
-      "expectedImprovementMeters": 197,
-      "expectedImprovementRatio": 0.146,
-      "distanceToSuggestedInsertionMeters": 200,
+      "categoryReasons": [
+        "宿泊施設として公式掲載されている民間施設"
+      ],
+      "requiresSpecialCaution": true,
+      "specialCautions": [
+        "宿泊・飲食利用なしでの入館、着席、営業時間内の一般利用条件を確認する。ホテル掲載を休憩可能の根拠にしない。"
+      ],
+      "officialSourceQuality": "medium",
+      "officialSourceQualityScore": 2,
+      "dynamicRouteIds": [
+        "step_avoiding"
+      ],
+      "fixedDemoRouteIds": [],
+      "routeIds": [
+        "step_avoiding"
+      ],
+      "primaryRouteId": "step_avoiding",
+      "primaryRouteKey": "dynamic_snapshot:step_avoiding",
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 200,
+      "estimatedDetourLowerBoundMeters": 200,
+      "routeProgressMeters": 606,
+      "nearestPointCoordinate": [
+        35.692485,
+        139.694183
+      ],
+      "theoreticalInsertionCoordinate": [
+        35.692397,
+        139.694486
+      ],
+      "currentLongestGapMeters": 1147,
+      "expectedImprovedGapMeters": 606,
+      "expectedImprovementMeters": 541,
+      "expectedImprovementRatio": 0.4716,
+      "grossImprovementMeters": 541,
+      "grossImprovementRatio": 0.4716,
+      "detourAdjustedImprovementMeters": 341,
+      "detourAdjustedImprovementRatio": 0.2972,
+      "distanceToSuggestedInsertionMeters": 210,
+      "rankingScore": 108.04,
+      "rankingScoreBreakdown": {
+        "improvementMetersPoints": 204.6,
+        "improvementRatioPoints": 59.44,
+        "routeProximityPoints": 30,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 108.04
+      },
+      "selectionReasonCodes": [
+        "POSITIVE_DETOUR_ADJUSTED_IMPROVEMENT",
+        "NO_EXISTING_STRICT_DUPLICATE",
+        "PRIVATE_ACCESS_CONFIRMATION_NEEDED"
+      ],
       "selectionReasons": [
-        "現在の最長休憩空白区間内",
-        "デモルートから推定直線100m以内",
-        "公式のバリアフリー施設情報",
-        "新宿区内として公式掲載",
-        "複数のデモルートに近い"
+        "施設からルートまでの推定直線下限を差し引いても休憩空白の改善が残る",
+        "既存のconfirmed / supported地点とは重複しない",
+        "民間施設のため一般利用条件の確認が必要"
       ],
       "officialSourceIds": [
-        "daredemo-parks:daredemo-parks-新宿区立新宿中央公園-131041-3568933778-1396898986"
+        "daredemo-accommodation:daredemo-accommodation-西鉄イン新宿-131041-35694278-13969433"
       ],
       "groupedCandidateIds": [
-        "daredemo-parks-新宿区立新宿中央公園-131041-3568933778-1396898986"
+        "daredemo-accommodation-西鉄イン新宿-131041-35694278-13969433"
       ],
+      "duplicateFacilityHandling": {
+        "method": "name_or_address_within_25m",
+        "groupedRecordCount": 1,
+        "countedPlaceCount": 1
+      },
+      "existingStrictOverlap": false,
       "routeMetrics": [
         {
-          "routeId": "comfort",
-          "distanceToRouteMeters": 19,
-          "routeProgressMeters": 1153,
-          "currentLongestGapMeters": 1350,
-          "expectedImprovedGapMeters": 1153,
-          "expectedImprovementMeters": 197,
-          "expectedImprovementRatio": 0.146,
-          "distanceToSuggestedInsertionMeters": 200,
-          "insideLargestGap": true
-        },
-        {
-          "routeId": "standard",
-          "distanceToRouteMeters": 204,
-          "routeProgressMeters": 1050,
-          "currentLongestGapMeters": 1050,
-          "expectedImprovedGapMeters": 1050,
-          "expectedImprovementMeters": 0,
-          "expectedImprovementRatio": 0,
-          "distanceToSuggestedInsertionMeters": 528,
-          "insideLargestGap": true
+          "routeId": "step_avoiding",
+          "routeKey": "dynamic_snapshot:step_avoiding",
+          "routeSet": "dynamic_snapshot",
+          "profile": "step_avoiding",
+          "routeDistanceMeters": 1147,
+          "distanceToRouteMeters": 200,
+          "geometryProgressMeters": 606,
+          "routeProgressMeters": 606,
+          "nearestPointCoordinate": [
+            35.692485,
+            139.694183
+          ],
+          "currentLongestGapMeters": 1147,
+          "expectedImprovedGapMeters": 606,
+          "expectedImprovementMeters": 541,
+          "expectedImprovementRatio": 0.4716,
+          "grossImprovementMeters": 541,
+          "grossImprovementRatio": 0.4716,
+          "estimatedDetourLowerBoundMeters": 200,
+          "detourAdjustedImprovementMeters": 341,
+          "detourAdjustedImprovementRatio": 0.2972,
+          "suggestedInsertionProgressMeters": 574,
+          "suggestedInsertionCoordinate": [
+            35.692397,
+            139.694486
+          ],
+          "distanceToSuggestedInsertionMeters": 210,
+          "insideLargestGap": true,
+          "contributesToRanking": true
         }
-      ]
+      ],
+      "dynamicRouteMetrics": [
+        {
+          "routeId": "step_avoiding",
+          "routeKey": "dynamic_snapshot:step_avoiding",
+          "routeSet": "dynamic_snapshot",
+          "profile": "step_avoiding",
+          "routeDistanceMeters": 1147,
+          "distanceToRouteMeters": 200,
+          "geometryProgressMeters": 606,
+          "routeProgressMeters": 606,
+          "nearestPointCoordinate": [
+            35.692485,
+            139.694183
+          ],
+          "currentLongestGapMeters": 1147,
+          "expectedImprovedGapMeters": 606,
+          "expectedImprovementMeters": 541,
+          "expectedImprovementRatio": 0.4716,
+          "grossImprovementMeters": 541,
+          "grossImprovementRatio": 0.4716,
+          "estimatedDetourLowerBoundMeters": 200,
+          "detourAdjustedImprovementMeters": 341,
+          "detourAdjustedImprovementRatio": 0.2972,
+          "suggestedInsertionProgressMeters": 574,
+          "suggestedInsertionCoordinate": [
+            35.692397,
+            139.694486
+          ],
+          "distanceToSuggestedInsertionMeters": 210,
+          "insideLargestGap": true,
+          "contributesToRanking": true
+        }
+      ],
+      "fixedDemoRouteMetrics": []
     },
     {
-      "fieldCheckPriority": 10,
+      "fieldCheckPriority": 4,
       "candidateId": "daredemo-shopping-ニュウマン新宿-131041-3568856722-1397014075",
       "verificationId": "fv-daredemo-shopping-ニュウマン新宿-131041-3568856722-1397014075",
       "name": "ニュウマン新宿",
@@ -538,23 +777,75 @@
       "categories": [
         "barrier_free_facility"
       ],
-      "routeIds": [
-        "comfort",
-        "standard"
+      "facilityAccessCategory": "commercial_facility",
+      "facilityAccessCategoryLabel": "商業施設",
+      "accessPrior": 45,
+      "categoryPenalty": 35,
+      "categoryReasonCodes": [
+        "COMMERCIAL_DATASET"
       ],
-      "primaryRouteId": "comfort",
-      "distanceToRouteMeters": 331,
-      "routeProgressMeters": 0,
-      "currentLongestGapMeters": 1350,
-      "expectedImprovedGapMeters": 1350,
-      "expectedImprovementMeters": 0,
-      "expectedImprovementRatio": 0,
-      "distanceToSuggestedInsertionMeters": 919,
+      "categoryReasons": [
+        "商業・飲食・レジャー施設として公式掲載"
+      ],
+      "requiresSpecialCaution": true,
+      "specialCautions": [
+        "営業時間、購入を伴わない滞在の可否、座席の利用条件を確認する。"
+      ],
+      "officialSourceQuality": "medium",
+      "officialSourceQualityScore": 2,
+      "dynamicRouteIds": [
+        "wheelchair_profile"
+      ],
+      "fixedDemoRouteIds": [],
+      "routeIds": [
+        "wheelchair_profile"
+      ],
+      "primaryRouteId": "wheelchair_profile",
+      "primaryRouteKey": "dynamic_snapshot:wheelchair_profile",
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 215,
+      "estimatedDetourLowerBoundMeters": 215,
+      "routeProgressMeters": 249,
+      "nearestPointCoordinate": [
+        35.688864,
+        139.69906
+      ],
+      "theoreticalInsertionCoordinate": [
+        35.687552,
+        139.695735
+      ],
+      "currentLongestGapMeters": 1171,
+      "expectedImprovedGapMeters": 922,
+      "expectedImprovementMeters": 249,
+      "expectedImprovementRatio": 0.2126,
+      "grossImprovementMeters": 249,
+      "grossImprovementRatio": 0.2126,
+      "detourAdjustedImprovementMeters": 34,
+      "detourAdjustedImprovementRatio": 0.029,
+      "distanceToSuggestedInsertionMeters": 525,
+      "rankingScore": 87.2,
+      "rankingScoreBreakdown": {
+        "improvementMetersPoints": 20.4,
+        "improvementRatioPoints": 5.8,
+        "routeProximityPoints": 27,
+        "accessPriorPoints": 45,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 35,
+        "duplicateFacilityPenalty": 0,
+        "total": 87.2
+      },
+      "selectionReasonCodes": [
+        "POSITIVE_DETOUR_ADJUSTED_IMPROVEMENT",
+        "MARGINAL_DETOUR_ADJUSTED_IMPROVEMENT",
+        "NO_EXISTING_STRICT_DUPLICATE",
+        "COMMERCIAL_ACCESS_CONFIRMATION_NEEDED"
+      ],
       "selectionReasons": [
-        "現在の最長休憩空白区間内",
-        "公式のバリアフリー施設情報",
-        "新宿区内として公式掲載",
-        "複数のデモルートに近い"
+        "施設からルートまでの推定直線下限を差し引いても休憩空白の改善が残る",
+        "迂回調整後の改善は30〜49mで、効果が限定的か現地で確認する必要がある",
+        "既存のconfirmed / supported地点とは重複しない",
+        "商業施設の営業時間・利用条件の確認が必要"
       ],
       "officialSourceIds": [
         "daredemo-shopping:daredemo-shopping-ニュウマン新宿-131041-3568856722-1397014075"
@@ -562,30 +853,1477 @@
       "groupedCandidateIds": [
         "daredemo-shopping-ニュウマン新宿-131041-3568856722-1397014075"
       ],
+      "duplicateFacilityHandling": {
+        "method": "name_or_address_within_25m",
+        "groupedRecordCount": 1,
+        "countedPlaceCount": 1
+      },
+      "existingStrictOverlap": false,
       "routeMetrics": [
         {
+          "routeId": "standard",
+          "routeKey": "dynamic_snapshot:standard",
+          "routeSet": "dynamic_snapshot",
+          "profile": "standard",
+          "routeDistanceMeters": 819,
+          "distanceToRouteMeters": 329,
+          "geometryProgressMeters": 3,
+          "routeProgressMeters": 3,
+          "nearestPointCoordinate": [
+            35.69089,
+            139.699154
+          ],
+          "currentLongestGapMeters": 819,
+          "expectedImprovedGapMeters": 816,
+          "expectedImprovementMeters": 3,
+          "expectedImprovementRatio": 0.0041,
+          "grossImprovementMeters": 3,
+          "grossImprovementRatio": 0.0041,
+          "estimatedDetourLowerBoundMeters": 329,
+          "detourAdjustedImprovementMeters": 0,
+          "detourAdjustedImprovementRatio": 0,
+          "suggestedInsertionProgressMeters": 410,
+          "suggestedInsertionCoordinate": [
+            35.690837,
+            139.694973
+          ],
+          "distanceToSuggestedInsertionMeters": 634,
+          "insideLargestGap": true,
+          "contributesToRanking": false
+        },
+        {
+          "routeId": "step_avoiding",
+          "routeKey": "dynamic_snapshot:step_avoiding",
+          "routeSet": "dynamic_snapshot",
+          "profile": "step_avoiding",
+          "routeDistanceMeters": 1147,
+          "distanceToRouteMeters": 327,
+          "geometryProgressMeters": 14,
+          "routeProgressMeters": 14,
+          "nearestPointCoordinate": [
+            35.690937,
+            139.699259
+          ],
+          "currentLongestGapMeters": 1147,
+          "expectedImprovedGapMeters": 1133,
+          "expectedImprovementMeters": 14,
+          "expectedImprovementRatio": 0.0124,
+          "grossImprovementMeters": 14,
+          "grossImprovementRatio": 0.0124,
+          "estimatedDetourLowerBoundMeters": 327,
+          "detourAdjustedImprovementMeters": 0,
+          "detourAdjustedImprovementRatio": 0,
+          "suggestedInsertionProgressMeters": 574,
+          "suggestedInsertionCoordinate": [
+            35.692397,
+            139.694486
+          ],
+          "distanceToSuggestedInsertionMeters": 756,
+          "insideLargestGap": true,
+          "contributesToRanking": false
+        },
+        {
+          "routeId": "wheelchair_profile",
+          "routeKey": "dynamic_snapshot:wheelchair_profile",
+          "routeSet": "dynamic_snapshot",
+          "profile": "wheelchair_profile",
+          "routeDistanceMeters": 1171,
+          "distanceToRouteMeters": 215,
+          "geometryProgressMeters": 249,
+          "routeProgressMeters": 249,
+          "nearestPointCoordinate": [
+            35.688864,
+            139.69906
+          ],
+          "currentLongestGapMeters": 1171,
+          "expectedImprovedGapMeters": 922,
+          "expectedImprovementMeters": 249,
+          "expectedImprovementRatio": 0.2126,
+          "grossImprovementMeters": 249,
+          "grossImprovementRatio": 0.2126,
+          "estimatedDetourLowerBoundMeters": 215,
+          "detourAdjustedImprovementMeters": 34,
+          "detourAdjustedImprovementRatio": 0.029,
+          "suggestedInsertionProgressMeters": 586,
+          "suggestedInsertionCoordinate": [
+            35.687552,
+            139.695735
+          ],
+          "distanceToSuggestedInsertionMeters": 525,
+          "insideLargestGap": true,
+          "contributesToRanking": true
+        }
+      ],
+      "dynamicRouteMetrics": [
+        {
+          "routeId": "standard",
+          "routeKey": "dynamic_snapshot:standard",
+          "routeSet": "dynamic_snapshot",
+          "profile": "standard",
+          "routeDistanceMeters": 819,
+          "distanceToRouteMeters": 329,
+          "geometryProgressMeters": 3,
+          "routeProgressMeters": 3,
+          "nearestPointCoordinate": [
+            35.69089,
+            139.699154
+          ],
+          "currentLongestGapMeters": 819,
+          "expectedImprovedGapMeters": 816,
+          "expectedImprovementMeters": 3,
+          "expectedImprovementRatio": 0.0041,
+          "grossImprovementMeters": 3,
+          "grossImprovementRatio": 0.0041,
+          "estimatedDetourLowerBoundMeters": 329,
+          "detourAdjustedImprovementMeters": 0,
+          "detourAdjustedImprovementRatio": 0,
+          "suggestedInsertionProgressMeters": 410,
+          "suggestedInsertionCoordinate": [
+            35.690837,
+            139.694973
+          ],
+          "distanceToSuggestedInsertionMeters": 634,
+          "insideLargestGap": true,
+          "contributesToRanking": false
+        },
+        {
+          "routeId": "step_avoiding",
+          "routeKey": "dynamic_snapshot:step_avoiding",
+          "routeSet": "dynamic_snapshot",
+          "profile": "step_avoiding",
+          "routeDistanceMeters": 1147,
+          "distanceToRouteMeters": 327,
+          "geometryProgressMeters": 14,
+          "routeProgressMeters": 14,
+          "nearestPointCoordinate": [
+            35.690937,
+            139.699259
+          ],
+          "currentLongestGapMeters": 1147,
+          "expectedImprovedGapMeters": 1133,
+          "expectedImprovementMeters": 14,
+          "expectedImprovementRatio": 0.0124,
+          "grossImprovementMeters": 14,
+          "grossImprovementRatio": 0.0124,
+          "estimatedDetourLowerBoundMeters": 327,
+          "detourAdjustedImprovementMeters": 0,
+          "detourAdjustedImprovementRatio": 0,
+          "suggestedInsertionProgressMeters": 574,
+          "suggestedInsertionCoordinate": [
+            35.692397,
+            139.694486
+          ],
+          "distanceToSuggestedInsertionMeters": 756,
+          "insideLargestGap": true,
+          "contributesToRanking": false
+        },
+        {
+          "routeId": "wheelchair_profile",
+          "routeKey": "dynamic_snapshot:wheelchair_profile",
+          "routeSet": "dynamic_snapshot",
+          "profile": "wheelchair_profile",
+          "routeDistanceMeters": 1171,
+          "distanceToRouteMeters": 215,
+          "geometryProgressMeters": 249,
+          "routeProgressMeters": 249,
+          "nearestPointCoordinate": [
+            35.688864,
+            139.69906
+          ],
+          "currentLongestGapMeters": 1171,
+          "expectedImprovedGapMeters": 922,
+          "expectedImprovementMeters": 249,
+          "expectedImprovementRatio": 0.2126,
+          "grossImprovementMeters": 249,
+          "grossImprovementRatio": 0.2126,
+          "estimatedDetourLowerBoundMeters": 215,
+          "detourAdjustedImprovementMeters": 34,
+          "detourAdjustedImprovementRatio": 0.029,
+          "suggestedInsertionProgressMeters": 586,
+          "suggestedInsertionCoordinate": [
+            35.687552,
+            139.695735
+          ],
+          "distanceToSuggestedInsertionMeters": 525,
+          "insideLargestGap": true,
+          "contributesToRanking": true
+        }
+      ],
+      "fixedDemoRouteMetrics": [
+        {
           "routeId": "comfort",
+          "routeKey": "fixed_demo:comfort",
+          "routeSet": "fixed_demo",
+          "profile": null,
+          "routeDistanceMeters": 1350,
           "distanceToRouteMeters": 331,
+          "geometryProgressMeters": 0,
           "routeProgressMeters": 0,
+          "nearestPointCoordinate": [
+            35.69092,
+            139.69917
+          ],
           "currentLongestGapMeters": 1350,
           "expectedImprovedGapMeters": 1350,
           "expectedImprovementMeters": 0,
           "expectedImprovementRatio": 0,
+          "grossImprovementMeters": 0,
+          "grossImprovementRatio": 0,
+          "estimatedDetourLowerBoundMeters": 331,
+          "detourAdjustedImprovementMeters": 0,
+          "detourAdjustedImprovementRatio": 0,
+          "suggestedInsertionProgressMeters": 675,
+          "suggestedInsertionCoordinate": [
+            35.690551,
+            139.691528
+          ],
           "distanceToSuggestedInsertionMeters": 919,
-          "insideLargestGap": true
+          "insideLargestGap": true,
+          "contributesToRanking": false
         },
         {
           "routeId": "standard",
+          "routeKey": "fixed_demo:standard",
+          "routeSet": "fixed_demo",
+          "profile": null,
+          "routeDistanceMeters": 1050,
           "distanceToRouteMeters": 331,
+          "geometryProgressMeters": 0,
           "routeProgressMeters": 0,
+          "nearestPointCoordinate": [
+            35.69092,
+            139.69917
+          ],
           "currentLongestGapMeters": 1050,
           "expectedImprovedGapMeters": 1050,
           "expectedImprovementMeters": 0,
           "expectedImprovementRatio": 0,
+          "grossImprovementMeters": 0,
+          "grossImprovementRatio": 0,
+          "estimatedDetourLowerBoundMeters": 331,
+          "detourAdjustedImprovementMeters": 0,
+          "detourAdjustedImprovementRatio": 0,
+          "suggestedInsertionProgressMeters": 525,
+          "suggestedInsertionCoordinate": [
+            35.690371,
+            139.695602
+          ],
           "distanceToSuggestedInsertionMeters": 561,
-          "insideLargestGap": true
+          "insideLargestGap": true,
+          "contributesToRanking": false
         }
       ]
+    },
+    {
+      "fieldCheckPriority": 5,
+      "candidateId": "daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787",
+      "verificationId": "fv-daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787",
+      "name": "ヒルトン東京",
+      "latitude": 35.692478,
+      "longitude": 139.691379,
+      "address": "東京都新宿区西新宿6-6-2",
+      "categories": [
+        "barrier_free_facility"
+      ],
+      "facilityAccessCategory": "private_hospitality",
+      "facilityAccessCategoryLabel": "ホテル等の民間施設",
+      "accessPrior": 10,
+      "categoryPenalty": 220,
+      "categoryReasonCodes": [
+        "PRIVATE_HOSPITALITY_DATASET"
+      ],
+      "categoryReasons": [
+        "宿泊施設として公式掲載されている民間施設"
+      ],
+      "requiresSpecialCaution": true,
+      "specialCautions": [
+        "宿泊・飲食利用なしでの入館、着席、営業時間内の一般利用条件を確認する。ホテル掲載を休憩可能の根拠にしない。"
+      ],
+      "officialSourceQuality": "medium",
+      "officialSourceQualityScore": 2,
+      "dynamicRouteIds": [
+        "step_avoiding"
+      ],
+      "fixedDemoRouteIds": [
+        "comfort",
+        "standard"
+      ],
+      "routeIds": [
+        "step_avoiding"
+      ],
+      "primaryRouteId": "step_avoiding",
+      "primaryRouteKey": "dynamic_snapshot:step_avoiding",
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 57,
+      "estimatedDetourLowerBoundMeters": 57,
+      "routeProgressMeters": 847,
+      "nearestPointCoordinate": [
+        35.692008,
+        139.691644
+      ],
+      "theoreticalInsertionCoordinate": [
+        35.692397,
+        139.694486
+      ],
+      "currentLongestGapMeters": 1147,
+      "expectedImprovedGapMeters": 847,
+      "expectedImprovementMeters": 300,
+      "expectedImprovementRatio": 0.2613,
+      "grossImprovementMeters": 300,
+      "grossImprovementRatio": 0.2613,
+      "detourAdjustedImprovementMeters": 243,
+      "detourAdjustedImprovementRatio": 0.2116,
+      "distanceToSuggestedInsertionMeters": 281,
+      "rankingScore": 60.72,
+      "rankingScoreBreakdown": {
+        "improvementMetersPoints": 145.8,
+        "improvementRatioPoints": 42.32,
+        "routeProximityPoints": 58.6,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 60.72
+      },
+      "selectionReasonCodes": [
+        "POSITIVE_DETOUR_ADJUSTED_IMPROVEMENT",
+        "CLOSE_TO_DYNAMIC_ROUTE_100M",
+        "NO_EXISTING_STRICT_DUPLICATE",
+        "PRIVATE_ACCESS_CONFIRMATION_NEEDED"
+      ],
+      "selectionReasons": [
+        "施設からルートまでの推定直線下限を差し引いても休憩空白の改善が残る",
+        "代表動的経路から推定直線100m以内",
+        "既存のconfirmed / supported地点とは重複しない",
+        "民間施設のため一般利用条件の確認が必要"
+      ],
+      "officialSourceIds": [
+        "daredemo-accommodation:daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787"
+      ],
+      "groupedCandidateIds": [
+        "daredemo-accommodation-ヒルトン東京-131041-356924779-1396913787"
+      ],
+      "duplicateFacilityHandling": {
+        "method": "name_or_address_within_25m",
+        "groupedRecordCount": 1,
+        "countedPlaceCount": 1
+      },
+      "existingStrictOverlap": false,
+      "routeMetrics": [
+        {
+          "routeId": "standard",
+          "routeKey": "dynamic_snapshot:standard",
+          "routeSet": "dynamic_snapshot",
+          "profile": "standard",
+          "routeDistanceMeters": 819,
+          "distanceToRouteMeters": 262,
+          "geometryProgressMeters": 696,
+          "routeProgressMeters": 696,
+          "nearestPointCoordinate": [
+            35.690244,
+            139.692306
+          ],
+          "currentLongestGapMeters": 819,
+          "expectedImprovedGapMeters": 696,
+          "expectedImprovementMeters": 123,
+          "expectedImprovementRatio": 0.1505,
+          "grossImprovementMeters": 123,
+          "grossImprovementRatio": 0.1505,
+          "estimatedDetourLowerBoundMeters": 262,
+          "detourAdjustedImprovementMeters": 0,
+          "detourAdjustedImprovementRatio": 0,
+          "suggestedInsertionProgressMeters": 410,
+          "suggestedInsertionCoordinate": [
+            35.690837,
+            139.694973
+          ],
+          "distanceToSuggestedInsertionMeters": 372,
+          "insideLargestGap": true,
+          "contributesToRanking": false
+        },
+        {
+          "routeId": "step_avoiding",
+          "routeKey": "dynamic_snapshot:step_avoiding",
+          "routeSet": "dynamic_snapshot",
+          "profile": "step_avoiding",
+          "routeDistanceMeters": 1147,
+          "distanceToRouteMeters": 57,
+          "geometryProgressMeters": 847,
+          "routeProgressMeters": 847,
+          "nearestPointCoordinate": [
+            35.692008,
+            139.691644
+          ],
+          "currentLongestGapMeters": 1147,
+          "expectedImprovedGapMeters": 847,
+          "expectedImprovementMeters": 300,
+          "expectedImprovementRatio": 0.2613,
+          "grossImprovementMeters": 300,
+          "grossImprovementRatio": 0.2613,
+          "estimatedDetourLowerBoundMeters": 57,
+          "detourAdjustedImprovementMeters": 243,
+          "detourAdjustedImprovementRatio": 0.2116,
+          "suggestedInsertionProgressMeters": 574,
+          "suggestedInsertionCoordinate": [
+            35.692397,
+            139.694486
+          ],
+          "distanceToSuggestedInsertionMeters": 281,
+          "insideLargestGap": true,
+          "contributesToRanking": true
+        },
+        {
+          "routeId": "wheelchair_profile",
+          "routeKey": "dynamic_snapshot:wheelchair_profile",
+          "routeSet": "dynamic_snapshot",
+          "profile": "wheelchair_profile",
+          "routeDistanceMeters": 1171,
+          "distanceToRouteMeters": 346,
+          "geometryProgressMeters": 1171,
+          "routeProgressMeters": 1171,
+          "nearestPointCoordinate": [
+            35.689433,
+            139.692141
+          ],
+          "currentLongestGapMeters": 1171,
+          "expectedImprovedGapMeters": 1171,
+          "expectedImprovementMeters": 0,
+          "expectedImprovementRatio": 0,
+          "grossImprovementMeters": 0,
+          "grossImprovementRatio": 0,
+          "estimatedDetourLowerBoundMeters": 346,
+          "detourAdjustedImprovementMeters": 0,
+          "detourAdjustedImprovementRatio": 0,
+          "suggestedInsertionProgressMeters": 586,
+          "suggestedInsertionCoordinate": [
+            35.687552,
+            139.695735
+          ],
+          "distanceToSuggestedInsertionMeters": 674,
+          "insideLargestGap": true,
+          "contributesToRanking": false
+        }
+      ],
+      "dynamicRouteMetrics": [
+        {
+          "routeId": "standard",
+          "routeKey": "dynamic_snapshot:standard",
+          "routeSet": "dynamic_snapshot",
+          "profile": "standard",
+          "routeDistanceMeters": 819,
+          "distanceToRouteMeters": 262,
+          "geometryProgressMeters": 696,
+          "routeProgressMeters": 696,
+          "nearestPointCoordinate": [
+            35.690244,
+            139.692306
+          ],
+          "currentLongestGapMeters": 819,
+          "expectedImprovedGapMeters": 696,
+          "expectedImprovementMeters": 123,
+          "expectedImprovementRatio": 0.1505,
+          "grossImprovementMeters": 123,
+          "grossImprovementRatio": 0.1505,
+          "estimatedDetourLowerBoundMeters": 262,
+          "detourAdjustedImprovementMeters": 0,
+          "detourAdjustedImprovementRatio": 0,
+          "suggestedInsertionProgressMeters": 410,
+          "suggestedInsertionCoordinate": [
+            35.690837,
+            139.694973
+          ],
+          "distanceToSuggestedInsertionMeters": 372,
+          "insideLargestGap": true,
+          "contributesToRanking": false
+        },
+        {
+          "routeId": "step_avoiding",
+          "routeKey": "dynamic_snapshot:step_avoiding",
+          "routeSet": "dynamic_snapshot",
+          "profile": "step_avoiding",
+          "routeDistanceMeters": 1147,
+          "distanceToRouteMeters": 57,
+          "geometryProgressMeters": 847,
+          "routeProgressMeters": 847,
+          "nearestPointCoordinate": [
+            35.692008,
+            139.691644
+          ],
+          "currentLongestGapMeters": 1147,
+          "expectedImprovedGapMeters": 847,
+          "expectedImprovementMeters": 300,
+          "expectedImprovementRatio": 0.2613,
+          "grossImprovementMeters": 300,
+          "grossImprovementRatio": 0.2613,
+          "estimatedDetourLowerBoundMeters": 57,
+          "detourAdjustedImprovementMeters": 243,
+          "detourAdjustedImprovementRatio": 0.2116,
+          "suggestedInsertionProgressMeters": 574,
+          "suggestedInsertionCoordinate": [
+            35.692397,
+            139.694486
+          ],
+          "distanceToSuggestedInsertionMeters": 281,
+          "insideLargestGap": true,
+          "contributesToRanking": true
+        },
+        {
+          "routeId": "wheelchair_profile",
+          "routeKey": "dynamic_snapshot:wheelchair_profile",
+          "routeSet": "dynamic_snapshot",
+          "profile": "wheelchair_profile",
+          "routeDistanceMeters": 1171,
+          "distanceToRouteMeters": 346,
+          "geometryProgressMeters": 1171,
+          "routeProgressMeters": 1171,
+          "nearestPointCoordinate": [
+            35.689433,
+            139.692141
+          ],
+          "currentLongestGapMeters": 1171,
+          "expectedImprovedGapMeters": 1171,
+          "expectedImprovementMeters": 0,
+          "expectedImprovementRatio": 0,
+          "grossImprovementMeters": 0,
+          "grossImprovementRatio": 0,
+          "estimatedDetourLowerBoundMeters": 346,
+          "detourAdjustedImprovementMeters": 0,
+          "detourAdjustedImprovementRatio": 0,
+          "suggestedInsertionProgressMeters": 586,
+          "suggestedInsertionCoordinate": [
+            35.687552,
+            139.695735
+          ],
+          "distanceToSuggestedInsertionMeters": 674,
+          "insideLargestGap": true,
+          "contributesToRanking": false
+        }
+      ],
+      "fixedDemoRouteMetrics": [
+        {
+          "routeId": "comfort",
+          "routeKey": "fixed_demo:comfort",
+          "routeSet": "fixed_demo",
+          "profile": null,
+          "routeDistanceMeters": 1350,
+          "distanceToRouteMeters": 214,
+          "geometryProgressMeters": 675,
+          "routeProgressMeters": 656,
+          "nearestPointCoordinate": [
+            35.690577,
+            139.691741
+          ],
+          "currentLongestGapMeters": 1350,
+          "expectedImprovedGapMeters": 694,
+          "expectedImprovementMeters": 656,
+          "expectedImprovementRatio": 0.486,
+          "grossImprovementMeters": 656,
+          "grossImprovementRatio": 0.486,
+          "estimatedDetourLowerBoundMeters": 214,
+          "detourAdjustedImprovementMeters": 442,
+          "detourAdjustedImprovementRatio": 0.3275,
+          "suggestedInsertionProgressMeters": 675,
+          "suggestedInsertionCoordinate": [
+            35.690551,
+            139.691528
+          ],
+          "distanceToSuggestedInsertionMeters": 215,
+          "insideLargestGap": true,
+          "contributesToRanking": false
+        },
+        {
+          "routeId": "standard",
+          "routeKey": "fixed_demo:standard",
+          "routeSet": "fixed_demo",
+          "profile": null,
+          "routeDistanceMeters": 1050,
+          "distanceToRouteMeters": 340,
+          "geometryProgressMeters": 607,
+          "routeProgressMeters": 971,
+          "nearestPointCoordinate": [
+            35.689603,
+            139.692667
+          ],
+          "currentLongestGapMeters": 1050,
+          "expectedImprovedGapMeters": 971,
+          "expectedImprovementMeters": 79,
+          "expectedImprovementRatio": 0.0756,
+          "grossImprovementMeters": 79,
+          "grossImprovementRatio": 0.0756,
+          "estimatedDetourLowerBoundMeters": 340,
+          "detourAdjustedImprovementMeters": 0,
+          "detourAdjustedImprovementRatio": 0,
+          "suggestedInsertionProgressMeters": 525,
+          "suggestedInsertionCoordinate": [
+            35.690371,
+            139.695602
+          ],
+          "distanceToSuggestedInsertionMeters": 448,
+          "insideLargestGap": true,
+          "contributesToRanking": false
+        }
+      ]
+    },
+    {
+      "fieldCheckPriority": 6,
+      "candidateId": "daredemo-accommodation-京王プラザホテル-131041-35689954-139694016",
+      "verificationId": "fv-daredemo-accommodation-京王プラザホテル-131041-35689954-139694016",
+      "name": "京王プラザホテル",
+      "latitude": 35.689954,
+      "longitude": 139.694016,
+      "address": "東京都新宿区西新宿2-2-1",
+      "categories": [
+        "barrier_free_facility"
+      ],
+      "facilityAccessCategory": "private_hospitality",
+      "facilityAccessCategoryLabel": "ホテル等の民間施設",
+      "accessPrior": 10,
+      "categoryPenalty": 220,
+      "categoryReasonCodes": [
+        "PRIVATE_HOSPITALITY_DATASET"
+      ],
+      "categoryReasons": [
+        "宿泊施設として公式掲載されている民間施設"
+      ],
+      "requiresSpecialCaution": true,
+      "specialCautions": [
+        "宿泊・飲食利用なしでの入館、着席、営業時間内の一般利用条件を確認する。ホテル掲載を休憩可能の根拠にしない。"
+      ],
+      "officialSourceQuality": "medium",
+      "officialSourceQualityScore": 2,
+      "dynamicRouteIds": [
+        "standard"
+      ],
+      "fixedDemoRouteIds": [
+        "comfort",
+        "standard"
+      ],
+      "routeIds": [
+        "standard"
+      ],
+      "primaryRouteId": "standard",
+      "primaryRouteKey": "dynamic_snapshot:standard",
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 78,
+      "estimatedDetourLowerBoundMeters": 78,
+      "routeProgressMeters": 514,
+      "nearestPointCoordinate": [
+        35.690643,
+        139.693852
+      ],
+      "theoreticalInsertionCoordinate": [
+        35.690837,
+        139.694973
+      ],
+      "currentLongestGapMeters": 819,
+      "expectedImprovedGapMeters": 514,
+      "expectedImprovementMeters": 305,
+      "expectedImprovementRatio": 0.3726,
+      "grossImprovementMeters": 305,
+      "grossImprovementRatio": 0.3726,
+      "detourAdjustedImprovementMeters": 227,
+      "detourAdjustedImprovementRatio": 0.2774,
+      "distanceToSuggestedInsertionMeters": 131,
+      "rankingScore": 60.08,
+      "rankingScoreBreakdown": {
+        "improvementMetersPoints": 136.2,
+        "improvementRatioPoints": 55.48,
+        "routeProximityPoints": 54.4,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 60.08
+      },
+      "selectionReasonCodes": [
+        "POSITIVE_DETOUR_ADJUSTED_IMPROVEMENT",
+        "CLOSE_TO_DYNAMIC_ROUTE_100M",
+        "NO_EXISTING_STRICT_DUPLICATE",
+        "PRIVATE_ACCESS_CONFIRMATION_NEEDED"
+      ],
+      "selectionReasons": [
+        "施設からルートまでの推定直線下限を差し引いても休憩空白の改善が残る",
+        "代表動的経路から推定直線100m以内",
+        "既存のconfirmed / supported地点とは重複しない",
+        "民間施設のため一般利用条件の確認が必要"
+      ],
+      "officialSourceIds": [
+        "daredemo-accommodation:daredemo-accommodation-京王プラザホテル-131041-35689954-139694016"
+      ],
+      "groupedCandidateIds": [
+        "daredemo-accommodation-京王プラザホテル-131041-35689954-139694016"
+      ],
+      "duplicateFacilityHandling": {
+        "method": "name_or_address_within_25m",
+        "groupedRecordCount": 1,
+        "countedPlaceCount": 1
+      },
+      "existingStrictOverlap": false,
+      "routeMetrics": [
+        {
+          "routeId": "standard",
+          "routeKey": "dynamic_snapshot:standard",
+          "routeSet": "dynamic_snapshot",
+          "profile": "standard",
+          "routeDistanceMeters": 819,
+          "distanceToRouteMeters": 78,
+          "geometryProgressMeters": 514,
+          "routeProgressMeters": 514,
+          "nearestPointCoordinate": [
+            35.690643,
+            139.693852
+          ],
+          "currentLongestGapMeters": 819,
+          "expectedImprovedGapMeters": 514,
+          "expectedImprovementMeters": 305,
+          "expectedImprovementRatio": 0.3726,
+          "grossImprovementMeters": 305,
+          "grossImprovementRatio": 0.3726,
+          "estimatedDetourLowerBoundMeters": 78,
+          "detourAdjustedImprovementMeters": 227,
+          "detourAdjustedImprovementRatio": 0.2774,
+          "suggestedInsertionProgressMeters": 410,
+          "suggestedInsertionCoordinate": [
+            35.690837,
+            139.694973
+          ],
+          "distanceToSuggestedInsertionMeters": 131,
+          "insideLargestGap": true,
+          "contributesToRanking": true
+        },
+        {
+          "routeId": "step_avoiding",
+          "routeKey": "dynamic_snapshot:step_avoiding",
+          "routeSet": "dynamic_snapshot",
+          "profile": "step_avoiding",
+          "routeDistanceMeters": 1147,
+          "distanceToRouteMeters": 169,
+          "geometryProgressMeters": 1094,
+          "routeProgressMeters": 1094,
+          "nearestPointCoordinate": [
+            35.689829,
+            139.69215
+          ],
+          "currentLongestGapMeters": 1147,
+          "expectedImprovedGapMeters": 1094,
+          "expectedImprovementMeters": 53,
+          "expectedImprovementRatio": 0.0459,
+          "grossImprovementMeters": 53,
+          "grossImprovementRatio": 0.0459,
+          "estimatedDetourLowerBoundMeters": 169,
+          "detourAdjustedImprovementMeters": 0,
+          "detourAdjustedImprovementRatio": 0,
+          "suggestedInsertionProgressMeters": 574,
+          "suggestedInsertionCoordinate": [
+            35.692397,
+            139.694486
+          ],
+          "distanceToSuggestedInsertionMeters": 275,
+          "insideLargestGap": true,
+          "contributesToRanking": false
+        },
+        {
+          "routeId": "wheelchair_profile",
+          "routeKey": "dynamic_snapshot:wheelchair_profile",
+          "routeSet": "dynamic_snapshot",
+          "profile": "wheelchair_profile",
+          "routeDistanceMeters": 1171,
+          "distanceToRouteMeters": 172,
+          "geometryProgressMeters": 1154,
+          "routeProgressMeters": 1154,
+          "nearestPointCoordinate": [
+            35.689344,
+            139.692264
+          ],
+          "currentLongestGapMeters": 1171,
+          "expectedImprovedGapMeters": 1154,
+          "expectedImprovementMeters": 17,
+          "expectedImprovementRatio": 0.0145,
+          "grossImprovementMeters": 17,
+          "grossImprovementRatio": 0.0145,
+          "estimatedDetourLowerBoundMeters": 172,
+          "detourAdjustedImprovementMeters": 0,
+          "detourAdjustedImprovementRatio": 0,
+          "suggestedInsertionProgressMeters": 586,
+          "suggestedInsertionCoordinate": [
+            35.687552,
+            139.695735
+          ],
+          "distanceToSuggestedInsertionMeters": 309,
+          "insideLargestGap": true,
+          "contributesToRanking": false
+        }
+      ],
+      "dynamicRouteMetrics": [
+        {
+          "routeId": "standard",
+          "routeKey": "dynamic_snapshot:standard",
+          "routeSet": "dynamic_snapshot",
+          "profile": "standard",
+          "routeDistanceMeters": 819,
+          "distanceToRouteMeters": 78,
+          "geometryProgressMeters": 514,
+          "routeProgressMeters": 514,
+          "nearestPointCoordinate": [
+            35.690643,
+            139.693852
+          ],
+          "currentLongestGapMeters": 819,
+          "expectedImprovedGapMeters": 514,
+          "expectedImprovementMeters": 305,
+          "expectedImprovementRatio": 0.3726,
+          "grossImprovementMeters": 305,
+          "grossImprovementRatio": 0.3726,
+          "estimatedDetourLowerBoundMeters": 78,
+          "detourAdjustedImprovementMeters": 227,
+          "detourAdjustedImprovementRatio": 0.2774,
+          "suggestedInsertionProgressMeters": 410,
+          "suggestedInsertionCoordinate": [
+            35.690837,
+            139.694973
+          ],
+          "distanceToSuggestedInsertionMeters": 131,
+          "insideLargestGap": true,
+          "contributesToRanking": true
+        },
+        {
+          "routeId": "step_avoiding",
+          "routeKey": "dynamic_snapshot:step_avoiding",
+          "routeSet": "dynamic_snapshot",
+          "profile": "step_avoiding",
+          "routeDistanceMeters": 1147,
+          "distanceToRouteMeters": 169,
+          "geometryProgressMeters": 1094,
+          "routeProgressMeters": 1094,
+          "nearestPointCoordinate": [
+            35.689829,
+            139.69215
+          ],
+          "currentLongestGapMeters": 1147,
+          "expectedImprovedGapMeters": 1094,
+          "expectedImprovementMeters": 53,
+          "expectedImprovementRatio": 0.0459,
+          "grossImprovementMeters": 53,
+          "grossImprovementRatio": 0.0459,
+          "estimatedDetourLowerBoundMeters": 169,
+          "detourAdjustedImprovementMeters": 0,
+          "detourAdjustedImprovementRatio": 0,
+          "suggestedInsertionProgressMeters": 574,
+          "suggestedInsertionCoordinate": [
+            35.692397,
+            139.694486
+          ],
+          "distanceToSuggestedInsertionMeters": 275,
+          "insideLargestGap": true,
+          "contributesToRanking": false
+        },
+        {
+          "routeId": "wheelchair_profile",
+          "routeKey": "dynamic_snapshot:wheelchair_profile",
+          "routeSet": "dynamic_snapshot",
+          "profile": "wheelchair_profile",
+          "routeDistanceMeters": 1171,
+          "distanceToRouteMeters": 172,
+          "geometryProgressMeters": 1154,
+          "routeProgressMeters": 1154,
+          "nearestPointCoordinate": [
+            35.689344,
+            139.692264
+          ],
+          "currentLongestGapMeters": 1171,
+          "expectedImprovedGapMeters": 1154,
+          "expectedImprovementMeters": 17,
+          "expectedImprovementRatio": 0.0145,
+          "grossImprovementMeters": 17,
+          "grossImprovementRatio": 0.0145,
+          "estimatedDetourLowerBoundMeters": 172,
+          "detourAdjustedImprovementMeters": 0,
+          "detourAdjustedImprovementRatio": 0,
+          "suggestedInsertionProgressMeters": 586,
+          "suggestedInsertionCoordinate": [
+            35.687552,
+            139.695735
+          ],
+          "distanceToSuggestedInsertionMeters": 309,
+          "insideLargestGap": true,
+          "contributesToRanking": false
+        }
+      ],
+      "fixedDemoRouteMetrics": [
+        {
+          "routeId": "comfort",
+          "routeKey": "fixed_demo:comfort",
+          "routeSet": "fixed_demo",
+          "profile": null,
+          "routeDistanceMeters": 1350,
+          "distanceToRouteMeters": 100,
+          "geometryProgressMeters": 483,
+          "routeProgressMeters": 469,
+          "nearestPointCoordinate": [
+            35.690842,
+            139.693847
+          ],
+          "currentLongestGapMeters": 1350,
+          "expectedImprovedGapMeters": 881,
+          "expectedImprovementMeters": 469,
+          "expectedImprovementRatio": 0.3475,
+          "grossImprovementMeters": 469,
+          "grossImprovementRatio": 0.3475,
+          "estimatedDetourLowerBoundMeters": 100,
+          "detourAdjustedImprovementMeters": 369,
+          "detourAdjustedImprovementRatio": 0.2734,
+          "suggestedInsertionProgressMeters": 675,
+          "suggestedInsertionCoordinate": [
+            35.690551,
+            139.691528
+          ],
+          "distanceToSuggestedInsertionMeters": 234,
+          "insideLargestGap": true,
+          "contributesToRanking": false
+        },
+        {
+          "routeId": "standard",
+          "routeKey": "fixed_demo:standard",
+          "routeSet": "fixed_demo",
+          "profile": null,
+          "routeDistanceMeters": 1050,
+          "distanceToRouteMeters": 5,
+          "geometryProgressMeters": 479,
+          "routeProgressMeters": 766,
+          "nearestPointCoordinate": [
+            35.689996,
+            139.693997
+          ],
+          "currentLongestGapMeters": 1050,
+          "expectedImprovedGapMeters": 766,
+          "expectedImprovementMeters": 284,
+          "expectedImprovementRatio": 0.2703,
+          "grossImprovementMeters": 284,
+          "grossImprovementRatio": 0.2703,
+          "estimatedDetourLowerBoundMeters": 5,
+          "detourAdjustedImprovementMeters": 279,
+          "detourAdjustedImprovementRatio": 0.2655,
+          "suggestedInsertionProgressMeters": 525,
+          "suggestedInsertionCoordinate": [
+            35.690371,
+            139.695602
+          ],
+          "distanceToSuggestedInsertionMeters": 151,
+          "insideLargestGap": true,
+          "contributesToRanking": false
+        }
+      ]
+    },
+    {
+      "fieldCheckPriority": 7,
+      "candidateId": "daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371",
+      "verificationId": "fv-daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371",
+      "name": "ハイアットリージェンシー東京",
+      "latitude": 35.691099,
+      "longitude": 139.691371,
+      "address": "東京都新宿区西新宿2-7-2",
+      "categories": [
+        "barrier_free_facility"
+      ],
+      "facilityAccessCategory": "private_hospitality",
+      "facilityAccessCategoryLabel": "ホテル等の民間施設",
+      "accessPrior": 10,
+      "categoryPenalty": 220,
+      "categoryReasonCodes": [
+        "PRIVATE_HOSPITALITY_DATASET"
+      ],
+      "categoryReasons": [
+        "宿泊施設として公式掲載されている民間施設"
+      ],
+      "requiresSpecialCaution": true,
+      "specialCautions": [
+        "宿泊・飲食利用なしでの入館、着席、営業時間内の一般利用条件を確認する。ホテル掲載を休憩可能の根拠にしない。"
+      ],
+      "officialSourceQuality": "medium",
+      "officialSourceQualityScore": 2,
+      "dynamicRouteIds": [
+        "step_avoiding"
+      ],
+      "fixedDemoRouteIds": [
+        "comfort"
+      ],
+      "routeIds": [
+        "step_avoiding"
+      ],
+      "primaryRouteId": "step_avoiding",
+      "primaryRouteKey": "dynamic_snapshot:step_avoiding",
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 42,
+      "estimatedDetourLowerBoundMeters": 42,
+      "routeProgressMeters": 942,
+      "nearestPointCoordinate": [
+        35.691173,
+        139.691825
+      ],
+      "theoreticalInsertionCoordinate": [
+        35.692397,
+        139.694486
+      ],
+      "currentLongestGapMeters": 1147,
+      "expectedImprovedGapMeters": 942,
+      "expectedImprovementMeters": 205,
+      "expectedImprovementRatio": 0.1787,
+      "grossImprovementMeters": 205,
+      "grossImprovementRatio": 0.1787,
+      "detourAdjustedImprovementMeters": 163,
+      "detourAdjustedImprovementRatio": 0.1421,
+      "distanceToSuggestedInsertionMeters": 316,
+      "rankingScore": 1.82,
+      "rankingScoreBreakdown": {
+        "improvementMetersPoints": 97.8,
+        "improvementRatioPoints": 28.42,
+        "routeProximityPoints": 61.6,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": 1.82
+      },
+      "selectionReasonCodes": [
+        "POSITIVE_DETOUR_ADJUSTED_IMPROVEMENT",
+        "CLOSE_TO_DYNAMIC_ROUTE_50M",
+        "NO_EXISTING_STRICT_DUPLICATE",
+        "PRIVATE_ACCESS_CONFIRMATION_NEEDED"
+      ],
+      "selectionReasons": [
+        "施設からルートまでの推定直線下限を差し引いても休憩空白の改善が残る",
+        "代表動的経路から推定直線50m以内",
+        "既存のconfirmed / supported地点とは重複しない",
+        "民間施設のため一般利用条件の確認が必要"
+      ],
+      "officialSourceIds": [
+        "daredemo-accommodation:daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371"
+      ],
+      "groupedCandidateIds": [
+        "daredemo-accommodation-ハイアットリージェンシー東京-131041-35691099-139691371"
+      ],
+      "duplicateFacilityHandling": {
+        "method": "name_or_address_within_25m",
+        "groupedRecordCount": 1,
+        "countedPlaceCount": 1
+      },
+      "existingStrictOverlap": false,
+      "routeMetrics": [
+        {
+          "routeId": "standard",
+          "routeKey": "dynamic_snapshot:standard",
+          "routeSet": "dynamic_snapshot",
+          "profile": "standard",
+          "routeDistanceMeters": 819,
+          "distanceToRouteMeters": 127,
+          "geometryProgressMeters": 696,
+          "routeProgressMeters": 696,
+          "nearestPointCoordinate": [
+            35.690244,
+            139.692306
+          ],
+          "currentLongestGapMeters": 819,
+          "expectedImprovedGapMeters": 696,
+          "expectedImprovementMeters": 123,
+          "expectedImprovementRatio": 0.1505,
+          "grossImprovementMeters": 123,
+          "grossImprovementRatio": 0.1505,
+          "estimatedDetourLowerBoundMeters": 127,
+          "detourAdjustedImprovementMeters": 0,
+          "detourAdjustedImprovementRatio": 0,
+          "suggestedInsertionProgressMeters": 410,
+          "suggestedInsertionCoordinate": [
+            35.690837,
+            139.694973
+          ],
+          "distanceToSuggestedInsertionMeters": 327,
+          "insideLargestGap": true,
+          "contributesToRanking": false
+        },
+        {
+          "routeId": "step_avoiding",
+          "routeKey": "dynamic_snapshot:step_avoiding",
+          "routeSet": "dynamic_snapshot",
+          "profile": "step_avoiding",
+          "routeDistanceMeters": 1147,
+          "distanceToRouteMeters": 42,
+          "geometryProgressMeters": 942,
+          "routeProgressMeters": 942,
+          "nearestPointCoordinate": [
+            35.691173,
+            139.691825
+          ],
+          "currentLongestGapMeters": 1147,
+          "expectedImprovedGapMeters": 942,
+          "expectedImprovementMeters": 205,
+          "expectedImprovementRatio": 0.1787,
+          "grossImprovementMeters": 205,
+          "grossImprovementRatio": 0.1787,
+          "estimatedDetourLowerBoundMeters": 42,
+          "detourAdjustedImprovementMeters": 163,
+          "detourAdjustedImprovementRatio": 0.1421,
+          "suggestedInsertionProgressMeters": 574,
+          "suggestedInsertionCoordinate": [
+            35.692397,
+            139.694486
+          ],
+          "distanceToSuggestedInsertionMeters": 316,
+          "insideLargestGap": true,
+          "contributesToRanking": true
+        },
+        {
+          "routeId": "wheelchair_profile",
+          "routeKey": "dynamic_snapshot:wheelchair_profile",
+          "routeSet": "dynamic_snapshot",
+          "profile": "wheelchair_profile",
+          "routeDistanceMeters": 1171,
+          "distanceToRouteMeters": 198,
+          "geometryProgressMeters": 1171,
+          "routeProgressMeters": 1171,
+          "nearestPointCoordinate": [
+            35.689433,
+            139.692141
+          ],
+          "currentLongestGapMeters": 1171,
+          "expectedImprovedGapMeters": 1171,
+          "expectedImprovementMeters": 0,
+          "expectedImprovementRatio": 0,
+          "grossImprovementMeters": 0,
+          "grossImprovementRatio": 0,
+          "estimatedDetourLowerBoundMeters": 198,
+          "detourAdjustedImprovementMeters": 0,
+          "detourAdjustedImprovementRatio": 0,
+          "suggestedInsertionProgressMeters": 586,
+          "suggestedInsertionCoordinate": [
+            35.687552,
+            139.695735
+          ],
+          "distanceToSuggestedInsertionMeters": 558,
+          "insideLargestGap": true,
+          "contributesToRanking": false
+        }
+      ],
+      "dynamicRouteMetrics": [
+        {
+          "routeId": "standard",
+          "routeKey": "dynamic_snapshot:standard",
+          "routeSet": "dynamic_snapshot",
+          "profile": "standard",
+          "routeDistanceMeters": 819,
+          "distanceToRouteMeters": 127,
+          "geometryProgressMeters": 696,
+          "routeProgressMeters": 696,
+          "nearestPointCoordinate": [
+            35.690244,
+            139.692306
+          ],
+          "currentLongestGapMeters": 819,
+          "expectedImprovedGapMeters": 696,
+          "expectedImprovementMeters": 123,
+          "expectedImprovementRatio": 0.1505,
+          "grossImprovementMeters": 123,
+          "grossImprovementRatio": 0.1505,
+          "estimatedDetourLowerBoundMeters": 127,
+          "detourAdjustedImprovementMeters": 0,
+          "detourAdjustedImprovementRatio": 0,
+          "suggestedInsertionProgressMeters": 410,
+          "suggestedInsertionCoordinate": [
+            35.690837,
+            139.694973
+          ],
+          "distanceToSuggestedInsertionMeters": 327,
+          "insideLargestGap": true,
+          "contributesToRanking": false
+        },
+        {
+          "routeId": "step_avoiding",
+          "routeKey": "dynamic_snapshot:step_avoiding",
+          "routeSet": "dynamic_snapshot",
+          "profile": "step_avoiding",
+          "routeDistanceMeters": 1147,
+          "distanceToRouteMeters": 42,
+          "geometryProgressMeters": 942,
+          "routeProgressMeters": 942,
+          "nearestPointCoordinate": [
+            35.691173,
+            139.691825
+          ],
+          "currentLongestGapMeters": 1147,
+          "expectedImprovedGapMeters": 942,
+          "expectedImprovementMeters": 205,
+          "expectedImprovementRatio": 0.1787,
+          "grossImprovementMeters": 205,
+          "grossImprovementRatio": 0.1787,
+          "estimatedDetourLowerBoundMeters": 42,
+          "detourAdjustedImprovementMeters": 163,
+          "detourAdjustedImprovementRatio": 0.1421,
+          "suggestedInsertionProgressMeters": 574,
+          "suggestedInsertionCoordinate": [
+            35.692397,
+            139.694486
+          ],
+          "distanceToSuggestedInsertionMeters": 316,
+          "insideLargestGap": true,
+          "contributesToRanking": true
+        },
+        {
+          "routeId": "wheelchair_profile",
+          "routeKey": "dynamic_snapshot:wheelchair_profile",
+          "routeSet": "dynamic_snapshot",
+          "profile": "wheelchair_profile",
+          "routeDistanceMeters": 1171,
+          "distanceToRouteMeters": 198,
+          "geometryProgressMeters": 1171,
+          "routeProgressMeters": 1171,
+          "nearestPointCoordinate": [
+            35.689433,
+            139.692141
+          ],
+          "currentLongestGapMeters": 1171,
+          "expectedImprovedGapMeters": 1171,
+          "expectedImprovementMeters": 0,
+          "expectedImprovementRatio": 0,
+          "grossImprovementMeters": 0,
+          "grossImprovementRatio": 0,
+          "estimatedDetourLowerBoundMeters": 198,
+          "detourAdjustedImprovementMeters": 0,
+          "detourAdjustedImprovementRatio": 0,
+          "suggestedInsertionProgressMeters": 586,
+          "suggestedInsertionCoordinate": [
+            35.687552,
+            139.695735
+          ],
+          "distanceToSuggestedInsertionMeters": 558,
+          "insideLargestGap": true,
+          "contributesToRanking": false
+        }
+      ],
+      "fixedDemoRouteMetrics": [
+        {
+          "routeId": "comfort",
+          "routeKey": "fixed_demo:comfort",
+          "routeSet": "fixed_demo",
+          "profile": null,
+          "routeDistanceMeters": 1350,
+          "distanceToRouteMeters": 62,
+          "geometryProgressMeters": 699,
+          "routeProgressMeters": 680,
+          "nearestPointCoordinate": [
+            35.690544,
+            139.691477
+          ],
+          "currentLongestGapMeters": 1350,
+          "expectedImprovedGapMeters": 680,
+          "expectedImprovementMeters": 670,
+          "expectedImprovementRatio": 0.4966,
+          "grossImprovementMeters": 670,
+          "grossImprovementRatio": 0.4966,
+          "estimatedDetourLowerBoundMeters": 62,
+          "detourAdjustedImprovementMeters": 608,
+          "detourAdjustedImprovementRatio": 0.4507,
+          "suggestedInsertionProgressMeters": 675,
+          "suggestedInsertionCoordinate": [
+            35.690551,
+            139.691528
+          ],
+          "distanceToSuggestedInsertionMeters": 63,
+          "insideLargestGap": true,
+          "contributesToRanking": false
+        },
+        {
+          "routeId": "standard",
+          "routeKey": "fixed_demo:standard",
+          "routeSet": "fixed_demo",
+          "profile": null,
+          "routeDistanceMeters": 1050,
+          "distanceToRouteMeters": 196,
+          "geometryProgressMeters": 657,
+          "routeProgressMeters": 1050,
+          "nearestPointCoordinate": [
+            35.68945,
+            139.69215
+          ],
+          "currentLongestGapMeters": 1050,
+          "expectedImprovedGapMeters": 1050,
+          "expectedImprovementMeters": 0,
+          "expectedImprovementRatio": 0,
+          "grossImprovementMeters": 0,
+          "grossImprovementRatio": 0,
+          "estimatedDetourLowerBoundMeters": 196,
+          "detourAdjustedImprovementMeters": 0,
+          "detourAdjustedImprovementRatio": 0,
+          "suggestedInsertionProgressMeters": 525,
+          "suggestedInsertionCoordinate": [
+            35.690371,
+            139.695602
+          ],
+          "distanceToSuggestedInsertionMeters": 391,
+          "insideLargestGap": true,
+          "contributesToRanking": false
+        }
+      ]
+    },
+    {
+      "fieldCheckPriority": 8,
+      "candidateId": "daredemo-accommodation-京王プレッソイン新宿-131041-35685664-139692621",
+      "verificationId": "fv-daredemo-accommodation-京王プレッソイン新宿-131041-35685664-139692621",
+      "name": "京王プレッソイン新宿",
+      "latitude": 35.685664,
+      "longitude": 139.692621,
+      "address": "東京都新宿区西新宿3-4-5",
+      "categories": [
+        "barrier_free_facility"
+      ],
+      "facilityAccessCategory": "private_hospitality",
+      "facilityAccessCategoryLabel": "ホテル等の民間施設",
+      "accessPrior": 10,
+      "categoryPenalty": 220,
+      "categoryReasonCodes": [
+        "PRIVATE_HOSPITALITY_DATASET"
+      ],
+      "categoryReasons": [
+        "宿泊施設として公式掲載されている民間施設"
+      ],
+      "requiresSpecialCaution": true,
+      "specialCautions": [
+        "宿泊・飲食利用なしでの入館、着席、営業時間内の一般利用条件を確認する。ホテル掲載を休憩可能の根拠にしない。"
+      ],
+      "officialSourceQuality": "medium",
+      "officialSourceQualityScore": 2,
+      "dynamicRouteIds": [
+        "wheelchair_profile"
+      ],
+      "fixedDemoRouteIds": [],
+      "routeIds": [
+        "wheelchair_profile"
+      ],
+      "primaryRouteId": "wheelchair_profile",
+      "primaryRouteKey": "dynamic_snapshot:wheelchair_profile",
+      "numberOfCoveredRoutes": 1,
+      "distanceToRouteMeters": 169,
+      "estimatedDetourLowerBoundMeters": 169,
+      "routeProgressMeters": 871,
+      "nearestPointCoordinate": [
+        35.687128,
+        139.693107
+      ],
+      "theoreticalInsertionCoordinate": [
+        35.687552,
+        139.695735
+      ],
+      "currentLongestGapMeters": 1171,
+      "expectedImprovedGapMeters": 871,
+      "expectedImprovementMeters": 300,
+      "expectedImprovementRatio": 0.2562,
+      "grossImprovementMeters": 300,
+      "grossImprovementRatio": 0.2562,
+      "detourAdjustedImprovementMeters": 131,
+      "detourAdjustedImprovementRatio": 0.1119,
+      "distanceToSuggestedInsertionMeters": 351,
+      "rankingScore": -48.82,
+      "rankingScoreBreakdown": {
+        "improvementMetersPoints": 78.6,
+        "improvementRatioPoints": 22.38,
+        "routeProximityPoints": 36.2,
+        "accessPriorPoints": 10,
+        "coveredRoutesPoints": 0,
+        "officialSourceQualityPoints": 24,
+        "categoryPenalty": 220,
+        "duplicateFacilityPenalty": 0,
+        "total": -48.82
+      },
+      "selectionReasonCodes": [
+        "POSITIVE_DETOUR_ADJUSTED_IMPROVEMENT",
+        "NO_EXISTING_STRICT_DUPLICATE",
+        "PRIVATE_ACCESS_CONFIRMATION_NEEDED"
+      ],
+      "selectionReasons": [
+        "施設からルートまでの推定直線下限を差し引いても休憩空白の改善が残る",
+        "既存のconfirmed / supported地点とは重複しない",
+        "民間施設のため一般利用条件の確認が必要"
+      ],
+      "officialSourceIds": [
+        "daredemo-accommodation:daredemo-accommodation-京王プレッソイン新宿-131041-35685664-139692621"
+      ],
+      "groupedCandidateIds": [
+        "daredemo-accommodation-京王プレッソイン新宿-131041-35685664-139692621"
+      ],
+      "duplicateFacilityHandling": {
+        "method": "name_or_address_within_25m",
+        "groupedRecordCount": 1,
+        "countedPlaceCount": 1
+      },
+      "existingStrictOverlap": false,
+      "routeMetrics": [
+        {
+          "routeId": "wheelchair_profile",
+          "routeKey": "dynamic_snapshot:wheelchair_profile",
+          "routeSet": "dynamic_snapshot",
+          "profile": "wheelchair_profile",
+          "routeDistanceMeters": 1171,
+          "distanceToRouteMeters": 169,
+          "geometryProgressMeters": 871,
+          "routeProgressMeters": 871,
+          "nearestPointCoordinate": [
+            35.687128,
+            139.693107
+          ],
+          "currentLongestGapMeters": 1171,
+          "expectedImprovedGapMeters": 871,
+          "expectedImprovementMeters": 300,
+          "expectedImprovementRatio": 0.2562,
+          "grossImprovementMeters": 300,
+          "grossImprovementRatio": 0.2562,
+          "estimatedDetourLowerBoundMeters": 169,
+          "detourAdjustedImprovementMeters": 131,
+          "detourAdjustedImprovementRatio": 0.1119,
+          "suggestedInsertionProgressMeters": 586,
+          "suggestedInsertionCoordinate": [
+            35.687552,
+            139.695735
+          ],
+          "distanceToSuggestedInsertionMeters": 351,
+          "insideLargestGap": true,
+          "contributesToRanking": true
+        }
+      ],
+      "dynamicRouteMetrics": [
+        {
+          "routeId": "wheelchair_profile",
+          "routeKey": "dynamic_snapshot:wheelchair_profile",
+          "routeSet": "dynamic_snapshot",
+          "profile": "wheelchair_profile",
+          "routeDistanceMeters": 1171,
+          "distanceToRouteMeters": 169,
+          "geometryProgressMeters": 871,
+          "routeProgressMeters": 871,
+          "nearestPointCoordinate": [
+            35.687128,
+            139.693107
+          ],
+          "currentLongestGapMeters": 1171,
+          "expectedImprovedGapMeters": 871,
+          "expectedImprovementMeters": 300,
+          "expectedImprovementRatio": 0.2562,
+          "grossImprovementMeters": 300,
+          "grossImprovementRatio": 0.2562,
+          "estimatedDetourLowerBoundMeters": 169,
+          "detourAdjustedImprovementMeters": 131,
+          "detourAdjustedImprovementRatio": 0.1119,
+          "suggestedInsertionProgressMeters": 586,
+          "suggestedInsertionCoordinate": [
+            35.687552,
+            139.695735
+          ],
+          "distanceToSuggestedInsertionMeters": 351,
+          "insideLargestGap": true,
+          "contributesToRanking": true
+        }
+      ],
+      "fixedDemoRouteMetrics": []
     }
   ]
 }

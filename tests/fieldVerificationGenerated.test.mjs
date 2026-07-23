@@ -2,27 +2,114 @@ import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { fieldVerificationCandidatesCsv, runUpdate } from "../scripts/update-open-data.mjs";
+import {
+  FIELD_VERIFICATION_CANDIDATE_CSV_HEADERS,
+  fieldVerificationCandidatesCsv,
+  runUpdate,
+} from "../scripts/update-open-data.mjs";
 
 const generatedUrl = (name) => new URL(`../data/generated/${name}`, import.meta.url);
 const browserUrl = (name) => new URL(`../src/data/generated/${name}`, import.meta.url);
 
 describe("現地確認生成物", () => {
-  it("初期CSVは確認結果を捏造せず品質異常を除いた上位10〜15候補を出力する", async () => {
+  it("確認結果を捏造せず改善基準を満たす候補だけを自然件数で出力する", async () => {
     const verified = JSON.parse(await readFile(generatedUrl("verified-rest-spots.json"), "utf8"));
     const fieldCandidates = JSON.parse(await readFile(generatedUrl("field-verification-candidates.json"), "utf8"));
     expect(verified).toMatchObject({ metadata: { inputRowCount: 0, normalizedRecordCount: 0, excludedRecordCount: 0 }, records: [], candidates: [] });
-    expect(fieldCandidates.candidates.length).toBeGreaterThanOrEqual(10);
-    expect(fieldCandidates.candidates.length).toBeLessThanOrEqual(15);
+    expect(fieldCandidates.candidates.length).toBeGreaterThanOrEqual(5);
     expect(fieldCandidates.metadata.candidateCount).toBe(fieldCandidates.candidates.length);
+    expect(fieldCandidates.metadata.requestedLimit).toBeNull();
+    expect(fieldCandidates.metadata.detourAccessLowerBoundFactor).toBe(1);
+    expect(fieldCandidates.metadata.minimumDetourAdjustedImprovementMeters).toBe(30);
+    expect(fieldCandidates.metadata.minimumDetourAdjustedImprovementRatio).toBe(0.025);
     expect(fieldCandidates.metadata.excludedCoordinateConflictPlaceCount).toBeGreaterThan(0);
     expect(fieldCandidates.candidates.map((candidate) => candidate.fieldCheckPriority)).toEqual(Array.from({ length: fieldCandidates.candidates.length }, (_, index) => index + 1));
     expect(fieldCandidates.candidates.some((candidate) => candidate.name === "JR 信濃町駅" || candidate.name === "JR 大久保駅")).toBe(false);
+    expect(fieldCandidates.candidates.every((candidate) => candidate.grossImprovementMeters > 0
+      && candidate.grossImprovementRatio > 0
+      && candidate.detourAdjustedImprovementMeters >= 30
+      && candidate.detourAdjustedImprovementRatio >= 0.025)).toBe(true);
+    expect(fieldCandidates.candidates.some((candidate) => /学校|幼稚園|保育|養護/.test(candidate.name))).toBe(false);
+    expect(fieldCandidates.metadata.exclusionReasonCounts).toMatchObject({
+      COORDINATE_SOURCE_ANOMALY: expect.any(Number),
+      DETOUR_ADJUSTED_IMPROVEMENT_BELOW_THRESHOLD: expect.any(Number),
+      RESTRICTED_OR_SENSITIVE_FACILITY: expect.any(Number),
+    });
   });
 
-  it("CSVとJSON候補が同じ決定的内容を表す", async () => {
+  it("CSVとJSON候補が新しい順位指標を含む同じ決定的内容を表す", async () => {
     const fieldCandidates = JSON.parse(await readFile(generatedUrl("field-verification-candidates.json"), "utf8"));
-    expect(await readFile(generatedUrl("field-verification-candidates.csv"), "utf8")).toBe(fieldVerificationCandidatesCsv(fieldCandidates.candidates));
+    const csv = await readFile(generatedUrl("field-verification-candidates.csv"), "utf8");
+    expect(csv).toBe(fieldVerificationCandidatesCsv(fieldCandidates.candidates));
+    expect(csv.split("\n")[0]).toBe(FIELD_VERIFICATION_CANDIDATE_CSV_HEADERS.join(","));
+    expect(FIELD_VERIFICATION_CANDIDATE_CSV_HEADERS).toEqual(expect.arrayContaining([
+      "facilityAccessCategory",
+      "accessPrior",
+      "categoryPenalty",
+      "estimatedDetourLowerBoundMeters",
+      "grossImprovementMeters",
+      "grossImprovementRatio",
+      "detourAdjustedImprovementMeters",
+      "detourAdjustedImprovementRatio",
+      "numberOfCoveredRoutes",
+      "rankingScore",
+      "selectionReasonCodes",
+      "specialCautions",
+    ]));
+  });
+
+  it("代表動的3経路と固定デモを分離して候補指標へ記録する", async () => {
+    const fieldCandidates = JSON.parse(await readFile(generatedUrl("field-verification-candidates.json"), "utf8"));
+    expect(fieldCandidates.metadata.dynamicRouteIds).toEqual([
+      "standard",
+      "step_avoiding",
+      "wheelchair_profile",
+    ]);
+    expect(fieldCandidates.metadata.fixedDemoRouteIds).toEqual(["comfort", "standard"]);
+    expect(fieldCandidates.metadata.dynamicRouteSnapshot).toMatchObject({
+      snapshotId: "shinjuku-west-to-tocho-v1",
+      sourcePath: "data/routing-snapshots/shinjuku-west-to-tocho.v1.json",
+      sourceType: "openstreetmap_route",
+      license: "ODbL",
+    });
+    for (const candidate of fieldCandidates.candidates) {
+      expect(candidate.primaryRouteKey).toMatch(/^dynamic_snapshot:/);
+      expect(candidate.numberOfCoveredRoutes).toBe(candidate.dynamicRouteIds.length);
+      expect(candidate.dynamicRouteMetrics.every((metric) => metric.routeSet === "dynamic_snapshot")).toBe(true);
+      expect(candidate.fixedDemoRouteMetrics.every((metric) => metric.routeSet === "fixed_demo"
+        && metric.contributesToRanking === false)).toBe(true);
+    }
+  });
+
+  it("監査へ除外候補、閾値、snapshot根拠を同じ内容で保持する", async () => {
+    const fieldCandidates = JSON.parse(await readFile(generatedUrl("field-verification-candidates.json"), "utf8"));
+    const audit = JSON.parse(await readFile(generatedUrl("open-data-audit.json"), "utf8"));
+    const extraction = audit.fieldVerification.candidateExtraction;
+
+    expect(extraction).toMatchObject({
+      candidateCount: fieldCandidates.metadata.candidateCount,
+      detourAccessLowerBoundFactor: 1,
+      minimumDetourAdjustedImprovementMeters: 30,
+      minimumDetourAdjustedImprovementRatio: 0.025,
+      dynamicRouteSnapshot: fieldCandidates.metadata.dynamicRouteSnapshot,
+      exclusionReasonCounts: fieldCandidates.metadata.exclusionReasonCounts,
+      exclusions: fieldCandidates.metadata.exclusions,
+    });
+    expect(extraction.exclusions.some((candidate) => candidate.reasonCode === "RESTRICTED_OR_SENSITIVE_FACILITY"
+      && /学校|幼稚園|保育|養護/.test(candidate.name))).toBe(true);
+    expect(extraction.exclusions.some((candidate) => candidate.reasonCode === "DETOUR_ADJUSTED_IMPROVEMENT_BELOW_THRESHOLD")).toBe(true);
+  });
+
+  it("生成済み経路snapshotは3profileを一度ずつ保持する", async () => {
+    const snapshot = JSON.parse(await readFile(generatedUrl("field-check-route-snapshot.json"), "utf8"));
+    expect(snapshot.routes.map((route) => route.profile)).toEqual([
+      "standard",
+      "step_avoiding",
+      "wheelchair_profile",
+    ]);
+    expect(snapshot.routes.every((route) => route.coordinates.length >= 2
+      && route.distanceMeters > 0
+      && route.sourceAttribution.includes("OpenStreetMap"))).toBe(true);
   });
 
   it("既存全件とブラウザ縮小データの件数を維持する", async () => {

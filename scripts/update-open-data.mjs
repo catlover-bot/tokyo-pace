@@ -10,7 +10,22 @@ import {
   buildVerifiedRestCandidates,
   normalizeFieldVerificationRows,
 } from "../src/domain/fieldVerification.mjs";
-import { extractFieldVerificationCandidates } from "../src/domain/fieldVerificationCandidates.mjs";
+import {
+  DETOUR_ACCESS_LOWER_BOUND_FACTOR,
+  FIELD_CHECK_MAXIMUM_DISTANCE_METERS,
+  MIN_DETOUR_ADJUSTED_IMPROVEMENT_METERS,
+  MIN_DETOUR_ADJUSTED_IMPROVEMENT_RATIO,
+  extractFieldVerificationCandidates,
+} from "../src/domain/fieldVerificationCandidates.mjs";
+import {
+  FIELD_CANDIDATE_TOP_RANK_LIMIT,
+  FIELD_CANDIDATE_WEIGHT_VARIATION_RATIO,
+  analyzeFieldCandidateRankingSensitivity,
+  deriveFieldVisitShortlist,
+  fieldCandidateRankingSensitivityCsv,
+  fieldVisitShortlistCsv,
+} from "../src/domain/fieldCandidateRankingSensitivity.mjs";
+import { parseRepresentativeDynamicRouteSnapshot } from "../src/domain/fieldCheckRouteSnapshot.mjs";
 
 export const DATASETS = [
   {
@@ -143,6 +158,7 @@ export const DEMO_ROUTE_DEFINITIONS = [
   { id: "standard", distanceMeters: 1050, coordinates: [[35.69092, 139.69917], [35.69062, 139.69675], [35.69010, 139.69435], [35.68945, 139.69215]] },
   { id: "comfort", distanceMeters: 1350, coordinates: [[35.69092, 139.69917], [35.69105, 139.69550], [35.69018, 139.68858], [35.68955, 139.68845], [35.68908, 139.68925], [35.68945, 139.69215]] },
 ];
+export const REPRESENTATIVE_DYNAMIC_ROUTE_SNAPSHOT_RELATIVE_PATH = "data/routing-snapshots/shinjuku-west-to-tocho.v1.json";
 const DEMO_ROUTES = DEMO_ROUTE_DEFINITIONS.map((route) => route.coordinates);
 export function findDuplicateCandidates(records) {
   const candidates = [];
@@ -226,9 +242,13 @@ export function resolveRetrievedAt(sourceDatasetId, manifest) { return manifest.
 
 export const FIELD_VERIFICATION_CANDIDATE_CSV_HEADERS = [
   "fieldCheckPriority", "candidateId", "verificationId", "name", "address", "latitude", "longitude",
-  "routeIds", "primaryRouteId", "distanceToRouteMeters", "routeProgressMeters", "currentLongestGapMeters",
-  "expectedImprovedGapMeters", "expectedImprovementMeters", "expectedImprovementRatio",
-  "selectionReasons", "officialSourceIds",
+  "facilityAccessCategory", "accessPrior", "categoryPenalty", "requiresSpecialCaution",
+  "dynamicRouteIds", "fixedDemoRouteIds", "primaryRouteId", "numberOfCoveredRoutes",
+  "distanceToRouteMeters", "estimatedDetourLowerBoundMeters", "routeProgressMeters",
+  "currentLongestGapMeters", "expectedImprovedGapMeters", "grossImprovementMeters",
+  "grossImprovementRatio", "detourAdjustedImprovementMeters", "detourAdjustedImprovementRatio",
+  "rankingScore", "selectionReasonCodes", "selectionReasons", "categoryReasons",
+  "specialCautions", "officialSourceIds",
 ];
 
 const csvCell = (value) => {
@@ -239,6 +259,12 @@ const csvCell = (value) => {
 export function fieldVerificationCandidatesCsv(candidates) {
   const rows = candidates.map((candidate) => FIELD_VERIFICATION_CANDIDATE_CSV_HEADERS.map((header) => csvCell(candidate[header])).join(","));
   return `${FIELD_VERIFICATION_CANDIDATE_CSV_HEADERS.join(",")}\n${rows.length ? `${rows.join("\n")}\n` : ""}`;
+}
+
+function compactRankingCandidate(candidate) {
+  const compact = { ...candidate };
+  delete compact.scenarioRanks;
+  return compact;
 }
 
 async function loadFieldVerification(file, candidates, candidateGroups = []) {
@@ -255,7 +281,28 @@ async function loadFieldVerification(file, candidates, candidateGroups = []) {
   return { bytes, records, verifiedCandidates, ...normalized, exclusionReasonCounts: Object.fromEntries(Object.entries(exclusionReasonCounts).sort()) };
 }
 
-export async function runUpdate({ fetchImpl = fetch, rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), ".."), retrievedAt = new Date().toISOString(), rawSnapshotDir = null, fieldVerificationPath = path.join(rootDir, "data/field-verification/rest-spots.csv") } = {}) {
+export async function runUpdate({
+  fetchImpl = fetch,
+  rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), ".."),
+  retrievedAt = new Date().toISOString(),
+  rawSnapshotDir = null,
+  fieldVerificationPath = path.join(rootDir, "data/field-verification/rest-spots.csv"),
+  dynamicRouteSnapshotPath = path.resolve(
+    path.dirname(fileURLToPath(import.meta.url)),
+    "..",
+    REPRESENTATIVE_DYNAMIC_ROUTE_SNAPSHOT_RELATIVE_PATH,
+  ),
+} = {}) {
+  const dynamicRouteSnapshotBytes = await readFile(dynamicRouteSnapshotPath);
+  const dynamicRouteSnapshot = parseRepresentativeDynamicRouteSnapshot(
+    new TextDecoder("utf-8").decode(dynamicRouteSnapshotBytes),
+  );
+  const dynamicRouteDefinitions = dynamicRouteSnapshot.routes.map((route) => ({
+    id: route.id,
+    profile: route.profile,
+    distanceMeters: route.distanceMeters,
+    coordinates: route.coordinates,
+  }));
   const oldManifest = await previousManifest(rootDir);
   const downloaded = [];
   for (const dataset of DATASETS) {
@@ -287,7 +334,12 @@ export async function runUpdate({ fetchImpl = fetch, rootDir = path.resolve(path
   const restRecords = restDownloaded.flatMap((item) => item.records).sort(recordOrder);
   const restCandidates = deduplicateRestCandidates(restRecords);
   const nearbyRestCandidates = restCandidates.filter((candidate) => distanceRecordToRoutes(candidate, DEMO_ROUTES) <= 350);
-  const unverifiedFieldCandidateGroups = extractFieldVerificationCandidates({ routes: DEMO_ROUTE_DEFINITIONS, candidates: restCandidates, limit: Number.MAX_SAFE_INTEGER }).candidates;
+  const unverifiedFieldCandidateGroups = extractFieldVerificationCandidates({
+    dynamicRoutes: dynamicRouteDefinitions,
+    fixedDemoRoutes: DEMO_ROUTE_DEFINITIONS,
+    candidates: restCandidates,
+    limit: Number.MAX_SAFE_INTEGER,
+  }).candidates;
   const fieldVerification = await loadFieldVerification(fieldVerificationPath, restCandidates, unverifiedFieldCandidateGroups);
   const nearbyVerifiedCandidates = fieldVerification.verifiedCandidates.filter((candidate) => distanceRecordToRoutes(candidate, DEMO_ROUTES) <= 350);
   const replacedCandidateIds = new Set(fieldVerification.verifiedCandidates.flatMap((candidate) => candidate.relatedCandidateIds));
@@ -295,7 +347,15 @@ export async function runUpdate({ fetchImpl = fetch, rootDir = path.resolve(path
     ...restCandidates.filter((candidate) => !replacedCandidateIds.has(candidate.id)),
     ...fieldVerification.verifiedCandidates,
   ].sort(recordOrder);
-  const fieldCandidateExtraction = extractFieldVerificationCandidates({ routes: DEMO_ROUTE_DEFINITIONS, candidates: restCandidatesWithVerification, limit: 12 });
+  const fieldCandidateExtraction = extractFieldVerificationCandidates({
+    dynamicRoutes: dynamicRouteDefinitions,
+    fixedDemoRoutes: DEMO_ROUTE_DEFINITIONS,
+    candidates: restCandidatesWithVerification,
+  });
+  const fieldCandidateRankingSensitivity = analyzeFieldCandidateRankingSensitivity(
+    fieldCandidateExtraction.candidates,
+  );
+  const fieldVisitShortlist = deriveFieldVisitShortlist(fieldCandidateRankingSensitivity);
   const records = downloaded.flatMap(({ records: items }) => items).sort(recordOrder);
   const shinjukuRecords = records.filter((record) => record.address?.includes("新宿区"));
   const places = clusterOfficialToiletRecords(records);
@@ -344,15 +404,84 @@ export async function runUpdate({ fetchImpl = fetch, rootDir = path.resolve(path
     schemaVersion: 1,
     generatedBy: "TOKYO PACE",
     generatedAt: generationRetrievedAt,
-    routeIds: DEMO_ROUTE_DEFINITIONS.map((route) => route.id).sort(),
-    maximumDistanceToRouteMeters: 350,
-    requestedLimit: 12,
+    routeIds: dynamicRouteDefinitions.map((route) => route.id).sort(),
+    dynamicRouteIds: dynamicRouteDefinitions.map((route) => route.id).sort(),
+    fixedDemoRouteIds: DEMO_ROUTE_DEFINITIONS.map((route) => route.id).sort(),
+    dynamicRouteSnapshot: {
+      snapshotId: dynamicRouteSnapshot.snapshotId,
+      sourcePath: REPRESENTATIVE_DYNAMIC_ROUTE_SNAPSHOT_RELATIVE_PATH,
+      contentSha256: contentSha256(dynamicRouteSnapshotBytes),
+      byteSize: dynamicRouteSnapshotBytes.byteLength,
+      capturedAt: dynamicRouteSnapshot.source.capturedAt,
+      sourceType: dynamicRouteSnapshot.source.sourceType,
+      provider: dynamicRouteSnapshot.source.provider,
+      license: dynamicRouteSnapshot.source.license,
+      attribution: dynamicRouteSnapshot.source.attribution,
+    },
+    maximumDistanceToRouteMeters: FIELD_CHECK_MAXIMUM_DISTANCE_METERS,
+    requestedLimit: null,
+    detourAccessLowerBoundFactor: DETOUR_ACCESS_LOWER_BOUND_FACTOR,
+    minimumDetourAdjustedImprovementMeters: MIN_DETOUR_ADJUSTED_IMPROVEMENT_METERS,
+    minimumDetourAdjustedImprovementRatio: MIN_DETOUR_ADJUSTED_IMPROVEMENT_RATIO,
+    preRankingGroupCount: fieldCandidateExtraction.preRankingGroupCount,
     eligibleGroupCount: fieldCandidateExtraction.eligibleGroupCount,
+    rankedCandidateCount: fieldCandidateExtraction.rankedCandidateCount,
     coordinateConflictGroupCount: fieldCandidateExtraction.coordinateConflictGroupCount,
     excludedCoordinateConflictCandidateCount: fieldCandidateExtraction.excludedCoordinateConflictCandidateCount,
     excludedCoordinateConflictPlaceCount: fieldCandidateExtraction.excludedCoordinateConflictPlaceCount,
+    exclusionReasonCounts: fieldCandidateExtraction.exclusionReasonCounts,
+    exclusions: fieldCandidateExtraction.exclusions,
     candidateCount: fieldCandidateExtraction.candidates.length,
     sourceDatasetIds: [...new Set(fieldCandidateExtraction.candidates.flatMap((candidate) => candidate.officialSourceIds.map((sourceId) => sourceId.split(":", 1)[0])))].sort(),
+  };
+  const fieldCandidateRankingSensitivityMetadata = {
+    schemaVersion: 1,
+    datasetId: "tokyo-pace-field-candidate-ranking-sensitivity",
+    sourceType: "tokyo_pace_derived_analysis",
+    provider: "TOKYO PACE",
+    datasetName: "TOKYO PACE field candidate ranking sensitivity analysis",
+    generatedBy: "TOKYO PACE",
+    generatedAt: generationRetrievedAt,
+    sourceCandidateDatasetId: "tokyo-pace-field-verification-candidates",
+    sourceCandidateCount: fieldCandidateExtraction.candidates.length,
+    candidateCount: fieldCandidateRankingSensitivity.candidates.length,
+    weightScenarioCount: fieldCandidateRankingSensitivity.weightScenarios.length,
+    rankingScenarioCount: fieldCandidateRankingSensitivity.weightScenarios.length,
+    rankingRowCount: fieldCandidateRankingSensitivity.rankings.length,
+    weightVariationRatio: FIELD_CANDIDATE_WEIGHT_VARIATION_RATIO,
+    topRankLimit: FIELD_CANDIDATE_TOP_RANK_LIMIT,
+    paretoCandidateCount: fieldCandidateRankingSensitivity.paretoCandidateIds.length,
+    configuration: fieldCandidateRankingSensitivity.configuration,
+  };
+  const fieldVisitShortlistMetadata = {
+    schemaVersion: 1,
+    datasetId: "tokyo-pace-field-visit-shortlist",
+    sourceType: "tokyo_pace_derived_analysis",
+    provider: "TOKYO PACE",
+    datasetName: "TOKYO PACE robust field visit shortlist",
+    generatedBy: "TOKYO PACE",
+    generatedAt: generationRetrievedAt,
+    sourceSensitivityDatasetId: fieldCandidateRankingSensitivityMetadata.datasetId,
+    sourceCandidateCount: fieldCandidateRankingSensitivity.candidates.length,
+    entryCount: fieldVisitShortlist.candidates.length,
+    requestedLimit: FIELD_CANDIDATE_TOP_RANK_LIMIT,
+    configuration: fieldVisitShortlist.configuration,
+  };
+  const fieldCandidateRankingSensitivityFull = {
+    metadata: fieldCandidateRankingSensitivityMetadata,
+    ...fieldCandidateRankingSensitivity,
+  };
+  const fieldVisitShortlistFull = {
+    metadata: fieldVisitShortlistMetadata,
+    ...fieldVisitShortlist,
+  };
+  const fieldCandidateRankingSensitivityBrowser = {
+    metadata: fieldCandidateRankingSensitivityMetadata,
+    candidates: fieldCandidateRankingSensitivity.candidates.map(compactRankingCandidate),
+  };
+  const fieldVisitShortlistBrowser = {
+    metadata: fieldVisitShortlistMetadata,
+    entries: fieldVisitShortlist.candidates.map(compactRankingCandidate),
   };
   const auditWithFieldVerification = {
     ...audit,
@@ -366,14 +495,23 @@ export async function runUpdate({ fetchImpl = fetch, rootDir = path.resolve(path
       exclusionReasonCounts: fieldMetadata.exclusionReasonCounts,
       exclusions: fieldMetadata.exclusions,
       candidateExtraction: {
+        preRankingGroupCount: fieldCandidateMetadata.preRankingGroupCount,
         eligibleGroupCount: fieldCandidateMetadata.eligibleGroupCount,
         candidateCount: fieldCandidateMetadata.candidateCount,
+        dynamicRouteSnapshot: fieldCandidateMetadata.dynamicRouteSnapshot,
+        detourAccessLowerBoundFactor: fieldCandidateMetadata.detourAccessLowerBoundFactor,
+        minimumDetourAdjustedImprovementMeters: fieldCandidateMetadata.minimumDetourAdjustedImprovementMeters,
+        minimumDetourAdjustedImprovementRatio: fieldCandidateMetadata.minimumDetourAdjustedImprovementRatio,
+        exclusionReasonCounts: fieldCandidateMetadata.exclusionReasonCounts,
+        exclusions: fieldCandidateMetadata.exclusions,
         coordinateConflictGroupCount: fieldCandidateMetadata.coordinateConflictGroupCount,
         excludedCoordinateConflictCandidateCount: fieldCandidateMetadata.excludedCoordinateConflictCandidateCount,
         excludedCoordinateConflictPlaceCount: fieldCandidateMetadata.excludedCoordinateConflictPlaceCount,
       },
     },
   };
+  const fieldCandidateBrowserMetadata = { ...fieldCandidateMetadata };
+  delete fieldCandidateBrowserMetadata.exclusions;
   const artifacts = [
     ...downloaded.map(({ dataset, bytes }) => ({ relative: `data/raw/${dataset.key}.csv`, content: bytes })),
     ...restDownloaded.map(({ dataset, bytes }) => ({ relative: `data/raw/${dataset.key}.csv`, content: bytes })),
@@ -388,8 +526,16 @@ export async function runUpdate({ fetchImpl = fetch, rootDir = path.resolve(path
     { relative: "data/generated/verified-rest-spots.json", content: stableJson({ metadata: fieldMetadata, records: fieldVerification.records, candidates: fieldVerification.verifiedCandidates }) },
     { relative: "src/data/generated/verified-rest-spots.json", content: stableJson({ metadata: { sourceDatasetId: fieldMetadata.sourceDatasetId, contentSha256: fieldMetadata.contentSha256, normalizedRecordCount: fieldMetadata.normalizedRecordCount, fullCandidateCount: fieldMetadata.effectiveCandidateCount, candidateCount: nearbyVerifiedCandidates.length, latestVerifiedAt: fieldMetadata.latestVerifiedAt, confidenceCounts: fieldMetadata.confidenceCounts, scope: "デモルートから推定直線距離350m以内" }, candidates: nearbyVerifiedCandidates }) },
     { relative: "data/generated/field-verification-candidates.json", content: stableJson({ metadata: fieldCandidateMetadata, candidates: fieldCandidateExtraction.candidates }) },
-    { relative: "src/data/generated/field-verification-candidates.json", content: stableJson({ metadata: fieldCandidateMetadata, candidates: fieldCandidateExtraction.candidates }) },
+    { relative: "src/data/generated/field-verification-candidates.json", content: stableJson({ metadata: fieldCandidateBrowserMetadata, candidates: fieldCandidateExtraction.candidates }) },
     { relative: "data/generated/field-verification-candidates.csv", content: fieldVerificationCandidatesCsv(fieldCandidateExtraction.candidates) },
+    { relative: "data/generated/field-candidate-ranking-sensitivity.json", content: stableJson(fieldCandidateRankingSensitivityFull) },
+    { relative: "data/generated/field-candidate-ranking-sensitivity.csv", content: fieldCandidateRankingSensitivityCsv(fieldCandidateRankingSensitivity) },
+    { relative: "src/data/generated/field-candidate-ranking-sensitivity.json", content: stableJson(fieldCandidateRankingSensitivityBrowser) },
+    { relative: "data/generated/field-visit-shortlist.json", content: stableJson(fieldVisitShortlistFull) },
+    { relative: "data/generated/field-visit-shortlist.csv", content: fieldVisitShortlistCsv(fieldVisitShortlist) },
+    { relative: "src/data/generated/field-visit-shortlist.json", content: stableJson(fieldVisitShortlistBrowser) },
+    { relative: "data/generated/field-check-route-snapshot.json", content: stableJson(dynamicRouteSnapshot) },
+    { relative: "src/data/generated/field-check-route-snapshot.json", content: stableJson(dynamicRouteSnapshot) },
   ];
   for (const artifact of artifacts.filter((item) => item.relative.endsWith(".json"))) JSON.parse(String(artifact.content));
   await Promise.all(artifacts.map((artifact) => atomicWrite(path.join(rootDir, artifact.relative), artifact.content)));
@@ -398,8 +544,21 @@ export async function runUpdate({ fetchImpl = fetch, rootDir = path.resolve(path
   console.log(`休憩・給水・屋内候補: 原レコード${restRecords.length}件 / 候補${restCandidates.length}地点 / デモルート350m以内${nearbyRestCandidates.length}地点 / 重複候補${restRecords.length - restCandidates.length}件`);
   console.log(`原レコード: ${records.length}件 / 表示候補地点: ${places.length}地点 / 新宿区: ${shinjukuRecords.length}件 / デモルート350m以内: ${demoRouteRecords.length}件・${demoRoutePlaces.length}地点`);
   console.log(`監査: 同一座標群${audit.identicalCoordinateGroupCount} / 10m以内群${audit.proximityGroupsWithin10m.length} / 25m以内群${audit.proximityGroupsWithin25m.length} / 曖昧近接ペア${audit.ambiguousNearbyPairCount}`);
-  console.log(`現地確認: 入力${fieldMetadata.inputRowCount}件 / 正規化${fieldMetadata.normalizedRecordCount}件 / 除外${fieldMetadata.excludedRecordCount}件 / 確認候補${fieldCandidateMetadata.candidateCount}地点 / 座標品質異常${fieldCandidateMetadata.excludedCoordinateConflictPlaceCount}地点を除外`);
-  return { metadata, manifest, records, duplicateCandidates, restMetadata, restCandidates, fieldMetadata, fieldVerificationCandidates: fieldCandidateExtraction.candidates, datasets: downloaded.map(({ dataset, inputCount, records: items, excludedCount, exclusionReasons }) => ({ key: dataset.key, inputCount, recordCount: items.length, excludedCount, exclusionReasons })) };
+  console.log(`現地確認: 入力${fieldMetadata.inputRowCount}件 / 正規化${fieldMetadata.normalizedRecordCount}件 / 順位候補${fieldCandidateMetadata.candidateCount}地点 / 順位除外${fieldCandidateMetadata.exclusions.length}地点`, fieldCandidateMetadata.exclusionReasonCounts);
+  console.log(`Field candidate sensitivity: ${fieldCandidateRankingSensitivityMetadata.candidateCount} candidates / ${fieldCandidateRankingSensitivityMetadata.weightScenarioCount} weight scenarios / ${fieldCandidateRankingSensitivityMetadata.paretoCandidateCount} Pareto candidates / ${fieldVisitShortlistMetadata.entryCount} visit shortlist entries`);
+  return {
+    metadata,
+    manifest,
+    records,
+    duplicateCandidates,
+    restMetadata,
+    restCandidates,
+    fieldMetadata,
+    fieldVerificationCandidates: fieldCandidateExtraction.candidates,
+    fieldCandidateRankingSensitivity,
+    fieldVisitShortlist,
+    datasets: downloaded.map(({ dataset, inputCount, records: items, excludedCount, exclusionReasons }) => ({ key: dataset.key, inputCount, recordCount: items.length, excludedCount, exclusionReasons })),
+  };
 }
 
 async function generatedHashes(rootDir) {
@@ -412,7 +571,12 @@ async function generatedHashes(rootDir) {
 export async function verifyDeterminism({ sourceRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..") } = {}) {
   const first = await mkdtemp(path.join(tmpdir(), "tokyo-pace-determinism-a-")); const second = await mkdtemp(path.join(tmpdir(), "tokyo-pace-determinism-b-"));
   try {
-    const options = { retrievedAt: "2000-01-01T00:00:00.000Z", rawSnapshotDir: path.join(sourceRoot, "data/raw"), fieldVerificationPath: path.join(sourceRoot, "data/field-verification/rest-spots.csv") };
+    const options = {
+      retrievedAt: "2000-01-01T00:00:00.000Z",
+      rawSnapshotDir: path.join(sourceRoot, "data/raw"),
+      fieldVerificationPath: path.join(sourceRoot, "data/field-verification/rest-spots.csv"),
+      dynamicRouteSnapshotPath: path.join(sourceRoot, REPRESENTATIVE_DYNAMIC_ROUTE_SNAPSHOT_RELATIVE_PATH),
+    };
     await runUpdate({ ...options, rootDir: first }); await runUpdate({ ...options, rootDir: second });
     const a = await generatedHashes(first); const b = await generatedHashes(second); const changed = [...new Set([...Object.keys(a), ...Object.keys(b)])].filter((file) => a[file] !== b[file]);
     if (changed.length) throw new Error(`再現性検証に失敗: ${changed.join(", ")}`);
