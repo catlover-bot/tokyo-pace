@@ -13,7 +13,7 @@ import {
 } from "../domain/fieldCheckMapPresentation";
 import {
   getDetourSensitivityLabel,
-  getRankStabilityLabel,
+  getRankStabilityDescription,
 } from "../domain/fieldCandidateRankingPresentation";
 import { getRouteBaseLineStyle } from "../domain/routePresentation";
 import type {
@@ -79,13 +79,20 @@ export function FieldCheckMap({
   const selectedGeometry = selected ? getCandidateMapGeometry(selected) : null;
   const analysisByCandidateId = new Map(rankingSensitivity.map((analysis) => [analysis.candidateId, analysis]));
   const shortlistByCandidateId = new Map(visitShortlist.map((entry) => [entry.candidateId, entry]));
+  const finalCandidateIds = new Set(visitShortlist.map((entry) => entry.candidateId));
+  const finalCandidates = candidates.filter((candidate) => finalCandidateIds.has(candidate.candidateId));
+  const visibleCandidates = candidates.filter((candidate) => {
+    if (candidate.candidateId === selected?.candidateId) return true;
+    return finalCandidateIds.has(candidate.candidateId) ? layers.candidates : layers.otherCandidates;
+  });
 
   return <div className="field-check-map-shell">
     <fieldset className="field-map-controls">
       <legend>地図の表示</legend>
       <label><input type="checkbox" checked={layers.dynamicRoutes} onChange={(event) => updateLayer(setLayers, "dynamicRoutes", event.target.checked)} />代表動的3経路</label>
       <label><input type="checkbox" checked={layers.fixedDemoRoutes} onChange={(event) => updateLayer(setLayers, "fixedDemoRoutes", event.target.checked)} />固定デモ経路（回帰比較）</label>
-      <label><input type="checkbox" checked={layers.candidates} onChange={(event) => updateLayer(setLayers, "candidates", event.target.checked)} />現地確認候補</label>
+      <label><input type="checkbox" checked={layers.candidates} onChange={(event) => updateLayer(setLayers, "candidates", event.target.checked)} />優先的に確認する5地点</label>
+      <label><input type="checkbox" checked={layers.otherCandidates} onChange={(event) => updateLayer(setLayers, "otherCandidates", event.target.checked)} />その他の分析候補3地点</label>
       <label><input type="checkbox" checked={layers.selectedCandidateConnection} onChange={(event) => updateLayer(setLayers, "selectedCandidateConnection", event.target.checked)} />選択候補の最近点・推定直線</label>
       <label><input type="checkbox" checked={layers.theoreticalInsertion} onChange={(event) => updateLayer(setLayers, "theoreticalInsertion", event.target.checked)} />選択候補の理論挿入位置</label>
     </fieldset>
@@ -96,10 +103,10 @@ export function FieldCheckMap({
         zoom={15}
         scrollWheelZoom={false}
         className="field-check-leaflet-map"
-        aria-label="代表動的経路、固定デモ経路と現地確認候補の地図"
+        aria-label="代表動的経路と現地確認候補の地図"
       >
         <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <InitialViewport candidates={candidates} />
+        <InitialViewport candidates={finalCandidates} />
         <CandidateViewport candidate={selected} />
 
         {layers.dynamicRoutes && representativeDynamicRoutes.map((route) => <Polyline
@@ -128,7 +135,7 @@ export function FieldCheckMap({
           }}
         ><Popup><strong>{getFixedDemoFieldCheckRouteLabel(route.id, route.name)}</strong><br />既存機能の比較・回帰確認にだけ使用する固定デモ経路です。</Popup></Polyline>)}
 
-        {layers.candidates && candidates.map((candidate, index) => {
+        {visibleCandidates.map((candidate, index) => {
           const isSelected = candidate.candidateId === selected?.candidateId;
           const analysis = analysisByCandidateId.get(candidate.candidateId);
           const shortlistEntry = shortlistByCandidateId.get(candidate.candidateId);
@@ -147,8 +154,18 @@ export function FieldCheckMap({
             }}
             eventHandlers={{ click: () => onSelectCandidate(candidate.candidateId) }}
           >
-            {isSelected && <Tooltip permanent direction="top" offset={[0, -10]} className="field-map-selected-label">選択中：単一スコア{baselineRank}位{shortlistEntry ? `／訪問推奨${shortlistEntry.visitPriority}番目` : ""}</Tooltip>}
-            <Popup><strong>単一スコア順位 {baselineRank}位：{candidate.name}</strong>{shortlistEntry && <><br /><strong>訪問推奨 {shortlistEntry.visitPriority}番目</strong></>}<br />{candidate.facilityAccessCategoryLabel}<br />{candidate.address ?? "住所情報なし"}<br />代表動的経路から推定直線{Math.round(candidate.distanceToRouteMeters)}m{analysis && <><br />往復直線proxy控除後：推定{Math.round(analysis.conservativeProxyImprovementMeters)}m<br />{getDetourSensitivityLabel(analysis.detourSensitivityClass)}<br />上位5出現率 {Math.round(analysis.top5AppearanceRate * 1000) / 10}%（{getRankStabilityLabel(analysis.rankStabilityClass)}）</>}<br />対象：{candidate.dynamicRouteIds.map(getDynamicFieldCheckRouteLabel).join(" / ")}</Popup>
+            {isSelected && <Tooltip permanent direction="top" offset={[0, -10]} className="field-map-selected-label">選択中：{shortlistEntry ? `確認優先度${shortlistEntry.visitPriority}` : "その他の分析候補"}</Tooltip>}
+            <Popup>
+              <strong>{candidate.name}</strong>
+              <br />{shortlistEntry ? <strong>現地確認の優先順位：確認優先度{shortlistEntry.visitPriority}</strong> : "今回の優先確認5地点には含めていない分析候補"}
+              <br />{candidate.facilityAccessCategoryLabel}
+              <br />{candidate.address ?? "住所情報なし"}
+              <br />代表動的経路から推定直線{Math.round(candidate.distanceToRouteMeters)}m
+              {analysis && <><br />往復直線proxy控除後：推定{Math.round(analysis.conservativeProxyImprovementMeters)}m<br />{getDetourSensitivityLabel(analysis.detourSensitivityClass)}<br />{getRankStabilityDescription(analysis.top5AppearanceRate, analysis.scenarioRanks?.length ?? 15)}</>}
+              <br />注意：{shortlistEntry?.caution ?? candidate.specialCautions[0] ?? "一般利用・着席・営業状況は現地で確認が必要です。"}
+              <br />対象：{candidate.dynamicRouteIds.map(getDynamicFieldCheckRouteLabel).join(" / ")}
+              <br /><small>単一スコア順位 {baselineRank}位（地理的な訪問順ではありません）</small>
+            </Popup>
           </CircleMarker>;
         })}
 
@@ -180,8 +197,8 @@ export function FieldCheckMap({
       <span><i className="field-route-key dynamic-step" aria-hidden="true" />代表動的：階段回避要求</span>
       <span><i className="field-route-key dynamic-wheelchair" aria-hidden="true" />代表動的：車いすプロファイル</span>
       <span><i className="field-route-key fixed-demo" aria-hidden="true" />固定デモ（初期非表示）</span>
-      <span><i className="field-candidate-key" aria-hidden="true" />現地確認候補</span>
-      <span><i className="field-shortlist-key" aria-hidden="true" />最終訪問候補5地点</span>
+      <span><i className="field-shortlist-key" aria-hidden="true" />優先的に確認する5地点</span>
+      <span><i className="field-candidate-key" aria-hidden="true" />その他の分析候補（初期非表示）</span>
       <span><i className="field-nearest-key" aria-hidden="true" />ルートへの最近点</span>
       <span><i className="field-detour-key" aria-hidden="true" />候補から最近点までの推定直線</span>
       <span><i className="field-insertion-key" aria-hidden="true" />理論上の休憩挿入位置</span>

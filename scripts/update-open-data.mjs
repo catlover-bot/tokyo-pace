@@ -25,6 +25,10 @@ import {
   fieldCandidateRankingSensitivityCsv,
   fieldVisitShortlistCsv,
 } from "../src/domain/fieldCandidateRankingSensitivity.mjs";
+import {
+  deriveFieldVisitPlan,
+  fieldVisitPlanCsv,
+} from "../src/domain/fieldVisitPlan.mjs";
 import { parseRepresentativeDynamicRouteSnapshot } from "../src/domain/fieldCheckRouteSnapshot.mjs";
 
 export const DATASETS = [
@@ -356,6 +360,10 @@ export async function runUpdate({
     fieldCandidateExtraction.candidates,
   );
   const fieldVisitShortlist = deriveFieldVisitShortlist(fieldCandidateRankingSensitivity);
+  const fieldVisitPlan = deriveFieldVisitPlan(
+    fieldVisitShortlist,
+    fieldCandidateExtraction.candidates,
+  );
   const records = downloaded.flatMap(({ records: items }) => items).sort(recordOrder);
   const shinjukuRecords = records.filter((record) => record.address?.includes("新宿区"));
   const places = clusterOfficialToiletRecords(records);
@@ -467,6 +475,19 @@ export async function runUpdate({
     requestedLimit: FIELD_CANDIDATE_TOP_RANK_LIMIT,
     configuration: fieldVisitShortlist.configuration,
   };
+  const fieldVisitPlanMetadata = {
+    schemaVersion: 1,
+    datasetId: "tokyo-pace-field-visit-plan",
+    sourceType: "tokyo_pace_field_visit_plan",
+    provider: "TOKYO PACE",
+    datasetName: "TOKYO PACE 現地調査実施計画",
+    generatedBy: "TOKYO PACE",
+    generatedAt: generationRetrievedAt,
+    sourceShortlistDatasetId: fieldVisitShortlistMetadata.datasetId,
+    entryCount: fieldVisitPlan.entries.length,
+    confirmationResultFieldsPrefilled: false,
+    configuration: fieldVisitPlan.configuration,
+  };
   const fieldCandidateRankingSensitivityFull = {
     metadata: fieldCandidateRankingSensitivityMetadata,
     ...fieldCandidateRankingSensitivity,
@@ -482,6 +503,10 @@ export async function runUpdate({
   const fieldVisitShortlistBrowser = {
     metadata: fieldVisitShortlistMetadata,
     entries: fieldVisitShortlist.candidates.map(compactRankingCandidate),
+  };
+  const fieldVisitPlanBrowser = {
+    metadata: fieldVisitPlanMetadata,
+    entries: fieldVisitPlan.entries,
   };
   const auditWithFieldVerification = {
     ...audit,
@@ -534,6 +559,8 @@ export async function runUpdate({
     { relative: "data/generated/field-visit-shortlist.json", content: stableJson(fieldVisitShortlistFull) },
     { relative: "data/generated/field-visit-shortlist.csv", content: fieldVisitShortlistCsv(fieldVisitShortlist) },
     { relative: "src/data/generated/field-visit-shortlist.json", content: stableJson(fieldVisitShortlistBrowser) },
+    { relative: "data/generated/field-visit-plan.csv", content: fieldVisitPlanCsv(fieldVisitPlan) },
+    { relative: "src/data/generated/field-visit-plan.json", content: stableJson(fieldVisitPlanBrowser) },
     { relative: "data/generated/field-check-route-snapshot.json", content: stableJson(dynamicRouteSnapshot) },
     { relative: "src/data/generated/field-check-route-snapshot.json", content: stableJson(dynamicRouteSnapshot) },
   ];
@@ -546,6 +573,7 @@ export async function runUpdate({
   console.log(`監査: 同一座標群${audit.identicalCoordinateGroupCount} / 10m以内群${audit.proximityGroupsWithin10m.length} / 25m以内群${audit.proximityGroupsWithin25m.length} / 曖昧近接ペア${audit.ambiguousNearbyPairCount}`);
   console.log(`現地確認: 入力${fieldMetadata.inputRowCount}件 / 正規化${fieldMetadata.normalizedRecordCount}件 / 順位候補${fieldCandidateMetadata.candidateCount}地点 / 順位除外${fieldCandidateMetadata.exclusions.length}地点`, fieldCandidateMetadata.exclusionReasonCounts);
   console.log(`Field candidate sensitivity: ${fieldCandidateRankingSensitivityMetadata.candidateCount} candidates / ${fieldCandidateRankingSensitivityMetadata.weightScenarioCount} weight scenarios / ${fieldCandidateRankingSensitivityMetadata.paretoCandidateCount} Pareto candidates / ${fieldVisitShortlistMetadata.entryCount} visit shortlist entries`);
+  console.log(`Field visit plan: ${fieldVisitPlanMetadata.entryCount} entries / confirmation results prefilled: ${fieldVisitPlanMetadata.confirmationResultFieldsPrefilled}`);
   return {
     metadata,
     manifest,
@@ -557,6 +585,7 @@ export async function runUpdate({
     fieldVerificationCandidates: fieldCandidateExtraction.candidates,
     fieldCandidateRankingSensitivity,
     fieldVisitShortlist,
+    fieldVisitPlan,
     datasets: downloaded.map(({ dataset, inputCount, records: items, excludedCount, exclusionReasons }) => ({ key: dataset.key, inputCount, recordCount: items.length, excludedCount, exclusionReasons })),
   };
 }

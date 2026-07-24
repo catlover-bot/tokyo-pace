@@ -4,6 +4,7 @@ export type FieldCheckMapLayerVisibility = {
   dynamicRoutes: boolean;
   fixedDemoRoutes: boolean;
   candidates: boolean;
+  otherCandidates: boolean;
   selectedCandidateConnection: boolean;
   theoreticalInsertion: boolean;
 };
@@ -12,6 +13,7 @@ export const DEFAULT_FIELD_CHECK_MAP_LAYERS: FieldCheckMapLayerVisibility = {
   dynamicRoutes: true,
   fixedDemoRoutes: false,
   candidates: true,
+  otherCandidates: false,
   selectedCandidateConnection: true,
   theoreticalInsertion: true,
 };

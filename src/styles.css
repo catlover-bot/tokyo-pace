@@ -110,11 +110,67 @@ fieldset { border: 0; padding: 0; margin: 28px 0; }.segments, .checks { display:
 .field-calculation-notes section { padding: 14px; border: 1px solid #ccd4cf; background: #fff; }
 .field-calculation-notes h3 { margin-top: 0; font-size: 18px; }
 .field-calculation-notes p { margin-bottom: 0; }
+.field-priority-overview-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin: 20px 0; padding: 0; list-style: none; }
+.field-priority-overview-list li { min-width: 0; }
+.field-priority-overview-list button { display: grid; align-content: start; gap: 6px; width: 100%; height: 100%; min-height: 190px; padding: 16px; border: 2px solid #aab5af; border-top: 7px solid #075a45; background: #fff; color: #17231e; text-align: left; }
+.field-priority-overview-list button[aria-pressed="true"] { border-color: #075a45; background: #eef6f2; box-shadow: 0 0 0 3px #d5eee5; }
+.field-priority-overview-list strong { font-size: 18px; line-height: 1.4; }
+.field-priority-overview-list span, .field-priority-overview-list small { color: #46534d; font-size: 13px; }
+.field-priority-overview-list .field-priority-number { color: #075a45; font-size: 16px; font-weight: 900; }
+.field-priority-overview-list em { margin-top: 4px; padding: 5px 7px; background: #fff3cd; color: #714800; font-size: 13px; font-style: normal; font-weight: 800; }
+.field-baseline-analysis-details { margin-top: 22px; padding: 14px 17px; border: 1px solid #aab5af; background: #fff; }
+.field-baseline-analysis-details > summary { min-height: 44px; color: #075a45; font-weight: 900; }
+.field-baseline-analysis-details > p { color: #46534d; }
+.field-confirmation-priority { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 12px; color: #46534d; }
+.field-confirmation-priority strong { color: #075a45; font-size: 20px; }
+.field-onsite-primary-metrics, .field-technical-rank-summary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 0; border-top: 1px solid #d5dad7; }
+.field-onsite-primary-metrics div, .field-technical-rank-summary div { min-width: 0; padding: 10px 7px; border-bottom: 1px solid #d5dad7; }
+.field-onsite-primary-metrics dt, .field-technical-rank-summary dt { color: #59655f; font-size: 13px; }
+.field-onsite-primary-metrics dd, .field-technical-rank-summary dd { margin: 0; overflow-wrap: anywhere; font-weight: 900; }
+.field-evaluation-axes { display: grid; gap: 9px; }
+.field-evaluation-axes p { display: grid; gap: 2px; margin: 0; padding: 11px 13px; border-left: 5px solid #075a45; background: #eef6f2; }
+.field-evaluation-axes p:last-child { border-left-color: #5b2a86; background: #f2e9fa; }
+.field-improvement-summary, .field-rank-scope { padding: 12px 14px; background: #f4f2e9; }
+.field-rank-scope { border-left: 5px solid #8a5b00; background: #fff8df; }
+.field-survey-card, .field-other-candidate-card { min-width: 0; }
+.field-copy-section { min-width: 0; padding: 14px; border: 1px solid #ccd4cf; background: #f7faf8; }
+.field-copy-row { display: grid; grid-template-columns: minmax(100px, .35fr) minmax(0, 1fr) auto; align-items: center; gap: 8px; margin-top: 9px; }
+.field-copy-label { font-size: 13px; font-weight: 900; overflow-wrap: anywhere; }
+.field-copy-value { width: 100%; min-width: 0; min-height: 44px; padding: 8px 10px; border: 2px solid #68766e; border-radius: 4px; background: #fff; text-overflow: ellipsis; user-select: all; }
+.field-copy-row button { min-height: 44px; padding: 8px 12px; border: 2px solid #075a45; border-radius: 4px; background: #fff; color: #075a45; font-weight: 900; white-space: nowrap; }
+.field-copy-fallback { margin: 10px 0 0; color: #46534d; font-size: 13px; }
+.field-copy-status { min-height: 1.65em; margin: 5px 0 0; color: #075a45; font-weight: 900; }
+.field-survey-checklist { padding-top: 4px; }
+.field-survey-checklist-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.field-survey-checklist-heading span { color: #075a45; font-weight: 900; }
+.field-survey-checklist > p { margin: 4px 0 10px; color: #46534d; font-size: 13px; }
+.field-survey-check-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+.field-survey-check-grid label { display: flex; align-items: flex-start; gap: 9px; min-width: 0; min-height: 48px; padding: 9px; border: 1px solid #ccd4cf; background: #fff; }
+.field-survey-check-grid input { flex: 0 0 auto; width: 24px; height: 24px; margin: 1px 0 0; }
+.field-survey-check-grid span { min-width: 0; overflow-wrap: anywhere; }
+.field-candidate-technical-details .field-scenario-metrics { margin-top: 8px; }
+.field-other-candidates-section { margin-top: 56px; }
+.field-other-candidates-details { border: 2px solid #7d8a83; background: #fff; }
+.field-other-candidates-details > summary { display: grid; min-height: 58px; padding: 14px 18px; color: #075a45; font-size: 20px; font-weight: 900; }
+.field-other-candidates-details > summary small { color: #46534d; font-size: 13px; font-weight: 500; }
+.field-other-candidates-details[open] > summary { border-bottom: 1px solid #ccd4cf; background: #eef6f2; }
+.field-other-candidates-details > p, .field-other-candidates-details > .field-candidate-list { margin-left: 18px; margin-right: 18px; }
+.field-other-candidate-list { margin-bottom: 20px !important; }
+.field-other-label { padding: 7px 9px; background: #f4f2e9; color: #46534d; font-size: 13px; font-weight: 800; }
+.field-download-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.field-download-options article { display: grid; align-content: start; min-width: 0; padding: 18px; border: 1px solid #aab5af; background: #fff; }
+.field-download-options .field-download-primary { border: 3px solid #075a45; background: #eef6f2; }
+.field-download-options h3 { margin: 0; }
+.field-download-options p { color: #46534d; }
+.field-download-options button { width: 100%; min-height: 50px; margin-top: auto; padding: 9px 14px; border: 2px solid #075a45; border-radius: 4px; background: #075a45; color: #fff; font-weight: 900; }
+.field-download-options article:not(.field-download-primary) button { background: #fff; color: #075a45; }
+.field-download-options button:disabled { border-color: #63736c; background: #63736c; color: #fff; }
+.field-csv-encoding-note { color: #46534d; font-size: 14px; }
 .analysis-data-panel { margin-top: 28px; border: 2px solid #7d8a83; background: #fff; }.analysis-data-panel > summary { padding: 15px 20px; color: #075a45; font-size: 19px; font-weight: 900; }.analysis-data-panel[open] > summary { border-bottom: 1px solid #ccd4cf; background: #eef6f2; }.analysis-data-content { padding: 20px; }.analysis-data-content > p:first-child { margin-top: 0; }.analysis-data-status { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 14px 0; }.analysis-data-status div { padding: 12px; border: 1px solid #ccd4cf; }.analysis-data-status dt { color: #59655f; font-size: 13px; }.analysis-data-status dd { margin: 0; font-size: 18px; font-weight: 900; }.analysis-download-actions { display: flex; flex-wrap: wrap; gap: 12px; }.analysis-download-actions button { padding: 9px 18px; border: 2px solid #075a45; border-radius: 4px; background: #075a45; color: #fff; font-weight: 900; }.analysis-data-preview { margin-top: 18px; }.analysis-data-preview > summary { font-weight: 800; }.analysis-data-preview pre { max-height: 360px; overflow: auto; padding: 14px; background: #17231e; color: #fff; font-size: 12px; white-space: pre-wrap; overflow-wrap: anywhere; }.analysis-provenance { margin-top: 18px; }.analysis-provenance h3 { margin-bottom: 6px; }.analysis-provenance ul { padding-left: 1.25em; }
 footer { border-top: 1px solid #abb6af; padding: 35px 24px 50px; color: #3d4943; }footer strong { color: #075a45; }
 @media (max-width: 1024px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }.route-card:last-child { grid-column: 1 / -1; max-width: 560px; } }
-@media (max-width: 900px) { .comparison-table-wrap { display: none; }.cards { grid-template-columns: 1fr; }.route-card:last-child { grid-column: auto; max-width: none; }.summary-columns { grid-template-columns: 1fr; }.comparison-heading { display: block; }.comparison-heading > p { margin-top: 8px; }.field-candidate-list, .field-calculation-notes, .field-ranking-view-grid { grid-template-columns: 1fr; } }
-@media (max-width: 720px) { body { font-size: 16px; }.header-inner { min-height: 82px; padding: 12px 16px; }.brand-mark { width: 43px; height: 43px; }.service-name { font-size: 20px; }.tagline { display: none; }.demo-badge { font-size: 13px; }main { padding: 38px 15px 65px; }.intro h1 br { display: none; }.search-panel { padding: 22px 16px; }.panel-title > p { display: none; }.locations { grid-template-columns: 1fr; }.locations > span { transform: rotate(90deg); padding: 0; }.segments label { flex: 1; }.segments span { text-align: center; padding: 12px 8px; }.checks { display: grid; }.spot-grid { grid-template-columns: 1fr; }.map-frame, .field-check-map-frame { height: 430px; }.section-heading { display: block; }.map-note { display: inline-block; }.card-top { display: block; }.recommended-summary, .route-card { padding: 20px 16px; }.recommended-summary h3 { font-size: 24px; }.card-rank { display: grid; }.metrics, .route-card > .primary-metrics { grid-template-columns: 1fr; }.error-actions { display: grid; }.error button { width: 100%; }.location-actions, .field-download-actions, .field-map-controls { display: grid; }.location-actions button, .field-download-actions button { width: 100%; }.field-check-summary, .field-candidate-metrics, .analysis-data-status, .field-top-candidate-list, .field-scenario-metrics { grid-template-columns: 1fr; }.field-scenario-metrics div { border-right: 0; border-bottom: 1px solid #d5dad7; }.field-scenario-metrics div:last-child { border-bottom: 0; }.field-candidate-card { padding: 20px 16px; }.field-candidate-rank, .field-visit-order li { grid-template-columns: 1fr; }.field-visit-order button { width: 100%; } }
+@media (max-width: 900px) { .comparison-table-wrap { display: none; }.cards { grid-template-columns: 1fr; }.route-card:last-child { grid-column: auto; max-width: none; }.summary-columns { grid-template-columns: 1fr; }.comparison-heading { display: block; }.comparison-heading > p { margin-top: 8px; }.field-candidate-list, .field-calculation-notes, .field-ranking-view-grid, .field-download-options { grid-template-columns: 1fr; } }
+@media (max-width: 720px) { body { font-size: 16px; }.header-inner { min-height: 82px; padding: 12px 16px; }.brand-mark { width: 43px; height: 43px; }.service-name { font-size: 20px; }.tagline { display: none; }.demo-badge { font-size: 13px; }main { padding: 38px 15px 65px; }.intro h1 br { display: none; }.search-panel { padding: 22px 16px; }.panel-title > p { display: none; }.locations { grid-template-columns: 1fr; }.locations > span { transform: rotate(90deg); padding: 0; }.segments label { flex: 1; }.segments span { text-align: center; padding: 12px 8px; }.checks { display: grid; }.spot-grid { grid-template-columns: 1fr; }.map-frame, .field-check-map-frame { height: 430px; }.section-heading { display: block; }.map-note { display: inline-block; }.card-top { display: block; }.recommended-summary, .route-card { padding: 20px 16px; }.recommended-summary h3 { font-size: 24px; }.card-rank { display: grid; }.metrics, .route-card > .primary-metrics { grid-template-columns: 1fr; }.error-actions { display: grid; }.error button { width: 100%; }.location-actions, .field-download-actions, .field-map-controls { display: grid; }.location-actions button, .field-download-actions button { width: 100%; }.field-check-summary, .field-candidate-metrics, .analysis-data-status, .field-top-candidate-list, .field-scenario-metrics, .field-priority-overview-list, .field-survey-check-grid { grid-template-columns: 1fr; }.field-scenario-metrics div { border-right: 0; border-bottom: 1px solid #d5dad7; }.field-scenario-metrics div:last-child { border-bottom: 0; }.field-candidate-card { padding: 20px 16px; }.field-candidate-rank, .field-visit-order li { grid-template-columns: 1fr; }.field-visit-order button { width: 100%; }.field-copy-row { grid-template-columns: 1fr; }.field-copy-row button { width: 100%; }.field-priority-overview-list button { min-height: 0; }.field-map-controls label { min-height: 44px; }.field-other-candidates-details > p, .field-other-candidates-details > .field-candidate-list { margin-left: 10px; margin-right: 10px; }.field-confirmation-priority { display: grid; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; } }
 @media print {
   @page { margin: 12mm; }

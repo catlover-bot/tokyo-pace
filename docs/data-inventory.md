@@ -16,7 +16,8 @@
 | 正規化済み確認地点 | TOKYO PACE生成データ | `data/generated/verified-rest-spots.json` | 元公式データと現地確認根拠を分離 | ブラウザ版はデモルート近傍の評価属性だけ。verifier/notesなし |
 | 現地確認優先候補 | TOKYO PACE理論分析 | `data/generated/field-verification-candidates.json/.csv` | 元公式source ID、`generatedBy`を保持 | 改善・迂回・カテゴリ基準を満たす自然件数。0m・慎重施設・座標品質異常は理由付き除外。休憩可否の保証ではない |
 | 候補順位の感度分析 | TOKYO PACE派生分析 | `data/generated/field-candidate-ranking-sensitivity.json/.csv` | 現地確認優先候補と同じ公式source IDを参照 | 3迂回proxy、15重み設定、順位範囲、上位5出現率、二軸・Pareto。利用可能性の確率ではない |
-| 最終訪問候補 | TOKYO PACE派生分析 | `data/generated/field-visit-shortlist.json/.csv` | 感度分析のcandidate IDを参照 | 固定構成規則による5地点。現地確認結果や休憩可否を示さない |
+| 優先的に確認する5地点 | TOKYO PACE派生分析 | `data/generated/field-visit-shortlist.json/.csv` | 感度分析のcandidate IDを参照 | 固定構成規則による現地確認の優先順位。地理的な訪問順ではなく、現地確認結果や休憩可否を示さない |
+| 現地調査用5地点計画 | TOKYO PACE派生分析 | `data/generated/field-visit-plan.csv` / `src/data/generated/field-visit-plan.json` | shortlistと候補のIDを参照 | UTF-8 BOM付きCSV。分析値だけを記入し、14の確認結果列は空欄/null。事実を事前入力しない |
 | 代表動的3経路snapshot | OpenStreetMap / openrouteservice由来のTOKYO PACE Worker正規化結果 | `data/routing-snapshots/shinjuku-west-to-tocho.v1.json` | ODbL、© OpenStreetMap contributors / openrouteservice | 現地確認順位とE2Eの再現用。最新経路・実測経路ではない |
 | 選択経路分析CSV/GeoJSON | 利用時に生成するTOKYO PACE分析 | ブラウザダウンロード | FeatureごとにOSM/ODbL、公式CC BY、TOKYO PACE派生を区別 | 選択中経路だけ |
 

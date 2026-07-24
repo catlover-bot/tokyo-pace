@@ -15,6 +15,7 @@ describe("現地確認地図のレイヤー表現", () => {
       dynamicRoutes: true,
       fixedDemoRoutes: false,
       candidates: true,
+      otherCandidates: false,
       selectedCandidateConnection: true,
       theoreticalInsertion: true,
     });

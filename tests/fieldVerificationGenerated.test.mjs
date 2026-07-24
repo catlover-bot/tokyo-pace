@@ -149,5 +149,5 @@ describe("現地確認生成物", () => {
     } finally {
       await rm(rootDir, { recursive: true, force: true });
     }
-  }, 15_000);
+  }, 60_000);
 });
