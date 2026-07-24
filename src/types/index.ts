@@ -31,7 +31,7 @@ export type DataSource = {
   attribution?: string | null;
 };
 
-export type OpenDataManifestEntry = { datasetId: string; datasetUrl: string; resourceUrl: string; retrievedAt: string; contentSha256: string; byteSize: number; normalizedRecordCount: number; excludedRecordCount: number; sourceUpdatedAt: string | null; encoding: string; license: string; sourceType?: AnalysisSourceType; provider?: string; datasetName?: string; attribution?: string; generatedBy?: string; generatedAt?: string };
+export type OpenDataManifestEntry = { datasetId: string; datasetUrl: string; resourceUrl: string; retrievedAt: string; contentSha256: string; byteSize: number; normalizedRecordCount: number; excludedRecordCount: number; sourceUpdatedAt: string | null; encoding: string; license: string; sourceType?: AnalysisSourceType; provider?: string; datasetName?: string; attribution?: string; generatedBy?: string; generatedAt?: string; lastUpdateStatus?: "success" | "failed"; lastUpdateAttemptAt?: string };
 export type OpenDataManifest = { schemaVersion: number; datasets: OpenDataManifestEntry[]; generatedBy?: string; generatedAt?: string };
 
 export type FieldVerificationRecord = {

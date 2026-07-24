@@ -37,6 +37,8 @@ import type {
   FieldVisitShortlistEntry,
   RouteProfile,
 } from "../types";
+import { PublicPolicyLinks } from "./PublicPolicyLinks";
+import { SkipLink } from "./SkipLink";
 
 const FieldCheckMap = lazy(() =>
   import("./FieldCheckMap").then((module) => ({ default: module.FieldCheckMap })),
@@ -689,6 +691,7 @@ export function FieldCheckPage({
 
   return (
     <>
+      <SkipLink />
       <header className="site-header">
         <div className="header-inner">
           <div className="brand">
@@ -701,7 +704,7 @@ export function FieldCheckPage({
           <span className="demo-badge">読み取り専用</span>
         </div>
       </header>
-      <main className="field-check-page">
+      <main id="main-content" className="field-check-page" tabIndex={-1}>
         <nav className="field-check-nav" aria-label="画面切替">
           <a href="/">経路比較画面へ戻る</a>
         </nav>
@@ -1010,6 +1013,7 @@ export function FieldCheckPage({
       <footer>
         <strong>TOKYO PACE</strong>
         <p>現地確認の優先順位と、事実をCSVへ記録するための試作画面です。</p>
+        <PublicPolicyLinks />
       </footer>
     </>
   );

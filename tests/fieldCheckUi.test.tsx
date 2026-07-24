@@ -217,6 +217,14 @@ function render(
 }
 
 describe("現地調査実施版のfield-check画面", () => {
+  it("本文へのスキップリンクとランドマーク、方針導線を持つ", () => {
+    const html = render();
+    expect(html).toContain('<a class="skip-link" href="#main-content">本文へスキップ</a>');
+    expect(html).toContain('<main id="main-content"');
+    expect(html).toContain('aria-label="サービス方針"');
+    expect(html).toContain('href="/accessibility"');
+  });
+
   it("目的、概要、地図、優先5カード、CSV、その他候補、制約の順に並べる", () => {
     const html = render();
     const markers = [

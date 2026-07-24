@@ -13,5 +13,6 @@ dist/
 coverage/
 test-results/
 playwright-report/
+.scheduled-update-audit/
 *.pem
 credentials.json

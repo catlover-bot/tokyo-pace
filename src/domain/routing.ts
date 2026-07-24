@@ -41,8 +41,22 @@ export function buildOrsRequest(request: RouteSearchRequest, profile: RouteProfi
   return { profile: profile === "wheelchair_profile" ? "wheelchair" : "foot-walking", body };
 }
 export function buildRouteCacheKey(request: RouteSearchRequest): string {
-  const round = (value: number) => value.toFixed(5);
-  return JSON.stringify({ v: ROUTING_SCHEMA_VERSION, origin: [round(request.origin.latitude), round(request.origin.longitude)], destination: [round(request.destination.latitude), round(request.destination.longitude)], profiles: profiles.map((profile) => [profile, buildOrsRequest(request, profile)]) });
+  // Six decimals keep the maximum rounding displacement well below one metre in
+  // Tokyo while still coalescing insignificant floating-point representation noise.
+  const round = (value: number) => value.toFixed(6);
+  return JSON.stringify({
+    v: ROUTING_SCHEMA_VERSION,
+    origin: [round(request.origin.latitude), round(request.origin.longitude)],
+    destination: [round(request.destination.latitude), round(request.destination.longitude)],
+    preferences: {
+      maxContinuousWalkingMinutes: request.preferences.maxContinuousWalkingMinutes,
+      requireToilet: request.preferences.requireToilet,
+      avoidSteepSlopes: request.preferences.avoidSteepSlopes,
+      preferIndoorRest: request.preferences.preferIndoorRest,
+      avoidSteps: request.preferences.avoidSteps === true,
+    },
+    profiles: profiles.map((profile) => [profile, buildOrsRequest(request, profile)]),
+  });
 }
 
 type OrsGeoJson = { bbox?: number[]; features?: Array<{ geometry?: { coordinates?: number[][] }; properties?: { summary?: { distance?: number; duration?: number }; segments?: Array<{ steps?: Array<{ instruction?: string; distance?: number; duration?: number }> }>; extras?: Record<string, { values?: number[][] }> } }> };

@@ -1,0 +1,77 @@
+name: Open data update review
+
+on:
+  schedule:
+    # Every Tuesday 12:17 JST. The non-round minute reduces shared-runner congestion.
+    - cron: "17 3 * * 2"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "保存済みraw snapshotだけで検証し、公式配布URLを取得しない"
+        required: true
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: open-data-update-review
+  cancel-in-progress: false
+
+jobs:
+  prepare-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      CI: "true"
+      TZ: Asia/Tokyo
+      UPDATE_MODE: live-review
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Select dry-run or live review preparation
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ inputs.dry_run }}" == "true" ]]; then
+            echo "UPDATE_MODE=dry-run" >> "$GITHUB_ENV"
+            npm run data:verify-determinism
+          else
+            echo "UPDATE_MODE=live-review" >> "$GITHUB_ENV"
+            npm run data:update
+          fi
+      - name: Validate schema, deterministic output, and data tests
+        run: |
+          npm run data:verify-determinism
+          npm test -- tests/openData.test.mjs tests/dataDeterminism.test.mjs tests/officialToiletQuality.test.mjs
+          git diff --check
+      - name: Prepare review-only patch and hashes
+        if: success() && env.UPDATE_MODE == 'live-review'
+        shell: bash
+        run: |
+          mkdir -p .scheduled-update-audit
+          git diff --binary -- data/raw data/generated src/data/generated > .scheduled-update-audit/open-data-update.patch
+          find data/generated src/data/generated -type f \( -name '*.json' -o -name '*.csv' \) -print0 \
+            | sort -z | xargs -0 sha256sum > .scheduled-update-audit/generated-sha256.txt
+          cp data/generated/open-data-manifest.json .scheduled-update-audit/open-data-manifest.json
+      - name: Write audit log
+        if: always()
+        shell: bash
+        run: |
+          node scripts/create-scheduled-update-audit.mjs \
+            --mode "$UPDATE_MODE" \
+            --status "${{ job.status }}" \
+            --output .scheduled-update-audit/audit.json
+      - name: Upload review artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: open-data-update-review-${{ github.run_id }}
+          path: .scheduled-update-audit/
+          if-no-files-found: error
+          retention-days: 14
+

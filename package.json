@@ -1,7 +1,7 @@
 {
   "name": "tokyo-pace",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.0.0",
   "type": "module",
   "engines": {
     "node": ">=22"
@@ -14,9 +14,18 @@
     "lint": "eslint .",
     "test": "vitest run",
     "test:e2e": "npm run build && playwright test",
+    "test:api-contract": "vitest run tests/workerRoutes.test.ts && node scripts/verify-api-contract.mjs",
     "data:update": "node scripts/update-open-data.mjs",
     "data:verify-determinism": "node scripts/verify-data-determinism.mjs",
-    "deploy": "npm run build && wrangler deploy"
+    "verify:accessibility": "node scripts/verify-accessibility.mjs",
+    "verify:bundle-budget": "node scripts/verify-bundle-budget.mjs",
+    "verify:security": "node scripts/verify-security.mjs",
+    "verify:secrets": "node scripts/verify-secrets.mjs",
+    "verify:release-config": "node scripts/verify-release-candidate.mjs",
+    "verify:production": "node scripts/verify-production.mjs",
+    "release:preview": "node scripts/release-preview.mjs",
+    "smoke:preview": "node scripts/smoke-preview.mjs",
+    "deploy": "node scripts/production-deploy-guard.mjs"
   },
   "dependencies": {
     "leaflet": "^1.9.4",
@@ -25,6 +34,7 @@
     "react-leaflet": "^5.0.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.12.1",
     "@cloudflare/vite-plugin": "^1.45.0",
     "@cloudflare/workers-types": "^5.20260717.1",
     "@eslint/js": "^10.0.1",

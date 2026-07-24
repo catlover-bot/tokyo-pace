@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "bundleBudget": {
+    "clientJavaScriptBytes": 1100000,
+    "clientCssBytes": 100000,
+    "largestJavaScriptChunkBytes": 550000,
+    "workerBytes": 350000,
+    "totalClientAssetBytes": 2200000
+  },
+  "requestLimits": {
+    "bodyBytes": 32768,
+    "waypointCount": 2,
+    "routeDistanceMeters": 8000
+  },
+  "runtimeDefaults": {
+    "cacheTtlSeconds": 900,
+    "upstreamTimeoutMilliseconds": 8000
+  },
+  "dataFreshnessDays": {
+    "shinjuku": {
+      "currentThrough": 45,
+      "staleAfter": 120
+    },
+    "tokyoDrinking": {
+      "currentThrough": 120,
+      "staleAfter": 240
+    },
+    "daredemoAndTokyoAccessible": {
+      "currentThrough": 180,
+      "staleAfter": 365
+    }
+  }
+}

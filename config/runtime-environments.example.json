@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "note": "値をそのまま本番へ適用せず、変更レビュー後にCloudflare Dashboardまたはwranglerの環境別設定へ反映する。Secretの実値はこのファイルへ書かない。",
+  "requiredSecretNames": [
+    "OPENROUTESERVICE_API_KEY"
+  ],
+  "versionMetadataBinding": "CF_VERSION_METADATA",
+  "rateLimitBinding": "ROUTE_RATE_LIMITER",
+  "publicVariableNames": [
+    "APP_ENV",
+    "APP_VERSION",
+    "BUILD_COMMIT",
+    "BUILD_TIMESTAMP",
+    "LOG_LEVEL",
+    "DATA_MANIFEST_VERSION",
+    "ROUTE_CACHE_TTL_SECONDS",
+    "ORS_TIMEOUT_MILLISECONDS"
+  ],
+  "environments": {
+    "local": {
+      "appEnv": "local",
+      "apiBasePath": "/api",
+      "allowedServiceArea": "shinjuku-demo-bbox",
+      "cacheTtlSeconds": 60,
+      "upstreamTimeoutMilliseconds": 8000,
+      "logLevel": "debug",
+      "rateLimit": {
+        "namespaceId": "2026072400",
+        "searches": 30,
+        "periodSeconds": 60
+      },
+      "versionMetadata": "local_fallback"
+    },
+    "preview": {
+      "appEnv": "preview",
+      "apiBasePath": "/api",
+      "allowedServiceArea": "shinjuku-demo-bbox",
+      "cacheTtlSeconds": 300,
+      "upstreamTimeoutMilliseconds": 8000,
+      "logLevel": "info",
+      "rateLimit": {
+        "namespaceId": "2026072401",
+        "searches": 30,
+        "periodSeconds": 60
+      },
+      "versionMetadata": "CF_VERSION_METADATA"
+    },
+    "production": {
+      "appEnv": "production",
+      "apiBasePath": "/api",
+      "allowedServiceArea": "shinjuku-demo-bbox",
+      "cacheTtlSeconds": 900,
+      "upstreamTimeoutMilliseconds": 8000,
+      "logLevel": "info",
+      "rateLimit": {
+        "namespaceId": "2026072402",
+        "searches": 10,
+        "periodSeconds": 60
+      },
+      "versionMetadata": "CF_VERSION_METADATA"
+    }
+  }
+}

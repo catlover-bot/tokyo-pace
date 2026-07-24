@@ -4,7 +4,15 @@
 
 `ApiRouteProvider`はブラウザから同一オリジンのWorker APIだけを呼びます。Workerの固定openrouteservice adapterが`foot-walking`標準、`foot-walking`階段回避、`wheelchair`制約付きの3候補を取得し、Leaflet座標順の内部`DemoRoute`互換型へ正規化します。UI・評価層はopenrouteserviceの生GeoJSONを参照しません。
 
-Workerは入力サイズ、JSON、有限座標、緯度経度範囲、新宿bbox、同一点、直線距離を検証します。外部通信は8秒で打ち切り、認証・レート制限・タイムアウト・上流障害を安全なエラーへ変換します。外部本文とSecretは返しません。キャッシュキーは座標を小数5桁へ丸め、固定profile／optionsとスキーマ版を含めてSHA-256化し、TTLは900秒です。
+Workerは入力サイズ、JSON、有限座標、緯度経度範囲、新宿bbox、同一点、直線距離を検証します。外部通信は8秒で打ち切り、認証・レート制限・タイムアウト・上流障害を安全なエラーへ変換します。外部本文とSecretは返しません。キャッシュキーは座標を小数6桁へ丸め、固定profile／optionsとスキーマ版を含めてSHA-256化し、local / preview / productionのTTLを60 / 300 / 900秒に分離します。
+
+ブラウザのrate limit keyは`sessionStorage`だけに置く小文字UUID v4で、Workerが形式検証後にSHA-256化します。Cookie、`localStorage`、サーバー保存、ログ、レスポンスには使用しません。匿名IDが欠落した場合だけ、isolate一時salt付きIP hashを使い、raw IPを保持しません。Cloudflare Rate Limiting bindingは環境別namespace、fallbackは`local_edge_instance`内だけであり、後者を全体制限として扱いません。
+
+`/api/health`はWorker自身の軽量応答、`/api/status`は観測したedge instance／bindingのscope付き状態、`/api/version`は`CF_VERSION_METADATA`由来のID・tag・timestampを返します。circuit、cache、request deduplication、isolate fallbackは`authoritative: false`です。ローカルでは`local_fallback`を明示し、人がWorker Version IDを変数へ入力しません。
+
+Release Candidateは`CLOUDFLARE_ENV=production`のbuildで、正本の`wrangler.jsonc`からViteが生成したproduction用`dist/*/wrangler.json`を使います。Worker本体とassetsの実在、production環境、10検索／60秒のRate Limiting、Version Metadata bindingを検証し、一意に解決できた場合だけ`versions upload`へ渡します。source設定の直接uploadと従来の直接deployは行いません。
+
+経路cacheはWorker内部のhash化したRequest keyと環境別TTLで管理します。座標を含む利用者向けレスポンスは`private, no-store`で返し、内部cache用Responseの`public, max-age`をクライアントへ引き継ぎません。
 
 動的経路ではconfirmed／supportedの厳格な休憩候補だけでwalkingSegmentsを分割します。区間時間は経路全体の距離・所要時間に対する距離比で決定的に推定し、possibleは厳格成立へ使用しません。公式トイレ、休憩、給水、屋内候補は経路ごとに再射影します。
 
@@ -77,13 +85,18 @@ GeoJSON内部座標はアプリの`[latitude, longitude]`からGeoJSON標準の`
 
 ## 構成
 
-React SPA を Vite で構築し、Cloudflare Vite plugin により Worker と静的アセットを一体で開発・配布します。`worker/index.ts` はヘルスチェックと`POST /api/routes`を提供し、Secretをブラウザへ渡さずopenrouteserviceへ接続します。
+React SPA を Vite で構築し、Cloudflare Vite plugin により Worker と静的アセットを一体で開発・配布します。`worker/index.ts` は`GET /api/health`、`GET /api/status`、`GET /api/version`と`POST /api/routes`を提供し、Secretをブラウザへ渡さずopenrouteserviceへ接続します。`wrangler.jsonc`を環境別binding、required Secret名、runtime limitの正本とします。
 
 ```text
 UI (React / Leaflet)
   ↓ RouteProvider interface
-ApiRouteProvider → Worker /api/routes → openrouteservice
+ApiRouteProvider → session限定匿名ID → Worker /api/routes → openrouteservice
   または明示操作時だけ DemoRouteProvider
+
+Worker metadata endpoints
+  ├─ /api/health（Worker応答だけ）
+  ├─ /api/status（scope + authoritative）
+  └─ /api/version（CF_VERSION_METADATA）
 
 walkingSegments → 純粋関数 deriveContinuityMetrics → 継続性指標
 routeScore → EvaluatedRoute / scoreBreakdown
@@ -108,7 +121,7 @@ routeScore → EvaluatedRoute / scoreBreakdown
 
 ## データ境界
 
-- `src/data`: MVP が直接読むデモデータ
+- `src/data`: 公開画面が読むデモデータとブラウザ同梱の縮小データ
 - `data/processed`: 実データ取り込みパイプラインの交換点となる GeoJSON
 - `src/types`: プロバイダーと UI に共通する型
 - 不明属性は `null`。推定データは `confidence: estimated` と出典名で明示します。
