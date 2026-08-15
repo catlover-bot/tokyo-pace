@@ -7,6 +7,12 @@ const parseJsonc = (source) => JSON.parse(source.replace(/^\s*\/\/.*$/gmu, ""));
 const wrangler = parseJsonc(read("wrangler.jsonc"));
 
 describe("release candidate Cloudflare bindings", () => {
+  it("keeps SPA fallback while routing every API request Worker-first", () => {
+    expect(wrangler.assets.not_found_handling).toBe("single-page-application");
+    expect(wrangler.assets.run_worker_first).toContain("/api/*");
+    expect(wrangler.assets).not.toHaveProperty("binding");
+  });
+
   it("declares isolated positive rate-limit namespaces and production 10/60", () => {
     const local = wrangler.ratelimits[0];
     const preview = wrangler.env.preview.ratelimits[0];

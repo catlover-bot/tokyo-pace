@@ -127,6 +127,8 @@ export function isProductionBuildConfig(config) {
     && config?.vars?.APP_ENV === "production"
     && typeof config?.main === "string"
     && typeof config?.assets?.directory === "string"
+    && config?.assets?.not_found_handling === "single-page-application"
+    && config?.assets?.run_worker_first?.includes("/api/*")
     && config?.version_metadata?.binding === "CF_VERSION_METADATA"
     && config?.ratelimits?.some(({ name, simple }) =>
       name === "ROUTE_RATE_LIMITER" && simple?.limit === 10 && simple?.period === 60);

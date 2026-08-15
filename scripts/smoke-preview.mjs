@@ -267,6 +267,16 @@ export async function runPreviewSmoke({
     checks.push(endpoint);
   }
 
+  const navigationHealthResponse = await fetchRequest("/api/health", {
+    headers: { "sec-fetch-mode": "navigate" },
+  });
+  invariant(navigationHealthResponse.status === 200, "navigation GET /api/healthはHTTP 200ではありません");
+  const navigationHealth = await json(navigationHealthResponse, "navigation /api/health");
+  assertMetadataApiHeaders(navigationHealthResponse, navigationHealth, "navigation /api/health");
+  assertSafePublicPayload(navigationHealth, "navigation /api/health");
+  invariant(navigationHealth.status === "ok", "navigation GET /api/healthのhealth payloadが不正です");
+  checks.push("api-health-navigation-worker-first");
+
   let indexHtml = "";
   for (const pagePath of ["/", ...POLICY_PATHS]) {
     const response = await fetchRequest(pagePath);

@@ -156,7 +156,11 @@ describe("release preview workflow", () => {
       targetEnvironment: "production",
       name: "tokyo-pace",
       main: "index.js",
-      assets: { directory: "../client" },
+      assets: {
+        directory: "../client",
+        not_found_handling: "single-page-application",
+        run_worker_first: ["/api/*"],
+      },
       vars: { APP_ENV: "production" },
       version_metadata: { binding: "CF_VERSION_METADATA" },
       ratelimits: [{ name: "ROUTE_RATE_LIMITER", simple: { limit: 10, period: 60 } }],
@@ -319,6 +323,12 @@ describe("preview smoke test", () => {
     });
     expect(checks).toContain("mock-partial-profile-contract");
     expect(checks).toContain("osm-attribution");
+    expect(checks).toContain("api-health-navigation-worker-first");
+    expect(calls.some(({ pathname, headers }) =>
+      pathname === "/api/health"
+      && headers?.["sec-fetch-mode"] === "navigate")).toBe(true);
+    expect(calls.filter(({ pathname }) => pathname === "/privacy")
+      .every(({ headers }) => headers?.["sec-fetch-mode"] === undefined)).toBe(true);
     expect(calls.some(({ pathname, method, headers }) =>
       pathname === "/api/routes"
       && method === "POST"
