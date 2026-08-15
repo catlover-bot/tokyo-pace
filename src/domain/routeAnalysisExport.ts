@@ -260,7 +260,7 @@ export function buildRouteAnalysisSnapshot(input: RouteAnalysisExportInput): Rou
     ...toiletSources(manifest),
     ...referencedManifestSources(referencedOfficialDatasetIds, manifest),
     routeSource(route),
-    ...(route.elevation ? [{ sourceType: "elevation_data" as const, sourceDatasetId: "gsi-elevation-tiles", provider: route.elevation.source.provider, datasetName: route.elevation.source.datasetName, license: "??????????????", attribution: route.elevation.source.attribution, datasetUrl: route.elevation.source.datasetUrl, resourceUrl: null }] : []),
+    ...(route.elevation ? [{ sourceType: "elevation_data" as const, sourceDatasetId: "gsi-elevation-tiles", provider: route.elevation.source.provider, datasetName: route.elevation.source.datasetName, license: "国土地理院コンテンツ利用規約", attribution: route.elevation.source.attribution, datasetUrl: route.elevation.source.datasetUrl, resourceUrl: null }] : []),
   ]
     .sort((a, b) => sourceKey(a).localeCompare(sourceKey(b)));
   const sources = [...new Map(allSources.map((source) => [sourceKey(source), source])).values()];

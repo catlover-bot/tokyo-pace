@@ -21,6 +21,7 @@ describe("production release gate", () => {
       "bundle-budget",
       "security-grep",
       "secret-scan",
+      "text-encoding",
       "release-config",
       "accessibility-static",
       "e2e",

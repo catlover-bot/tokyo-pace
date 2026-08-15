@@ -65,8 +65,8 @@ test("動的3経路を比較し、分析データを決定的に出力して固�
 
   await cards.nth(1).getByRole("button", { name: "詳細を見る" }).click();
   await expect(cards.nth(1).locator(".route-card-details")).toBeVisible();
-  await expect(cards.nth(1).getByRole("region", { name: "????????????" })).toContainText("?????");
-  await expect(cards.nth(1).getByRole("region", { name: "????????????" })).toContainText("5%?????");
+  await expect(cards.nth(1).getByRole("region", { name: "標高から推定した坂道情報" })).toContainText("累積上昇量");
+  await expect(cards.nth(1).getByRole("region", { name: "標高から推定した坂道情報" })).toContainText("5%以上の上り");
   await expect(cards.nth(1).getByRole("button", { name: "詳細を閉じる" })).toHaveAttribute("aria-expanded", "true");
   await cards.nth(1).getByRole("button", { name: "詳細を閉じる" }).click();
   await expect(cards.nth(1).locator(".route-card-details")).toBeHidden();

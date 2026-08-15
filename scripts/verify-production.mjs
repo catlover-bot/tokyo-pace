@@ -14,6 +14,7 @@ export const PRODUCTION_CHECKS = Object.freeze([
   { id: "bundle-budget", command: "npm", args: ["run", "verify:bundle-budget"] },
   { id: "security-grep", command: "npm", args: ["run", "verify:security"] },
   { id: "secret-scan", command: "npm", args: ["run", "verify:secrets"] },
+  { id: "text-encoding", command: "npm", args: ["run", "verify:text-encoding"] },
   { id: "release-config", command: "npm", args: ["run", "verify:release-config"] },
   { id: "accessibility-static", command: "npm", args: ["run", "verify:accessibility"] },
   { id: "e2e", command: "npm", args: ["run", "test:e2e"] },

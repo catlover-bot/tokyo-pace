@@ -36,6 +36,6 @@ export async function enrichRoutesWithGsiElevation(routes: readonly DemoRoute[],
   return routes.map((route, routeIndex) => {
     const samples: ElevationSample[] = sampled[routeIndex].map((sample) => { const point = tilePoint(sample.coordinate), tile = tiles.get(point.key); return { ...sample, elevationMeters: tile?.[point.pixelY]?.[point.pixelX] ?? null }; });
     const elevation = deriveElevationMetrics(samples);
-    return { ...route, elevation, warnings: elevation.status === "unavailable" ? [...(route.warnings ?? []), "?????????????????????????????????????"] : route.warnings };
+    return { ...route, elevation, warnings: elevation.status === "unavailable" ? [...(route.warnings ?? []), "坂道情報を取得できませんでした。経路の比較は坂道以外の情報で続けられます。"] : route.warnings };
   });
 }

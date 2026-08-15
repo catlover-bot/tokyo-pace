@@ -21,6 +21,7 @@
     "verify:bundle-budget": "node scripts/verify-bundle-budget.mjs",
     "verify:security": "node scripts/verify-security.mjs",
     "verify:secrets": "node scripts/verify-secrets.mjs",
+    "verify:text-encoding": "node scripts/verify-text-encoding.mjs",
     "verify:release-config": "node scripts/verify-release-candidate.mjs",
     "verify:production": "node scripts/verify-production.mjs",
     "release:preview": "node scripts/release-preview.mjs",
