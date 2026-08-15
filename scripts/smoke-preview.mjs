@@ -58,6 +58,29 @@ function internalResponsePath(value, prefix = "$") {
   return null;
 }
 
+const ELEVATION_METRIC_KEYS = [
+  "totalAscentMeters",
+  "totalDescentMeters",
+  "maximumEstimatedGradePercent",
+  "uphillDistanceAboveThresholdMeters",
+  "steepUphillDistanceMeters",
+  "longestContinuousUphillMeters",
+];
+
+export function validateElevationContract(route) {
+  const elevation = route?.elevation;
+  invariant(elevation && typeof elevation === "object", `${route?.profile ?? "route"}にelevationがありません`);
+  invariant(["complete", "partial", "unavailable"].includes(elevation.status), `${route.profile}のelevation statusが不正です`);
+  if (elevation.status === "unavailable") {
+    invariant(ELEVATION_METRIC_KEYS.every((key) => elevation[key] === null), `${route.profile}の取得不能な標高指標はnullである必要があります`);
+    return;
+  }
+  invariant(Number.isFinite(elevation.completenessRatio) && elevation.completenessRatio > 0 && elevation.completenessRatio <= 1, `${route.profile}の標高取得率が不正です`);
+  invariant(ELEVATION_METRIC_KEYS.every((key) => Number.isFinite(elevation[key])), `${route.profile}の利用可能な標高指標が有限値ではありません`);
+  invariant(typeof elevation.source?.provider === "string" && elevation.source.provider.includes("国土地理院"), `${route.profile}の標高提供元が国土地理院ではありません`);
+  invariant(typeof elevation.source?.attribution === "string" && elevation.source.attribution.length > 0, `${route.profile}の標高帰属表示がありません`);
+}
+
 export function assertNoInternalSecrets(payload, label) {
   const serialized = JSON.stringify(payload);
   invariant(!serialized.includes("OPENROUTESERVICE_API_KEY"), `${label}にSecret名があります`);
@@ -101,6 +124,7 @@ function validateRouteEntries(routes) {
     invariant(Number.isFinite(route?.durationMinutes) && route.durationMinutes > 0, "route時間が不正です");
     invariant(Array.isArray(route?.coordinates) && route.coordinates.length >= 2, "route座標列がありません");
     invariant(Array.isArray(route?.walkingSegments) && route.walkingSegments.length > 0, "walkingSegmentsがありません");
+    validateElevationContract(route);
   }
 }
 
@@ -147,6 +171,21 @@ const mockRoute = (profile) => ({
   }],
   steepSlopeCount: 0,
   indoorRestCount: 0,
+  elevation: {
+    status: "complete",
+    completenessRatio: 1,
+    totalAscentMeters: 4,
+    totalDescentMeters: 3,
+    maximumEstimatedGradePercent: 6,
+    uphillDistanceAboveThresholdMeters: 25,
+    steepUphillDistanceMeters: 0,
+    longestContinuousUphillMeters: 50,
+    source: {
+      provider: "国土地理院",
+      datasetName: "標高タイル（基盤地図情報数値標高モデル）",
+      attribution: "国土地理院の標高タイルを加工して作成",
+    },
+  },
 });
 
 export const deterministicMockRouteFetch = async (request) => {

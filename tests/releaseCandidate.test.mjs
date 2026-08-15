@@ -17,6 +17,7 @@ import {
   deterministicMockRouteFetch,
   normalizePreviewUrl,
   runPreviewSmoke,
+  validateElevationContract,
   verifyMockRouteContracts,
 } from "../scripts/smoke-preview.mjs";
 import {
@@ -288,6 +289,17 @@ const createSmokeFetch = () => {
           durationMinutes: 12,
           distanceMeters: 1_000,
           walkingSegments: [{ id: "segment", walkingMinutes: 12 }],
+          elevation: {
+            status: "complete",
+            completenessRatio: 1,
+            totalAscentMeters: 1,
+            totalDescentMeters: 2,
+            maximumEstimatedGradePercent: 3,
+            uphillDistanceAboveThresholdMeters: 4,
+            steepUphillDistanceMeters: 5,
+            longestContinuousUphillMeters: 6,
+            source: { provider: "国土地理院", attribution: "国土地理院の標高タイルを加工して作成" },
+          },
         })),
         missingProfiles: [],
         warnings: [],
@@ -301,6 +313,42 @@ const createSmokeFetch = () => {
 };
 
 describe("preview smoke test", () => {
+  it("validates complete and unavailable elevation without fabricating unknown metrics", () => {
+    const complete = {
+      profile: "standard",
+      elevation: {
+        status: "complete",
+        completenessRatio: 1,
+        totalAscentMeters: 1,
+        totalDescentMeters: 2,
+        maximumEstimatedGradePercent: 3,
+        uphillDistanceAboveThresholdMeters: 4,
+        steepUphillDistanceMeters: 5,
+        longestContinuousUphillMeters: 6,
+        source: { provider: "国土地理院", attribution: "国土地理院の標高タイルを加工して作成" },
+      },
+    };
+    const unavailable = {
+      profile: "standard",
+      elevation: {
+        status: "unavailable",
+        completenessRatio: 0,
+        totalAscentMeters: null,
+        totalDescentMeters: null,
+        maximumEstimatedGradePercent: null,
+        uphillDistanceAboveThresholdMeters: null,
+        steepUphillDistanceMeters: null,
+        longestContinuousUphillMeters: null,
+      },
+    };
+    expect(() => validateElevationContract(complete)).not.toThrow();
+    expect(() => validateElevationContract(unavailable)).not.toThrow();
+    expect(() => validateElevationContract({
+      ...unavailable,
+      elevation: { ...unavailable.elevation, totalAscentMeters: 0 },
+    })).toThrow(/null/u);
+  });
+
   it("accepts HTTPS and local HTTP preview URLs but rejects credential-bearing URLs", () => {
     expect(normalizePreviewUrl("https://candidate.example.test/")).toBe("https://candidate.example.test");
     expect(normalizePreviewUrl("http://localhost:4173")).toBe("http://localhost:4173");
