@@ -17,6 +17,8 @@
     "test:api-contract": "vitest run tests/workerRoutes.test.ts && node scripts/verify-api-contract.mjs",
     "data:update": "node scripts/update-open-data.mjs",
     "data:verify-determinism": "node scripts/verify-data-determinism.mjs",
+    "eval:representative-route:capture": "node scripts/representative-route-evaluation.mjs capture",
+    "eval:representative-route:report": "node scripts/representative-route-evaluation.mjs report",
     "verify:accessibility": "node scripts/verify-accessibility.mjs",
     "verify:bundle-budget": "node scripts/verify-bundle-budget.mjs",
     "verify:security": "node scripts/verify-security.mjs",

@@ -1,0 +1,4 @@
+profile,route_id,distance_m,duration_s,elevation_status,elevation_completeness,ascent_estimated_m,descent_estimated_m,maximum_grade_estimated_percent,uphill_5_percent_m,uphill_8_percent_m,longest_continuous_uphill_m,condition_burden_without_slope,slope_burden,comparison_score_without_slope,condition_burden_with_slope,comparison_score_with_slope
+standard,standard,819,589.9,complete,1,2.8900000000000077,7.750000000000007,7.280000000000002,25,0,25,10,7.3,10,45,52.3
+step_avoiding,step_avoiding,1147,825.6,complete,1,3.0400000000000063,7.900000000000006,2.4000000000000057,0,0,75,59.12,7.6,59.1,94.12,101.7
+wheelchair_profile,wheelchair_profile,1171,789.5,complete,1,3.4499999999999957,8.309999999999995,3.2000000000000166,0,0,100,50.9,9.2,50.9,50.9,60.1
