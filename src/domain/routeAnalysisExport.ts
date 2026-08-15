@@ -2,7 +2,7 @@ import type { EvaluatedRoute, GapSegment, OpenDataManifest, PublicToiletGapSegme
 import { distancePointToRouteMeters } from "./geo";
 import { REST_CANDIDATE_DISTANCE_METERS } from "./restNetwork";
 
-export const ROUTE_ANALYSIS_SCHEMA_VERSION = "1";
+export const ROUTE_ANALYSIS_SCHEMA_VERSION = "2";
 export const ROUTE_ANALYSIS_MANIFEST_REFERENCE = "data/generated/open-data-manifest.json";
 export const ROUTE_ANALYSIS_GENERATOR = "TOKYO PACE";
 export const OPENSTREETMAP_ATTRIBUTION = "© OpenStreetMap contributors";
@@ -14,7 +14,7 @@ const PUBLIC_TOILET_DATASET_LABELS: Record<string, { provider: string; datasetNa
 const PUBLIC_TOILET_DATASET_IDS = Object.keys(PUBLIC_TOILET_DATASET_LABELS).sort();
 
 export type RouteAnalysisSource = {
-  sourceType: "openstreetmap_route" | "tokyo_pace_demo_route" | "official_open_data" | "field_verification" | "tokyo_pace_derived";
+  sourceType: "openstreetmap_route" | "tokyo_pace_demo_route" | "official_open_data" | "elevation_data" | "field_verification" | "tokyo_pace_derived";
   sourceDatasetId: string;
   provider: string;
   datasetName: string;
@@ -51,6 +51,11 @@ export type RouteAnalysisSnapshot = {
     continuityFeasibleByRestNetwork: boolean;
     strictRestCandidateCount: number;
     possibleRestCandidateCount: number;
+    elevationStatus: "complete" | "partial" | "unavailable";
+    totalAscentMeters: number | null;
+    maximumEstimatedGradePercent: number | null;
+    steepUphillDistanceMeters: number | null;
+    longestContinuousUphillMeters: number | null;
   };
   gaps: {
     rest: RouteAnalysisGap;
@@ -255,6 +260,7 @@ export function buildRouteAnalysisSnapshot(input: RouteAnalysisExportInput): Rou
     ...toiletSources(manifest),
     ...referencedManifestSources(referencedOfficialDatasetIds, manifest),
     routeSource(route),
+    ...(route.elevation ? [{ sourceType: "elevation_data" as const, sourceDatasetId: "gsi-elevation-tiles", provider: route.elevation.source.provider, datasetName: route.elevation.source.datasetName, license: "??????????????", attribution: route.elevation.source.attribution, datasetUrl: route.elevation.source.datasetUrl, resourceUrl: null }] : []),
   ]
     .sort((a, b) => sourceKey(a).localeCompare(sourceKey(b)));
   const sources = [...new Map(allSources.map((source) => [sourceKey(source), source])).values()];
@@ -292,6 +298,11 @@ export function buildRouteAnalysisSnapshot(input: RouteAnalysisExportInput): Rou
       continuityFeasibleByRestNetwork: route.continuityFeasibleByRestNetwork,
       strictRestCandidateCount: route.confirmedRestSpotCount + route.supportedRestSpotCount,
       possibleRestCandidateCount: route.referencePossibleCandidateCount,
+      elevationStatus: route.elevation?.status ?? "unavailable",
+      totalAscentMeters: route.elevation?.totalAscentMeters ?? null,
+      maximumEstimatedGradePercent: route.elevation?.maximumEstimatedGradePercent ?? null,
+      steepUphillDistanceMeters: route.elevation?.steepUphillDistanceMeters ?? null,
+      longestContinuousUphillMeters: route.elevation?.longestContinuousUphillMeters ?? null,
     },
     gaps: { rest: restGap, publicToilet: publicToiletGap, drinkingWater: drinkingWaterGap },
     strictRestCandidates: strictCandidates.map((candidate) => ({
@@ -320,6 +331,7 @@ export function buildRouteAnalysisSnapshot(input: RouteAnalysisExportInput): Rou
 
 export const ANALYSIS_CSV_COLUMNS = [
   "routeId", "profile", "routeDistanceMeters", "durationMinutes", "maxContinuousWalkingMinutes",
+  "elevationStatus", "totalAscentMeters", "maximumEstimatedGradePercent", "steepUphillDistanceMeters", "longestContinuousUphillMeters",
   "longestRestGapMeters", "longestPublicToiletGapMeters", "longestDrinkingWaterGapMeters",
   "continuityFeasible", "continuityFeasibleByRestNetwork", "strictRestCandidateCount", "possibleRestCandidateCount",
   "restGapStartProgressMeters", "restGapEndProgressMeters", "publicToiletGapStartProgressMeters", "publicToiletGapEndProgressMeters",
@@ -341,6 +353,11 @@ export function serializeRouteAnalysisCsv(snapshot: RouteAnalysisSnapshot): stri
     durationMinutes: snapshot.route.durationMinutes,
     maxContinuousWalkingMinutes: snapshot.route.maxContinuousWalkingMinutes,
     longestRestGapMeters: snapshot.route.longestRestGapMeters,
+    elevationStatus: snapshot.route.elevationStatus,
+    totalAscentMeters: snapshot.route.totalAscentMeters ?? "",
+    maximumEstimatedGradePercent: snapshot.route.maximumEstimatedGradePercent ?? "",
+    steepUphillDistanceMeters: snapshot.route.steepUphillDistanceMeters ?? "",
+    longestContinuousUphillMeters: snapshot.route.longestContinuousUphillMeters ?? "",
     longestPublicToiletGapMeters: snapshot.route.longestPublicToiletGapMeters,
     longestDrinkingWaterGapMeters: snapshot.route.longestDrinkingWaterGapMeters,
     continuityFeasible: snapshot.route.continuityFeasible,
@@ -414,6 +431,11 @@ export function buildRouteAnalysisGeoJson(snapshot: RouteAnalysisSnapshot): Anal
       profile: snapshot.route.profile,
       routeDistanceMeters: snapshot.route.routeDistanceMeters,
       durationMinutes: snapshot.route.durationMinutes,
+      elevationStatus: snapshot.route.elevationStatus,
+      totalAscentMeters: snapshot.route.totalAscentMeters,
+      maximumEstimatedGradePercent: snapshot.route.maximumEstimatedGradePercent,
+      steepUphillDistanceMeters: snapshot.route.steepUphillDistanceMeters,
+      longestContinuousUphillMeters: snapshot.route.longestContinuousUphillMeters,
       sourceType: routeSource.sourceType,
       provider: routeSource.provider,
       datasetName: routeSource.datasetName,

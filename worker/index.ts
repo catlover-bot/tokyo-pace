@@ -25,6 +25,7 @@ import {
   type RouteRateLimiter,
 } from "./resilience";
 import { resolveRuntimeConfig, type RuntimeConfig, type WorkerEnv } from "./runtimeConfig";
+import { enrichRoutesWithGsiElevation } from "./gsiElevation";
 
 export type Env = WorkerEnv;
 export type CacheLike = {
@@ -42,6 +43,7 @@ export type RouteSuccessPayload = {
 };
 export type WorkerDependencies = {
   fetchImpl?: typeof fetch;
+  elevationFetchImpl?: typeof fetch;
   cache?: CacheLike | null;
   cacheScope?: "cloudflare_edge_location" | "local_edge_instance";
   now?: () => string;
@@ -527,9 +529,11 @@ async function fetchRoutePayload(
     missingProfiles.length > 0
       ? "一部の経路候補を取得できませんでした。表示中の候補を比較するか、時間をおいて再検索してください。"
       : null;
-  const routes = partialWarning
+  const baseRoutes = partialWarning
     ? successfulRoutes.map((route) => ({ ...route, warnings: [...(route.warnings ?? []), partialWarning] }))
     : successfulRoutes;
+  const elevationFetch = dependencies.elevationFetchImpl ?? (dependencies.fetchImpl ? null : defaultFetch);
+  const routes = elevationFetch ? await enrichRoutesWithGsiElevation(baseRoutes, elevationFetch) : baseRoutes;
   return {
     routes,
     source: "openrouteservice",

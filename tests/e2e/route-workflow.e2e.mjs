@@ -7,7 +7,7 @@ const routeSnapshot = parseRepresentativeDynamicRouteSnapshot(await readFile(
   "utf8",
 ));
 const routeFixture = {
-  routes: routeSnapshot.routes,
+  routes: routeSnapshot.routes.map((route, index) => ({ ...route, elevation: { status: "complete", completenessRatio: 1, totalAscentMeters: 12 - index * 3, totalDescentMeters: 4 + index, maximumEstimatedGradePercent: 6.8 - index, uphillDistanceAboveThresholdMeters: 124 - index * 30, steepUphillDistanceMeters: 18 - index * 6, longestContinuousUphillMeters: 91 - index * 20, elevationRangeMeters: 12, profile: [], segments: [], source: { provider: "GSI fixture", datasetName: "Elevation fixture", datasetUrl: "https://example.test/fixture", attribution: "Test fixture", derivedBy: "TOKYO PACE test" }, processing: { sampleSpacingMeters: 25, smoothingWindowPoints: 3, uphillThresholdPercent: 5, steepUphillThresholdPercent: 8 } } })),
   source: "openrouteservice",
   generatedAt: routeSnapshot.source.capturedAt,
 };
@@ -65,6 +65,8 @@ test("動的3経路を比較し、分析データを決定的に出力して固�
 
   await cards.nth(1).getByRole("button", { name: "詳細を見る" }).click();
   await expect(cards.nth(1).locator(".route-card-details")).toBeVisible();
+  await expect(cards.nth(1).getByRole("region", { name: "????????????" })).toContainText("?????");
+  await expect(cards.nth(1).getByRole("region", { name: "????????????" })).toContainText("5%?????");
   await expect(cards.nth(1).getByRole("button", { name: "詳細を閉じる" })).toHaveAttribute("aria-expanded", "true");
   await cards.nth(1).getByRole("button", { name: "詳細を閉じる" }).click();
   await expect(cards.nth(1).locator(".route-card-details")).toBeHidden();
@@ -79,6 +81,7 @@ test("動的3経路を比較し、分析データを決定的に出力して固�
   expect(secondCsvDownload.suggestedFilename()).toBe(firstCsvDownload.suggestedFilename());
   expect(secondCsv.equals(firstCsv)).toBe(true);
   expect(firstCsv.toString("utf8")).toContain("routeId,profile,routeDistanceMeters");
+  expect(firstCsv.toString("utf8")).toContain("elevationStatus,totalAscentMeters,maximumEstimatedGradePercent");
   expect(firstCsv.toString("utf8")).toContain("sourceDatasetIds,manifestReference,attribution,warnings");
 
   const [geoJsonDownload] = await Promise.all([page.waitForEvent("download"), page.getByRole("button", { name: "GeoJSONをダウンロード" }).click()]);

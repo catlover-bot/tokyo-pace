@@ -146,7 +146,7 @@ export function resolveRuntimeConfig(env: WorkerEnv): RuntimeConfig {
     maxWaypoints: integerValue(env.ROUTE_MAX_WAYPOINTS, 2, 2, 10),
     maxConcurrency: integerValue(env.ROUTE_MAX_CONCURRENCY, 4, 1, 100),
     bodyLimitBytes: integerValue(env.ROUTE_BODY_LIMIT_BYTES, MAX_ROUTE_REQUEST_BYTES, 1_024, 1_048_576),
-    cacheTtlSeconds: integerValue(env.ROUTE_CACHE_TTL_SECONDS, ROUTE_CACHE_TTL_SECONDS, 0, 86_400),
+    cacheTtlSeconds: integerValue(env.ROUTE_CACHE_TTL_SECONDS, appEnvironment === "local" ? 60 : appEnvironment === "preview" ? 300 : ROUTE_CACHE_TTL_SECONDS, 0, 86_400),
     rateLimitRequests: integerValue(env.ROUTE_RATE_LIMIT_REQUESTS, 30, 1, 10_000),
     rateLimitWindowSeconds: integerValue(env.ROUTE_RATE_LIMIT_WINDOW_SECONDS, 60, 1, 3_600),
     orsTimeoutMilliseconds: integerValue(env.ORS_TIMEOUT_MILLISECONDS, ORS_TIMEOUT_MILLISECONDS, 100, 60_000),

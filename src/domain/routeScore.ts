@@ -4,6 +4,7 @@ import { findOfficialToiletPlacesNearRoute, nearestOfficialToiletPlaceDistanceMe
 import type { Coordinate } from "./geo";
 import type { PublicToiletGapSegment } from "../types";
 import { evaluateRestNetwork } from "./restNetwork";
+import { deriveSlopeBurden } from "./elevation";
 
 export const SCORE_WEIGHTS = { minute: 1, continuousMinuteOver: 12, missingToilet: 120, steepSlope: 35, missingIndoorRest: 45 } as const;
 
@@ -68,6 +69,8 @@ export function evaluateRoute(route: DemoRoute, preferences: RoutePreferences, o
   };
   const score = scoreBreakdown.duration + scoreBreakdown.continuousWalkingExcess + scoreBreakdown.missingPublicToilet + scoreBreakdown.steepSlope + scoreBreakdown.missingIndoorRest;
   scoreBreakdown.total = score;
+  const slopeBurden = deriveSlopeBurden(route.elevation);
+  const comparisonScore = score + (preferences.avoidSteepSlopes && slopeBurden !== null ? slopeBurden : 0);
   const reasons = [
     route.restSpotIds.length ? `休憩候補を${route.restSpotIds.length}か所経由` : "休憩候補の経由なし",
     hasPublicToiletCandidate ? `ルートから推定直線距離${PUBLIC_TOILET_QUALIFYING_DISTANCE_METERS}m以内に公衆トイレ候補${publicToiletPlaces.length}地点` : `ルートから推定直線距離${PUBLIC_TOILET_QUALIFYING_DISTANCE_METERS}m以内に公衆トイレ候補なし`,
@@ -77,6 +80,7 @@ export function evaluateRoute(route: DemoRoute, preferences: RoutePreferences, o
   ];
   return {
     ...route, ...continuity, ...restNetwork, ...(restNetwork.strictRestCandidateCount === 0 ? { longestRestGapMeters: continuity.longestRestGapMeters } : {}), continuousWalkingLimitMinutes: preferences.maxContinuousWalkingMinutes, score, scoreBreakdown, preferenceViolationCount: Object.values(violations).filter(Boolean).length, reasons,
+    slopeBurden, comparisonScore,
     meetsPreferences: !Object.values(violations).some(Boolean),
     officialToiletRecordCount: nearbyOfficialToiletPlaces.reduce((sum, place) => sum + place.sourceRecordCount, 0),
     officialToiletPlaceCount: nearbyOfficialToiletPlaces.length,
@@ -95,6 +99,7 @@ export function evaluateRoute(route: DemoRoute, preferences: RoutePreferences, o
 const durationSeconds = (route: EvaluatedRoute) => route.durationSeconds ?? route.durationMinutes * 60;
 
 export function compareEvaluatedRoutes(a: EvaluatedRoute, b: EvaluatedRoute) {
+  if (a.comparisonScore !== b.comparisonScore) return a.comparisonScore - b.comparisonScore;
   return a.score - b.score
     || Number(b.meetsPreferences) - Number(a.meetsPreferences)
     || a.preferenceViolationCount - b.preferenceViolationCount

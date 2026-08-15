@@ -302,6 +302,7 @@ export type RouteSearchRequest = { origin: GeoPoint; destination: GeoPoint; pref
 export type RouteProfile = "standard" | "step_avoiding" | "wheelchair_profile";
 export type RouteStep = { instruction: string; distanceMeters: number; durationSeconds: number };
 export type RouteExtraSegment = { from: number; to: number; value: number };
+export type ElevationMetrics = { status: "complete" | "partial" | "unavailable"; totalAscentMeters: number | null; totalDescentMeters: number | null; maximumEstimatedGradePercent: number | null; uphillDistanceAboveThresholdMeters: number | null; steepUphillDistanceMeters: number | null; longestContinuousUphillMeters: number | null; elevationRangeMeters: number | null; completenessRatio: number; profile: Array<{ coordinate: [number, number]; distanceMeters: number; elevationMeters: number | null; estimatedGradePercent: number | null; slopeClass: string }>; segments: Array<{ coordinates: [number, number][]; distanceMeters: number; estimatedGradePercent: number | null; slopeClass: string; isUphill: boolean | null }>; source: { provider: string; datasetName: string; datasetUrl: string; attribution: string; derivedBy: string }; processing: { sampleSpacingMeters: number; smoothingWindowPoints: number; uphillThresholdPercent: number; steepUphillThresholdPercent: number } };
 
 export type WalkingSegment = {
   id: string;
@@ -327,6 +328,7 @@ export type DemoRoute = {
   generatedAt?: string;
   warnings?: string[];
   isFallback?: boolean;
+  elevation?: ElevationMetrics;
 };
 
 export type ContinuityMetrics = {
@@ -381,4 +383,6 @@ export type EvaluatedRoute = DemoRoute & ContinuityMetrics & RestNetworkMetrics 
   largestGapEndGeometryProgressMeters: number;
   longestPublicToiletGeometryGapMeters: number;
   toiletDataSource: string;
+  slopeBurden: number | null;
+  comparisonScore: number;
 };

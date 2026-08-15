@@ -7,7 +7,7 @@ export type RecommendationReasonCode =
   | "MEETS_ALL_REQUIRED_PREFERENCES" | "FEWER_CONSTRAINT_VIOLATIONS" | "SHORTEST_DISTANCE" | "FASTEST_DURATION"
   | "LOWEST_MAX_CONTINUOUS_WALK" | "LOWEST_REST_GAP" | "LOWEST_PUBLIC_TOILET_GAP" | "STEP_AVOIDING_PROFILE"
   | "PUBLIC_TOILET_CANDIDATES_NEAR_ROUTE" | "STRICT_REST_NETWORK_FEASIBLE" | "BETTER_CONTINUITY_THAN_STANDARD"
-  | "LOWEST_CONDITION_BURDEN_SCORE" | "WHOLE_ROUTE_WITHIN_LIMIT";
+  | "LOWEST_CONDITION_BURDEN_SCORE" | "WHOLE_ROUTE_WITHIN_LIMIT" | "LOWER_ESTIMATED_ASCENT" | "LOWER_STEEP_UPHILL_DISTANCE";
 export type ExplanationCode = RecommendationReasonCode | "WHEELCHAIR_PROFILE" | "MAX_CONTINUOUS_WALK_EXCEEDED" | "PUBLIC_TOILET_REQUIRED_MISSING" | "STEEP_SLOPE_REQUIREMENT_NOT_MET" | "INDOOR_REST_REQUIREMENT_NOT_MET" | "STRICT_REST_NETWORK_NOT_FEASIBLE" | "LONGER_DISTANCE" | "LONGER_DURATION" | "LONGER_REST_GAP" | "SOURCE_WARNING";
 export type ExplanationItem = { code: ExplanationCode; text: string };
 export type VisualPattern = "solid" | "dashed" | "dotted";
@@ -80,6 +80,8 @@ function recommendationReasons(route: EvaluatedRoute, routes: EvaluatedRoute[], 
   const reasons: ExplanationItem[] = [];
   if (route.meetsPreferences) reasons.push({ code: "MEETS_ALL_REQUIRED_PREFERENCES", text: "設定した希望条件をすべて満たしています" });
   if (tiedMinimum(routes, route, (item) => item.preferenceViolationCount)) reasons.push({ code: "FEWER_CONSTRAINT_VIOLATIONS", text: `${routes.length}候補の中で、希望条件を満たさなかった項目が最も少ない候補です` });
+  if (preferences.avoidSteepSlopes && route.id !== baseline.id && route.elevation?.totalAscentMeters != null && baseline.elevation?.totalAscentMeters != null && route.elevation.totalAscentMeters < baseline.elevation.totalAscentMeters) reasons.push({ code: "LOWER_ESTIMATED_ASCENT", text: `?????????????????${roundComparisonValue(baseline.elevation.totalAscentMeters - route.elevation.totalAscentMeters, 1)}m???????` });
+  if (preferences.avoidSteepSlopes && route.id !== baseline.id && route.elevation?.steepUphillDistanceMeters != null && baseline.elevation?.steepUphillDistanceMeters != null && route.elevation.steepUphillDistanceMeters < baseline.elevation.steepUphillDistanceMeters) reasons.push({ code: "LOWER_STEEP_UPHILL_DISTANCE", text: `????8%????????????${roundComparisonValue(baseline.elevation.steepUphillDistanceMeters - route.elevation.steepUphillDistanceMeters)}m??????` });
   if (tiedMinimum(routes, route, (item) => item.score)) reasons.push({ code: "LOWEST_CONDITION_BURDEN_SCORE", text: `${routes.length}候補の中で、条件負担スコアが最も低い候補です` });
   if (preferences.avoidSteps && route.profile === "step_avoiding") reasons.push({ code: "STEP_AVOIDING_PROFILE", text: "階段を避けるよう要求した条件で生成されています" });
   if (tiedMinimum(routes, route, (item) => item.maxContinuousWalkingMinutes)) reasons.push({ code: "LOWEST_MAX_CONTINUOUS_WALK", text: `最大連続歩行時間が${routes.length}候補中で最短です` });
