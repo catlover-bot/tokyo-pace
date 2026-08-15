@@ -18,7 +18,7 @@ const privacyContent = (
       <h2 id="privacy-status">この方針の位置づけ</h2>
       <p>
         このページはTOKYO PACE製品版v1.0のプライバシー方針案です。
-        公開前に法務確認と問い合わせ窓口の確定が必要であり、法令への準拠済み・適合済みを表明するものではありません。
+        公開前に法務確認と本番運用の確認が必要であり、法令への準拠済み・適合済みを表明するものではありません。
       </p>
     </section>
 
@@ -112,7 +112,7 @@ const privacyContent = (
 
     <section aria-labelledby="privacy-contact">
       <h2 id="privacy-contact">問い合わせと改定</h2>
-      <p>問い合わせ先：［公開問い合わせ窓口を設定予定］</p>
+      <p>問い合わせ先：<a href="https://github.com/catlover-bot/tokyo-pace/issues" target="_blank" rel="noreferrer">TOKYO PACE GitHub Issues</a></p>
       <p>改定日：{revisionDate}</p>
       <p>重要な変更を行う場合は、このページの内容と改定日を更新します。</p>
     </section>
@@ -169,7 +169,7 @@ const termsContent = (
         安全性、保守、上流サービス障害、データ更新等のため、サービス内容を変更または一時停止する場合があります。
         重要な変更は可能な範囲で画面やステータス情報に表示します。
       </p>
-      <p>問い合わせ先：［公開問い合わせ窓口を設定予定］</p>
+      <p>問い合わせ先：<a href="https://github.com/catlover-bot/tokyo-pace/issues" target="_blank" rel="noreferrer">TOKYO PACE GitHub Issues</a></p>
       <p>改定日：{revisionDate}</p>
     </section>
   </>
@@ -234,7 +234,7 @@ const dataPolicyContent = (
         公式データの更新が遅れている場合でもサービス全体を直ちに停止せず、更新状況と注意を表示します。
         データの訂正方法、再配布条件、ライセンス表示は公開前に各提供元および法務担当者の確認が必要です。
       </p>
-      <p>問い合わせ先：［公開問い合わせ窓口を設定予定］</p>
+      <p>問い合わせ先：<a href="https://github.com/catlover-bot/tokyo-pace/issues" target="_blank" rel="noreferrer">TOKYO PACE GitHub Issues</a></p>
       <p>改定日：{revisionDate}</p>
     </section>
   </>
@@ -294,9 +294,9 @@ const accessibilityContent = (
       <p>
         Leaflet地図は視覚的な操作量が多いため、同じ主要情報を地図外のカード・表・テキストでも提供します。
         地図タイル内の個別道路・施設の完全な代替説明や、すべての支援技術での検証は未完了です。
-        アクセシビリティ上の問題を見つけた場合の公開問い合わせ先は、公開前に設定します。
+        アクセシビリティ上の問題は、以下の公開問い合わせ先へ連絡できます。
       </p>
-      <p>問い合わせ先：［公開問い合わせ窓口を設定予定］</p>
+      <p>問い合わせ先：<a href="https://github.com/catlover-bot/tokyo-pace/issues" target="_blank" rel="noreferrer">TOKYO PACE GitHub Issues</a></p>
       <p>改定日：{revisionDate}</p>
     </section>
   </>
@@ -366,7 +366,7 @@ export function PublicPolicyPage({ page }: { page: PublicPagePath }) {
         </header>
         <aside className="policy-draft-notice" aria-label="公開前の確認事項">
           <strong>公開前の方針案です</strong>
-          <p>法務確認、公開問い合わせ先、本番設定の確認が必要です。法的準拠や適合を表明するページではありません。</p>
+          <p>法務確認と本番設定の確認が必要です。法的準拠や適合を表明するページではありません。</p>
         </aside>
         <div className="policy-content">{definition.content}</div>
       </main>

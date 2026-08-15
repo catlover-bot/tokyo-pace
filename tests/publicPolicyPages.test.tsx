@@ -49,11 +49,13 @@ describe("プライバシー・利用条件・データ方針", () => {
       "OpenStreetMap（OSM）",
       "保存期間",
       "現在の設定値：未確定",
-      "［公開問い合わせ窓口を設定予定］",
+      "https://github.com/catlover-bot/tokyo-pace/issues",
+      "TOKYO PACE GitHub Issues",
       "改定日：2026年7月24日",
     ]) {
       expect(html).toContain(text);
     }
+    expect(html).not.toContain("［公開問い合わせ窓口を設定予定］");
   });
 
   it("利用条件が経路・設備の保証をせず法務確認前と示す", () => {
