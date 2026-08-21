@@ -65,7 +65,7 @@ export function RoutePlanningApp() {
   const setPreset = (kind: "origin" | "destination", key: keyof typeof presets) => kind === "origin" ? setOrigin(presets[key].point) : setDestination(presets[key].point);
   return <>
     <SkipLink />
-    <header className="site-header"><div className="header-inner"><div className="brand"><span className="brand-mark" aria-hidden="true">歩</span><div><p className="service-name">TOKYO PACE</p><p className="tagline">最短ではなく、最後まで歩ける道へ</p></div></div><span className="demo-badge">v1.0</span></div></header>
+    <header className="site-header"><div className="header-inner"><div className="brand"><span className="brand-mark" aria-hidden="true">歩</span><div><p className="service-name">TOKYO PACE</p><p className="tagline">最短ではなく、最後まで歩ける道へ</p></div></div></div></header>
     <main id="main-content" tabIndex={-1}>
       <section className="intro"><p className="eyebrow">歩行経路候補の比較</p><h1>地図で場所を選び、<br />歩き続ける負担を比べます。</h1><p>対象は新宿駅・東京都庁・新宿中央公園周辺です。OpenStreetMapの情報に基づく候補で、実際の通行可否・工事・段差・営業時間等は確認が必要です。</p></section>
       <OfflineNotice online={online} onFallback={() => void showDemo()} />
